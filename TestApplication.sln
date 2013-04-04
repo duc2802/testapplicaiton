@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "TestApplication\BusinessLogicLayer.csproj", "{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessEntities", "BusinessEntities\BusinessEntities.csproj", "{EAE0FA35-5202-4F99-915D-B48FE68976D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{B2561A6D-B512-449A-A03F-9E49F61FEBA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F627D710-AA78-4F77-B601-AFCBBA7D2416}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{9282E7B7-D184-4777-9614-B23310BC802F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{D1441441-3AD1-4171-AA32-3683E19DD61A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}.Debug|x86.ActiveCfg = Debug|x86
+		{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}.Debug|x86.Build.0 = Debug|x86
+		{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}.Release|x86.ActiveCfg = Release|x86
+		{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}.Release|x86.Build.0 = Release|x86
+		{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}.Debug|x86.ActiveCfg = Debug|x86
+		{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}.Debug|x86.Build.0 = Debug|x86
+		{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}.Release|x86.ActiveCfg = Release|x86
+		{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}.Release|x86.Build.0 = Release|x86
+		{EAE0FA35-5202-4F99-915D-B48FE68976D8}.Debug|x86.ActiveCfg = Debug|x86
+		{EAE0FA35-5202-4F99-915D-B48FE68976D8}.Debug|x86.Build.0 = Debug|x86
+		{EAE0FA35-5202-4F99-915D-B48FE68976D8}.Release|x86.ActiveCfg = Release|x86
+		{EAE0FA35-5202-4F99-915D-B48FE68976D8}.Release|x86.Build.0 = Release|x86
+		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Debug|x86.ActiveCfg = Debug|x86
+		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Debug|x86.Build.0 = Debug|x86
+		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Release|x86.ActiveCfg = Release|x86
+		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Release|x86.Build.0 = Release|x86
+		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|x86.ActiveCfg = Debug|x86
+		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|x86.Build.0 = Debug|x86
+		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|x86.ActiveCfg = Release|x86
+		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
