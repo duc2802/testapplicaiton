@@ -18,5 +18,6 @@ namespace BusinessEntities
 {
     class Test
     {
+
     }
 }
