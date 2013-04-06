@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class Main
+    partial class WelcomeScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
-            // Main
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(0, 420);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(563, 32);
+            this.progressBar1.TabIndex = 0;
+            // 
+            // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 296);
-            this.Name = "Main";
-            this.Text = "Main";
+            this.BackgroundImage = global::PresentationLayer.Properties.Resources.Welcome;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(563, 452);
+            this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "Welcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Welcome";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
