@@ -28,11 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.ribbon1 = new RibbonLib.Ribbon();
+            this.SuspendLayout();
+            // 
+            // ribbon1
+            // 
+            this.ribbon1.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.Minimized = false;
+            this.ribbon1.Name = "ribbon1";
+            this.ribbon1.ResourceName = null;
+            this.ribbon1.ShortcutTableResourceName = null;
+            this.ribbon1.Size = new System.Drawing.Size(284, 125);
+            this.ribbon1.TabIndex = 0;
+            // 
+            // Main
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.ribbon1);
+            this.Name = "Main";
             this.Text = "Main";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private RibbonLib.Ribbon ribbon1;
     }
 }
