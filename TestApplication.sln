@@ -22,14 +22,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "Presen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F627D710-AA78-4F77-B601-AFCBBA7D2416}"
 	ProjectSection(SolutionItems) = preProject
-		C:\Users\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll = C:\Users\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll
+		..\..\..\..\..\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll = ..\..\..\..\..\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{9282E7B7-D184-4777-9614-B23310BC802F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{D1441441-3AD1-4171-AA32-3683E19DD61A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsUI", "..\..\..\..\..\dockpanelsuite-master\WinFormsUI\WinFormsUI.csproj", "{C75532C4-765B-418E-B09B-46D36B2ABDB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsUI", "WeiFenLuoDockingMaster\WinFormsUI\WinFormsUI.csproj", "{C75532C4-765B-418E-B09B-46D36B2ABDB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockSample", "..\..\..\..\..\dockpanelsuite-master\DockSample\DockSample.csproj", "{40793A27-478B-4357-B4C3-FC8943131F3D}"
 EndProject
