@@ -47,40 +47,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WelcomeSrceenTimer.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="Category\CategoryExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Category\CategoryExplorer.Designer.cs">
+      <DependentUpon>CategoryExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash\WelcomeSrceenTimer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WelcomeScreen.cs">
+    <Compile Include="Splash\WelcomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WelcomeScreen.designer.cs">
+    <Compile Include="Splash\WelcomeScreen.designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WelcomeScreen.resx">
+    <EmbeddedResource Include="Splash\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Welcome.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeiFenLuoDockingMaster\WinFormsUI\WeifenLuo.WinFormsUI.Docking.csproj">
+      <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>
+      <Name>WeifenLuo.WinFormsUI.Docking</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

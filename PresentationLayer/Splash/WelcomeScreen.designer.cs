@@ -1,4 +1,4 @@
-﻿namespace PresentationLayer
+﻿namespace PresentationLayer.Splash
 {
     partial class WelcomeScreen
     {

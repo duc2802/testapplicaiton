@@ -15,7 +15,7 @@ namespace TestApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PresentationLayer.Main());
+            Application.Run(new PresentationLayer.MainForm());
         }
     }
 }

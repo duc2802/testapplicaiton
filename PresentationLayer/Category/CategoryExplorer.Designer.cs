@@ -1,6 +1,6 @@
-﻿namespace PresentationLayer
+﻿namespace PresentationLayer.Category
 {
-    partial class Main
+    partial class CategoryExplorer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Main
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 296);
-            this.Name = "Main";
-            this.Text = "Main";
-            this.ResumeLayout(false);
-
+            this.Text = "CategoryExplorer";
         }
 
         #endregion
-
     }
 }
