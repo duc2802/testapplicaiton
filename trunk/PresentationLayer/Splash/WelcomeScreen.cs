@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Linq;
 
-namespace PresentationLayer
+namespace PresentationLayer.Splash
 {
     public partial class WelcomeScreen : Form
     {
