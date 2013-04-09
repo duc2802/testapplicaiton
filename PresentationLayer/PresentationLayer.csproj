@@ -11,7 +11,8 @@
     <RootNamespace>PresentationLayer</RootNamespace>
     <AssemblyName>PresentationLayer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -37,6 +38,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=6.6.0.5, Culture=neutral, PublicKeyToken=7c5c3e3e32ebc94e, processorArchitecture=MSIL" />
     <Reference Include="Ribbon">
       <HintPath>C:\Users\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll</HintPath>
     </Reference>
@@ -80,16 +82,20 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lib\DevComponents.DotNetBar2.dll" />
+    <Content Include="Lib\Ribbon.dll" />
+    <None Include="app.config" />
     <Content Include="Resources\Welcome.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WeiFenLuoDockingMaster\WinFormsUI\WeifenLuo.WinFormsUI.Docking.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\dockpanelsuite-master\WinFormsUI\WinFormsUI.csproj">
       <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>
       <Name>WeifenLuo.WinFormsUI.Docking</Name>
     </ProjectReference>
