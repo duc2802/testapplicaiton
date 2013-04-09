@@ -14,7 +14,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace PresentationLayer
 {
-    public partial class MainForm : Form
+    public partial class MainForm : DevComponents.DotNetBar.Office2007RibbonForm
     {
         private WelcomeScreen welcomeScreen;
         private bool done = false;
@@ -70,8 +70,17 @@ namespace PresentationLayer
 
         private void newFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CategoryExplorer category = new CategoryExplorer();
-            category.Show(dockPanel, DockState.Float);
+          
+        }
+
+        private void buttonItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
