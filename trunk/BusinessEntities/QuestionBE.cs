@@ -16,9 +16,10 @@ using System.Text;
 
 namespace BusinessEntities
 {
-    class QuestionBE
+    public class QuestionBE
     {
         String question = "";
-        List <AnswerBE> answers = new List<AnswerBE>();
+        List<AnswerBE> listAnswers;
+
     }
 }

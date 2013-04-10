@@ -16,8 +16,9 @@ using System.Text;
 
 namespace BusinessEntities
 {
-    class Test
+    public class TestBE
     {
-        
+        int time;
+        List<QuestionBE> listQuestion;
     }
 }
