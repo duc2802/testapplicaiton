@@ -16,7 +16,7 @@ using System.Text;
 
 namespace BusinessEntities
 {
-    class AnswerBE
+    public class AnswerBE
     {
         Boolean result;
         String content;

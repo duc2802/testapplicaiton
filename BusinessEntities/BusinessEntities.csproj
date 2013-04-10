@@ -39,7 +39,7 @@
   <ItemGroup>
     <Compile Include="AnswerBE.cs" />
     <Compile Include="QuestionBE.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="TestBE.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -92,6 +92,9 @@
     <Content Include="Lib\DevComponents.DotNetBar2.dll" />
     <Content Include="Lib\Ribbon.dll" />
     <None Include="app.config" />
+    <Content Include="Resources\AddNew.png" />
+    <Content Include="Resources\NewQuestion.png" />
+    <Content Include="Resources\Program.png" />
     <Content Include="Resources\Welcome.jpg" />
   </ItemGroup>
   <ItemGroup>
