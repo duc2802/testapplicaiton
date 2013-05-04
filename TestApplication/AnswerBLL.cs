@@ -7,11 +7,11 @@ namespace TestApplication
 {
     public class AnswerBLL
     {
-        public Boolean addAnswer(BusinessEntities.AnswerBE answer)
+        public Boolean AddAnswer(BusinessEntities.AnswerBE answer)
         {
             Boolean result;
             DataAccessLayer.AnswerDAL addAnswerDL = new DataAccessLayer.AnswerDAL();
-            result = addAnswerDL.addAnswer(answer);
+            result = addAnswerDL.AddAnswer(answer);
             return result;
         }
     }
