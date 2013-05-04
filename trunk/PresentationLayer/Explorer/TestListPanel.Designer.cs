@@ -28,10 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.testListBox = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
+            // 
+            // testListBox
+            // 
+            this.testListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testListBox.FormattingEnabled = true;
+            this.testListBox.Location = new System.Drawing.Point(0, 0);
+            this.testListBox.Name = "testListBox";
+            this.testListBox.Size = new System.Drawing.Size(181, 414);
+            this.testListBox.TabIndex = 0;
+            // 
+            // TestListPanel
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.testListBox);
+            this.Name = "TestListPanel";
+            this.Size = new System.Drawing.Size(181, 414);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox testListBox;
     }
 }
