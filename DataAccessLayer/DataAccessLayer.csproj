@@ -74,9 +74,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnswerDL.cs" />
-    <Compile Include="QuestionDL.cs" />
-    <Compile Include="TestDL.cs" />
+    <Compile Include="AnswerDAL.cs" />
+    <Compile Include="QuestionDAL.cs" />
+    <Compile Include="TestDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

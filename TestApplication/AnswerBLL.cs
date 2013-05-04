@@ -10,7 +10,7 @@ namespace TestApplication
         public Boolean addAnswer(BusinessEntities.AnswerBE answer)
         {
             Boolean result;
-            DataAccessLayer.AnswerDL addAnswerDL = new DataAccessLayer.AnswerDL();
+            DataAccessLayer.AnswerDAL addAnswerDL = new DataAccessLayer.AnswerDAL();
             result = addAnswerDL.addAnswer(answer);
             return result;
         }
