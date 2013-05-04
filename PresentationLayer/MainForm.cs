@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using PresentationLayer.Explorer;
 using PresentationLayer.Splash;
 
 namespace PresentationLayer
@@ -12,8 +13,16 @@ namespace PresentationLayer
         public MainForm()
         {
             InitializeComponent();
+            InitCommonGui();
             //DoSplash();
             this.Load += HandleFormLoad;
+        }
+
+        private void InitCommonGui()
+        {
+            TestListPanel testListPanel = new TestListPanel();
+            testListPanel.Dock = DockStyle.Fill;
+            this.explorerSplitContainer.Panel2.Controls.Add(testListPanel);
         }
 
         // WelcomeScreen controler

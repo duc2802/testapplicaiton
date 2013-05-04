@@ -11,9 +11,17 @@ namespace PresentationLayer.Explorer
 {
     public partial class TestListPanel : UserControl
     {
+        private TestListDataItemController _dataItemController = new TestListDataItemController();
+
         public TestListPanel()
         {
             InitializeComponent();
+            InitCommonGui();
+        }
+
+        public void InitCommonGui()
+        {
+            
         }
     }
 }
