@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer
 {
-    public class QuestionDL
+    public class QuestionDAL
     {
     }
 }

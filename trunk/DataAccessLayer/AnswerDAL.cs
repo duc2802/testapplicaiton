@@ -5,16 +5,16 @@ using System.Text;
 
 namespace DataAccessLayer
 {
-    public class AnswerDL
+    public class AnswerDAL
     {
-        public Boolean addAnswer (BusinessEntities.AnswerBE addAnswer)
+        public Boolean AddAnswer (BusinessEntities.AnswerBE addAnswer)
         {
             Boolean result = true;
             // Write answer to file XML ...
             return result;
         }
 
-        public BusinessEntities.AnswerBE getAnswerContent()
+        public BusinessEntities.AnswerBE GetAnswerContent()
         {
             BusinessEntities.AnswerBE result = new BusinessEntities.AnswerBE();
             // Read answer to file XML ...
