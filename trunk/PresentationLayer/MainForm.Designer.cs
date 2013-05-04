@@ -34,9 +34,9 @@
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.buttonNewExam = new DevComponents.DotNetBar.ButtonItem();
             this.buttonNewQuestion = new DevComponents.DotNetBar.ButtonItem();
-            this.Create = new DevComponents.DotNetBar.RibbonTabItem();
-            this.Test = new DevComponents.DotNetBar.RibbonTabItem();
-            this.office2007StartButton1 = new DevComponents.DotNetBar.Office2007StartButton();
+            this.homeTabItem = new DevComponents.DotNetBar.RibbonTabItem();
+            this.insertTabItem = new DevComponents.DotNetBar.RibbonTabItem();
+            this.startButton = new DevComponents.DotNetBar.Office2007StartButton();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
             this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
@@ -62,9 +62,9 @@
             this.dockSite4 = new DevComponents.DotNetBar.DockSite();
             this.dockSite9 = new DevComponents.DotNetBar.DockSite();
             this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.panelDockContainer1 = new DevComponents.DotNetBar.PanelDockContainer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dockContainerItem2 = new DevComponents.DotNetBar.DockContainerItem();
+            this.panelDockContainer = new DevComponents.DotNetBar.PanelDockContainer();
+            this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.dockContainerItem = new DevComponents.DotNetBar.DockContainerItem();
             this.dockSite1 = new DevComponents.DotNetBar.DockSite();
             this.dockSite2 = new DevComponents.DotNetBar.DockSite();
             this.dockSite8 = new DevComponents.DotNetBar.DockSite();
@@ -72,14 +72,18 @@
             this.dockSite6 = new DevComponents.DotNetBar.DockSite();
             this.dockSite7 = new DevComponents.DotNetBar.DockSite();
             this.dockSite3 = new DevComponents.DotNetBar.DockSite();
+            this.explorerSplitContainer = new System.Windows.Forms.SplitContainer();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.dockSite9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
-            this.panelDockContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.SuspendLayout();
+            this.panelDockContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
+            this.mainSplitContainer.Panel1.SuspendLayout();
+            this.mainSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.explorerSplitContainer)).BeginInit();
+            this.explorerSplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -88,14 +92,14 @@
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.Create,
-            this.Test});
+            this.homeTabItem,
+            this.insertTabItem});
             this.ribbonControl1.KeyTipsFont = new System.Drawing.Font("Tahoma", 7F);
             this.ribbonControl1.Location = new System.Drawing.Point(4, 1);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.ribbonControl1.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.office2007StartButton1,
+            this.startButton,
             this.buttonItem1,
             this.qatCustomizeItem1});
             this.ribbonControl1.Size = new System.Drawing.Size(662, 133);
@@ -116,6 +120,7 @@
             this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.ribbonPanel1.Size = new System.Drawing.Size(662, 74);
             this.ribbonPanel1.TabIndex = 1;
+            this.ribbonPanel1.Visible = false;
             // 
             // ribbonBar1
             // 
@@ -145,34 +150,34 @@
             this.buttonNewQuestion.Name = "buttonNewQuestion";
             this.buttonNewQuestion.Text = "New Question";
             // 
-            // Create
+            // homeTabItem
             // 
-            this.Create.Checked = true;
-            this.Create.ImagePaddingHorizontal = 8;
-            this.Create.Name = "Create";
-            this.Create.Panel = this.ribbonPanel1;
-            this.Create.Text = "<b>Create Test\r\n</b>";
+            this.homeTabItem.ImagePaddingHorizontal = 8;
+            this.homeTabItem.Name = "homeTabItem";
+            this.homeTabItem.Panel = this.ribbonPanel1;
+            this.homeTabItem.Text = "<b>Home\r\n</b>";
             // 
-            // Test
+            // insertTabItem
             // 
-            this.Test.ImagePaddingHorizontal = 8;
-            this.Test.Name = "Test";
-            this.Test.Text = "<b>Test</b>";
-            this.Test.Click += new System.EventHandler(this.Test_Click);
+            this.insertTabItem.Checked = true;
+            this.insertTabItem.ImagePaddingHorizontal = 8;
+            this.insertTabItem.Name = "insertTabItem";
+            this.insertTabItem.Text = "<b>Insert</b>";
+            this.insertTabItem.Click += new System.EventHandler(this.Test_Click);
             // 
-            // office2007StartButton1
+            // startButton
             // 
-            this.office2007StartButton1.AutoExpandOnClick = true;
-            this.office2007StartButton1.CanCustomize = false;
-            this.office2007StartButton1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.office2007StartButton1.Image = global::PresentationLayer.Properties.Resources.Program;
-            this.office2007StartButton1.ImagePaddingHorizontal = 2;
-            this.office2007StartButton1.ImagePaddingVertical = 2;
-            this.office2007StartButton1.Name = "office2007StartButton1";
-            this.office2007StartButton1.ShowSubItems = false;
-            this.office2007StartButton1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.startButton.AutoExpandOnClick = true;
+            this.startButton.CanCustomize = false;
+            this.startButton.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.startButton.Image = global::PresentationLayer.Properties.Resources.Program;
+            this.startButton.ImagePaddingHorizontal = 2;
+            this.startButton.ImagePaddingVertical = 2;
+            this.startButton.Name = "startButton";
+            this.startButton.ShowSubItems = false;
+            this.startButton.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.itemContainer1});
-            this.office2007StartButton1.Text = "&File";
+            this.startButton.Text = "&File";
             // 
             // itemContainer1
             // 
@@ -418,8 +423,9 @@
             // 
             this.bar1.AccessibleDescription = "DotNetBar Bar (bar1)";
             this.bar1.AccessibleName = "DotNetBar Bar";
-            this.bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
+            this.bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.bar1.AlwaysDisplayDockTab = true;
+            this.bar1.AlwaysDisplayKeyAccelerators = true;
             this.bar1.CanCustomize = false;
             this.bar1.CanDockBottom = false;
             this.bar1.CanDockDocument = true;
@@ -428,49 +434,61 @@
             this.bar1.CanDockTop = false;
             this.bar1.CanHide = true;
             this.bar1.CanUndock = false;
-            this.bar1.Controls.Add(this.panelDockContainer1);
+            this.bar1.Controls.Add(this.panelDockContainer);
+            this.bar1.DockedBorderStyle = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.bar1.DockTabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Top;
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.dockContainerItem2});
+            this.dockContainerItem});
             this.bar1.LayoutType = DevComponents.DotNetBar.eLayoutType.DockContainer;
             this.bar1.Location = new System.Drawing.Point(0, 0);
             this.bar1.Name = "bar1";
             this.bar1.SelectedDockTab = 0;
             this.bar1.Size = new System.Drawing.Size(662, 302);
             this.bar1.Stretch = true;
-            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
+            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.bar1.TabIndex = 0;
             this.bar1.TabNavigation = true;
             this.bar1.TabStop = false;
             // 
-            // panelDockContainer1
+            // panelDockContainer
             // 
-            this.panelDockContainer1.Controls.Add(this.splitContainer1);
-            this.panelDockContainer1.Location = new System.Drawing.Point(3, 28);
-            this.panelDockContainer1.Name = "panelDockContainer1";
-            this.panelDockContainer1.Size = new System.Drawing.Size(656, 271);
-            this.panelDockContainer1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelDockContainer1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.panelDockContainer1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.panelDockContainer1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.panelDockContainer1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.panelDockContainer1.Style.GradientAngle = 90;
-            this.panelDockContainer1.TabIndex = 0;
+            this.panelDockContainer.ColorScheme.ItemDesignTimeBorder = System.Drawing.Color.Black;
+            this.panelDockContainer.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.panelDockContainer.Controls.Add(this.mainSplitContainer);
+            this.panelDockContainer.Location = new System.Drawing.Point(6, 31);
+            this.panelDockContainer.Name = "panelDockContainer";
+            this.panelDockContainer.Size = new System.Drawing.Size(650, 265);
+            this.panelDockContainer.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelDockContainer.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.panelDockContainer.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.panelDockContainer.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.panelDockContainer.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.panelDockContainer.Style.GradientAngle = 90;
+            this.panelDockContainer.TabIndex = 0;
             // 
-            // splitContainer1
+            // mainSplitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(656, 271);
-            this.splitContainer1.SplitterDistance = 134;
-            this.splitContainer1.TabIndex = 0;
+            this.mainSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitContainer.Name = "mainSplitContainer";
             // 
-            // dockContainerItem2
+            // mainSplitContainer.Panel1
             // 
-            this.dockContainerItem2.Control = this.panelDockContainer1;
-            this.dockContainerItem2.Name = "dockContainerItem2";
-            this.dockContainerItem2.Text = "dockContainerItem2";
+            this.mainSplitContainer.Panel1.BackColor = System.Drawing.Color.White;
+            this.mainSplitContainer.Panel1.Controls.Add(this.explorerSplitContainer);
+            // 
+            // mainSplitContainer.Panel2
+            // 
+            this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.mainSplitContainer.Size = new System.Drawing.Size(650, 265);
+            this.mainSplitContainer.SplitterDistance = 339;
+            this.mainSplitContainer.TabIndex = 0;
+            // 
+            // dockContainerItem
+            // 
+            this.dockContainerItem.Control = this.panelDockContainer;
+            this.dockContainerItem.Name = "dockContainerItem";
             // 
             // dockSite1
             // 
@@ -545,6 +563,25 @@
             this.dockSite3.TabIndex = 10;
             this.dockSite3.TabStop = false;
             // 
+            // explorerSplitContainer
+            // 
+            this.explorerSplitContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.explorerSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.explorerSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.explorerSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.explorerSplitContainer.Name = "explorerSplitContainer";
+            // 
+            // explorerSplitContainer.Panel1
+            // 
+            this.explorerSplitContainer.Panel1.BackColor = System.Drawing.Color.White;
+            // 
+            // explorerSplitContainer.Panel2
+            // 
+            this.explorerSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.explorerSplitContainer.Size = new System.Drawing.Size(339, 265);
+            this.explorerSplitContainer.SplitterDistance = 113;
+            this.explorerSplitContainer.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,9 +606,12 @@
             this.dockSite9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.bar1.ResumeLayout(false);
-            this.panelDockContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.panelDockContainer.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
+            this.mainSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.explorerSplitContainer)).EndInit();
+            this.explorerSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -580,9 +620,9 @@
 
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel1;
-        private DevComponents.DotNetBar.RibbonTabItem Create;
-        private DevComponents.DotNetBar.RibbonTabItem Test;
-        private DevComponents.DotNetBar.Office2007StartButton office2007StartButton1;
+        private DevComponents.DotNetBar.RibbonTabItem homeTabItem;
+        private DevComponents.DotNetBar.RibbonTabItem insertTabItem;
+        private DevComponents.DotNetBar.Office2007StartButton startButton;
         private DevComponents.DotNetBar.ItemContainer itemContainer1;
         private DevComponents.DotNetBar.ItemContainer itemContainer2;
         private DevComponents.DotNetBar.ItemContainer itemContainer3;
@@ -608,8 +648,8 @@
         private DevComponents.DotNetBar.DockSite dockSite4;
         private DevComponents.DotNetBar.DockSite dockSite9;
         private DevComponents.DotNetBar.Bar bar1;
-        private DevComponents.DotNetBar.PanelDockContainer panelDockContainer1;
-        private DevComponents.DotNetBar.DockContainerItem dockContainerItem2;
+        private DevComponents.DotNetBar.PanelDockContainer panelDockContainer;
+        private DevComponents.DotNetBar.DockContainerItem dockContainerItem;
         private DevComponents.DotNetBar.DockSite dockSite1;
         private DevComponents.DotNetBar.DockSite dockSite2;
         private DevComponents.DotNetBar.DockSite dockSite3;
@@ -617,10 +657,11 @@
         private DevComponents.DotNetBar.DockSite dockSite6;
         private DevComponents.DotNetBar.DockSite dockSite7;
         private DevComponents.DotNetBar.DockSite dockSite8;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer mainSplitContainer;
         private DevComponents.DotNetBar.RibbonBar ribbonBar1;
         private DevComponents.DotNetBar.ButtonItem buttonNewExam;
         private DevComponents.DotNetBar.ButtonItem buttonNewQuestion;
+        private System.Windows.Forms.SplitContainer explorerSplitContainer;
 
 
     }

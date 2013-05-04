@@ -1,29 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Threading;
-using PresentationLayer.Category;
 using PresentationLayer.Splash;
-using TestApplication;
-using WeifenLuo.WinFormsUI.Docking;
 
 namespace PresentationLayer
 {
     public partial class MainForm : DevComponents.DotNetBar.Office2007RibbonForm
     {
-        private WelcomeScreen welcomeScreen;
+        private WelcomeScreen _welcomeScreen;
         private bool done = false;
 
         public MainForm()
         {
             InitializeComponent();
             //DoSplash();
-            this.Load += new EventHandler(HandleFormLoad);
+            this.Load += HandleFormLoad;
         }
 
         // WelcomeScreen controler
@@ -53,19 +43,19 @@ namespace PresentationLayer
 
         private void DoSplash()
         {
-            welcomeScreen = new WelcomeScreen();
-            welcomeScreen.Show();
+            _welcomeScreen = new WelcomeScreen();
+            _welcomeScreen.Show();
             while (!done)
             {
                 Application.DoEvents();
             }
-            welcomeScreen.Close();
-            this.welcomeScreen.Dispose();
+            _welcomeScreen.Close();
+            this._welcomeScreen.Dispose();
         }
 
         private void CloseSplash()
         {
-            welcomeScreen.Close();
+            _welcomeScreen.Close();
         }
 
         private void newFormToolStripMenuItem_Click(object sender, EventArgs e)
