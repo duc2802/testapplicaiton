@@ -40,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogManager", "LogManager\Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstanceObject", "SingleInstanceObject\SingleInstanceObject.csproj", "{45701DE8-D225-4300-9657-286C1B98166D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestThreadQueueManager", "TestThreadQueueManager\TestThreadQueueManager.csproj", "{E812D034-E360-4F79-884A-2FB6061920F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnit", "TestThreadQueueManager\TestUnit.csproj", "{E812D034-E360-4F79-884A-2FB6061920F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
