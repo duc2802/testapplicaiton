@@ -1,0 +1,35 @@
+<exam id="xx">
+  <listquestions>
+
+	  <question id="1">
+			<content> Content of question</content>
+			<listanswers>
+				<answer id="a">
+					<answerContent>
+						Content of answer a
+					</answerContent>
+					<result>0</result>
+					<explain>Explain the reson</explain>
+				</answer>
+			</listanswers>
+			<level> level of question</level>
+		</question>
+		
+		
+		<question id="2">
+			<content> Content of question</content>
+			<listanswers>
+				<answer id="a">
+					<answerContent>
+						Content of answer a
+					</answerContent>
+					<result>1</result>
+					<explain>Explain the reson</explain>
+				</answer>
+			</listanswers>
+			<level> level of question</level>
+		</question>
+		
+  </listquestions>
+  <information> info of exam</information>
+</exam>
