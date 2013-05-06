@@ -76,10 +76,12 @@
   <ItemGroup>
     <Compile Include="AnswerDAL.cs" />
     <Compile Include="QuestionDAL.cs" />
+    <Compile Include="ActionXML.cs" />
     <Compile Include="TestDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

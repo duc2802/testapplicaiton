@@ -18,8 +18,35 @@ namespace BusinessEntities
 {
     public class QuestionBE
     {
-        String question = "";
+        int questionID;
+        String questionContent;
         List<AnswerBE> listAnswers;
+        String levelQuestion;
+
+        public int QuestionID
+        {
+            get { return questionID; }
+            set { questionID = value; }
+        }
+
+        public String QuestionContent
+        {
+            get { return questionContent; }
+            set { questionContent = value; }
+        }
+
+        public List<AnswerBE> ListAnswers
+        {
+            get { return listAnswers; }
+            set { listAnswers = value; }
+        }
+
+        public String LevelQuestion
+        {
+            get { return levelQuestion; }
+            set { levelQuestion = value; }
+        }
+
 
     }
 }

@@ -18,9 +18,16 @@ namespace BusinessEntities
 {
     public class AnswerBE
     {
+        int answerID;
         Boolean result;
         String content;
-        String explanin;
+        String explain;
+
+        public String Explain
+        {
+            get { return explain; }
+            set { explain = value; }
+        }
 
         public Boolean Result
         {
@@ -28,16 +35,17 @@ namespace BusinessEntities
             set { result = value; }
         }
 
-        public String Explanin
-        {
-            get { return explanin; }
-            set { explanin = value; }
-        }
+        
    
         public String Content
         {
             get { return content; }
             set { content = value; }
+        }
+        public int AnswerID
+        {
+            get { return answerID; }
+            set { answerID = value; }
         }
 
 
