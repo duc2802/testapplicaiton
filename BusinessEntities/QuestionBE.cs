@@ -18,12 +18,12 @@ namespace BusinessEntities
 {
     public class QuestionBE
     {
-        int questionID;
-        String questionContent;
+        string questionID;
+        string questionContent;
         List<AnswerBE> listAnswers;
-        String levelQuestion;
+        string levelQuestion;
 
-        public int QuestionID
+        public string QuestionID
         {
             get { return questionID; }
             set { questionID = value; }
