@@ -18,7 +18,7 @@ namespace BusinessEntities
 {
     public class TestBE
     {
-        int time;
+        string time;
         List<QuestionBE> listQuestion;
         string information;
         string testID;
@@ -39,7 +39,7 @@ namespace BusinessEntities
             get { return listQuestion; }
             set { listQuestion = value; }
         }
-        public int Time
+        public string Time
         {
             get { return time; }
             set { time = value; }

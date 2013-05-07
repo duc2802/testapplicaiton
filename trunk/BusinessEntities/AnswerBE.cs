@@ -18,10 +18,22 @@ namespace BusinessEntities
 {
     public class AnswerBE
     {
-        int answerID;
-        Boolean result;
-        String content;
-        String explain;
+        string answerID;
+        string result;
+        string content;
+        string explain;
+
+        public string Result
+        {
+            get { return result; }
+            set { result = value; }
+        }
+
+        public string AnswerID
+        {
+            get { return answerID; }
+            set { answerID = value; }
+        }
 
         public String Explain
         {
@@ -29,25 +41,10 @@ namespace BusinessEntities
             set { explain = value; }
         }
 
-        public Boolean Result
-        {
-            get { return result; }
-            set { result = value; }
-        }
-
-        
-   
         public String Content
         {
             get { return content; }
             set { content = value; }
         }
-        public int AnswerID
-        {
-            get { return answerID; }
-            set { answerID = value; }
-        }
-
-
     }
 }
