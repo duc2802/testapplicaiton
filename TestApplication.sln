@@ -17,6 +17,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminPresentationLayer", "PresentationLayer\AdminPresentationLayer.csproj", "{B2561A6D-B512-449A-A03F-9E49F61FEBA9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EAE0FA35-5202-4F99-915D-B48FE68976D8} = {EAE0FA35-5202-4F99-915D-B48FE68976D8}
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13} = {87456E8E-2CB5-43D4-943E-FCB03CF2CA13}
 		{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6} = {38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}
 		{C75532C4-765B-418E-B09B-46D36B2ABDB1} = {C75532C4-765B-418E-B09B-46D36B2ABDB1}
 	EndProjectSection
@@ -27,8 +28,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F627D710-AA7
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{9282E7B7-D184-4777-9614-B23310BC802F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "Utility\Commons.csproj", "{D1441441-3AD1-4171-AA32-3683E19DD61A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeifenLuo.WinFormsUI.Docking", "WeiFenLuoDockingMaster\WinFormsUI\WeifenLuo.WinFormsUI.Docking.csproj", "{C75532C4-765B-418E-B09B-46D36B2ABDB1}"
 EndProject
@@ -43,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnit", "TestThreadQueueManager\TestUnit.csproj", "{E812D034-E360-4F79-884A-2FB6061920F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientPresentationLayer", "ClientPresentationLayer\ClientPresentationLayer.csproj", "{C4B98FA5-293A-4D06-8431-E2909278D0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "Commons\Commons.csproj", "{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,16 +95,6 @@ Global
 		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Release|x86.ActiveCfg = Release|x86
 		{B2561A6D-B512-449A-A03F-9E49F61FEBA9}.Release|x86.Build.0 = Release|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|x86.ActiveCfg = Debug|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Debug|x86.Build.0 = Debug|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|Any CPU.ActiveCfg = Release|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|Mixed Platforms.Build.0 = Release|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|x86.ActiveCfg = Release|x86
-		{D1441441-3AD1-4171-AA32-3683E19DD61A}.Release|x86.Build.0 = Release|x86
 		{C75532C4-765B-418E-B09B-46D36B2ABDB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C75532C4-765B-418E-B09B-46D36B2ABDB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C75532C4-765B-418E-B09B-46D36B2ABDB1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -173,6 +164,16 @@ Global
 		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|Mixed Platforms.Build.0 = Release|x86
 		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|x86.ActiveCfg = Release|x86
 		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|x86.Build.0 = Release|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Debug|x86.ActiveCfg = Debug|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Debug|x86.Build.0 = Debug|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|Any CPU.ActiveCfg = Release|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|Mixed Platforms.Build.0 = Release|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|x86.ActiveCfg = Release|x86
+		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

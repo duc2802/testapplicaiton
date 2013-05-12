@@ -21,6 +21,10 @@ namespace PresentationLayer
 
         private void InitCommonGui()
         {
+            ExplorerPanel catologuePanel = new ExplorerPanel();
+            catologuePanel.Dock = DockStyle.Fill;
+            this.explorerSplitContainer.Panel1.Controls.Add(catologuePanel);
+
             TestListPanel testListPanel = new TestListPanel();
             testListPanel.Dock = DockStyle.Fill;
             this.explorerSplitContainer.Panel2.Controls.Add(testListPanel);
