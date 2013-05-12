@@ -5,28 +5,13 @@ using System.Text;
 
 namespace PresentationLayer.Explorer
 {
-    class TestDataItem
+    public class TestDataItem
     {
         #region Properties of TestDataItem
-
-        public string Title
-        {
-            set; 
-            get;
-        }
-
-        public DateTime DateCreate
-        {
-            set;
-            get;
-        }
-
-        public int NumberQuestion
-        {
-            set;
-            get;
-        }
-
+        public int IdTest { set; get; }
+        public string Title { set; get; }
+        public DateTime DateCreate { set; get; }
+        public int NumberQuestion { set; get; }
         #endregion
 
         public TestDataItem()
@@ -34,8 +19,9 @@ namespace PresentationLayer.Explorer
             
         }
 
-        public TestDataItem(string title, DateTime date, int numOfQuestion)
+        public TestDataItem(int id, string title, DateTime date, int numOfQuestion)
         {
+            IdTest = id;
             Title = title;
             DateCreate = date;
             NumberQuestion = numOfQuestion;

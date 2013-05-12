@@ -64,6 +64,7 @@
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.panelDockContainer = new DevComponents.DotNetBar.PanelDockContainer();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.explorerSplitContainer = new System.Windows.Forms.SplitContainer();
             this.dockContainerItem = new DevComponents.DotNetBar.DockContainerItem();
             this.dockSite1 = new DevComponents.DotNetBar.DockSite();
             this.dockSite2 = new DevComponents.DotNetBar.DockSite();
@@ -72,7 +73,6 @@
             this.dockSite6 = new DevComponents.DotNetBar.DockSite();
             this.dockSite7 = new DevComponents.DotNetBar.DockSite();
             this.dockSite3 = new DevComponents.DotNetBar.DockSite();
-            this.explorerSplitContainer = new System.Windows.Forms.SplitContainer();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.dockSite9.SuspendLayout();
@@ -423,7 +423,7 @@
             // 
             this.bar1.AccessibleDescription = "DotNetBar Bar (bar1)";
             this.bar1.AccessibleName = "DotNetBar Bar";
-            this.bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.bar1.AlwaysDisplayDockTab = true;
             this.bar1.AlwaysDisplayKeyAccelerators = true;
             this.bar1.CanCustomize = false;
@@ -445,15 +445,13 @@
             this.bar1.SelectedDockTab = 0;
             this.bar1.Size = new System.Drawing.Size(662, 302);
             this.bar1.Stretch = true;
-            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             this.bar1.TabIndex = 0;
             this.bar1.TabNavigation = true;
             this.bar1.TabStop = false;
             // 
             // panelDockContainer
             // 
-            this.panelDockContainer.ColorScheme.ItemDesignTimeBorder = System.Drawing.Color.Black;
-            this.panelDockContainer.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.panelDockContainer.Controls.Add(this.mainSplitContainer);
             this.panelDockContainer.Location = new System.Drawing.Point(6, 31);
             this.panelDockContainer.Name = "panelDockContainer";
@@ -484,6 +482,25 @@
             this.mainSplitContainer.Size = new System.Drawing.Size(650, 265);
             this.mainSplitContainer.SplitterDistance = 339;
             this.mainSplitContainer.TabIndex = 0;
+            // 
+            // explorerSplitContainer
+            // 
+            this.explorerSplitContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.explorerSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.explorerSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.explorerSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.explorerSplitContainer.Name = "explorerSplitContainer";
+            // 
+            // explorerSplitContainer.Panel1
+            // 
+            this.explorerSplitContainer.Panel1.BackColor = System.Drawing.Color.White;
+            // 
+            // explorerSplitContainer.Panel2
+            // 
+            this.explorerSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.explorerSplitContainer.Size = new System.Drawing.Size(339, 265);
+            this.explorerSplitContainer.SplitterDistance = 113;
+            this.explorerSplitContainer.TabIndex = 0;
             // 
             // dockContainerItem
             // 
@@ -562,25 +579,6 @@
             this.dockSite3.Size = new System.Drawing.Size(662, 0);
             this.dockSite3.TabIndex = 10;
             this.dockSite3.TabStop = false;
-            // 
-            // explorerSplitContainer
-            // 
-            this.explorerSplitContainer.BackColor = System.Drawing.SystemColors.Control;
-            this.explorerSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.explorerSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explorerSplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.explorerSplitContainer.Name = "explorerSplitContainer";
-            // 
-            // explorerSplitContainer.Panel1
-            // 
-            this.explorerSplitContainer.Panel1.BackColor = System.Drawing.Color.White;
-            // 
-            // explorerSplitContainer.Panel2
-            // 
-            this.explorerSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
-            this.explorerSplitContainer.Size = new System.Drawing.Size(339, 265);
-            this.explorerSplitContainer.SplitterDistance = 113;
-            this.explorerSplitContainer.TabIndex = 0;
             // 
             // MainForm
             // 
