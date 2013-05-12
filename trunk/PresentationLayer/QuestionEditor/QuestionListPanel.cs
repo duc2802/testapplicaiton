@@ -30,7 +30,7 @@ namespace PresentationLayer.QuestionEditor
                 QuestionListItemCustom itemLayout = new QuestionListItemCustom();
                 itemLayout.Location = new Point(0, idx * itemLayout.Height);
                 itemLayout.Size = new Size(questionPanel.Width - 20, itemLayout.Height);
-                itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
                 questionPanel.Controls.Add(itemLayout);
             }
             questionPanel.ResumeLayout();
