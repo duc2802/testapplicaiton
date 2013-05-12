@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using PresentationLayer.Explorer;
+using PresentationLayer.QuestionEditor;
 using PresentationLayer.Splash;
 
 namespace PresentationLayer
@@ -23,6 +24,9 @@ namespace PresentationLayer
             TestListPanel testListPanel = new TestListPanel();
             testListPanel.Dock = DockStyle.Fill;
             this.explorerSplitContainer.Panel2.Controls.Add(testListPanel);
+
+            QuestionListPanel questionListPanel = new QuestionListPanel();
+            this.mainSplitContainer.Panel2.Controls.Add(questionListPanel);
         }
 
         // WelcomeScreen controler

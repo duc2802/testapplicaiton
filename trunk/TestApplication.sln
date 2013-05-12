@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessEntities", "BusinessEntities\BusinessEntities.csproj", "{EAE0FA35-5202-4F99-915D-B48FE68976D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{B2561A6D-B512-449A-A03F-9E49F61FEBA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminPresentationLayer", "PresentationLayer\AdminPresentationLayer.csproj", "{B2561A6D-B512-449A-A03F-9E49F61FEBA9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EAE0FA35-5202-4F99-915D-B48FE68976D8} = {EAE0FA35-5202-4F99-915D-B48FE68976D8}
 		{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6} = {38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}
@@ -41,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstanceObject", "SingleInstanceObject\SingleInstanceObject.csproj", "{45701DE8-D225-4300-9657-286C1B98166D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnit", "TestThreadQueueManager\TestUnit.csproj", "{E812D034-E360-4F79-884A-2FB6061920F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientPresentationLayer", "ClientPresentationLayer\ClientPresentationLayer.csproj", "{C4B98FA5-293A-4D06-8431-E2909278D0B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -161,6 +163,16 @@ Global
 		{E812D034-E360-4F79-884A-2FB6061920F9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{E812D034-E360-4F79-884A-2FB6061920F9}.Release|x86.ActiveCfg = Release|x86
 		{E812D034-E360-4F79-884A-2FB6061920F9}.Release|x86.Build.0 = Release|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Debug|x86.ActiveCfg = Debug|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Debug|x86.Build.0 = Debug|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|Any CPU.ActiveCfg = Release|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|Mixed Platforms.Build.0 = Release|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|x86.ActiveCfg = Release|x86
+		{C4B98FA5-293A-4D06-8431-E2909278D0B6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
