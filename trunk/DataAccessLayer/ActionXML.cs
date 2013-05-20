@@ -29,8 +29,8 @@ namespace DataAccessLayer
                                                  from answer in question.ListAnswers
                                                  select new XElement ("answer",
                                                      new XAttribute ("id",answer.AnswerID),
-                                                     new XElement("content",answer.Content),
-                                                     new XElement("Result", answer.Result),
+                                                     new XElement("answerContent", answer.Content),
+                                                     new XElement("result", answer.Result),
                                                      new XElement("explain", answer.Explain)));
             return treeAnswer;
         }
@@ -52,7 +52,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public List<BusinessEntities.TestBE> loadExam (String addressXMLFile)
+        public static List<BusinessEntities.TestBE> loadExam (String addressXMLFile)
         {
             XDocument testXML = XDocument.Load(@addressXMLFile);
 
@@ -60,7 +60,7 @@ namespace DataAccessLayer
             List<BusinessEntities.TestBE> test = (from t in testXML.Descendants("exam")
                                                   select new BusinessEntities.TestBE {
                                                           TestID = t.Attribute("id").Value,
-                                                          Information = t.Element("infomation").Value,
+                                                          Information = t.Element("information").Value,
                                                           ListQuestion = (from q in t.Descendants("question")
                                                                       select new BusinessEntities.QuestionBE
                                                                       {
@@ -74,7 +74,7 @@ namespace DataAccessLayer
                                                                                            select new BusinessEntities.AnswerBE
                                                                                            {
                                                                                                AnswerID = r.Attribute("id").Value,
-                                                                                               Content = r.Element("content").Value,
+                                                                                               Content = r.Element("answerContent").Value,
                                                                                                Explain = r.Element("explain").Value,
                                                                                                Result = r.Element("result").Value
 
