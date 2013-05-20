@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ClientPresentationLayer
 {
-    public partial class Form1 : Form
+    public partial class Form1 : DevComponents.DotNetBar.Office2007RibbonForm
     {
         public Form1()
         {
