@@ -99,6 +99,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionEditor\FillInBlankEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\FillInBlankEditor.Designer.cs">
+      <DependentUpon>FillInBlankEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\MultipleChoiceEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\MultipleChoiceEditor.Designer.cs">
+      <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionEditor\QuestionListItemCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +122,18 @@
     </Compile>
     <Compile Include="QuestionEditor\QuestionListPanel.Designer.cs">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\SingleChoiceEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\SingleChoiceEditor.Designer.cs">
+      <DependentUpon>SingleChoiceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\TrueFalseEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\TrueFalseEditor.Designer.cs">
+      <DependentUpon>TrueFalseEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting\SettingManager.cs" />
     <Compile Include="Splash\WelcomeSrceenTimer.cs" />
@@ -149,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\QuestionListPanel.resx">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\SingleChoiceEditor.resx">
+      <DependentUpon>SingleChoiceEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
