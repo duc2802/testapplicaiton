@@ -31,7 +31,7 @@ namespace PresentationLayer.Explorer
         private void InitializeComponent()
         {
             this.testListBox = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.headingButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testListBox
@@ -46,26 +46,26 @@ namespace PresentationLayer.Explorer
             this.testListBox.Size = new System.Drawing.Size(175, 381);
             this.testListBox.TabIndex = 0;
             // 
-            // button1
+            // headingButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.headingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(3, 4);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(175, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Test Collection";
-            this.button1.UseVisualStyleBackColor = false;
+            this.headingButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.headingButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.headingButton.Location = new System.Drawing.Point(3, 4);
+            this.headingButton.Name = "headingButton";
+            this.headingButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.headingButton.Size = new System.Drawing.Size(175, 23);
+            this.headingButton.TabIndex = 1;
+            this.headingButton.Text = "Test Collection";
+            this.headingButton.UseVisualStyleBackColor = false;
             // 
             // TestListPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.headingButton);
             this.Controls.Add(this.testListBox);
             this.Name = "TestListPanel";
             this.Size = new System.Drawing.Size(181, 414);
@@ -76,6 +76,6 @@ namespace PresentationLayer.Explorer
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel testListBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button headingButton;
     }
 }

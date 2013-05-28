@@ -120,7 +120,6 @@
             this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.ribbonPanel1.Size = new System.Drawing.Size(662, 74);
             this.ribbonPanel1.TabIndex = 1;
-            this.ribbonPanel1.Visible = false;
             // 
             // ribbonBar1
             // 
@@ -152,6 +151,7 @@
             // 
             // homeTabItem
             // 
+            this.homeTabItem.Checked = true;
             this.homeTabItem.ImagePaddingHorizontal = 8;
             this.homeTabItem.Name = "homeTabItem";
             this.homeTabItem.Panel = this.ribbonPanel1;
@@ -159,7 +159,6 @@
             // 
             // insertTabItem
             // 
-            this.insertTabItem.Checked = true;
             this.insertTabItem.ImagePaddingHorizontal = 8;
             this.insertTabItem.Name = "insertTabItem";
             this.insertTabItem.Text = "<b>Insert</b>";

@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PresentationLayer.ActionController;
+using SingleInstanceObject;
 
 namespace PresentationLayer.Explorer
 {
@@ -17,13 +19,19 @@ namespace PresentationLayer.Explorer
         {
             InitializeComponent();
             InitCommonGui();
+            InitEvent();
         }
 
         private void InitEvent()
         {
-            
+            Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeFolderId;
         }
 
+        private void UpdateGui(string id)
+        {
+            this.headingButton.Text = id;
+        }
+       
         private void InitCommonGui()
         {
             //Init list from dataItemController.
@@ -40,5 +48,15 @@ namespace PresentationLayer.Explorer
             }
             testListBox.ResumeLayout();
         }
+
+        #region Implement registed event.
+
+        private void ChangeFolderId(object sender, string parameter)
+        {
+            UpdateGui(parameter);
+        }
+
+        #endregion
+
     }
 }

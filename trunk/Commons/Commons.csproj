@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Delegates.cs" />
     <Compile Include="CommonGui\InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
