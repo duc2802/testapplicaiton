@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.questionPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.headingButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // questionPanel
@@ -41,11 +42,25 @@
             this.questionPanel.Size = new System.Drawing.Size(150, 150);
             this.questionPanel.TabIndex = 0;
             // 
+            // headingButton
+            // 
+            this.headingButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headingButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.headingButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.headingButton.Location = new System.Drawing.Point(3, 4);
+            this.headingButton.Name = "headingButton";
+            this.headingButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.headingButton.Size = new System.Drawing.Size(175, 23);
+            this.headingButton.TabIndex = 1;
+            this.headingButton.Text = "Test Collection";
+            this.headingButton.UseVisualStyleBackColor = false;
+            // 
             // QuestionListPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.headingButton);
             this.Controls.Add(this.questionPanel);
             this.Name = "QuestionListPanel";
             this.ResumeLayout(false);
@@ -55,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel questionPanel;
+        private System.Windows.Forms.Button headingButton;
     }
 }

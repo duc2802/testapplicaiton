@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PresentationLayer.ActionController;
+using SingleInstanceObject;
 
 namespace PresentationLayer.Explorer
 {
@@ -36,17 +38,25 @@ namespace PresentationLayer.Explorer
         private void InitEvent()
         {
             this.GotFocus += ListTestItemCustomGotFocus;
-            this.titleLabel.Click += ListTestItemCustomGotFocus;
-            this.titleTextValue.Click += ListTestItemCustomGotFocus;
-            this.dateTextValue.Click += ListTestItemCustomGotFocus;
-            this.noteTextValue.Click += ListTestItemCustomGotFocus;
+            this.titleLabel.Click += ListTestItemCustomClick;
+            this.titleTextValue.Click += ListTestItemCustomClick;
+            this.dateTextValue.Click += ListTestItemCustomClick;
+            this.noteTextValue.Click += ListTestItemCustomClick;
             this.Leave += ListTestItemCustomLeave;
         }
+
         #region Register Event
         private void ListTestItemCustomGotFocus(object sender, EventArgs e)
         {
             this.Focus();
             this.BackColor = Color.CadetBlue;
+        }
+
+        private void ListTestItemCustomClick(object sender, EventArgs e)
+        {
+            this.Focus();
+            this.BackColor = Color.CadetBlue;
+            Singleton<GuiActionEventController>.Instance.TestId = 1;
         }
         private void ListTestItemCustomLeave(object sender, EventArgs e)
         {

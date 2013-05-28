@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Commons.CommonGui;
+using PresentationLayer.ActionController;
+using PresentationLayer.Setting;
+using SingleInstanceObject;
 
 
 namespace PresentationLayer.Explorer
@@ -34,20 +38,27 @@ namespace PresentationLayer.Explorer
 
         private void InitTreeView()
         {
-            _rootNode = new NodeExplorer("Catologue", contextMenuStrip1);
+            _rootNode = new NodeExplorer("Data", contextMenuStrip1);
             fileTreeView.Nodes.Add(_rootNode);
+            LoadTreeView();
         }
 
         public void LoadTreeView()
         {
-
+            string dataFolder = Singleton<SettingManager>.Instance.GetDataFolder();
+            DirectoryInfo dataDirectory = new DirectoryInfo(dataFolder);
+            foreach (DirectoryInfo di in dataDirectory.GetDirectories())
+            {
+                NodeExplorer newNode = new NodeExplorer(di.Name, contextMenuStrip1);
+                _rootNode.Nodes.Add(newNode);
+            }
         }
 
         #region Implement Event Here
 
         private void FileTreeViewNodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            
+            Singleton<GuiActionEventController>.Instance.FolderId = fileTreeView.SelectedNode.Text;
         }
 
         private void AddChildToolStripMenuItemClick(object sender, EventArgs e)
@@ -60,6 +71,7 @@ namespace PresentationLayer.Explorer
                 {
                     NodeExplorer newNode = new NodeExplorer(nodeText, contextMenuStrip1);
                     fileTreeView.SelectedNode.Nodes.Add(newNode);
+                    CreateDirectory(nodeText);
                 }
             }
         }
@@ -90,6 +102,7 @@ namespace PresentationLayer.Explorer
                                     string.Format("Delete Node: {0}", selectedNode.Text), 
                                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    RemoveDirectoty(selectedNode.Text);
                     selectedNode.Remove();
                 }
             }
@@ -100,8 +113,23 @@ namespace PresentationLayer.Explorer
                                 MessageBoxButtons.OK);
             }
         }
-
-
         #endregion
+
+        private void CreateDirectory(string folderName)
+        {
+            string folderDirectory = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folderName;
+            if (!Directory.Exists(folderDirectory))
+            {
+                Directory.CreateDirectory(folderDirectory);
+            }
+        }
+        private void RemoveDirectoty(string folderName)
+        {
+            string folderDirectory = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folderName;
+            if (!Directory.Exists(folderDirectory))
+            {
+                Directory.Delete(folderDirectory, true);
+            }
+        }
     }
 }

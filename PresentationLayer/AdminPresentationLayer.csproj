@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionController\GuiActionEventController.cs" />
     <Compile Include="Category\CategoryExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,7 +111,7 @@
     <Compile Include="QuestionEditor\QuestionListPanel.Designer.cs">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting\SettingBook.cs" />
+    <Compile Include="Setting\SettingManager.cs" />
     <Compile Include="Splash\WelcomeSrceenTimer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -166,6 +167,10 @@
     <ProjectReference Include="..\Commons\Commons.csproj">
       <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
       <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SingleInstanceObject\SingleInstanceObject.csproj">
+      <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
+      <Name>SingleInstanceObject</Name>
     </ProjectReference>
     <ProjectReference Include="..\WeiFenLuoDockingMaster\WinFormsUI\WeifenLuo.WinFormsUI.Docking.csproj">
       <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>

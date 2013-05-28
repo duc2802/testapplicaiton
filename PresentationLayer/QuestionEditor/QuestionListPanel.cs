@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PresentationLayer.ActionController;
+using SingleInstanceObject;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -15,6 +17,12 @@ namespace PresentationLayer.QuestionEditor
         {
             InitializeComponent();
             InitGui();
+            InitEvent();
+        }
+
+        private void InitEvent()
+        {
+            Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
         }
 
         private void InitGui()
@@ -35,5 +43,18 @@ namespace PresentationLayer.QuestionEditor
             }
             questionPanel.ResumeLayout();
         }
+
+        private void UpdateEditor(int id)
+        {
+            MessageBox.Show(this, id.ToString(), "Test");
+        }
+        #region Implement registed event
+
+        private void ChangeTestId(object sender, int parameter)
+        {
+            UpdateEditor(parameter);
+        }
+
+        #endregion
     }
 }
