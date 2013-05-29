@@ -35,7 +35,7 @@
             // questionPanel
             // 
             this.questionPanel.AutoScroll = true;
-            this.questionPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.questionPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.questionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.questionPanel.Location = new System.Drawing.Point(0, 0);
             this.questionPanel.Name = "questionPanel";
@@ -44,13 +44,13 @@
             // 
             // headingButton
             // 
-            this.headingButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.headingButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.headingButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.headingButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.headingButton.Location = new System.Drawing.Point(3, 4);
+            this.headingButton.Location = new System.Drawing.Point(0, 0);
             this.headingButton.Name = "headingButton";
             this.headingButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.headingButton.Size = new System.Drawing.Size(175, 23);
+            this.headingButton.Size = new System.Drawing.Size(150, 23);
             this.headingButton.TabIndex = 1;
             this.headingButton.Text = "Test Collection";
             this.headingButton.UseVisualStyleBackColor = false;
