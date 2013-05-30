@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.QuestionEditor
 {
-    public partial class MultipleChoiceEditor : Form
+    public partial class MultipleChoiceEditor : DevComponents.DotNetBar.Office2007RibbonForm
     {
         public MultipleChoiceEditor()
         {

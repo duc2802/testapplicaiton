@@ -75,5 +75,11 @@ namespace PresentationLayer.QuestionEditor
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MultipleChoiceEditor test = new MultipleChoiceEditor();
+            test.Show();
+        }
     }
 }
