@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BusinessEntities;
 
 namespace DataAccessLayer
 {
@@ -18,6 +19,13 @@ namespace DataAccessLayer
         {
             BusinessEntities.AnswerBE result = new BusinessEntities.AnswerBE();
             // Read answer to file XML ...
+            return result;
+        }
+
+        public List<AnswerBE> getListAnswerFromQuestionID(string idquestion)
+        {
+            List<AnswerBE> result = new List<AnswerBE>();
+            //Read question return list answer.
             return result;
         }
 
