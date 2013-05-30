@@ -178,6 +178,9 @@
     <EmbeddedResource Include="QuestionEditor\AnswerItem.resx">
       <DependentUpon>AnswerItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\MultipleChoiceEditor.resx">
+      <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\QuestionListItemCustom.resx">
       <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
     </EmbeddedResource>
