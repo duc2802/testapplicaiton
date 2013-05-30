@@ -30,7 +30,7 @@
         {
             this.lbAnswer = new System.Windows.Forms.Label();
             this.lbResultAnswer = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbContentAnswer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbAnswer
@@ -54,14 +54,14 @@
             this.lbResultAnswer.TabIndex = 1;
             this.lbResultAnswer.Text = "True";
             // 
-            // label1
+            // lbContentAnswer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nội dung câu trả lời";
+            this.lbContentAnswer.AutoSize = true;
+            this.lbContentAnswer.Location = new System.Drawing.Point(21, 34);
+            this.lbContentAnswer.Name = "lbContentAnswer";
+            this.lbContentAnswer.Size = new System.Drawing.Size(99, 13);
+            this.lbContentAnswer.TabIndex = 2;
+            this.lbContentAnswer.Text = "Nội dung câu trả lời";
             // 
             // AnswerItem
             // 
@@ -69,7 +69,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbContentAnswer);
             this.Controls.Add(this.lbResultAnswer);
             this.Controls.Add(this.lbAnswer);
             this.Name = "AnswerItem";
@@ -83,6 +83,6 @@
 
         private System.Windows.Forms.Label lbAnswer;
         private System.Windows.Forms.Label lbResultAnswer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbContentAnswer;
     }
 }

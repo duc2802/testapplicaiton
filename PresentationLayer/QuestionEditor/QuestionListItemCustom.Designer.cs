@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.questionContainer = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbQuestionContent = new System.Windows.Forms.TextBox();
             this.numberQuestionLabel = new System.Windows.Forms.Label();
             this.answerChoiseContainer = new System.Windows.Forms.Panel();
+            this.tbListAnswer = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.tbListAnswer = new System.Windows.Forms.TableLayoutPanel();
             this.questionContainer.SuspendLayout();
             this.answerChoiseContainer.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.questionContainer.BackColor = System.Drawing.Color.White;
             this.questionContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.questionContainer.Controls.Add(this.textBox1);
+            this.questionContainer.Controls.Add(this.tbQuestionContent);
             this.questionContainer.Controls.Add(this.numberQuestionLabel);
             this.questionContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.questionContainer.Location = new System.Drawing.Point(0, 0);
@@ -52,25 +52,26 @@
             this.questionContainer.Size = new System.Drawing.Size(500, 100);
             this.questionContainer.TabIndex = 0;
             // 
-            // textBox1
+            // tbQuestionContent
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbQuestionContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(3, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(439, 76);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Mối quan hệ giữa ruột đối với ngũ cốc tương tự như bao thư đối với :";
+            this.tbQuestionContent.BackColor = System.Drawing.Color.White;
+            this.tbQuestionContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbQuestionContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbQuestionContent.Location = new System.Drawing.Point(3, 19);
+            this.tbQuestionContent.Multiline = true;
+            this.tbQuestionContent.Name = "tbQuestionContent";
+            this.tbQuestionContent.ReadOnly = true;
+            this.tbQuestionContent.Size = new System.Drawing.Size(439, 76);
+            this.tbQuestionContent.TabIndex = 1;
+            this.tbQuestionContent.Text = "Mối quan hệ giữa ruột đối với ngũ cốc tương tự như bao thư đối với :";
             // 
             // numberQuestionLabel
             // 
             this.numberQuestionLabel.AutoSize = true;
+            this.numberQuestionLabel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.numberQuestionLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.numberQuestionLabel.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberQuestionLabel.ForeColor = System.Drawing.Color.Red;
@@ -90,6 +91,18 @@
             this.answerChoiseContainer.Name = "answerChoiseContainer";
             this.answerChoiseContainer.Size = new System.Drawing.Size(500, 250);
             this.answerChoiseContainer.TabIndex = 1;
+            // 
+            // tbListAnswer
+            // 
+            this.tbListAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbListAnswer.AutoScroll = true;
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 439F));
+            this.tbListAnswer.Location = new System.Drawing.Point(4, 106);
+            this.tbListAnswer.Name = "tbListAnswer";
+            this.tbListAnswer.Size = new System.Drawing.Size(439, 131);
+            this.tbListAnswer.TabIndex = 1;
             // 
             // panel2
             // 
@@ -113,18 +126,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Edit";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // tbListAnswer
-            // 
-            this.tbListAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbListAnswer.AutoScroll = true;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 439F));
-            this.tbListAnswer.Location = new System.Drawing.Point(4, 106);
-            this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(439, 131);
-            this.tbListAnswer.TabIndex = 1;
             // 
             // QuestionListItemCustom
             // 
@@ -150,7 +151,7 @@
         private System.Windows.Forms.Panel questionContainer;
         private System.Windows.Forms.Panel answerChoiseContainer;
         private System.Windows.Forms.Label numberQuestionLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbQuestionContent;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tbListAnswer;
