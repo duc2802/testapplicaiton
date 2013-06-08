@@ -35,6 +35,7 @@ namespace PresentationLayer.QuestionEditor
             //int[] keys = _dataItemController.TestBook.Keys.ToArray();
             for (int idx = 0; idx < 20; idx++)
             {
+
                 QuestionListItemCustom itemLayout = new QuestionListItemCustom();
                 itemLayout.Location = new Point(0, idx * itemLayout.Height);
                 itemLayout.Size = new Size(questionPanel.Width - 20, itemLayout.Height);
