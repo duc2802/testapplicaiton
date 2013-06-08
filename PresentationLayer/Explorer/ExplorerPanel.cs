@@ -27,10 +27,8 @@ namespace PresentationLayer.Explorer
 
         private void InitEvent()
         {
-            //tree view
             fileTreeView.NodeMouseClick += FileTreeViewNodeMouseClick;
 
-            //Context menu
             addToolStripMenuItem.Click += AddChildToolStripMenuItemClick;
             renameToolStripMenuItem.Click += RenameToolStripMenuItemClick;
             deleteToolStripMenuItem.Click += DeleteToolStripMenuItemClick;

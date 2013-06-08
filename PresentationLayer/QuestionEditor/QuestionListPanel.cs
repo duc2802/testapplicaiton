@@ -49,6 +49,7 @@ namespace PresentationLayer.QuestionEditor
         {
             MessageBox.Show(this, id.ToString(), "Test");
         }
+
         #region Implement registed event
 
         private void ChangeTestId(object sender, int parameter)
