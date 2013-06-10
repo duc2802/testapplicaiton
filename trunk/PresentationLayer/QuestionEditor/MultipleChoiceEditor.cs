@@ -14,6 +14,31 @@ namespace PresentationLayer.QuestionEditor
         public MultipleChoiceEditor()
         {
             InitializeComponent();
+            InitCommonGui();
+        }
+        private void InitCommonGui()
+        {
+            //Load for answer content
+            tbListAnswer.SuspendLayout();
+            for (int idx = 0; idx < 5; idx++)
+            {
+                AnswerItem itemLayout = new AnswerItem("Test", "test", "test");
+                itemLayout.Location = new Point(0, idx * itemLayout.Height);
+                itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
+                itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+                tbListAnswer.Controls.Add(itemLayout);
+            }
+            tbListAnswer.ResumeLayout();
+        }
+
+        private void tbQuestionContent_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxX3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

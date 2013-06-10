@@ -31,17 +31,12 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.tbQuestionContent = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.lbIDQuestion = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbListAnswer = new System.Windows.Forms.TableLayoutPanel();
             this.btAddMoreAnswer = new DevComponents.DotNetBar.ButtonX();
+            this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btOK = new DevComponents.DotNetBar.ButtonX();
             this.btCancel = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel3.SuspendLayout();
@@ -49,12 +44,14 @@
             // 
             // groupPanel1
             // 
+            this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.tbQuestionContent);
             this.groupPanel1.Location = new System.Drawing.Point(16, 28);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(447, 134);
+            this.groupPanel1.Size = new System.Drawing.Size(504, 134);
             // 
             // 
             // 
@@ -80,29 +77,26 @@
             // 
             // tbQuestionContent
             // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.tbQuestionContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbQuestionContent.Location = new System.Drawing.Point(4, 4);
             this.tbQuestionContent.Name = "tbQuestionContent";
-            this.tbQuestionContent.Size = new System.Drawing.Size(434, 102);
+            this.tbQuestionContent.Size = new System.Drawing.Size(484, 102);
             this.tbQuestionContent.TabIndex = 0;
+            this.tbQuestionContent.TextChanged += new System.EventHandler(this.tbQuestionContent_TextChanged);
             // 
             // groupPanel2
             // 
+            this.groupPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupPanel2.AutoSize = true;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.checkBoxX2);
-            this.groupPanel2.Controls.Add(this.checkBoxX1);
+            this.groupPanel2.Controls.Add(this.tbListAnswer);
             this.groupPanel2.Controls.Add(this.btAddMoreAnswer);
-            this.groupPanel2.Controls.Add(this.textBoxX2);
-            this.groupPanel2.Controls.Add(this.labelX1);
-            this.groupPanel2.Controls.Add(this.textBoxX1);
-            this.groupPanel2.Controls.Add(this.lbIDQuestion);
-            this.groupPanel2.Location = new System.Drawing.Point(23, 179);
+            this.groupPanel2.Location = new System.Drawing.Point(16, 179);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(440, 103);
+            this.groupPanel2.Size = new System.Drawing.Size(508, 116);
             // 
             // 
             // 
@@ -126,14 +120,40 @@
             this.groupPanel2.TabIndex = 1;
             this.groupPanel2.Text = "Answers";
             // 
+            // tbListAnswer
+            // 
+            this.tbListAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbListAnswer.AutoScroll = true;
+            this.tbListAnswer.AutoSize = true;
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 403F));
+            this.tbListAnswer.Location = new System.Drawing.Point(13, 4);
+            this.tbListAnswer.Name = "tbListAnswer";
+            this.tbListAnswer.Size = new System.Drawing.Size(405, 88);
+            this.tbListAnswer.TabIndex = 5;
+            // 
+            // btAddMoreAnswer
+            // 
+            this.btAddMoreAnswer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btAddMoreAnswer.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btAddMoreAnswer.Location = new System.Drawing.Point(431, 10);
+            this.btAddMoreAnswer.Name = "btAddMoreAnswer";
+            this.btAddMoreAnswer.Size = new System.Drawing.Size(66, 23);
+            this.btAddMoreAnswer.TabIndex = 4;
+            this.btAddMoreAnswer.Text = "More..";
+            // 
             // groupPanel3
             // 
+            this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel3.Controls.Add(this.textBoxX3);
-            this.groupPanel3.Location = new System.Drawing.Point(23, 289);
+            this.groupPanel3.Location = new System.Drawing.Point(16, 317);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(440, 90);
+            this.groupPanel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.groupPanel3.Size = new System.Drawing.Size(508, 135);
             // 
             // 
             // 
@@ -157,59 +177,25 @@
             this.groupPanel3.TabIndex = 2;
             this.groupPanel3.Text = "Explain";
             // 
-            // lbIDQuestion
+            // textBoxX3
             // 
-            this.lbIDQuestion.Location = new System.Drawing.Point(13, 4);
-            this.lbIDQuestion.Name = "lbIDQuestion";
-            this.lbIDQuestion.Size = new System.Drawing.Size(25, 19);
-            this.lbIDQuestion.TabIndex = 0;
-            this.lbIDQuestion.Text = "1";
-            this.lbIDQuestion.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // textBoxX1
+            this.textBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Location = new System.Drawing.Point(44, 4);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(240, 20);
-            this.textBoxX1.TabIndex = 1;
-            // 
-            // labelX1
-            // 
-            this.labelX1.Location = new System.Drawing.Point(13, 38);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(25, 19);
-            this.labelX1.TabIndex = 2;
-            this.labelX1.Text = "2";
-            this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // textBoxX2
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Location = new System.Drawing.Point(44, 38);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.Size = new System.Drawing.Size(243, 20);
-            this.textBoxX2.TabIndex = 3;
-            // 
-            // btAddMoreAnswer
-            // 
-            this.btAddMoreAnswer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btAddMoreAnswer.Location = new System.Drawing.Point(356, 4);
-            this.btAddMoreAnswer.Name = "btAddMoreAnswer";
-            this.btAddMoreAnswer.Size = new System.Drawing.Size(75, 23);
-            this.btAddMoreAnswer.TabIndex = 4;
-            this.btAddMoreAnswer.Text = "More..";
+            this.textBoxX3.Border.Class = "TextBoxBorder";
+            this.textBoxX3.Location = new System.Drawing.Point(13, 13);
+            this.textBoxX3.Name = "textBoxX3";
+            this.textBoxX3.Size = new System.Drawing.Size(478, 88);
+            this.textBoxX3.TabIndex = 0;
+            this.textBoxX3.TextChanged += new System.EventHandler(this.textBoxX3_TextChanged);
             // 
             // btOK
             // 
             this.btOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btOK.Location = new System.Drawing.Point(387, 397);
+            this.btOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btOK.Location = new System.Drawing.Point(446, 458);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(75, 23);
             this.btOK.TabIndex = 3;
@@ -218,44 +204,19 @@
             // btCancel
             // 
             this.btCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btCancel.Location = new System.Drawing.Point(289, 397);
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.Location = new System.Drawing.Point(352, 458);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 4;
             this.btCancel.Text = "Cancel";
             // 
-            // textBoxX3
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Location = new System.Drawing.Point(4, 4);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(427, 62);
-            this.textBoxX3.TabIndex = 0;
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.Location = new System.Drawing.Point(290, 3);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(48, 23);
-            this.checkBoxX1.TabIndex = 5;
-            this.checkBoxX1.Text = "True";
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.Location = new System.Drawing.Point(290, 35);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(48, 23);
-            this.checkBoxX2.TabIndex = 5;
-            this.checkBoxX2.Text = "True";
-            // 
             // MultipleChoiceEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 434);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(536, 495);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.groupPanel3);
@@ -265,8 +226,10 @@
             this.Text = "MultipleChoiceEditor";
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
+            this.groupPanel2.PerformLayout();
             this.groupPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -276,15 +239,10 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbQuestionContent;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel3;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.ButtonX btAddMoreAnswer;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX lbIDQuestion;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
         private DevComponents.DotNetBar.ButtonX btOK;
         private DevComponents.DotNetBar.ButtonX btCancel;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
+        private System.Windows.Forms.TableLayoutPanel tbListAnswer;
     }
 }

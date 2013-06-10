@@ -36,15 +36,16 @@ namespace PresentationLayer.QuestionEditor
             this.tbQuestionContent.Text = " Nội dung câu hỏi";
             //Load for answer content
             tbListAnswer.SuspendLayout();
-            for (int idx = 0; idx < 4; idx++)
+            for (int idx = 0; idx < 6; idx++)
             {
                 AnswerItem itemLayout = new AnswerItem("Test","test","test");
-                itemLayout.Location = new Point(0, idx * itemLayout.Height);
+                itemLayout.Location = new Point(10, idx * itemLayout.Height);
                 itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
                 itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
                 tbListAnswer.Controls.Add(itemLayout);
             }
-            tbListAnswer.ResumeLayout();
+
+            answerChoiseContainer.ResumeLayout();
         }
 
         private void InitCommonGui(QuestionBE qs)

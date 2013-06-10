@@ -111,6 +111,12 @@
     <Compile Include="QuestionEditor\FillInBlankEditor.Designer.cs">
       <DependentUpon>FillInBlankEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionEditor\Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\Items.Designer.cs">
+      <DependentUpon>Items.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionEditor\MultipleChoiceEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\AnswerItem.resx">
       <DependentUpon>AnswerItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\Items.resx">
+      <DependentUpon>Items.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\MultipleChoiceEditor.resx">
       <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
