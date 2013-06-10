@@ -33,7 +33,7 @@ namespace PresentationLayer.QuestionEditor
             //Init list from dataItemController.
             questionPanel.SuspendLayout();
             //int[] keys = _dataItemController.TestBook.Keys.ToArray();
-            for (int idx = 0; idx < 20; idx++)
+            for (int idx = 0; idx < 1; idx++)
             {
 
                 QuestionListItemCustom itemLayout = new QuestionListItemCustom();

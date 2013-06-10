@@ -86,7 +86,6 @@
             this.answerChoiseContainer.AutoSize = true;
             this.answerChoiseContainer.Controls.Add(this.tbListAnswer);
             this.answerChoiseContainer.Controls.Add(this.questionContainer);
-            this.answerChoiseContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answerChoiseContainer.Location = new System.Drawing.Point(0, 0);
             this.answerChoiseContainer.Name = "answerChoiseContainer";
             this.answerChoiseContainer.Size = new System.Drawing.Size(500, 250);
@@ -94,25 +93,25 @@
             // 
             // tbListAnswer
             // 
-            this.tbListAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbListAnswer.AutoScroll = true;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 439F));
-            this.tbListAnswer.Location = new System.Drawing.Point(4, 106);
+            this.tbListAnswer.AutoSize = true;
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
+            this.tbListAnswer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbListAnswer.Location = new System.Drawing.Point(0, 100);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(439, 131);
+            this.tbListAnswer.Size = new System.Drawing.Size(500, 150);
             this.tbListAnswer.TabIndex = 1;
             // 
             // panel2
             // 
+            this.panel2.AutoSize = true;
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(449, 0);
+            this.panel2.Location = new System.Drawing.Point(452, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(51, 250);
+            this.panel2.Size = new System.Drawing.Size(51, 253);
             this.panel2.TabIndex = 2;
             // 
             // button1
@@ -132,15 +131,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.answerChoiseContainer);
             this.Name = "QuestionListItemCustom";
-            this.Size = new System.Drawing.Size(500, 250);
+            this.Size = new System.Drawing.Size(503, 253);
             this.questionContainer.ResumeLayout(false);
             this.questionContainer.PerformLayout();
             this.answerChoiseContainer.ResumeLayout(false);
+            this.answerChoiseContainer.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
