@@ -41,13 +41,13 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.RowCount = 10;
             for (int idx = 0; idx < _dataController.Count; idx++)
             {
-                questionPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
                 var questionData = _dataController.DataItems[idx];
                 var itemLayout = new QuestionListItemCustom(questionData);
-                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
-                itemLayout.AutoSize = true;
-                itemLayout.Height = idx * 100;
+                var style = new RowStyle(SizeType.AutoSize);
+                //style.Height = itemLayout.DataItem.Height;
+                questionPanel.RowStyles.Add(style);
+                questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
                 questionPanel.Controls.Add(itemLayout, 0, idx);
                 questionPanel.ResumeLayout();
             }

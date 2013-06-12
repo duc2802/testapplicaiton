@@ -7,6 +7,7 @@ namespace PresentationLayer.QuestionEditor.Data
 {
     public class QuestionDataItem
     {
+        public int Height { set; get; }
         public int IdQuestion { set; get; }
         public int OrderQuestion { set; get; }
         public string ContentQuestion { set; get; }
