@@ -1,4 +1,6 @@
-﻿namespace PresentationLayer.QuestionEditor
+﻿using System.Windows.Forms;
+
+namespace PresentationLayer.QuestionEditor
 {
     partial class QuestionListItemCustom
     {
@@ -31,6 +33,7 @@
             this.contentQuestionTextBox = new System.Windows.Forms.TextBox();
             this.answerChoiseContainer = new System.Windows.Forms.Panel();
             this.orderNumQuest = new System.Windows.Forms.Label();
+            this.editButton = new System.Windows.Forms.Button();
             this.answerChoiseContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,17 +48,19 @@
             this.contentQuestionTextBox.Multiline = true;
             this.contentQuestionTextBox.Name = "contentQuestionTextBox";
             this.contentQuestionTextBox.ReadOnly = true;
-            this.contentQuestionTextBox.Size = new System.Drawing.Size(523, 81);
+            this.contentQuestionTextBox.Size = new System.Drawing.Size(499, 81);
             this.contentQuestionTextBox.TabIndex = 1;
             // 
             // answerChoiseContainer
             // 
             this.answerChoiseContainer.AutoSize = true;
+            this.answerChoiseContainer.Dock = DockStyle.Fill;
+            this.answerChoiseContainer.Controls.Add(this.editButton);
             this.answerChoiseContainer.Controls.Add(this.orderNumQuest);
             this.answerChoiseContainer.Controls.Add(this.contentQuestionTextBox);
             this.answerChoiseContainer.Location = new System.Drawing.Point(0, 0);
             this.answerChoiseContainer.Name = "answerChoiseContainer";
-            this.answerChoiseContainer.Size = new System.Drawing.Size(572, 157);
+            this.answerChoiseContainer.Size = new System.Drawing.Size(617, 157);
             this.answerChoiseContainer.TabIndex = 1;
             // 
             // orderNumQuest
@@ -68,6 +73,17 @@
             this.orderNumQuest.TabIndex = 2;
             this.orderNumQuest.Text = "15";
             // 
+            // editButton
+            // 
+            this.editButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Location = new System.Drawing.Point(567, 12);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(37, 23);
+            this.editButton.TabIndex = 3;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            // 
             // QuestionListItemCustom
             // 
             this.AutoSize = true;
@@ -76,7 +92,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.answerChoiseContainer);
             this.Name = "QuestionListItemCustom";
-            this.Size = new System.Drawing.Size(575, 160);
+            this.Size = new System.Drawing.Size(620, 160);
             this.answerChoiseContainer.ResumeLayout(false);
             this.answerChoiseContainer.PerformLayout();
             this.ResumeLayout(false);
@@ -89,6 +105,7 @@
         private System.Windows.Forms.TextBox contentQuestionTextBox;
         private System.Windows.Forms.Panel answerChoiseContainer;
         private System.Windows.Forms.Label orderNumQuest;
+        private System.Windows.Forms.Button editButton;
 
     }
 }

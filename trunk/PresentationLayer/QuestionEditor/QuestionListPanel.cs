@@ -44,9 +44,8 @@ namespace PresentationLayer.QuestionEditor
                 var questionData = _dataController.DataItems[idx];
                 var itemLayout = new QuestionListItemCustom(questionData);
                 var style = new RowStyle(SizeType.AutoSize);
-                //style.Height = itemLayout.DataItem.Height;
                 questionPanel.RowStyles.Add(style);
-                questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+                questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
                 itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
                 questionPanel.Controls.Add(itemLayout, 0, idx);
                 questionPanel.ResumeLayout();

@@ -1,4 +1,6 @@
-﻿namespace PresentationLayer
+﻿using System.Windows.Forms;
+
+namespace PresentationLayer
 {
     partial class MainForm
     {
@@ -479,7 +481,7 @@
             // 
             this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
             this.mainSplitContainer.Size = new System.Drawing.Size(650, 265);
-            this.mainSplitContainer.SplitterDistance = 339;
+            this.mainSplitContainer.SplitterDistance = 300;
             this.mainSplitContainer.TabIndex = 0;
             // 
             // explorerSplitContainer
@@ -498,7 +500,7 @@
             // 
             this.explorerSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
             this.explorerSplitContainer.Size = new System.Drawing.Size(339, 265);
-            this.explorerSplitContainer.SplitterDistance = 113;
+            this.explorerSplitContainer.SplitterDistance = 120;
             this.explorerSplitContainer.TabIndex = 0;
             // 
             // dockContainerItem
@@ -581,6 +583,7 @@
             // 
             // MainForm
             // 
+            this.WindowState = FormWindowState.Maximized;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(670, 438);
