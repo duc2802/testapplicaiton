@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
+using PresentationLayer.QuestionEditor.Data;
 using SingleInstanceObject;
 
 namespace PresentationLayer.QuestionEditor
 {
     public partial class QuestionListPanel : UserControl
     {
+        private QuestionDataController _dataController; 
+
         public QuestionListPanel()
         {
             InitializeComponent();
@@ -27,19 +30,20 @@ namespace PresentationLayer.QuestionEditor
 
         private void InitGui()
         {
+            this._dataController = new QuestionDataController();
+
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
-
-            //Init list from dataItemController.
+          
             questionPanel.SuspendLayout();
-            //int[] keys = _dataItemController.TestBook.Keys.ToArray();
-            for (int idx = 0; idx < 1; idx++)
+            for (int idx = 0; idx < _dataController.Count; idx++)
             {
-
-                QuestionListItemCustom itemLayout = new QuestionListItemCustom();
+                var questionData = _dataController.DataItems[idx];
+                var itemLayout = new QuestionListItemCustom(questionData);
+                itemLayout.SuspendLayout();
                 itemLayout.Location = new Point(0, idx * itemLayout.Height);
-                itemLayout.Size = new Size(questionPanel.Width - 20, itemLayout.Height);
                 itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+                itemLayout.ResumeLayout();
                 questionPanel.Controls.Add(itemLayout);
             }
             questionPanel.ResumeLayout();

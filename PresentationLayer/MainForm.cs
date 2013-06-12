@@ -15,6 +15,7 @@ namespace PresentationLayer
         {
             InitializeComponent();
             InitCommonGui();
+            InitEvent();
             //DoSplash();
             this.Load += HandleFormLoad;
         }
@@ -32,6 +33,34 @@ namespace PresentationLayer
             QuestionListPanel questionListPanel = new QuestionListPanel();
             this.mainSplitContainer.Panel2.Controls.Add(questionListPanel);
         }
+
+        private void InitEvent()
+        {
+            InitButtonEvent();
+        }
+
+        private void InitButtonEvent()
+        {
+            this.buttonNewExam.Click += NewExamButtonClick;
+            this.buttonNewQuestion.Click += NewQuestionButtonClick;
+        }
+
+        #region implement Event
+
+        private void NewQuestionButtonClick(object sender, EventArgs e)
+        {
+            using (SingleChoiceEditor questionEditor = new SingleChoiceEditor())
+            {
+                questionEditor.ShowDialog(this);
+            }
+        }
+
+        private void NewExamButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
 
         // WelcomeScreen controler
         private void HandleFormLoad(object sender, EventArgs e)

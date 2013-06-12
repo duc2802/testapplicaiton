@@ -105,6 +105,10 @@
     <Compile Include="QuestionEditor\AnswerItem.Designer.cs">
       <DependentUpon>AnswerItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionEditor\Data\AnswerDataController.cs" />
+    <Compile Include="QuestionEditor\Data\AnswerDataItem.cs" />
+    <Compile Include="QuestionEditor\Data\QuestionDataController.cs" />
+    <Compile Include="QuestionEditor\Data\QuestionDataItem.cs" />
     <Compile Include="QuestionEditor\FillInBlankEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +128,12 @@
       <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="QuestionEditor\NodeAnswerItem.cs" />
+    <Compile Include="QuestionEditor\OptionItemCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\OptionItemCustom.Designer.cs">
+      <DependentUpon>OptionItemCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionEditor\QuestionListItemCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\MultipleChoiceEditor.resx">
       <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\OptionItemCustom.resx">
+      <DependentUpon>OptionItemCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\QuestionListItemCustom.resx">
       <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
