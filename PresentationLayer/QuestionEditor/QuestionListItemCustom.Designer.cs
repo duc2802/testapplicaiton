@@ -45,7 +45,7 @@
             this.contentQuestionTextBox.Multiline = true;
             this.contentQuestionTextBox.Name = "contentQuestionTextBox";
             this.contentQuestionTextBox.ReadOnly = true;
-            this.contentQuestionTextBox.Size = new System.Drawing.Size(454, 81);
+            this.contentQuestionTextBox.Size = new System.Drawing.Size(523, 81);
             this.contentQuestionTextBox.TabIndex = 1;
             // 
             // answerChoiseContainer
@@ -55,7 +55,7 @@
             this.answerChoiseContainer.Controls.Add(this.contentQuestionTextBox);
             this.answerChoiseContainer.Location = new System.Drawing.Point(0, 0);
             this.answerChoiseContainer.Name = "answerChoiseContainer";
-            this.answerChoiseContainer.Size = new System.Drawing.Size(503, 157);
+            this.answerChoiseContainer.Size = new System.Drawing.Size(572, 157);
             this.answerChoiseContainer.TabIndex = 1;
             // 
             // orderNumQuest
@@ -70,15 +70,13 @@
             // 
             // QuestionListItemCustom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.answerChoiseContainer);
             this.Name = "QuestionListItemCustom";
-            this.Size = new System.Drawing.Size(506, 160);
+            this.Size = new System.Drawing.Size(575, 160);
             this.answerChoiseContainer.ResumeLayout(false);
             this.answerChoiseContainer.PerformLayout();
             this.ResumeLayout(false);
