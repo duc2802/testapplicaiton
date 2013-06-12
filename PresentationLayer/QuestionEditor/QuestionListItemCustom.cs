@@ -46,21 +46,7 @@ namespace PresentationLayer.QuestionEditor
 
         private void InitCommonGui()
         {
-            //this._dataItem = new QuestionDataItem();
-            ////For test
-            //this.numberQuestionLabel.Text = "B";
-            //this.contentQuestionTextBox.Text = " Nội dung câu hỏi";
-            ////Load for answer content
-            //tbListAnswer.SuspendLayout();
-            //for (int idx = 0; idx < 6; idx++)
-            //{
-            //    AnswerItem itemLayout = new AnswerItem("Test", "test", "test");
-            //    itemLayout.Location = new Point(10, idx*itemLayout.Height);
-            //    itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            //    itemLayout.Anchor = ((AnchorStyles) ((AnchorStyles.Left | AnchorStyles.Right)));
-            //    tbListAnswer.Controls.Add(itemLayout);
-            //}
-            answerChoiseContainer.ResumeLayout();
+            
         }
 
         private void InitCommonGui(QuestionDataItem questionData)
@@ -72,22 +58,48 @@ namespace PresentationLayer.QuestionEditor
         {
             contentQuestionTextBox.Text = this.DataItem.ContentQuestion;
             this.orderNumQuest.Text = this.DataItem.OrderQuestion.ToString();
+            AddAnswerOptions();
+            CalculatePanelSize();
         }
-        
+        public void CalculatePanelSize()
+        {
+            this.answerChoiseContainer.Height = this.contentQuestionTextBox.Location.Y + this.contentQuestionTextBox.Height + 10 + (this.DataItem.AnswerData.AnswerData.Count * 20);
+        }
         private void ContentQuestionTextBoxChanged(object sender, EventArgs e)
         {
-            RefreshContentQuestionTexBox(this.Width);
+            RefreshContentQuestionTexBox();
         }
 
-        public void RefreshContentQuestionTexBox(int width)
+        private void AddAnswerOptions()
+        {
+            int i = 1;
+            foreach(AnswerDataItem answerItem in DataItem.AnswerData.AnswerData)
+            {
+                AddNewLine(answerItem.ContentAnswer, i);
+                i++;
+            }
+        }
+
+        private void AddNewLine(string answerString, int orderNumber)
+        {
+            Point point = new Point();
+            point.Y = this.contentQuestionTextBox.Location.Y + this.contentQuestionTextBox.Height + 10 + ((orderNumber - 1) * 20);
+            point.X = this.contentQuestionTextBox.Location.X; 
+            CheckBox answerCheckBox = new CheckBox();
+            answerCheckBox.AutoSize = true;
+            answerCheckBox.Location = point;
+            answerCheckBox.Name = "answerCheckBox";
+            answerCheckBox.Text = answerString;
+            this.answerChoiseContainer.Controls.Add(answerCheckBox);
+        }
+
+        public void RefreshContentQuestionTexBox()
         {
             this.SuspendLayout();
-            string contentWrap = WrapText(contentQuestionTextBox.Text, width,
+            string contentWrap = WrapText(contentQuestionTextBox.Text, contentQuestionTextBox.Width,
                                           contentQuestionTextBox.Font);
             int countNewLine = contentWrap.Split('\n').Count();
-            //this.DataItem.Height = ;
             this.contentQuestionTextBox.Height = (countNewLine) * contentQuestionTextBox.Font.Height + (3);
-            this.answerChoiseContainer.Height = new Random().Next(3)*100;
             this.ResumeLayout(true);
             this.PerformLayout();
         }
