@@ -18,33 +18,33 @@ namespace BusinessEntities
 {
     public class QuestionBE
     {
-        string questionID;
-        string questionContent;
-        List<AnswerBE> listAnswers;
-        string levelQuestion;
+        private string _questionId;
+        private string _questionContent;
+        private List<AnswerBE> _listAnswers;
+        private string _levelQuestion;
 
         public string QuestionID
         {
-            get { return questionID; }
-            set { questionID = value; }
+            get { return _questionId; }
+            set { _questionId = value; }
         }
 
         public String QuestionContent
         {
-            get { return questionContent; }
-            set { questionContent = value; }
+            get { return _questionContent; }
+            set { _questionContent = value; }
         }
 
         public List<AnswerBE> ListAnswers
         {
-            get { return listAnswers; }
-            set { listAnswers = value; }
+            get { return _listAnswers; }
+            set { _listAnswers = value; }
         }
 
         public String LevelQuestion
         {
-            get { return levelQuestion; }
-            set { levelQuestion = value; }
+            get { return _levelQuestion; }
+            set { _levelQuestion = value; }
         }
 
 
