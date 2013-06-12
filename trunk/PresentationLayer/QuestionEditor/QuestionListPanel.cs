@@ -34,19 +34,24 @@ namespace PresentationLayer.QuestionEditor
 
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
-          
             questionPanel.SuspendLayout();
+            questionPanel.RowStyles.Clear();
+            questionPanel.AutoSize = true; 
+            questionPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;   
+            questionPanel.RowCount = 10;
             for (int idx = 0; idx < _dataController.Count; idx++)
             {
+                questionPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
                 var questionData = _dataController.DataItems[idx];
                 var itemLayout = new QuestionListItemCustom(questionData);
-                itemLayout.SuspendLayout();
-                itemLayout.Location = new Point(0, idx * itemLayout.Height);
                 itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
-                itemLayout.ResumeLayout();
-                questionPanel.Controls.Add(itemLayout);
+                itemLayout.AutoSize = true;
+                itemLayout.Height = idx * 100;
+                questionPanel.Controls.Add(itemLayout, 0, idx);
+                questionPanel.ResumeLayout();
             }
-            questionPanel.ResumeLayout();
+            
         }
 
         private void UpdateEditor(int id)

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.questionPanel = new System.Windows.Forms.Panel();
+            this.questionPanel = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // questionPanel
             // 
             this.questionPanel.AutoScroll = true;
+            this.questionPanel.AutoSize = true;
             this.questionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.questionPanel.Location = new System.Drawing.Point(0, 0);
             this.questionPanel.Name = "questionPanel";
@@ -53,6 +54,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel questionPanel;
+        private System.Windows.Forms.TableLayoutPanel questionPanel;
     }
 }
