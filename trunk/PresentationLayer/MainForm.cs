@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
+using PresentationLayer.ActionController;
 using PresentationLayer.Explorer;
 using PresentationLayer.QuestionEditor;
+using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer.Splash;
+using SingleInstanceObject;
 
 namespace PresentationLayer
 {
@@ -49,9 +52,27 @@ namespace PresentationLayer
 
         private void NewQuestionButtonClick(object sender, EventArgs e)
         {
-            using (SingleChoiceEditor questionEditor = new SingleChoiceEditor())
+            if (MessageBox.Show(this, "Do you want to add more question.", "Add question", MessageBoxButtons.OK) == DialogResult.OK)
             {
-                questionEditor.ShowDialog(this);
+                var dataItem = new QuestionDataItem();
+                dataItem.ContentQuestion = "Which one of the five is least like the other four? " +
+                                           "Which one of the five is least like the other four?" +
+                                           "Which one of the five is least like the other four?" +
+                                           "Which one of the five is least like the other four?" +
+                                           "Which one of the five is least like the other four?" +
+                                           "Which one of the five is least like the other four?";
+                dataItem.IdQuestion = 0;
+                dataItem.OrderQuestion = 14;
+                var answerController = new AnswerDataController(14);
+                for (int j = 1; j <= 5; j++)
+                {
+                    var answer = new AnswerDataItem();
+                    answer.ContentAnswer = "Cat";
+                    answer.OrderAnswer = j;
+                    answerController.Add(answer);
+                }
+                dataItem.AnswerData = answerController;
+                Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(dataItem);
             }
         }
 
