@@ -43,14 +43,16 @@ namespace PresentationLayer.QuestionEditor
             {
                 var questionData = _dataController.DataItems[idx];
                 var itemLayout = new QuestionListItemCustom(questionData);
+                itemLayout.Delete += ItemLayoutDelete;
+                itemLayout.Update += ItemLayoutUpdate;
+
                 var style = new RowStyle(SizeType.AutoSize);
                 questionPanel.RowStyles.Add(style);
                 questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
+                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
                 questionPanel.Controls.Add(itemLayout, 0, idx);
-                questionPanel.ResumeLayout();
+                questionPanel.ResumeLayout(false);
             }
-            
         }
 
         private void UpdateEditor(int id)
@@ -58,11 +60,67 @@ namespace PresentationLayer.QuestionEditor
             MessageBox.Show(this, id.ToString(), "Test");
         }
 
+        private void DeleteQuestionItem(int idQuestion)
+        {
+            questionPanel.SuspendLayout();
+            var item = questionPanel.Controls.Find(idQuestion.ToString(), true).First() as QuestionListItemCustom;
+            if(item != null)
+            {
+                int idx = questionPanel.Controls.IndexOf(item);
+                questionPanel.Controls.Remove(item);
+                questionPanel.RowStyles.RemoveAt(idx);
+                questionPanel.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(this, "Delete Error", "Error", MessageBoxButtons.OK);
+            }
+            UpdateAllDataItem();
+            questionPanel.ResumeLayout();
+        }
+
+        private void UpdateQueationItem(int idQuestion)
+        {
+            var item = questionPanel.Controls.Find(idQuestion.ToString(), true).First() as QuestionListItemCustom;
+            if (item != null)
+            {
+                item.Refresh();
+                questionPanel.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(this, "Update Error", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void UpdateAllDataItem()
+        {
+            for(int idx = 0; idx < questionPanel.Controls.Count; idx++)
+            {
+                var item = questionPanel.Controls[idx] as QuestionListItemCustom;
+                if(item != null)
+                {
+                    item.DataItem.OrderQuestion = idx + 1;
+                }
+            }
+            questionPanel.Refresh();
+        }
+
         #region Implement registed event
 
         private void ChangeTestId(object sender, int parameter)
         {
             UpdateEditor(parameter);
+        }
+
+        private void ItemLayoutDelete(object sender, int parameter)
+        {
+            DeleteQuestionItem(parameter);
+        }
+
+        private void ItemLayoutUpdate(object sender, int parameter)
+        {
+            UpdateQueationItem(parameter);
         }
 
         #endregion

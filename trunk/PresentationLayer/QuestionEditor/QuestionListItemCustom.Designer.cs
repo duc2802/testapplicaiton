@@ -32,8 +32,9 @@ namespace PresentationLayer.QuestionEditor
         {
             this.contentQuestionTextBox = new System.Windows.Forms.TextBox();
             this.answerChoiseContainer = new System.Windows.Forms.Panel();
-            this.orderNumQuest = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.orderNumQuest = new System.Windows.Forms.Label();
             this.answerChoiseContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,20 +49,43 @@ namespace PresentationLayer.QuestionEditor
             this.contentQuestionTextBox.Multiline = true;
             this.contentQuestionTextBox.Name = "contentQuestionTextBox";
             this.contentQuestionTextBox.ReadOnly = true;
-            this.contentQuestionTextBox.Size = new System.Drawing.Size(499, 81);
+            this.contentQuestionTextBox.Size = new System.Drawing.Size(502, 81);
             this.contentQuestionTextBox.TabIndex = 1;
             // 
             // answerChoiseContainer
             // 
             this.answerChoiseContainer.AutoSize = true;
-            this.answerChoiseContainer.Dock = DockStyle.Fill;
+            this.answerChoiseContainer.Controls.Add(this.deleteButton);
             this.answerChoiseContainer.Controls.Add(this.editButton);
             this.answerChoiseContainer.Controls.Add(this.orderNumQuest);
             this.answerChoiseContainer.Controls.Add(this.contentQuestionTextBox);
+            this.answerChoiseContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answerChoiseContainer.Location = new System.Drawing.Point(0, 0);
             this.answerChoiseContainer.Name = "answerChoiseContainer";
-            this.answerChoiseContainer.Size = new System.Drawing.Size(617, 157);
+            this.answerChoiseContainer.Size = new System.Drawing.Size(620, 123);
             this.answerChoiseContainer.TabIndex = 1;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Location = new System.Drawing.Point(570, 39);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(37, 23);
+            this.deleteButton.TabIndex = 4;
+            this.deleteButton.Text = "Del";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            // 
+            // editButton
+            // 
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Location = new System.Drawing.Point(570, 10);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(37, 23);
+            this.editButton.TabIndex = 3;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
             // 
             // orderNumQuest
             // 
@@ -73,26 +97,14 @@ namespace PresentationLayer.QuestionEditor
             this.orderNumQuest.TabIndex = 2;
             this.orderNumQuest.Text = "15";
             // 
-            // editButton
-            // 
-            this.editButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editButton.Location = new System.Drawing.Point(567, 12);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(37, 23);
-            this.editButton.TabIndex = 3;
-            this.editButton.Text = "Edit";
-            this.editButton.UseVisualStyleBackColor = true;
-            // 
             // QuestionListItemCustom
             // 
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.answerChoiseContainer);
             this.Name = "QuestionListItemCustom";
-            this.Size = new System.Drawing.Size(620, 160);
+            this.Size = new System.Drawing.Size(620, 123);
             this.answerChoiseContainer.ResumeLayout(false);
             this.answerChoiseContainer.PerformLayout();
             this.ResumeLayout(false);
@@ -106,6 +118,7 @@ namespace PresentationLayer.QuestionEditor
         private System.Windows.Forms.Panel answerChoiseContainer;
         private System.Windows.Forms.Label orderNumQuest;
         private System.Windows.Forms.Button editButton;
+        private Button deleteButton;
 
     }
 }
