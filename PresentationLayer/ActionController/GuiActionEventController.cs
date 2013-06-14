@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Commons.BusinessObjects;
-
+using PresentationLayer.QuestionEditor.Data;
 
 namespace PresentationLayer.ActionController
 {
@@ -11,32 +8,43 @@ namespace PresentationLayer.ActionController
     {
         #region Properties
 
+        private string _folderId;
+
+
+        private int _testId;
+
         public string FolderId
         {
             set
             {
-                this._folderId = value;
+                _folderId = value;
                 OnChangeFolderId(_folderId);
             }
-            get { return this._folderId; }
+            get { return _folderId; }
         }
-        private string _folderId;
-
 
         public int TestId
         {
             set
             {
-                this._testId = value;
+                _testId = value;
                 OnChangeTestId(_testId);
             }
-            get { return this._testId; }
+            get { return _testId; }
         }
-        private int _testId;
 
         #endregion
 
-        #region Event
+        #region Events
+
+        #region Event change forder id
+
+        private readonly object _changeFolderIdLocker = new object();
+        private ActionEventHandler<string> _changeFolderIdEvent;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event ActionEventHandler<string> ChangeFolderId
         {
             add
@@ -48,32 +56,35 @@ namespace PresentationLayer.ActionController
             }
             remove
             {
-                lock(_changeFolderIdLocker)
+                lock (_changeFolderIdLocker)
                 {
                     _changeFolderIdEvent -= value;
                 }
             }
         }
 
-        private ActionEventHandler<string> _changeFolderIdEvent;
-        private readonly object _changeFolderIdLocker = new object();
-
         public void OnChangeFolderId(string folderId)
         {
             ActionEventHandler<string> handler = _changeFolderIdEvent;
-            if(handler != null)
+            if (handler != null)
             {
                 try
                 {
                     handler(this, folderId);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     //Log
                 }
             }
         }
 
+        #endregion End event change forder id
+
+        #region Event Change Test id
+
+        private readonly object _changeTestIdEventLocker = new object();
+        private ActionEventHandler<int> _changeTestIdEvent;
 
         public event ActionEventHandler<int> ChangeTestId
         {
@@ -93,9 +104,6 @@ namespace PresentationLayer.ActionController
             }
         }
 
-        private ActionEventHandler<int> _changeTestIdEvent;
-        private readonly object _changeTestIdEventLocker = new object();
-
         public void OnChangeTestId(int id)
         {
             ActionEventHandler<int> handler = _changeTestIdEvent;
@@ -111,6 +119,52 @@ namespace PresentationLayer.ActionController
                 }
             }
         }
+
+        #endregion End event change test id
+
+        #region Event add question to test.
+
+        private readonly object __addQuestionItemEventLocker = new object();
+        private ActionEventHandler<QuestionDataItem> _addQuestionItemEvent;
+
+        /// <summary>
+        /// Event add question to test.
+        /// </summary>
+        public event ActionEventHandler<QuestionDataItem> AddQuestionItem
+        {
+            add
+            {
+                lock (__addQuestionItemEventLocker)
+                {
+                    _addQuestionItemEvent += value;
+                }
+            }
+            remove
+            {
+                lock (__addQuestionItemEventLocker)
+                {
+                    _addQuestionItemEvent -= value;
+                }
+            }
+        }
+
+        public void OnAddQuestionItem(QuestionDataItem questionDataItem)
+        {
+            ActionEventHandler<QuestionDataItem> handler = _addQuestionItemEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, questionDataItem);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        #endregion End event add question to test.
 
         #endregion
     }

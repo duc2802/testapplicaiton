@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+﻿using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
 using PresentationLayer.QuestionEditor.Data;
@@ -14,7 +9,7 @@ namespace PresentationLayer.QuestionEditor
 {
     public partial class QuestionListPanel : UserControl
     {
-        private QuestionDataController _dataController; 
+        private QuestionDataController _dataController;
 
         public QuestionListPanel()
         {
@@ -26,32 +21,25 @@ namespace PresentationLayer.QuestionEditor
         private void InitEvent()
         {
             Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
+            Singleton<GuiActionEventController>.Instance.AddQuestionItem += OnAddQuestionItem;
         }
 
         private void InitGui()
         {
-            this._dataController = new QuestionDataController();
+            _dataController = new QuestionDataController();
+            FillQuestionItem();
+        }
 
-            this.BackColor = Color.White;
-            this.Dock = DockStyle.Fill;
-            questionPanel.SuspendLayout();
+        private void FillQuestionItem()
+        {
+            BackColor = Color.White;
+            Dock = DockStyle.Fill;
             questionPanel.RowStyles.Clear();
-            questionPanel.AutoSize = true; 
-            questionPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;   
-            questionPanel.RowCount = 10;
+            questionPanel.AutoSize = true;
+            questionPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             for (int idx = 0; idx < _dataController.Count; idx++)
             {
-                var questionData = _dataController.DataItems[idx];
-                var itemLayout = new QuestionListItemCustom(questionData);
-                itemLayout.Delete += ItemLayoutDelete;
-                itemLayout.Update += ItemLayoutUpdate;
-
-                var style = new RowStyle(SizeType.AutoSize);
-                questionPanel.RowStyles.Add(style);
-                questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
-                questionPanel.Controls.Add(itemLayout, 0, idx);
-                questionPanel.ResumeLayout(false);
+                AddQuestionItem(_dataController.DataItems[idx], idx + 1);
             }
         }
 
@@ -60,11 +48,32 @@ namespace PresentationLayer.QuestionEditor
             MessageBox.Show(this, id.ToString(), "Test");
         }
 
+        private QuestionListItemCustom CreateQuestionItem(QuestionDataItem questionData)
+        {
+            var itemLayout = new QuestionListItemCustom(questionData);
+            itemLayout.Delete += ItemLayoutDelete;
+            itemLayout.Update += ItemLayoutUpdate;
+            itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
+            return itemLayout;
+        }
+
+        private void AddQuestionItem(QuestionDataItem questionData, int idx)
+        {
+            questionPanel.SuspendLayout();
+            QuestionListItemCustom questionItem = CreateQuestionItem(questionData);
+            questionItem.DataItem.OrderQuestion = idx;
+            var style = new RowStyle(SizeType.AutoSize);
+            questionPanel.RowStyles.Add(style);
+            questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+            questionPanel.Controls.Add(questionItem, 0, idx);
+            questionPanel.ResumeLayout(false);
+        }
+
         private void DeleteQuestionItem(int idQuestion)
         {
             questionPanel.SuspendLayout();
             var item = questionPanel.Controls.Find(idQuestion.ToString(), true).First() as QuestionListItemCustom;
-            if(item != null)
+            if (item != null)
             {
                 int idx = questionPanel.Controls.IndexOf(item);
                 questionPanel.Controls.Remove(item);
@@ -77,6 +86,7 @@ namespace PresentationLayer.QuestionEditor
             }
             UpdateAllDataItem();
             questionPanel.ResumeLayout();
+            Refresh();
         }
 
         private void UpdateQueationItem(int idQuestion)
@@ -95,10 +105,10 @@ namespace PresentationLayer.QuestionEditor
 
         private void UpdateAllDataItem()
         {
-            for(int idx = 0; idx < questionPanel.Controls.Count; idx++)
+            for (int idx = 0; idx < questionPanel.Controls.Count; idx++)
             {
                 var item = questionPanel.Controls[idx] as QuestionListItemCustom;
-                if(item != null)
+                if (item != null)
                 {
                     item.DataItem.OrderQuestion = idx + 1;
                 }
@@ -111,6 +121,15 @@ namespace PresentationLayer.QuestionEditor
         private void ChangeTestId(object sender, int parameter)
         {
             UpdateEditor(parameter);
+        }
+
+        private void OnAddQuestionItem(object sender, QuestionDataItem parameter)
+        {
+            int idx = questionPanel.Controls.Count;
+            questionPanel.SuspendLayout();
+            _dataController.DataItems.Add(parameter);
+            AddQuestionItem(parameter, idx + 1);
+            questionPanel.ResumeLayout(true);
         }
 
         private void ItemLayoutDelete(object sender, int parameter)
