@@ -481,7 +481,7 @@ namespace PresentationLayer
             // 
             this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
             this.mainSplitContainer.Size = new System.Drawing.Size(650, 265);
-            this.mainSplitContainer.SplitterDistance = 300;
+            this.mainSplitContainer.SplitterDistance = 250;
             this.mainSplitContainer.TabIndex = 0;
             // 
             // explorerSplitContainer
@@ -499,8 +499,8 @@ namespace PresentationLayer
             // explorerSplitContainer.Panel2
             // 
             this.explorerSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
-            this.explorerSplitContainer.Size = new System.Drawing.Size(339, 265);
-            this.explorerSplitContainer.SplitterDistance = 120;
+            this.explorerSplitContainer.Size = new System.Drawing.Size(250, 265);
+            this.explorerSplitContainer.SplitterDistance = 73;
             this.explorerSplitContainer.TabIndex = 0;
             // 
             // dockContainerItem
@@ -583,7 +583,6 @@ namespace PresentationLayer
             // 
             // MainForm
             // 
-            this.WindowState = FormWindowState.Maximized;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(670, 438);
@@ -600,6 +599,7 @@ namespace PresentationLayer
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
             this.ribbonPanel1.ResumeLayout(false);

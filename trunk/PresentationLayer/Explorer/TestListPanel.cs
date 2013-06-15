@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+﻿using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
 using SingleInstanceObject;
@@ -13,7 +8,7 @@ namespace PresentationLayer.Explorer
 {
     public partial class TestListPanel : UserControl
     {
-        private TestListDataItemController _dataItemController = new TestListDataItemController();
+        private readonly TestListDataItemController _dataItemController = new TestListDataItemController();
 
         public TestListPanel()
         {
@@ -27,26 +22,44 @@ namespace PresentationLayer.Explorer
             Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeFolderId;
         }
 
-        private void UpdateGui(string id)
+        private void UpdateGui(string idFolder)
         {
-            this.headingButton.Text = id;
+            headingButton.Text = idFolder;
+            FillTestItem(idFolder);
         }
-       
+
         private void InitCommonGui()
         {
             //Init list from dataItemController.
+            FillTestItem("Data");
+        }
+
+        private void FillTestItem(string idFolder)
+        {
             testListBox.SuspendLayout();
-            int[] keys = _dataItemController.TestBook.Keys.ToArray();
-            for(int idx = 0; idx < keys.Count(); idx++)
+            testListBox.Controls.Clear();
+
+            LoadTestDataItemController(idFolder);
+
+            string[] keys = _dataItemController.TestBook.Keys.ToArray();
+
+            int idx = 0;
+            foreach (string key in keys)
             {
-                TestDataItem itemData = _dataItemController.TestBook[idx];
-                TestListItemCustom itemLayout = new TestListItemCustom(itemData);
+                TestDataItem itemData = _dataItemController.TestBook[key];
+                var itemLayout = new TestListItemCustom(itemData);
                 itemLayout.Location = new Point(0, idx * itemLayout.Height);
                 itemLayout.Size = new Size(testListBox.Width - 20, itemLayout.Height);
-                itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+                itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top)));
                 testListBox.Controls.Add(itemLayout);
+                idx++;
             }
             testListBox.ResumeLayout();
+        }
+
+        private void LoadTestDataItemController(string idFolder)
+        {
+            _dataItemController.LoadTestDataItem(idFolder);
         }
 
         #region Implement registed event.
@@ -57,6 +70,5 @@ namespace PresentationLayer.Explorer
         }
 
         #endregion
-
     }
 }
