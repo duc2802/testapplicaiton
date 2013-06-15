@@ -15,5 +15,10 @@ namespace ClientPresentationLayer
         {
             InitializeComponent();
         }
+
+        private void tabControlPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
