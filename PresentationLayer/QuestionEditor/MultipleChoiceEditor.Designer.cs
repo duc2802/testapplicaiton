@@ -67,15 +67,17 @@
             // opFileChoseImage
             // 
             this.opFileChoseImage.FileName = "openFileDialog1";
+            this.opFileChoseImage.Filter = "(*.bmp, *.jpg)|*.bmp;*.jpg";
             // 
             // lbImportImage
             // 
             this.lbImportImage.AutoSize = true;
-            this.lbImportImage.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lbImportImage.BackColor = System.Drawing.SystemColors.Highlight;
+            this.lbImportImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbImportImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbImportImage.Location = new System.Drawing.Point(12, 79);
             this.lbImportImage.Name = "lbImportImage";
-            this.lbImportImage.Size = new System.Drawing.Size(68, 13);
+            this.lbImportImage.Size = new System.Drawing.Size(70, 15);
             this.lbImportImage.TabIndex = 2;
             this.lbImportImage.Text = "Import Image";
             this.lbImportImage.Click += new System.EventHandler(this.label2_Click);
@@ -86,9 +88,8 @@
             this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(84, 166);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "imagName";
             // 
             // lbAnswer
             // 
@@ -152,6 +153,7 @@
             this.btMoreAnswer.TabIndex = 8;
             this.btMoreAnswer.Text = "More..";
             this.btMoreAnswer.UseVisualStyleBackColor = true;
+            this.btMoreAnswer.Click += new System.EventHandler(this.btMoreAnswer_Click);
             // 
             // lbQuestion
             // 

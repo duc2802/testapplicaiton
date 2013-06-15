@@ -49,6 +49,11 @@ namespace PresentationLayer.QuestionEditor
         private void label2_Click(object sender, EventArgs e)
         {
             opFileChoseImage.ShowDialog();
+            opFileChoseImage.InitialDirectory = @"C:\";
+            if (opFileChoseImage.ShowDialog() == DialogResult.OK)
+            {
+                label1.Text = "" + opFileChoseImage.FileName + "";
+            }
         }
 
         private void MultipleChoiceEditor_Load(object sender, EventArgs e)
@@ -58,6 +63,18 @@ namespace PresentationLayer.QuestionEditor
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btMoreAnswer_Click(object sender, EventArgs e)
+        {
+            tbListAnswer.SuspendLayout();
+            Item itemLayout = new Item();
+            itemLayout.Location = new Point(0, itemLayout.Height);
+            itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
+            itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+            tbListAnswer.Controls.Add(itemLayout);
+            tbListAnswer.ResumeLayout();
 
         }
     }
