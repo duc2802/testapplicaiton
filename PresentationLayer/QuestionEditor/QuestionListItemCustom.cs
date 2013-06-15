@@ -282,5 +282,11 @@ namespace PresentationLayer.QuestionEditor
             OnUpdate(DataItem.IdQuestion);
         }
         #endregion
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            MultipleChoiceEditor test = new MultipleChoiceEditor();
+            test.Show();
+        }
     }
 }
