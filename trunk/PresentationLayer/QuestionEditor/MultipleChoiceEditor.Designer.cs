@@ -28,97 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tbQuestionContent = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lbExplain = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.opFileChoseImage = new System.Windows.Forms.OpenFileDialog();
+            this.lbImportImage = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbAnswer = new System.Windows.Forms.Label();
             this.tbListAnswer = new System.Windows.Forms.TableLayoutPanel();
-            this.btAddMoreAnswer = new DevComponents.DotNetBar.ButtonX();
-            this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btOK = new DevComponents.DotNetBar.ButtonX();
-            this.btCancel = new DevComponents.DotNetBar.ButtonX();
-            this.groupPanel1.SuspendLayout();
-            this.groupPanel2.SuspendLayout();
-            this.groupPanel3.SuspendLayout();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btCreate = new System.Windows.Forms.Button();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.btMoreAnswer = new System.Windows.Forms.Button();
+            this.lbQuestion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // groupPanel1
+            // lbExplain
             // 
-            this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbExplain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbExplain.AutoSize = true;
+            this.lbExplain.Location = new System.Drawing.Point(12, 331);
+            this.lbExplain.Name = "lbExplain";
+            this.lbExplain.Size = new System.Drawing.Size(41, 13);
+            this.lbExplain.TabIndex = 0;
+            this.lbExplain.Text = "Explain";
+            this.lbExplain.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.tbQuestionContent);
-            this.groupPanel1.Location = new System.Drawing.Point(16, 28);
-            this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(504, 134);
+            this.textBox1.Location = new System.Drawing.Point(87, 34);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(396, 129);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // opFileChoseImage
             // 
+            this.opFileChoseImage.FileName = "openFileDialog1";
             // 
-            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel1.Style.BackColorGradientAngle = 90;
-            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderBottomWidth = 1;
-            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderLeftWidth = 1;
-            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderRightWidth = 1;
-            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderTopWidth = 1;
-            this.groupPanel1.Style.CornerDiameter = 4;
-            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            this.groupPanel1.TabIndex = 0;
-            this.groupPanel1.Text = "Question";
+            // lbImportImage
             // 
-            // tbQuestionContent
+            this.lbImportImage.AutoSize = true;
+            this.lbImportImage.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lbImportImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbImportImage.Location = new System.Drawing.Point(12, 79);
+            this.lbImportImage.Name = "lbImportImage";
+            this.lbImportImage.Size = new System.Drawing.Size(68, 13);
+            this.lbImportImage.TabIndex = 2;
+            this.lbImportImage.Text = "Import Image";
+            this.lbImportImage.Click += new System.EventHandler(this.label2_Click);
             // 
-            this.tbQuestionContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbQuestionContent.Location = new System.Drawing.Point(4, 4);
-            this.tbQuestionContent.Name = "tbQuestionContent";
-            this.tbQuestionContent.Size = new System.Drawing.Size(484, 102);
-            this.tbQuestionContent.TabIndex = 0;
-            this.tbQuestionContent.TextChanged += new System.EventHandler(this.tbQuestionContent_TextChanged);
+            // label1
             // 
-            // groupPanel2
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Location = new System.Drawing.Point(84, 166);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "imagName";
             // 
-            this.groupPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupPanel2.AutoSize = true;
-            this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.tbListAnswer);
-            this.groupPanel2.Controls.Add(this.btAddMoreAnswer);
-            this.groupPanel2.Location = new System.Drawing.Point(16, 179);
-            this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(508, 116);
+            // lbAnswer
             // 
-            // 
-            // 
-            this.groupPanel2.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel2.Style.BackColorGradientAngle = 90;
-            this.groupPanel2.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel2.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel2.Style.BorderBottomWidth = 1;
-            this.groupPanel2.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel2.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel2.Style.BorderLeftWidth = 1;
-            this.groupPanel2.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel2.Style.BorderRightWidth = 1;
-            this.groupPanel2.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel2.Style.BorderTopWidth = 1;
-            this.groupPanel2.Style.CornerDiameter = 4;
-            this.groupPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel2.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel2.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel2.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            this.groupPanel2.TabIndex = 1;
-            this.groupPanel2.Text = "Answers";
+            this.lbAnswer.AutoSize = true;
+            this.lbAnswer.Location = new System.Drawing.Point(12, 197);
+            this.lbAnswer.Name = "lbAnswer";
+            this.lbAnswer.Size = new System.Drawing.Size(47, 13);
+            this.lbAnswer.TabIndex = 0;
+            this.lbAnswer.Text = "Answers";
+            this.lbAnswer.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbListAnswer
             // 
@@ -127,108 +107,82 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 405F));
-            this.tbListAnswer.Location = new System.Drawing.Point(13, 4);
+            this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tbListAnswer.Location = new System.Drawing.Point(87, 197);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(405, 88);
-            this.tbListAnswer.TabIndex = 5;
+            this.tbListAnswer.Size = new System.Drawing.Size(392, 117);
+            this.tbListAnswer.TabIndex = 4;
             // 
-            // btAddMoreAnswer
+            // textBox2
             // 
-            this.btAddMoreAnswer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btAddMoreAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAddMoreAnswer.Location = new System.Drawing.Point(431, 10);
-            this.btAddMoreAnswer.Name = "btAddMoreAnswer";
-            this.btAddMoreAnswer.Size = new System.Drawing.Size(66, 23);
-            this.btAddMoreAnswer.TabIndex = 4;
-            this.btAddMoreAnswer.Text = "More..";
-            // 
-            // groupPanel3
-            // 
-            this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel3.Controls.Add(this.textBoxX3);
-            this.groupPanel3.Location = new System.Drawing.Point(16, 317);
-            this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.groupPanel3.Size = new System.Drawing.Size(508, 135);
+            this.textBox2.Location = new System.Drawing.Point(87, 331);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(396, 94);
+            this.textBox2.TabIndex = 5;
             // 
+            // btCreate
             // 
-            // 
-            this.groupPanel3.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel3.Style.BackColorGradientAngle = 90;
-            this.groupPanel3.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel3.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel3.Style.BorderBottomWidth = 1;
-            this.groupPanel3.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel3.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel3.Style.BorderLeftWidth = 1;
-            this.groupPanel3.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel3.Style.BorderRightWidth = 1;
-            this.groupPanel3.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel3.Style.BorderTopWidth = 1;
-            this.groupPanel3.Style.CornerDiameter = 4;
-            this.groupPanel3.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel3.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel3.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel3.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            this.groupPanel3.TabIndex = 2;
-            this.groupPanel3.Text = "Explain";
-            // 
-            // textBoxX3
-            // 
-            this.textBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Location = new System.Drawing.Point(13, 13);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(478, 88);
-            this.textBoxX3.TabIndex = 0;
-            this.textBoxX3.TextChanged += new System.EventHandler(this.textBoxX3_TextChanged);
-            // 
-            // btOK
-            // 
-            this.btOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btOK.Location = new System.Drawing.Point(446, 458);
-            this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(75, 23);
-            this.btOK.TabIndex = 3;
-            this.btOK.Text = "Done";
+            this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCreate.Location = new System.Drawing.Point(411, 438);
+            this.btCreate.Name = "btCreate";
+            this.btCreate.Size = new System.Drawing.Size(68, 23);
+            this.btCreate.TabIndex = 6;
+            this.btCreate.Text = "Create";
+            this.btCreate.UseVisualStyleBackColor = true;
             // 
             // btCancel
             // 
-            this.btCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancel.Location = new System.Drawing.Point(352, 458);
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.Location = new System.Drawing.Point(330, 438);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
-            this.btCancel.TabIndex = 4;
+            this.btCancel.TabIndex = 7;
             this.btCancel.Text = "Cancel";
+            this.btCancel.UseVisualStyleBackColor = true;
+            // 
+            // btMoreAnswer
+            // 
+            this.btMoreAnswer.Location = new System.Drawing.Point(15, 224);
+            this.btMoreAnswer.Name = "btMoreAnswer";
+            this.btMoreAnswer.Size = new System.Drawing.Size(49, 23);
+            this.btMoreAnswer.TabIndex = 8;
+            this.btMoreAnswer.Text = "More..";
+            this.btMoreAnswer.UseVisualStyleBackColor = true;
+            // 
+            // lbQuestion
+            // 
+            this.lbQuestion.AutoSize = true;
+            this.lbQuestion.Location = new System.Drawing.Point(15, 34);
+            this.lbQuestion.Name = "lbQuestion";
+            this.lbQuestion.Size = new System.Drawing.Size(49, 13);
+            this.lbQuestion.TabIndex = 0;
+            this.lbQuestion.Text = "Question";
+            this.lbQuestion.Click += new System.EventHandler(this.label1_Click);
             // 
             // MultipleChoiceEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(536, 495);
+            this.ClientSize = new System.Drawing.Size(506, 473);
+            this.Controls.Add(this.btMoreAnswer);
             this.Controls.Add(this.btCancel);
-            this.Controls.Add(this.btOK);
-            this.Controls.Add(this.groupPanel3);
-            this.Controls.Add(this.groupPanel2);
-            this.Controls.Add(this.groupPanel1);
+            this.Controls.Add(this.btCreate);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbListAnswer);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbImportImage);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lbAnswer);
+            this.Controls.Add(this.lbQuestion);
+            this.Controls.Add(this.lbExplain);
             this.Name = "MultipleChoiceEditor";
             this.Text = "MultipleChoiceEditor";
-            this.groupPanel1.ResumeLayout(false);
-            this.groupPanel2.ResumeLayout(false);
-            this.groupPanel2.PerformLayout();
-            this.groupPanel3.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.MultipleChoiceEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,14 +190,18 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbQuestionContent;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel3;
-        private DevComponents.DotNetBar.ButtonX btAddMoreAnswer;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
-        private DevComponents.DotNetBar.ButtonX btOK;
-        private DevComponents.DotNetBar.ButtonX btCancel;
+        private System.Windows.Forms.Label lbExplain;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.OpenFileDialog opFileChoseImage;
+        private System.Windows.Forms.Label lbImportImage;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbAnswer;
         private System.Windows.Forms.TableLayoutPanel tbListAnswer;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btCreate;
+        private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btMoreAnswer;
+        private System.Windows.Forms.Label lbQuestion;
+
     }
 }

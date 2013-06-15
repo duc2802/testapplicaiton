@@ -35,6 +35,7 @@
             // 
             this.questionPanel.AutoScroll = true;
             this.questionPanel.AutoSize = true;
+            this.questionPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.questionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.questionPanel.Location = new System.Drawing.Point(0, 0);
             this.questionPanel.Name = "questionPanel";
@@ -43,13 +44,14 @@
             // 
             // QuestionListPanel
             // 
-            this.DoubleBuffered = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.questionPanel);
+            this.DoubleBuffered = true;
             this.Name = "QuestionListPanel";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
