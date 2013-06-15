@@ -28,57 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbItemNumer = new DevComponents.DotNetBar.LabelX();
-            this.cbResultItem = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.tbItemContent = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.orderAnswer = new System.Windows.Forms.Label();
+            this.cbTrue = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lbItemNumer
+            // orderAnswer
             // 
-            this.lbItemNumer.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbItemNumer.Location = new System.Drawing.Point(22, 14);
-            this.lbItemNumer.Name = "lbItemNumer";
-            this.lbItemNumer.Size = new System.Drawing.Size(23, 23);
-            this.lbItemNumer.TabIndex = 0;
-            this.lbItemNumer.Text = "<b>1</b>";
-            this.lbItemNumer.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.orderAnswer.AutoSize = true;
+            this.orderAnswer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.orderAnswer.Location = new System.Drawing.Point(18, 16);
+            this.orderAnswer.Name = "orderAnswer";
+            this.orderAnswer.Size = new System.Drawing.Size(15, 15);
+            this.orderAnswer.TabIndex = 3;
+            this.orderAnswer.Text = "1";
             // 
-            // cbResultItem
+            // cbTrue
             // 
-            this.cbResultItem.Location = new System.Drawing.Point(310, 14);
-            this.cbResultItem.Name = "cbResultItem";
-            this.cbResultItem.Size = new System.Drawing.Size(53, 23);
-            this.cbResultItem.TabIndex = 1;
-            this.cbResultItem.Text = "True";
+            this.cbTrue.AutoSize = true;
+            this.cbTrue.Location = new System.Drawing.Point(315, 16);
+            this.cbTrue.Name = "cbTrue";
+            this.cbTrue.Size = new System.Drawing.Size(48, 17);
+            this.cbTrue.TabIndex = 4;
+            this.cbTrue.Text = "True";
+            this.cbTrue.UseVisualStyleBackColor = true;
             // 
-            // tbItemContent
+            // textBox1
             // 
-            // 
-            // 
-            // 
-            this.tbItemContent.Border.Class = "TextBoxBorder";
-            this.tbItemContent.Location = new System.Drawing.Point(65, 14);
-            this.tbItemContent.Name = "tbItemContent";
-            this.tbItemContent.Size = new System.Drawing.Size(239, 23);
-            this.tbItemContent.TabIndex = 2;
+            this.textBox1.Location = new System.Drawing.Point(45, 14);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(264, 20);
+            this.textBox1.TabIndex = 5;
             // 
             // Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tbItemContent);
-            this.Controls.Add(this.cbResultItem);
-            this.Controls.Add(this.lbItemNumer);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cbTrue);
+            this.Controls.Add(this.orderAnswer);
             this.Name = "Item";
             this.Size = new System.Drawing.Size(366, 50);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.LabelX lbItemNumer;
-        private DevComponents.DotNetBar.Controls.CheckBoxX cbResultItem;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbItemContent;
+        private System.Windows.Forms.Label orderAnswer;
+        private System.Windows.Forms.CheckBox cbTrue;
+        private System.Windows.Forms.TextBox textBox1;
+
     }
 }
