@@ -127,7 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 403F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 405F));
             this.tbListAnswer.Location = new System.Drawing.Point(13, 4);
             this.tbListAnswer.Name = "tbListAnswer";
             this.tbListAnswer.Size = new System.Drawing.Size(405, 88);
@@ -136,7 +136,7 @@
             // btAddMoreAnswer
             // 
             this.btAddMoreAnswer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btAddMoreAnswer.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btAddMoreAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btAddMoreAnswer.Location = new System.Drawing.Point(431, 10);
             this.btAddMoreAnswer.Name = "btAddMoreAnswer";
             this.btAddMoreAnswer.Size = new System.Drawing.Size(66, 23);
@@ -145,7 +145,7 @@
             // 
             // groupPanel3
             // 
-            this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -179,7 +179,8 @@
             // 
             // textBoxX3
             // 
-            this.textBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
