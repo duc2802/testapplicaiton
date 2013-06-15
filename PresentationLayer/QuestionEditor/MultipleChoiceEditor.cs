@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.QuestionEditor
 {
-    public partial class MultipleChoiceEditor : DevComponents.DotNetBar.Office2007RibbonForm
+    public partial class MultipleChoiceEditor : Form
     {
         public MultipleChoiceEditor()
         {
@@ -18,17 +18,17 @@ namespace PresentationLayer.QuestionEditor
         }
         private void InitCommonGui()
         {
-            //Load for answer content
             tbListAnswer.SuspendLayout();
-            for (int idx = 0; idx < 5; idx++)
+            for (int idx = 0; idx < 2; idx++)
             {
-                AnswerItem itemLayout = new AnswerItem("Test", "test", "test");
+                Item itemLayout = new Item();
                 itemLayout.Location = new Point(0, idx * itemLayout.Height);
                 itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
                 itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
                 tbListAnswer.Controls.Add(itemLayout);
             }
             tbListAnswer.ResumeLayout();
+           
         }
 
         private void tbQuestionContent_TextChanged(object sender, EventArgs e)
@@ -37,6 +37,26 @@ namespace PresentationLayer.QuestionEditor
         }
 
         private void textBoxX3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            opFileChoseImage.ShowDialog();
+        }
+
+        private void MultipleChoiceEditor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
