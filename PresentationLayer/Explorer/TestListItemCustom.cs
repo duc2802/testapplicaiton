@@ -34,12 +34,17 @@ namespace PresentationLayer.Explorer
 
         private void InitEvent()
         {
+            //Event 
             GotFocus += ListTestItemCustomGotFocus;
+            Leave += ListTestItemCustomLeave;
+            Click += ListTestItemCustomClick;
+
+            //Component Event.
             titleLabel.Click += ListTestItemCustomClick;
             titleTextValue.Click += ListTestItemCustomClick;
             dateTextValue.Click += ListTestItemCustomClick;
             noteTextValue.Click += ListTestItemCustomClick;
-            Leave += ListTestItemCustomLeave;
+
         }
 
         #region Register Event

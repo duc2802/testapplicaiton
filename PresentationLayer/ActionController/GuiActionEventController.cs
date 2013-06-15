@@ -166,6 +166,50 @@ namespace PresentationLayer.ActionController
 
         #endregion End event add question to test.
 
+        #region Event clear question item on list panel
+
+        private readonly object _clearAllQuestionItemLocker = new object();
+        private ActionEventHandler _clearAllQuestionItemEvent;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ActionEventHandler ClearAllQuestionItem
+        {
+            add
+            {
+                lock (_clearAllQuestionItemLocker)
+                {
+                    _clearAllQuestionItemEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_clearAllQuestionItemLocker)
+                {
+                    _clearAllQuestionItemEvent -= value;
+                }
+            }
+        }
+
+        public void OnClearAllQuestionItem()
+        {
+            ActionEventHandler handler = _clearAllQuestionItemEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        #endregion End event clear question item on list panel
+
         #endregion
     }
 }

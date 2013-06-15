@@ -10,6 +10,7 @@ namespace PresentationLayer.QuestionEditor
     public partial class QuestionListPanel : UserControl
     {
         private QuestionDataController _dataController;
+        private Point _originalPoint = Point.Empty;
 
         public QuestionListPanel()
         {
@@ -22,6 +23,11 @@ namespace PresentationLayer.QuestionEditor
         {
             Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
             Singleton<GuiActionEventController>.Instance.AddQuestionItem += OnAddQuestionItem;
+            Singleton<GuiActionEventController>.Instance.ClearAllQuestionItem += ClearAllQuestionItem;
+
+            questionPanel.DragDrop += QuestionPanelDragDrop;
+            questionPanel.DragOver += QuestionPanelDragOver;
+            questionPanel.DragEnter += QuestionPanelDragEnter;
         }
 
         private void InitGui()
@@ -43,9 +49,14 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        private void UpdateEditor(int id)
+        private void UpdateEditor(int idTest)
         {
-            MessageBox.Show(this, id.ToString(), "Test");
+            questionPanel.SuspendLayout();
+            _dataController.DataItems.Clear();
+            _dataController.IdTest = idTest;
+            questionPanel.Controls.Clear();
+            FillQuestionItem();
+            questionPanel.ResumeLayout(true);
         }
 
         private QuestionListItemCustom CreateQuestionItem(QuestionDataItem questionData)
@@ -53,6 +64,7 @@ namespace PresentationLayer.QuestionEditor
             var itemLayout = new QuestionListItemCustom(questionData);
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Update += ItemLayoutUpdate;
+            itemLayout.MouseDown += ItemLayoutMouseDown;
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             return itemLayout;
         }
@@ -116,6 +128,31 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.Refresh();
         }
 
+        private void ItemLayoutMouseDown(object sender, MouseEventArgs e)
+        {
+            _originalPoint = new Point(e.X, e.Y);
+            questionPanel.AllowDrop = true;
+            ((Control) sender).DoDragDrop(sender, DragDropEffects.All);
+        }
+
+        private void QuestionPanelDragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof (Button)))
+                e.Effect = DragDropEffects.All;
+        }
+
+        private void QuestionPanelDragOver(object sender, DragEventArgs e)
+        {
+            ((Control) e.Data.GetData(typeof (Button))).Location =
+                PointToClient(new Point(e.X - _originalPoint.X, e.Y - _originalPoint.Y));
+            ((Control) e.Data.GetData(typeof (Button))).BringToFront();
+        }
+
+        private void QuestionPanelDragDrop(object sender, DragEventArgs e)
+        {
+            ((Button) e.Data.GetData(typeof (Button))).BringToFront();
+        }
+
         #region Implement registed event
 
         private void ChangeTestId(object sender, int parameter)
@@ -140,6 +177,14 @@ namespace PresentationLayer.QuestionEditor
         private void ItemLayoutUpdate(object sender, int parameter)
         {
             UpdateQueationItem(parameter);
+        }
+
+        private void ClearAllQuestionItem(object sender)
+        {
+            questionPanel.SuspendLayout();
+            _dataController.DataItems.Clear();
+            questionPanel.Controls.Clear();
+            questionPanel.ResumeLayout(true);
         }
 
         #endregion
