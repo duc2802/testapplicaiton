@@ -11,6 +11,8 @@ namespace PresentationLayer.QuestionEditor.Data
     {
         public int Height { set; get; }
         public int IdQuestion { set; get; }
+        public string explain { set; get; }
+        public string imageName { set; get; }
 
         private int _orderQuestion;
         public int OrderQuestion

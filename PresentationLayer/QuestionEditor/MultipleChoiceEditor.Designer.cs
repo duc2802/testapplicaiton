@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lbExplain = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbQuestionContent = new System.Windows.Forms.TextBox();
             this.opFileChoseImage = new System.Windows.Forms.OpenFileDialog();
             this.lbImportImage = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,16 +53,16 @@
             this.lbExplain.Text = "Explain";
             this.lbExplain.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // tbQuestionContent
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbQuestionContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(87, 34);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(396, 129);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbQuestionContent.Location = new System.Drawing.Point(87, 34);
+            this.tbQuestionContent.Multiline = true;
+            this.tbQuestionContent.Name = "tbQuestionContent";
+            this.tbQuestionContent.Size = new System.Drawing.Size(396, 129);
+            this.tbQuestionContent.TabIndex = 1;
+            this.tbQuestionContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // opFileChoseImage
             // 
@@ -85,7 +85,6 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(84, 166);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
@@ -109,10 +108,10 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tbListAnswer.Location = new System.Drawing.Point(87, 197);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(392, 117);
+            this.tbListAnswer.Size = new System.Drawing.Size(404, 117);
             this.tbListAnswer.TabIndex = 4;
             // 
             // textBox2
@@ -153,7 +152,6 @@
             this.btMoreAnswer.TabIndex = 8;
             this.btMoreAnswer.Text = "More..";
             this.btMoreAnswer.UseVisualStyleBackColor = true;
-            this.btMoreAnswer.Click += new System.EventHandler(this.btMoreAnswer_Click);
             // 
             // lbQuestion
             // 
@@ -178,12 +176,11 @@
             this.Controls.Add(this.tbListAnswer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbImportImage);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbQuestionContent);
             this.Controls.Add(this.lbAnswer);
             this.Controls.Add(this.lbQuestion);
             this.Controls.Add(this.lbExplain);
             this.Name = "MultipleChoiceEditor";
-            this.Text = "MultipleChoiceEditor";
             this.Load += new System.EventHandler(this.MultipleChoiceEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -193,7 +190,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbExplain;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbQuestionContent;
         private System.Windows.Forms.OpenFileDialog opFileChoseImage;
         private System.Windows.Forms.Label lbImportImage;
         private System.Windows.Forms.Label label1;

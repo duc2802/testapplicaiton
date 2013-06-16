@@ -3,19 +3,56 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using Commons;
+using Commons.BusinessObjects;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PresentationLayer.QuestionEditor.Data;
 
 namespace PresentationLayer.QuestionEditor
 {
     public partial class MultipleChoiceEditor : Form
     {
+        private QuestionDataItem _dataItem;
         public MultipleChoiceEditor()
         {
             InitializeComponent();
+            InitEvent();
             InitCommonGui();
         }
+
+        public MultipleChoiceEditor(QuestionDataItem question)
+        {
+            InitializeComponent();
+            InitEvent();
+            InitCommonGui(question);
+        }
+
+        private void InitEvent()
+        {
+            // Add answer Events.
+            btMoreAnswer.Click += MoreAnswerButtonClick;
+        }
+
+        private void MoreAnswerButtonClick(object sender, EventArgs e)
+        {
+            Item itemLayout=null;
+            AnswerDataItem newItem = null;
+            tbListAnswer.SuspendLayout();
+            int oderNumber = 1;
+            if (_dataItem != null)
+                oderNumber = _dataItem.AnswerData.AnswerData.Count + 1;
+            newItem = new AnswerDataItem(oderNumber,"",false);
+            _dataItem.AnswerData.AnswerData.Add(newItem);
+            itemLayout = new Item(newItem, oderNumber);
+            itemLayout.Location = new Point(0, itemLayout.Height);
+            itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
+            itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+            tbListAnswer.Controls.Add(itemLayout);
+            tbListAnswer.ResumeLayout();
+        }
+
         private void InitCommonGui()
         {
             tbListAnswer.SuspendLayout();
@@ -29,6 +66,87 @@ namespace PresentationLayer.QuestionEditor
             }
             tbListAnswer.ResumeLayout();
            
+        }
+
+        private void InitCommonGui(QuestionDataItem questionData)
+        {
+            DataItem = questionData;
+            DataItem.PropertyChanged += DataItemPropertyChanged;
+        }
+
+        private void DataItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new ActionEventHandler<PropertyChangedEventArgs>(DataItemPropertyChanged), sender, e);
+                return;
+            }
+            if (e.PropertyName.Equals("OrderAnswer"))
+            {
+                this.Text = DataItem.OrderQuestion.ToString();
+            }
+            else if (true)
+            {
+
+            }
+            OnUpdate(DataItem.IdQuestion);
+        }
+
+        public QuestionDataItem DataItem
+        {
+            set
+            {
+                _dataItem = value;
+                Name = _dataItem.IdQuestion.ToString();
+                OnDataItemChanged();
+            }
+            get { return _dataItem; }
+        }
+
+        private void OnDataItemChanged()
+        {
+            tbQuestionContent.Text = DataItem.ContentQuestion;
+            this.Text ="Question "+ DataItem.OrderQuestion.ToString();
+            if (DataItem.imageName != null)
+            {
+                label1.Text = "Click here to view image";
+                label1.MouseClick += ShowImageofQuestion;
+                label1.Visible = true;
+            }
+            AddAnswerOptions();
+        }
+
+        private void ShowImageofQuestion(object sender, EventArgs e)
+        {
+            //Load image in new form
+            Graphics g = this.CreateGraphics();
+            Rectangle rect = new Rectangle(50, 30, 100, 100);
+            Bitmap image = new Bitmap("c:\\test.jpg");
+            Point p = new Point(10, 10);
+            g.DrawImage(image, p);
+            g.Dispose();
+            
+        }
+
+        private void AddAnswerOptions()
+        {
+            int i = 1;
+            foreach (AnswerDataItem answerItem in DataItem.AnswerData.AnswerData)
+            {
+                AddNewLine(answerItem, i);
+                i++;
+            }
+        }
+
+        private void AddNewLine(AnswerDataItem item, int orderNumber)
+        {
+            tbListAnswer.SuspendLayout();
+            Item itemLayout = new Item(item,orderNumber);
+            itemLayout.Location = new Point(0, itemLayout.Height);
+            itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
+            itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+            tbListAnswer.Controls.Add(itemLayout);
+            tbListAnswer.ResumeLayout();
         }
 
         private void tbQuestionContent_TextChanged(object sender, EventArgs e)
@@ -66,16 +184,82 @@ namespace PresentationLayer.QuestionEditor
 
         }
 
-        private void btMoreAnswer_Click(object sender, EventArgs e)
+       
+        #region Trigger Event
+        public event ActionEventHandler<int> Delete
         {
-            tbListAnswer.SuspendLayout();
-            Item itemLayout = new Item();
-            itemLayout.Location = new Point(0, itemLayout.Height);
-            itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
-            tbListAnswer.Controls.Add(itemLayout);
-            tbListAnswer.ResumeLayout();
-
+            add
+            {
+                lock (_deleteEventLocker)
+                {
+                    _deleteEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_deleteEventLocker)
+                {
+                    _deleteEvent -= value;
+                }
+            }
         }
+
+        private ActionEventHandler<int> _deleteEvent;
+        private readonly object _deleteEventLocker = new object();
+
+        private void OnDelete(int idQuestion)
+        {
+            ActionEventHandler<int> handler = _deleteEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, idQuestion);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        public event ActionEventHandler<int> Update
+        {
+            add
+            {
+                lock (_updateEventLocker)
+                {
+                    _updateEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_updateEventLocker)
+                {
+                    _updateEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<int> _updateEvent;
+        private readonly object _updateEventLocker = new object();
+
+        private void OnUpdate(int idQuestion)
+        {
+            ActionEventHandler<int> handler = _updateEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, idQuestion);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        #endregion 
     }
 }

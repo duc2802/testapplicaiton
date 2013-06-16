@@ -106,6 +106,7 @@ namespace PresentationLayer.QuestionEditor.Data
                 dataItem.ContentQuestion = "Which one of the five is least like the other four?" ;
                 dataItem.IdQuestion = i;
                 dataItem.OrderQuestion = i;
+                dataItem.imageName = "test";
                 var answerController = new AnswerDataController(i);
                 for (int j = 1; j <= 4; j++)
                 {
