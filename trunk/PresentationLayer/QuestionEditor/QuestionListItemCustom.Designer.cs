@@ -75,6 +75,7 @@ namespace PresentationLayer.QuestionEditor
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Del";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // editButton
             // 

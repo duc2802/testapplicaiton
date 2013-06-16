@@ -7,7 +7,7 @@ namespace PresentationLayer.QuestionEditor.Data
 {
     public class AnswerDataController
     {
-        public int IdQuestion { set; get; }
+        public int IdQuestion{ set; get; }
 
         private List<AnswerDataItem> _answerData;
         public List<AnswerDataItem> AnswerData
@@ -22,9 +22,9 @@ namespace PresentationLayer.QuestionEditor.Data
             InitEvent();
         }
 
-        private void Initialize(int idQuestion)
+        private void Initialize(int IdAnswer)
         {
-            this.IdQuestion = idQuestion;
+            this.IdQuestion = IdAnswer;
             this._answerData = new List<AnswerDataItem>();
         }
 

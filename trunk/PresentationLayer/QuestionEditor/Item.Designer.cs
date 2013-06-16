@@ -30,7 +30,8 @@
         {
             this.orderAnswer = new System.Windows.Forms.Label();
             this.cbTrue = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbAnswerContent = new System.Windows.Forms.TextBox();
+            this.btDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // orderAnswer
@@ -53,22 +54,35 @@
             this.cbTrue.Text = "True";
             this.cbTrue.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tbAnswerContent
             // 
-            this.textBox1.Location = new System.Drawing.Point(45, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(264, 20);
-            this.textBox1.TabIndex = 5;
+            this.tbAnswerContent.Location = new System.Drawing.Point(45, 14);
+            this.tbAnswerContent.Name = "tbAnswerContent";
+            this.tbAnswerContent.Size = new System.Drawing.Size(264, 20);
+            this.tbAnswerContent.TabIndex = 5;
+            // 
+            // btDelete
+            // 
+            this.btDelete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDelete.Location = new System.Drawing.Point(361, 11);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(21, 23);
+            this.btDelete.TabIndex = 6;
+            this.btDelete.Text = "X";
+            this.btDelete.UseVisualStyleBackColor = true;
             // 
             // Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btDelete);
+            this.Controls.Add(this.tbAnswerContent);
             this.Controls.Add(this.cbTrue);
             this.Controls.Add(this.orderAnswer);
             this.Name = "Item";
-            this.Size = new System.Drawing.Size(366, 50);
+            this.Size = new System.Drawing.Size(385, 47);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,7 +92,8 @@
 
         private System.Windows.Forms.Label orderAnswer;
         private System.Windows.Forms.CheckBox cbTrue;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbAnswerContent;
+        private System.Windows.Forms.Button btDelete;
 
     }
 }
