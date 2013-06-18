@@ -70,7 +70,7 @@ namespace PresentationLayer.QuestionEditor
             }
             if (e.PropertyName.Equals("OrderAnswer"))
             {
-                orderAnswer.Text = DataItem.OrderAnswer.ToString();
+                orderAnswer.Text = DataItem.orderAnswer.ToString();
             }
             else if (true)
             {

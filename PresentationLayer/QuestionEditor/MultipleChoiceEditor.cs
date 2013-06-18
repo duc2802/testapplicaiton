@@ -46,6 +46,7 @@ namespace PresentationLayer.QuestionEditor
             newItem = new AnswerDataItem(oderNumber,"",false);
             _dataItem.AnswerData.AnswerData.Add(newItem);
             itemLayout = new Item(newItem, oderNumber);
+            itemLayout.DataItem.orderAnswer = oderNumber;
             itemLayout.Location = new Point(0, itemLayout.Height);
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
             itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
@@ -142,11 +143,38 @@ namespace PresentationLayer.QuestionEditor
         {
             tbListAnswer.SuspendLayout();
             Item itemLayout = new Item(item,orderNumber);
+            itemLayout.Delete += ItemLayoutDelete;
+            itemLayout.DataItem.OrderAnswer = orderNumber;
+            itemLayout.DataItem.orderAnswer = orderNumber;
+            //itemLayout.Update += ItemLayoutUpdate;
             itemLayout.Location = new Point(0, itemLayout.Height);
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
             itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
             tbListAnswer.ResumeLayout();
+        }
+
+        private void ItemLayoutDelete(object sender, int parameter)
+        {
+            DeleteQuestionItem(parameter);
+        }
+        private void ItemLayoutUpdate(object sender, int parameter)
+        {
+            UpdateQueationItem(parameter);
+        }
+
+        private void UpdateQueationItem(int orderAnswer)
+        {
+            var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
+            if (item != null)
+            {
+                item.Refresh();
+                tbListAnswer.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(this, "Update Error", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void tbQuestionContent_TextChanged(object sender, EventArgs e)
@@ -182,6 +210,39 @@ namespace PresentationLayer.QuestionEditor
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void DeleteQuestionItem(int orderAnswer)
+        {
+            tbListAnswer.SuspendLayout();
+            var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
+            if (item != null)
+            {
+                int idx = tbListAnswer.Controls.IndexOf(item);
+                tbListAnswer.Controls.Remove(item);
+                tbListAnswer.RowStyles.RemoveAt(idx);
+                tbListAnswer.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(this, "Delete Error", "Error", MessageBoxButtons.OK);
+            }
+            UpdateAllDataItem();
+            tbListAnswer.ResumeLayout();
+            Refresh();
+        }
+
+        private void UpdateAllDataItem()
+        {
+            for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
+            {
+                var item = tbListAnswer.Controls[idx] as Item;
+                if (item != null)
+                {
+                    item.DataItem.OrderAnswer = idx + 1;
+                }
+            }
+            tbListAnswer.Refresh();
         }
 
        
