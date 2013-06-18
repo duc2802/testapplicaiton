@@ -15,6 +15,18 @@ namespace PresentationLayer.QuestionEditor
     public partial class Item : UserControl
     {
         private AnswerDataItem _dataItem;
+        public AnswerDataItem DataItem
+        {
+            set
+            {
+                _dataItem = value;
+                Name = _dataItem.orderAnswer.ToString();
+                OnDataItemChanged();
+            }
+            get { return _dataItem; }
+        }
+      
+
         public Item()
         {
             InitializeComponent();
@@ -38,7 +50,7 @@ namespace PresentationLayer.QuestionEditor
                                          MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                OnDelete(this._dataItem.orderAnswer);
+                OnDelete(this.DataItem.orderAnswer);
             }
         }
 
@@ -97,18 +109,10 @@ namespace PresentationLayer.QuestionEditor
                 }
             }
         }
-        public AnswerDataItem DataItem
-        {
-            set
-            {
-                _dataItem = value;
-                OnDataItemChanged();
-            }
-            get { return _dataItem; }
-        }
 
         private void OnDataItemChanged()
         {
+
             tbAnswerContent.Text = DataItem.ContentAnswer;
             orderAnswer.Text = DataItem.orderAnswer.ToString();
         }
