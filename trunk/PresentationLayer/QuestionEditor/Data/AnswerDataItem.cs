@@ -15,18 +15,6 @@ namespace PresentationLayer.QuestionEditor.Data
         public bool isAnswer { set; get; }
         public bool isTrue { set; get; }
 
-        public int OrderQuestion
-        {
-            set
-            {
-                orderAnswer = value;
-                OnPropertyChanged("OrderAnswer");
-            }
-            get
-            {
-                return orderAnswer;
-            }
-        }
         public AnswerDataItem()
         {
             
