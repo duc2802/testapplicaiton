@@ -41,12 +41,13 @@ namespace PresentationLayer.QuestionEditor
             AnswerDataItem newItem = null;
             tbListAnswer.SuspendLayout();
             int oderNumber = 1;
-            if (_dataItem != null)
-                oderNumber = _dataItem.AnswerData.AnswerData.Count + 1;
+            if (DataItem != null)
+                oderNumber =DataItem.AnswerData.AnswerData.Count + 1;
             newItem = new AnswerDataItem(oderNumber,"",false);
-            _dataItem.AnswerData.AnswerData.Add(newItem);
+            DataItem.AnswerData.AnswerData.Add(newItem);
             itemLayout = new Item(newItem, oderNumber);
             itemLayout.DataItem.orderAnswer = oderNumber;
+            itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Location = new Point(0, itemLayout.Height);
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
             itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
@@ -156,14 +157,14 @@ namespace PresentationLayer.QuestionEditor
 
         private void ItemLayoutDelete(object sender, int parameter)
         {
-            DeleteQuestionItem(parameter);
+            DeleteAnswerItem(parameter);
         }
         private void ItemLayoutUpdate(object sender, int parameter)
         {
-            UpdateQueationItem(parameter);
+            UpdateAnswerItem(parameter);
         }
 
-        private void UpdateQueationItem(int orderAnswer)
+        private void UpdateAnswerItem(int orderAnswer)
         {
             var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
             if (item != null)
@@ -212,7 +213,7 @@ namespace PresentationLayer.QuestionEditor
 
         }
 
-        private void DeleteQuestionItem(int orderAnswer)
+        private void DeleteAnswerItem(int orderAnswer)
         {
             tbListAnswer.SuspendLayout();
             var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
@@ -220,7 +221,6 @@ namespace PresentationLayer.QuestionEditor
             {
                 int idx = tbListAnswer.Controls.IndexOf(item);
                 tbListAnswer.Controls.Remove(item);
-                tbListAnswer.RowStyles.RemoveAt(idx);
                 tbListAnswer.Refresh();
             }
             else
@@ -229,7 +229,8 @@ namespace PresentationLayer.QuestionEditor
             }
             UpdateAllDataItem();
             tbListAnswer.ResumeLayout();
-            Refresh();
+            this.Refresh();
+            //Refresh();
         }
 
         private void UpdateAllDataItem()

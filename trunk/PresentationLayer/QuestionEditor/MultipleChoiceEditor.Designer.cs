@@ -108,10 +108,10 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 404F));
             this.tbListAnswer.Location = new System.Drawing.Point(87, 197);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(406, 117);
+            this.tbListAnswer.Size = new System.Drawing.Size(408, 117);
             this.tbListAnswer.TabIndex = 4;
             // 
             // textBox2
