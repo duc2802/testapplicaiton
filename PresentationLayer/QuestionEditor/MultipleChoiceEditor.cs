@@ -15,6 +15,8 @@ namespace PresentationLayer.QuestionEditor
     public partial class MultipleChoiceEditor : Form
     {
         private QuestionDataItem _dataItem;
+        private int MAX_SHOW_ITEM = 6;
+
         public MultipleChoiceEditor()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace PresentationLayer.QuestionEditor
         private void InitEvent()
         {
             // Add answer Events.
-            btMoreAnswer.Click += MoreAnswerButtonClick;
+            btMoreAnswer.Click += MoreAnswerButtonClick;            
         }
 
         private void MoreAnswerButtonClick(object sender, EventArgs e)
@@ -41,8 +43,10 @@ namespace PresentationLayer.QuestionEditor
             AnswerDataItem newItem = null;
             tbListAnswer.SuspendLayout();
             int oderNumber = 1;
-            if (DataItem != null)
-                oderNumber =DataItem.AnswerData.AnswerData.Count + 1;
+            if (DataItem != null){
+                //oderNumber = DataItem.AnswerData.AnswerData.Count + 1;
+                oderNumber = tbListAnswer.Controls.Count + 1;
+            }
             newItem = new AnswerDataItem(oderNumber,"",false);
             DataItem.AnswerData.AnswerData.Add(newItem);
             itemLayout = new Item(newItem, oderNumber);
@@ -52,7 +56,15 @@ namespace PresentationLayer.QuestionEditor
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
             itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
+
+            // set at 6 item, if more than 6, scrollable
+            if (tbListAnswer.Controls.Count > MAX_SHOW_ITEM) 
+            {
+                tbListAnswer.AutoSize = false;
+            }
+
             tbListAnswer.ResumeLayout();
+
         }
 
         private void InitCommonGui()
@@ -66,8 +78,7 @@ namespace PresentationLayer.QuestionEditor
                 itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
                 tbListAnswer.Controls.Add(itemLayout);
             }
-            tbListAnswer.ResumeLayout();
-           
+            tbListAnswer.ResumeLayout();                      
         }
 
         private void InitCommonGui(QuestionDataItem questionData)
@@ -243,6 +254,7 @@ namespace PresentationLayer.QuestionEditor
                 if (item != null)
                 {
                     item.DataItem.OrderAnswer = idx + 1;
+                    item.Size = new Size(tbListAnswer.Width - 10, item.Height);
                 }   
             }
             tbListAnswer.Refresh();
