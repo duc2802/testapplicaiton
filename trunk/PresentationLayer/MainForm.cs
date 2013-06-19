@@ -4,6 +4,7 @@ using PresentationLayer.ActionController;
 using PresentationLayer.Explorer;
 using PresentationLayer.QuestionEditor;
 using PresentationLayer.QuestionEditor.Data;
+using PresentationLayer.ExamEditor;
 using PresentationLayer.Splash;
 using SingleInstanceObject;
 
@@ -78,7 +79,8 @@ namespace PresentationLayer
 
         private void NewExamButtonClick(object sender, EventArgs e)
         {
-
+            NewExam test = new NewExam();
+            test.Show();
         }
 
         #endregion

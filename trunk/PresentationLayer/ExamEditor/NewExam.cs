@@ -20,27 +20,50 @@ namespace PresentationLayer.ExamEditor
         public NewExam()
         {
             InitializeComponent();
+            InitGui();
             InitEvent();
         }
+
+
+        public void InitGui()
+        {
+            tbNumberQuestion.Focus();
+            btCreateExam.Hide();
+        }
+
         public void InitEvent() 
         {
             btCancel.Click += CancelNewExamButtonClick;
             btCreateExam.Click += CreateNewExamButtonClick;
+            tbNumberQuestion.KeyPress += tb_KeyPress;
         }
 
         private void CancelNewExamButtonClick(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
         private void CreateNewExamButtonClick(object sender, EventArgs e)
         {
             TestDataItem dataItem = new TestDataItem();
             dataItem.IdTest = 0;
+            dataItem.NumberQuestion = Int32.Parse(tbNumberQuestion.Text);
             dataItem.Name = tbNameExam.Text;
             dataItem.Time = Int32.Parse(tbTime.Text);
             dataItem.DateCreate = DateTime.Now;
-            Singleton<GuiActionEventController>.Instance.OnAddExamItem(dataItem);
+            Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
             }
+
+        private void tbNameExam_TextChanged(object sender, EventArgs e)
+        {
+            btCreateExam.Show();
+
         }
-    
+    }
+  
 }

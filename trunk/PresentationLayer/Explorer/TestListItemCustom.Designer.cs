@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbTimeExam = new System.Windows.Forms.Label();
             this.Minute = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -114,11 +115,23 @@
             this.Minute.TabIndex = 6;
             this.Minute.Text = "Minute";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Location = new System.Drawing.Point(225, 50);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(37, 23);
+            this.deleteButton.TabIndex = 7;
+            this.deleteButton.Text = "Del";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            // 
             // TestListItemCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.Minute);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbTimeExam;
         private System.Windows.Forms.Label Minute;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

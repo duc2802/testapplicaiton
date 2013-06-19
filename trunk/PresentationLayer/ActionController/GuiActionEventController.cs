@@ -1,6 +1,7 @@
 ﻿using System;
 using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
+using PresentationLayer.Explorer;
 
 namespace PresentationLayer.ActionController
 {
@@ -212,9 +213,43 @@ namespace PresentationLayer.ActionController
 
         #endregion
 
-        internal void OnAddExamItem(Explorer.TestDataItem dataItem)
+        private readonly object __addTestItemEventLocker = new object();
+        private ActionEventHandler<TestDataItem> _addTestDataItemEvent;
+
+        public event ActionEventHandler<TestDataItem> AddTestItem
         {
-            throw new NotImplementedException();
+            add
+            {
+                lock (__addTestItemEventLocker)
+                {
+                    _addTestDataItemEvent += value;
+                }
+            }
+            remove
+            {
+                lock (__addTestItemEventLocker)
+                {
+                    _addTestDataItemEvent -= value;
+                }
+            }
         }
+
+        internal void OnAddTestItem( TestDataItem dataItem)
+        {
+            ActionEventHandler<TestDataItem> handler = _addTestDataItemEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, dataItem);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+
     }
 }
