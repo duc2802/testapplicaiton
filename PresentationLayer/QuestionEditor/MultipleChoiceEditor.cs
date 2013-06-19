@@ -216,17 +216,19 @@ namespace PresentationLayer.QuestionEditor
         private void DeleteAnswerItem(int orderAnswer)
         {
             tbListAnswer.SuspendLayout();
+            tbListAnswer.Controls.RemoveAt(orderAnswer-1);            
+            /*
             var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
             if (item != null)
             {
                 int idx = tbListAnswer.Controls.IndexOf(item);
-                tbListAnswer.Controls.Remove(item);
+               
                 tbListAnswer.Refresh();
             }
             else
             {
                 MessageBox.Show(this, "Delete Error", "Error", MessageBoxButtons.OK);
-            }
+            }*/
             UpdateAllDataItem();
             tbListAnswer.ResumeLayout();
             this.Refresh();
@@ -241,7 +243,7 @@ namespace PresentationLayer.QuestionEditor
                 if (item != null)
                 {
                     item.DataItem.OrderAnswer = idx + 1;
-                }
+                }   
             }
             tbListAnswer.Refresh();
         }
