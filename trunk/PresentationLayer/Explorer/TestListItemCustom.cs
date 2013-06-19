@@ -27,9 +27,9 @@ namespace PresentationLayer.Explorer
 
         private void InitGui(TestDataItem data)
         {
-            titleTextValue.Text = data.Title;
+            lbNameExam.Text = data.Name;
             dateTextValue.Text = data.DateCreate.ToString();
-            noteTextValue.Text = "Comment here! ";
+            lbNumberQuestion.Text = "Comment here! ";
         }
 
         private void InitEvent()
@@ -41,9 +41,9 @@ namespace PresentationLayer.Explorer
 
             //Component Event.
             titleLabel.Click += ListTestItemCustomClick;
-            titleTextValue.Click += ListTestItemCustomClick;
+            lbNameExam.Click += ListTestItemCustomClick;
             dateTextValue.Click += ListTestItemCustomClick;
-            noteTextValue.Click += ListTestItemCustomClick;
+            lbNumberQuestion.Click += ListTestItemCustomClick;
 
         }
 
@@ -68,5 +68,6 @@ namespace PresentationLayer.Explorer
         }
 
         #endregion
+
     }
 }

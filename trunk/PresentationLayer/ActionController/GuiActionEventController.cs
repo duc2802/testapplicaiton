@@ -211,5 +211,10 @@ namespace PresentationLayer.ActionController
         #endregion End event clear question item on list panel
 
         #endregion
+
+        internal void OnAddExamItem(Explorer.TestDataItem dataItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

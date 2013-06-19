@@ -9,9 +9,10 @@ namespace PresentationLayer.Explorer
     {
         #region Properties of TestDataItem
         public int IdTest { set; get; }
-        public string Title { set; get; }
+        public string Name { set; get; }
         public DateTime DateCreate { set; get; }
         public int NumberQuestion { set; get; }
+        public int Time { set; get; }
         #endregion
 
         public TestDataItem()
@@ -19,12 +20,14 @@ namespace PresentationLayer.Explorer
             
         }
 
-        public TestDataItem(int id, string title, DateTime date, int numOfQuestion)
+        public TestDataItem(int id, string name, DateTime date, int numOfQuestion, int time)
         {
             IdTest = id;
-            Title = title;
+            Name = name;
             DateCreate = date;
             NumberQuestion = numOfQuestion;
+            Time = time;
+
         }
     }
 }
