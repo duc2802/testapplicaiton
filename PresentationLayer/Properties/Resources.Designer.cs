@@ -81,6 +81,20 @@ namespace PresentationLayer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Results {
+            get {
+                object obj = ResourceManager.GetObject("Results", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap test {
+            get {
+                object obj = ResourceManager.GetObject("test", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Welcome {
             get {
                 object obj = ResourceManager.GetObject("Welcome", resourceCulture);
