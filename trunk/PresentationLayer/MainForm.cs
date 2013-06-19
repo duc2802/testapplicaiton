@@ -44,8 +44,8 @@ namespace PresentationLayer
 
         private void InitButtonEvent()
         {
-            this.buttonNewExam.Click += NewExamButtonClick;
-            this.buttonNewQuestion.Click += NewQuestionButtonClick;
+            this.btNewExam.Click += NewExamButtonClick;
+            this.btNewQuestion.Click += NewQuestionButtonClick;
         }
 
         #region implement Event
@@ -128,21 +128,6 @@ namespace PresentationLayer
         private void newFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
           
-        }
-
-        private void buttonItem2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ribbonControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Test_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

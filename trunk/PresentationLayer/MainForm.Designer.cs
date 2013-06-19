@@ -32,11 +32,6 @@ namespace PresentationLayer
         {
             this.components = new System.ComponentModel.Container();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
-            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
-            this.buttonNewExam = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonNewQuestion = new DevComponents.DotNetBar.ButtonItem();
-            this.homeTabItem = new DevComponents.DotNetBar.RibbonTabItem();
             this.insertTabItem = new DevComponents.DotNetBar.RibbonTabItem();
             this.startButton = new DevComponents.DotNetBar.Office2007StartButton();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
@@ -46,18 +41,12 @@ namespace PresentationLayer
             this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem4 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem5 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem6 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem7 = new DevComponents.DotNetBar.ButtonItem();
             this.itemContainer4 = new DevComponents.DotNetBar.ItemContainer();
-            this.labelItem8 = new DevComponents.DotNetBar.LabelItem();
-            this.buttonItem8 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem9 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem10 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem11 = new DevComponents.DotNetBar.ButtonItem();
             this.itemContainer5 = new DevComponents.DotNetBar.ItemContainer();
             this.buttonItem12 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem13 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.btHelp = new DevComponents.DotNetBar.ButtonItem();
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.dockContainerItem1 = new DevComponents.DotNetBar.DockContainerItem();
             this.dotNetBarManager1 = new DevComponents.DotNetBar.DotNetBarManager(this.components);
@@ -75,8 +64,12 @@ namespace PresentationLayer
             this.dockSite6 = new DevComponents.DotNetBar.DockSite();
             this.dockSite7 = new DevComponents.DotNetBar.DockSite();
             this.dockSite3 = new DevComponents.DotNetBar.DockSite();
-            this.ribbonControl1.SuspendLayout();
-            this.ribbonPanel1.SuspendLayout();
+            this.File = new DevComponents.DotNetBar.RibbonBar();
+            this.btOpenFile = new DevComponents.DotNetBar.ButtonItem();
+            this.Exam = new DevComponents.DotNetBar.RibbonBar();
+            this.btNewExam = new DevComponents.DotNetBar.ButtonItem();
+            this.Question = new DevComponents.DotNetBar.RibbonBar();
+            this.btNewQuestion = new DevComponents.DotNetBar.ButtonItem();
             this.dockSite9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
@@ -91,10 +84,8 @@ namespace PresentationLayer
             // ribbonControl1
             // 
             this.ribbonControl1.CaptionVisible = true;
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.homeTabItem,
             this.insertTabItem});
             this.ribbonControl1.KeyTipsFont = new System.Drawing.Font("Tahoma", 7F);
             this.ribbonControl1.Location = new System.Drawing.Point(4, 1);
@@ -102,7 +93,7 @@ namespace PresentationLayer
             this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.ribbonControl1.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.startButton,
-            this.buttonItem1,
+            this.btHelp,
             this.qatCustomizeItem1});
             this.ribbonControl1.Size = new System.Drawing.Size(662, 133);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -110,61 +101,13 @@ namespace PresentationLayer
             this.ribbonControl1.TabIndex = 6;
             this.ribbonControl1.Text = "ribbonControl1";
             this.ribbonControl1.TitleText = "<font color=\"#ED1C24\"><b>TEST EASY</b></font>";
-            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
-            // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonPanel1.Controls.Add(this.ribbonBar1);
-            this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel1.Location = new System.Drawing.Point(0, 57);
-            this.ribbonPanel1.Name = "ribbonPanel1";
-            this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel1.Size = new System.Drawing.Size(662, 74);
-            this.ribbonPanel1.TabIndex = 1;
-            // 
-            // ribbonBar1
-            // 
-            this.ribbonBar1.AutoOverflowEnabled = true;
-            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonNewExam,
-            this.buttonNewQuestion});
-            this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(124, 71);
-            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonBar1.TabIndex = 0;
-            this.ribbonBar1.Text = "New Exam";
-            // 
-            // buttonNewExam
-            // 
-            this.buttonNewExam.Image = global::PresentationLayer.Properties.Resources.AddNew;
-            this.buttonNewExam.ImagePaddingHorizontal = 8;
-            this.buttonNewExam.Name = "buttonNewExam";
-            this.buttonNewExam.Text = "New Exam";
-            // 
-            // buttonNewQuestion
-            // 
-            this.buttonNewQuestion.Image = global::PresentationLayer.Properties.Resources.NewQuestion;
-            this.buttonNewQuestion.ImagePaddingHorizontal = 8;
-            this.buttonNewQuestion.Name = "buttonNewQuestion";
-            this.buttonNewQuestion.Text = "New Question";
-            // 
-            // homeTabItem
-            // 
-            this.homeTabItem.Checked = true;
-            this.homeTabItem.ImagePaddingHorizontal = 8;
-            this.homeTabItem.Name = "homeTabItem";
-            this.homeTabItem.Panel = this.ribbonPanel1;
-            this.homeTabItem.Text = "<b>Home\r\n</b>";
             // 
             // insertTabItem
             // 
+            this.insertTabItem.Checked = true;
             this.insertTabItem.ImagePaddingHorizontal = 8;
             this.insertTabItem.Name = "insertTabItem";
-            this.insertTabItem.Text = "<b>Insert</b>";
-            this.insertTabItem.Click += new System.EventHandler(this.Test_Click);
+            this.insertTabItem.Text = "<b>List Test</b>";
             // 
             // startButton
             // 
@@ -220,7 +163,6 @@ namespace PresentationLayer
             this.buttonItem3,
             this.buttonItem4,
             this.buttonItem5,
-            this.buttonItem6,
             this.buttonItem7});
             // 
             // buttonItem2
@@ -230,7 +172,6 @@ namespace PresentationLayer
             this.buttonItem2.Name = "buttonItem2";
             this.buttonItem2.SubItemsExpandWidth = 24;
             this.buttonItem2.Text = "&New";
-            this.buttonItem2.Click += new System.EventHandler(this.buttonItem2_Click);
             // 
             // buttonItem3
             // 
@@ -257,14 +198,6 @@ namespace PresentationLayer
             this.buttonItem5.SubItemsExpandWidth = 24;
             this.buttonItem5.Text = "S&hare...";
             // 
-            // buttonItem6
-            // 
-            this.buttonItem6.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem6.ImagePaddingHorizontal = 8;
-            this.buttonItem6.Name = "buttonItem6";
-            this.buttonItem6.SubItemsExpandWidth = 24;
-            this.buttonItem6.Text = "&Print...";
-            // 
             // buttonItem7
             // 
             this.buttonItem7.BeginGroup = true;
@@ -283,47 +216,6 @@ namespace PresentationLayer
             this.itemContainer4.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
             this.itemContainer4.MinimumSize = new System.Drawing.Size(180, 0);
             this.itemContainer4.Name = "itemContainer4";
-            this.itemContainer4.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem8,
-            this.buttonItem8,
-            this.buttonItem9,
-            this.buttonItem10,
-            this.buttonItem11});
-            // 
-            // labelItem8
-            // 
-            this.labelItem8.BorderSide = DevComponents.DotNetBar.eBorderSide.Bottom;
-            this.labelItem8.BorderType = DevComponents.DotNetBar.eBorderType.Etched;
-            this.labelItem8.CanCustomize = false;
-            this.labelItem8.Name = "labelItem8";
-            this.labelItem8.PaddingBottom = 2;
-            this.labelItem8.PaddingTop = 2;
-            this.labelItem8.Stretch = true;
-            this.labelItem8.Text = "Recent Documents";
-            // 
-            // buttonItem8
-            // 
-            this.buttonItem8.ImagePaddingHorizontal = 8;
-            this.buttonItem8.Name = "buttonItem8";
-            this.buttonItem8.Text = "&1. Short News 5-7.rtf";
-            // 
-            // buttonItem9
-            // 
-            this.buttonItem9.ImagePaddingHorizontal = 8;
-            this.buttonItem9.Name = "buttonItem9";
-            this.buttonItem9.Text = "&2. Prospect Email.rtf";
-            // 
-            // buttonItem10
-            // 
-            this.buttonItem10.ImagePaddingHorizontal = 8;
-            this.buttonItem10.Name = "buttonItem10";
-            this.buttonItem10.Text = "&3. Customer Email.rtf";
-            // 
-            // buttonItem11
-            // 
-            this.buttonItem11.ImagePaddingHorizontal = 8;
-            this.buttonItem11.Name = "buttonItem11";
-            this.buttonItem11.Text = "&4. example.rtf";
             // 
             // itemContainer5
             // 
@@ -356,11 +248,11 @@ namespace PresentationLayer
             this.buttonItem13.SubItemsExpandWidth = 24;
             this.buttonItem13.Text = "E&xit";
             // 
-            // buttonItem1
+            // btHelp
             // 
-            this.buttonItem1.ImagePaddingHorizontal = 8;
-            this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.Text = "buttonItem1";
+            this.btHelp.ImagePaddingHorizontal = 8;
+            this.btHelp.Name = "btHelp";
+            this.btHelp.Text = "Help";
             // 
             // qatCustomizeItem1
             // 
@@ -581,11 +473,71 @@ namespace PresentationLayer
             this.dockSite3.TabIndex = 10;
             this.dockSite3.TabStop = false;
             // 
+            // File
+            // 
+            this.File.AutoOverflowEnabled = true;
+            this.File.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btOpenFile});
+            this.File.Location = new System.Drawing.Point(7, 58);
+            this.File.Name = "File";
+            this.File.Size = new System.Drawing.Size(80, 70);
+            this.File.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.File.TabIndex = 18;
+            this.File.Text = "File";
+            // 
+            // btOpenFile
+            // 
+            this.btOpenFile.Image = global::PresentationLayer.Properties.Resources.test;
+            this.btOpenFile.ImagePaddingHorizontal = 8;
+            this.btOpenFile.Name = "btOpenFile";
+            this.btOpenFile.Text = "ButtonOpenFile";
+            // 
+            // Exam
+            // 
+            this.Exam.AutoOverflowEnabled = true;
+            this.Exam.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btNewExam});
+            this.Exam.Location = new System.Drawing.Point(93, 58);
+            this.Exam.Name = "Exam";
+            this.Exam.Size = new System.Drawing.Size(76, 70);
+            this.Exam.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.Exam.TabIndex = 19;
+            this.Exam.Text = "Exam";
+            // 
+            // btNewExam
+            // 
+            this.btNewExam.Image = global::PresentationLayer.Properties.Resources.AddNew;
+            this.btNewExam.ImagePaddingHorizontal = 8;
+            this.btNewExam.Name = "btNewExam";
+            this.btNewExam.Text = "ButtonNewExam";
+            // 
+            // Question
+            // 
+            this.Question.AutoOverflowEnabled = true;
+            this.Question.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btNewQuestion});
+            this.Question.Location = new System.Drawing.Point(175, 58);
+            this.Question.Name = "Question";
+            this.Question.Size = new System.Drawing.Size(85, 70);
+            this.Question.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.Question.TabIndex = 20;
+            this.Question.Text = "Question";
+            // 
+            // btNewQuestion
+            // 
+            this.btNewQuestion.Image = global::PresentationLayer.Properties.Resources.NewQuestion;
+            this.btNewQuestion.ImagePaddingHorizontal = 8;
+            this.btNewQuestion.Name = "btNewQuestion";
+            this.btNewQuestion.Text = "NewQuestion";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(670, 438);
+            this.Controls.Add(this.Question);
+            this.Controls.Add(this.Exam);
+            this.Controls.Add(this.File);
             this.Controls.Add(this.dockSite9);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.dockSite1);
@@ -600,9 +552,6 @@ namespace PresentationLayer
             this.Name = "MainForm";
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ribbonControl1.ResumeLayout(false);
-            this.ribbonControl1.PerformLayout();
-            this.ribbonPanel1.ResumeLayout(false);
             this.dockSite9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.bar1.ResumeLayout(false);
@@ -619,8 +568,6 @@ namespace PresentationLayer
         #endregion
 
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
-        private DevComponents.DotNetBar.RibbonPanel ribbonPanel1;
-        private DevComponents.DotNetBar.RibbonTabItem homeTabItem;
         private DevComponents.DotNetBar.RibbonTabItem insertTabItem;
         private DevComponents.DotNetBar.Office2007StartButton startButton;
         private DevComponents.DotNetBar.ItemContainer itemContainer1;
@@ -630,18 +577,12 @@ namespace PresentationLayer
         private DevComponents.DotNetBar.ButtonItem buttonItem3;
         private DevComponents.DotNetBar.ButtonItem buttonItem4;
         private DevComponents.DotNetBar.ButtonItem buttonItem5;
-        private DevComponents.DotNetBar.ButtonItem buttonItem6;
         private DevComponents.DotNetBar.ButtonItem buttonItem7;
         private DevComponents.DotNetBar.ItemContainer itemContainer4;
-        private DevComponents.DotNetBar.LabelItem labelItem8;
-        private DevComponents.DotNetBar.ButtonItem buttonItem8;
-        private DevComponents.DotNetBar.ButtonItem buttonItem9;
-        private DevComponents.DotNetBar.ButtonItem buttonItem10;
-        private DevComponents.DotNetBar.ButtonItem buttonItem11;
         private DevComponents.DotNetBar.ItemContainer itemContainer5;
         private DevComponents.DotNetBar.ButtonItem buttonItem12;
         private DevComponents.DotNetBar.ButtonItem buttonItem13;
-        private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private DevComponents.DotNetBar.ButtonItem btHelp;
         private DevComponents.DotNetBar.QatCustomizeItem qatCustomizeItem1;
         private DevComponents.DotNetBar.DockContainerItem dockContainerItem1;
         private DevComponents.DotNetBar.DotNetBarManager dotNetBarManager1;
@@ -658,10 +599,13 @@ namespace PresentationLayer
         private DevComponents.DotNetBar.DockSite dockSite7;
         private DevComponents.DotNetBar.DockSite dockSite8;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
-        private DevComponents.DotNetBar.RibbonBar ribbonBar1;
-        private DevComponents.DotNetBar.ButtonItem buttonNewExam;
-        private DevComponents.DotNetBar.ButtonItem buttonNewQuestion;
         private System.Windows.Forms.SplitContainer explorerSplitContainer;
+        private DevComponents.DotNetBar.RibbonBar File;
+        private DevComponents.DotNetBar.ButtonItem btOpenFile;
+        private DevComponents.DotNetBar.RibbonBar Question;
+        private DevComponents.DotNetBar.RibbonBar Exam;
+        private DevComponents.DotNetBar.ButtonItem btNewExam;
+        private DevComponents.DotNetBar.ButtonItem btNewQuestion;
 
 
     }
