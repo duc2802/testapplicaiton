@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using System.IO;
 using BusinessEntities;
@@ -92,36 +93,13 @@ namespace DataAccessLayer
         {
             XDocument doc = XDocument.Load(@addressXMLFile);
 
-            foreach (var exam in doc.Descendants("Exam"))
-            {
-                var xAttribute = exam.Attribute("id");
-                if (xAttribute != null)
-                {
-                    var id = xAttribute.Value;
-                    if(id == testId)
-                    {
-                        foreach (var q in exam.Descendants("question"))
-                        {
-                            var attribute = q.Attribute("id");
-                            if (attribute != null)
-                            {
-                                var qId = attribute.Value;
-                                if(qId == question.QuestionID)
-                                {
-                                    q.RemoveNodes();
-                                    q.ReplaceAll(new XElement("question",
-                                                     new XAttribute("id", question.QuestionID),
-                                                     new XElement(buildAnswerTree(question)),
-                                                     new XElement("content",question.QuestionContent),
-                                                     new XElement("level",question.LevelQuestion )));
-                                    doc.Save(@addressXMLFile);
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            XElement testXML = (from t in doc.Descendants("exam") where t.Attribute("id").Value == testId select t).First();
+            XElement questionXML = (from q in doc.Descendants("question") where q.Attribute("id").Value == question.QuestionID select q).First();
+            questionXML.SetElementValue("content", question.QuestionContent);
+            questionXML.Element("listanswers").RemoveNodes();
+            questionXML.Element("listanswers").Add(buildAnswerTree(question));          
+            questionXML.SetElementValue("explain", question.Explain);
+            doc.Save(@addressXMLFile);
             return false;
         }
     }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using BusinessEntities;
 using Commons;
 using Commons.BusinessObjects;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using PresentationLayer.QuestionEditor.Data;
+using TestApplication;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -193,12 +195,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void tbQuestionContent_TextChanged(object sender, EventArgs e)
         {
-
+            DataItem.ContentQuestion = tbQuestionContent.Text;
         }
 
-        private void textBoxX3_TextChanged(object sender, EventArgs e)
+        private void tbQuestionExplain_TextChanged(object sender, EventArgs e)
         {
-
+            DataItem.explain = tbQuestionExplain.Text;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -217,11 +219,6 @@ namespace PresentationLayer.QuestionEditor
         }
 
         private void MultipleChoiceEditor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -339,5 +336,35 @@ namespace PresentationLayer.QuestionEditor
         }
 
         #endregion 
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btCreate_Click(object sender, EventArgs e)
+        {
+            DataItem.AnswerData.AnswerData.Clear();
+            for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
+            {
+                var item = tbListAnswer.Controls[idx] as Item;
+                if (item != null)
+                {
+                    DataItem.AnswerData.AnswerData.Add(item.DataItem);                    
+                }
+            }
+
+            QuestionBE qbe = DataItem.getQuestionBE();
+            QuestionBLL qBll = new QuestionBLL();
+            //hard code test id = 1
+            if(qBll.UpdateQuestion(qbe, "xx"))
+            {
+                MessageBox.Show(@"Update Succesful");
+            }else
+            {
+                MessageBox.Show(@"Update Fail");
+            }
+
+        }
     }
 }

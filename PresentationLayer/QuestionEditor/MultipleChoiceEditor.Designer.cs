@@ -35,18 +35,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbAnswer = new System.Windows.Forms.Label();
             this.tbListAnswer = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbQuestionExplain = new System.Windows.Forms.TextBox();
             this.btCreate = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.btMoreAnswer = new System.Windows.Forms.Button();
             this.lbQuestion = new System.Windows.Forms.Label();
+            this.btMoreAnswer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbExplain
             // 
             this.lbExplain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbExplain.AutoSize = true;
-            this.lbExplain.Location = new System.Drawing.Point(12, 331);
+            this.lbExplain.Location = new System.Drawing.Point(9, 331);
             this.lbExplain.Name = "lbExplain";
             this.lbExplain.Size = new System.Drawing.Size(41, 13);
             this.lbExplain.TabIndex = 0;
@@ -62,7 +62,7 @@
             this.tbQuestionContent.Name = "tbQuestionContent";
             this.tbQuestionContent.Size = new System.Drawing.Size(396, 129);
             this.tbQuestionContent.TabIndex = 1;
-            this.tbQuestionContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbQuestionContent.TextChanged += new System.EventHandler(this.tbQuestionContent_TextChanged);
             // 
             // opFileChoseImage
             // 
@@ -108,21 +108,22 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 406F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
             this.tbListAnswer.Location = new System.Drawing.Point(87, 197);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(410, 117);
+            this.tbListAnswer.Size = new System.Drawing.Size(416, 117);
             this.tbListAnswer.TabIndex = 4;
             // 
-            // textBox2
+            // tbQuestionExplain
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.tbQuestionExplain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(87, 331);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(396, 94);
-            this.textBox2.TabIndex = 5;
+            this.tbQuestionExplain.Location = new System.Drawing.Point(87, 331);
+            this.tbQuestionExplain.Multiline = true;
+            this.tbQuestionExplain.Name = "tbQuestionExplain";
+            this.tbQuestionExplain.Size = new System.Drawing.Size(396, 94);
+            this.tbQuestionExplain.TabIndex = 5;
+            this.tbQuestionExplain.TextChanged += new System.EventHandler(this.tbQuestionExplain_TextChanged);
             // 
             // btCreate
             // 
@@ -133,6 +134,7 @@
             this.btCreate.TabIndex = 6;
             this.btCreate.Text = "Create";
             this.btCreate.UseVisualStyleBackColor = true;
+            this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
             // 
             // btCancel
             // 
@@ -143,15 +145,7 @@
             this.btCancel.TabIndex = 7;
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
-            // 
-            // btMoreAnswer
-            // 
-            this.btMoreAnswer.Location = new System.Drawing.Point(15, 224);
-            this.btMoreAnswer.Name = "btMoreAnswer";
-            this.btMoreAnswer.Size = new System.Drawing.Size(49, 23);
-            this.btMoreAnswer.TabIndex = 8;
-            this.btMoreAnswer.Text = "More..";
-            this.btMoreAnswer.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // lbQuestion
             // 
@@ -163,6 +157,21 @@
             this.lbQuestion.Text = "Question";
             this.lbQuestion.Click += new System.EventHandler(this.label1_Click);
             // 
+            // btMoreAnswer
+            // 
+            this.btMoreAnswer.AccessibleDescription = "Add More";
+            this.btMoreAnswer.FlatAppearance.BorderSize = 0;
+            this.btMoreAnswer.Image = global::PresentationLayer.Properties.Resources.add;
+            this.btMoreAnswer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btMoreAnswer.Location = new System.Drawing.Point(12, 227);
+            this.btMoreAnswer.Name = "btMoreAnswer";
+            this.btMoreAnswer.Size = new System.Drawing.Size(69, 28);
+            this.btMoreAnswer.TabIndex = 8;
+            this.btMoreAnswer.Tag = "Add More";
+            this.btMoreAnswer.Text = "       More...";
+            this.btMoreAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btMoreAnswer.UseVisualStyleBackColor = false;
+            // 
             // MultipleChoiceEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,7 +181,7 @@
             this.Controls.Add(this.btMoreAnswer);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btCreate);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbQuestionExplain);
             this.Controls.Add(this.tbListAnswer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbImportImage);
@@ -181,6 +190,7 @@
             this.Controls.Add(this.lbQuestion);
             this.Controls.Add(this.lbExplain);
             this.Name = "MultipleChoiceEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MultipleChoiceEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -196,7 +206,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbAnswer;
         private System.Windows.Forms.TableLayoutPanel tbListAnswer;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbQuestionExplain;
         private System.Windows.Forms.Button btCreate;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btMoreAnswer;

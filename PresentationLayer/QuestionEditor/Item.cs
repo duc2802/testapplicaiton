@@ -154,6 +154,21 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
+        private void cbTrue_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbTrue.Checked)
+            {
+                _dataItem.isTrue = true;
+                return;
+            }
+            _dataItem.isTrue = false;
+        }
+
+        private void tbAnswerContent_TextChanged(object sender, EventArgs e)
+        {
+            _dataItem.ContentAnswer = tbAnswerContent.Text;
+        }
+
 
 
     }
