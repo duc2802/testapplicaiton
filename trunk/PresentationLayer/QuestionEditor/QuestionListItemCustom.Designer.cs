@@ -64,6 +64,8 @@ namespace PresentationLayer.QuestionEditor
             this.answerChoiseContainer.Name = "answerChoiseContainer";
             this.answerChoiseContainer.Size = new System.Drawing.Size(620, 123);
             this.answerChoiseContainer.TabIndex = 1;
+            this.answerChoiseContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.answerChoiseContainer_Paint);
+            this.answerChoiseContainer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.answerChoiseContainer_MouseClick);
             // 
             // deleteButton
             // 

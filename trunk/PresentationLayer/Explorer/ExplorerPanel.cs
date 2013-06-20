@@ -30,7 +30,17 @@ namespace PresentationLayer.Explorer
             addToolStripMenuItem.Click += AddChildToolStripMenuItemClick;
             renameToolStripMenuItem.Click += RenameToolStripMenuItemClick;
             deleteToolStripMenuItem.Click += DeleteToolStripMenuItemClick;
+            Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeForderId;
         }
+
+        private void ChangeForderId(object sender, string parameter)
+        {
+            _rootNode = new NodeExplorer(parameter, contextMenuStrip1);
+            _rootNode.ExpandAll();
+            fileTreeView.Nodes.Add(_rootNode);
+            //LoadTreeView();
+        }
+
 
         private void InitTreeView()
         {

@@ -57,6 +57,7 @@ namespace PresentationLayer.ExamEditor
             dataItem.Time = Int32.Parse(tbTime.Text);
             dataItem.DateCreate = DateTime.Now;
             Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
+            this.Close();
             }
 
         private void tbNameExam_TextChanged(object sender, EventArgs e)

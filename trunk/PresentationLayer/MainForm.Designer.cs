@@ -73,6 +73,8 @@ namespace PresentationLayer
             this.btEditQuestion = new DevComponents.DotNetBar.ButtonItem();
             this.btNewQuestion = new DevComponents.DotNetBar.ButtonItem();
             this.saveTestToXmlFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileForderDialog = new System.Windows.Forms.OpenFileDialog();
+            this.openFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.dockSite9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
@@ -549,6 +551,10 @@ namespace PresentationLayer
             this.btNewQuestion.Name = "btNewQuestion";
             this.btNewQuestion.Text = "NewQuestion";
             // 
+            // openFolderBrowserDialog
+            // 
+            this.openFolderBrowserDialog.ShowNewFolderButton = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,6 +634,8 @@ namespace PresentationLayer
         private DevComponents.DotNetBar.ButtonItem btExportExam;
         private DevComponents.DotNetBar.ButtonItem btEditQuestion;
         private SaveFileDialog saveTestToXmlFileDialog;
+        private OpenFileDialog openFileForderDialog;
+        private FolderBrowserDialog openFolderBrowserDialog;
 
 
     }

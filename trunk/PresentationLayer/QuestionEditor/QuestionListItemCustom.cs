@@ -7,6 +7,9 @@ using System.Windows.Forms;
 using Commons;
 using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
+using PresentationLayer;
+using PresentationLayer.ActionController;
+using SingleInstanceObject;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -123,6 +126,7 @@ namespace PresentationLayer.QuestionEditor
             deleteButton.Click += DeleteButtonClick;
 
             //Container Events.
+
             Leave += QuestionListItemCustomLeave;
             Click += QuestionListItemCustomClick;
             GotFocus += QuestionListItemCustomClick;
@@ -238,7 +242,9 @@ namespace PresentationLayer.QuestionEditor
 
         private void QuestionListItemCustomClick(object sender, EventArgs e)
         {
+
             Focus();
+            Singleton<GuiActionEventController>.Instance.QuestionId = 1;
         }
 
         private void AnswerChoiseContainerClick(object sender, EventArgs e)
@@ -251,6 +257,7 @@ namespace PresentationLayer.QuestionEditor
         private void QuestionListItemCustomLeave(object sender, EventArgs e)
         {
             answerChoiseContainer.BorderStyle = BorderStyle.None;
+            Singleton<GuiActionEventController>.Instance.LeaveQuestion = 1;
             Refresh();
         }
 
@@ -292,6 +299,17 @@ namespace PresentationLayer.QuestionEditor
         private void deleteButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void answerChoiseContainer_Paint(object sender, PaintEventArgs e)
+        {
+          //  Singleton<GuiActionEventController>.Instance.QuestionId = 1;
+
+        }
+
+        private void answerChoiseContainer_MouseClick(object sender, MouseEventArgs e)
+        {
+            Singleton<GuiActionEventController>.Instance.QuestionId = 1;
         }
     }
 }
