@@ -16,13 +16,26 @@ namespace DataAccessLayer
                                                  from question in test.ListQuestion
                                                  select
                                                      new XElement("question",
-                                                     new XAttribute("id", question.QuestionID),
-                                                     new XElement(buildAnswerTree(question)),
+                                                     new XAttribute("id", question.QuestionID),                                                     
                                                      new XElement("content",question.QuestionContent),
+                                                     new XElement(buildAnswerTree(question)),
                                                      new XElement("explain", question.Explain),
                                                      new XElement("level",question.LevelQuestion )));
 
             return treeQuestion;
+        }
+
+        public static XElement buildQuestion(BusinessEntities.QuestionBE q,String id)
+        {
+
+            XElement question = new XElement("question",
+                                                     new XAttribute("id", id),
+                                                     new XElement(buildAnswerTree(q)),
+                                                     new XElement("content", q.QuestionContent),
+                                                     new XElement("explain", q.Explain),
+                                                     new XElement("level", q.LevelQuestion));
+
+            return question;
         }
 
         public static XElement buildAnswerTree(BusinessEntities.QuestionBE question)
@@ -92,13 +105,35 @@ namespace DataAccessLayer
             XDocument doc = XDocument.Load(@addressXMLFile);
 
             XElement testXML = (from t in doc.Descendants("exam") where t.Attribute("id").Value == testId select t).First();
+            if (testXML == null) return false;
             XElement questionXML = (from q in doc.Descendants("question") where q.Attribute("id").Value == question.QuestionID select q).First();
+            if (questionXML == null) return false;
             questionXML.SetElementValue("content", question.QuestionContent);
             questionXML.Element("listanswers").RemoveNodes();
             questionXML.Element("listanswers").Add(buildAnswerTree(question));          
             questionXML.SetElementValue("explain", question.Explain);
             doc.Save(@addressXMLFile);
-            return false;
+            return true;
+        }
+
+        public static Boolean AddQuestion(string addressXMLFile, QuestionBE question, String testId)
+        {
+            XDocument doc = XDocument.Load(@addressXMLFile);
+
+            XElement testXML = (from t in doc.Descendants("exam") where t.Attribute("id").Value == testId select t).First();
+            if (testXML == null) return false;
+            
+            String id = autoCreateID();            
+            testXML.Element("listquestions").Add(buildQuestion(question, id));
+
+            doc.Save(@addressXMLFile);
+            return true;
+        }
+
+        // Create ID with DateTime : Day/month/year/hours/minutes/second
+        private static string autoCreateID()
+        {
+            return DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString(); 
         }
     }
 }
