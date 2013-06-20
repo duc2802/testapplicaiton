@@ -250,6 +250,47 @@ namespace PresentationLayer.ActionController
             }
         }
 
+        private readonly object _clearAllTestItemLocker = new object();
+        private ActionEventHandler _clearAllTestItemEvent;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ActionEventHandler ClearAllTestItem
+        {
+            add
+            {
+                lock (_clearAllTestItemLocker)
+                {
+                    _clearAllTestItemEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_clearAllTestItemLocker)
+                {
+                    _clearAllTestItemEvent -= value;
+                }
+            }
+        }
+
+        public void OnClearAllTestItem()
+        {
+            ActionEventHandler handler = _clearAllTestItemEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+
 
     }
 }
