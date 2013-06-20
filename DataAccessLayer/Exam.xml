@@ -9,9 +9,9 @@
 						Content of answer a
 					</answerContent>
 					<result>0</result>
-					<explain>Explain the reson</explain>
 				</answer>
 			</listanswers>
+      <explain>Explain the reson</explain>
 			<level> level of question</level>
 		</question>
 		
@@ -23,10 +23,10 @@
 					<answerContent>
 						Content of answer a
 					</answerContent>
-					<result>1</result>
-					<explain>Explain the reson</explain>
+					<result>1</result>					
 				</answer>
 			</listanswers>
+      <explain>Explain the reson</explain>
 			<level> level of question</level>
 		</question>
 		

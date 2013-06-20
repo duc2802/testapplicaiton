@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using System.IO;
+using BusinessEntities;
+
 namespace DataAccessLayer
 {
     public class ActionXML
@@ -18,6 +20,7 @@ namespace DataAccessLayer
                                                      new XAttribute("id", question.QuestionID),
                                                      new XElement(buildAnswerTree(question)),
                                                      new XElement("content",question.QuestionContent),
+                                                     new XElement("explain", question.Explain),
                                                      new XElement("level",question.LevelQuestion )));
 
             return treeQuestion;
@@ -30,8 +33,7 @@ namespace DataAccessLayer
                                                  select new XElement ("answer",
                                                      new XAttribute ("id",answer.AnswerID),
                                                      new XElement("answerContent", answer.Content),
-                                                     new XElement("result", answer.Result),
-                                                     new XElement("explain", answer.Explain)));
+                                                     new XElement("result", answer.Result)));
             return treeAnswer;
         }
 
@@ -67,6 +69,7 @@ namespace DataAccessLayer
                                                                           LevelQuestion = q.Element("level").Value,
                                                                           QuestionContent =q.Element("content").Value,
                                                                           QuestionID =q.Attribute("id").Value,
+                                                                          Explain = q.Attribute("explain").Value,
 
                                                                           //Load list answer of question
 
@@ -74,8 +77,7 @@ namespace DataAccessLayer
                                                                                            select new BusinessEntities.AnswerBE
                                                                                            {
                                                                                                AnswerID = r.Attribute("id").Value,
-                                                                                               Content = r.Element("answerContent").Value,
-                                                                                               Explain = r.Element("explain").Value,
+                                                                                               Content = r.Element("answerContent").Value,                                                                                               
                                                                                                Result = r.Element("result").Value
 
                                                                                            }).ToList() 
@@ -84,7 +86,43 @@ namespace DataAccessLayer
                                                           }).ToList();
             return test;
         }
-       
 
+
+        public static Boolean EditQuestion(string addressXMLFile, QuestionBE question, String testId)
+        {
+            XDocument doc = XDocument.Load(@addressXMLFile);
+
+            foreach (var exam in doc.Descendants("Exam"))
+            {
+                var xAttribute = exam.Attribute("id");
+                if (xAttribute != null)
+                {
+                    var id = xAttribute.Value;
+                    if(id == testId)
+                    {
+                        foreach (var q in exam.Descendants("question"))
+                        {
+                            var attribute = q.Attribute("id");
+                            if (attribute != null)
+                            {
+                                var qId = attribute.Value;
+                                if(qId == question.QuestionID)
+                                {
+                                    q.RemoveNodes();
+                                    q.ReplaceAll(new XElement("question",
+                                                     new XAttribute("id", question.QuestionID),
+                                                     new XElement(buildAnswerTree(question)),
+                                                     new XElement("content",question.QuestionContent),
+                                                     new XElement("level",question.LevelQuestion )));
+                                    doc.Save(@addressXMLFile);
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
     }
 }
