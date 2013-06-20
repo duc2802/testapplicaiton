@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BusinessEntities;
 using DataAccessLayer;
 
 namespace TestApplication
@@ -23,6 +24,14 @@ namespace TestApplication
             Boolean result = false;
             QuestionDAL qDal = new QuestionDAL();
             result = qDal.EditQuestion(question, testId);
+            return result;
+        }
+
+        public Boolean AddQuestion(QuestionBE qbe, string testId)
+        {
+            Boolean result = false;
+            QuestionDAL qDal = new QuestionDAL();
+            result = qDal.AddQuestion(qbe, testId);
             return result;
         }
     }

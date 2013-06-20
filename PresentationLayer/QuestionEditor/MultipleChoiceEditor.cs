@@ -18,17 +18,23 @@ namespace PresentationLayer.QuestionEditor
     {
         private QuestionDataItem _dataItem;
         private int MAX_SHOW_ITEM = 6;
+        private String _action = "";
 
         public MultipleChoiceEditor()
         {
+            _action = "create";            
             InitializeComponent();
+            this.btCreate.Text = @"Create";
             InitEvent();
             InitCommonGui();
         }
 
         public MultipleChoiceEditor(QuestionDataItem question)
         {
+            _action = "edit";
+            
             InitializeComponent();
+            this.btCreate.Text = @"Ok";
             InitEvent();
             InitCommonGui(question);
         }
@@ -345,24 +351,43 @@ namespace PresentationLayer.QuestionEditor
         private void btCreate_Click(object sender, EventArgs e)
         {
             DataItem.AnswerData.AnswerData.Clear();
+
             for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
             {
                 var item = tbListAnswer.Controls[idx] as Item;
-                if (item != null)
+                if (item != null && item.DataItem.ContentAnswer != "")
                 {
-                    DataItem.AnswerData.AnswerData.Add(item.DataItem);                    
+                    DataItem.AnswerData.AnswerData.Add(item.DataItem);
                 }
             }
 
             QuestionBE qbe = DataItem.getQuestionBE();
-            QuestionBLL qBll = new QuestionBLL();
-            //hard code test id = 1
-            if(qBll.UpdateQuestion(qbe, "xx"))
+
+            if(_action == "edit"){                             
+                QuestionBLL qBll = new QuestionBLL();
+                //hard code test id = 1
+                if(qBll.UpdateQuestion(qbe, "xx"))
+                {
+                    MessageBox.Show(@"Update Succesful");
+                    this.Close();
+                }else
+                {
+                    MessageBox.Show(@"Update Fail");
+                }
+            }
+            if (_action == "create")
             {
-                MessageBox.Show(@"Update Succesful");
-            }else
-            {
-                MessageBox.Show(@"Update Fail");
+                QuestionBLL qBll = new QuestionBLL();
+                //hard code test id = 1
+                if (qBll.AddQuestion(qbe, "xx"))
+                {
+                    MessageBox.Show(@"Add Succesful");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(@"Add Fail");
+                }
             }
 
         }

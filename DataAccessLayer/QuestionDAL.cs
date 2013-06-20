@@ -25,5 +25,12 @@ namespace DataAccessLayer
             result = ActionXML.EditQuestion(folder + path + fileData, question, testId);
             return result;
         }
+
+        public bool AddQuestion(BusinessEntities.QuestionBE question, string testId)
+        {
+            Boolean result = false;
+            result = ActionXML.AddQuestion(folder + path + fileData, question, testId);
+            return result;
+        }
     }
 }

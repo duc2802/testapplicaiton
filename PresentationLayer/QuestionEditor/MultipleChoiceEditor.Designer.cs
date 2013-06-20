@@ -108,10 +108,10 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
             this.tbListAnswer.Location = new System.Drawing.Point(87, 197);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(416, 117);
+            this.tbListAnswer.Size = new System.Drawing.Size(418, 117);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
@@ -207,10 +207,10 @@
         private System.Windows.Forms.Label lbAnswer;
         private System.Windows.Forms.TableLayoutPanel tbListAnswer;
         private System.Windows.Forms.TextBox tbQuestionExplain;
-        private System.Windows.Forms.Button btCreate;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btMoreAnswer;
         private System.Windows.Forms.Label lbQuestion;
+        public System.Windows.Forms.Button btCreate;
 
     }
 }
