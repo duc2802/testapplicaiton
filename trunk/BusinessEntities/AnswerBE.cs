@@ -21,7 +21,6 @@ namespace BusinessEntities
         string answerID;
         string result;
         string content;
-        string explain;
 
         public string Result
         {
@@ -33,12 +32,6 @@ namespace BusinessEntities
         {
             get { return answerID; }
             set { answerID = value; }
-        }
-
-        public String Explain
-        {
-            get { return explain; }
-            set { explain = value; }
         }
 
         public String Content

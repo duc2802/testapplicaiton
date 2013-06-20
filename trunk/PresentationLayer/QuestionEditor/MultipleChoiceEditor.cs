@@ -39,6 +39,13 @@ namespace PresentationLayer.QuestionEditor
 
         private void MoreAnswerButtonClick(object sender, EventArgs e)
         {
+            // set at 6 item, if more than 6, scrollable
+            if (tbListAnswer.Controls.Count == MAX_SHOW_ITEM)
+            {
+                MessageBox.Show(this, @"Can not add more than 6 answers", @"Error", MessageBoxButtons.OK);
+                return;
+            }
+
             Item itemLayout=null;
             AnswerDataItem newItem = null;
             tbListAnswer.SuspendLayout();
@@ -57,12 +64,7 @@ namespace PresentationLayer.QuestionEditor
             itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
 
-            // set at 6 item, if more than 6, scrollable
-            if (tbListAnswer.Controls.Count > MAX_SHOW_ITEM) 
-            {
-                tbListAnswer.AutoSize = false;
-            }
-
+           
             tbListAnswer.ResumeLayout();
 
         }
