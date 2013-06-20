@@ -20,21 +20,24 @@ namespace PresentationLayer.Explorer
         private void InitEvent()
         {
             Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeFolderId;
-            //Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
             Singleton<GuiActionEventController>.Instance.AddTestItem += OnAddTestItem;
+            Singleton<GuiActionEventController>.Instance.ClearAllTestItem += ClearAllTestItem;
 
-            //Singleton<GuiActionEventController>.Instance.ClearAllQuestionItem += ClearAllQuestionItem;
+        }
 
-            //questionPanel.DragDrop += QuestionPanelDragDrop;
-           // questionPanel.DragOver += QuestionPanelDragOver;
-           // questionPanel.DragEnter += QuestionPanelDragEnter;
+        private void ClearAllTestItem(object sender)
+        {
+            testListBox.SuspendLayout();
+            _dataItemController.TestBook.Clear();
+            testListBox.Controls.Clear();
+            testListBox.ResumeLayout(true);
         }
 
         private void OnAddTestItem(object sender, TestDataItem parameter)
         {
             int idx = testListBox.Controls.Count +1;
+            parameter.IdTest = idx;
             testListBox.SuspendLayout();
-
             _dataItemController.TestBook.Add(idx.ToString(),parameter);
             AddTestItem(parameter, idx + 1);
             testListBox.ResumeLayout(true);
@@ -43,12 +46,12 @@ namespace PresentationLayer.Explorer
         private void AddTestItem(TestDataItem testData, int idx)
         {
             testListBox.SuspendLayout();
-            TestListItemCustom answerItem = CreateTestItem(testData);
-           // questionItem.DataItem.OrderQuestion = idx;
+            TestListItemCustom testItem = CreateTestItem(testData);
+            testItem.DataItem.IdTest = idx;
             var style = new RowStyle(SizeType.AutoSize);
             testListBox.RowStyles.Add(style);
             testListBox.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-            testListBox.Controls.Add(answerItem, 0, idx);
+            testListBox.Controls.Add(testItem, 0, idx);
             testListBox.ResumeLayout(false);
         }
         private TestListItemCustom CreateTestItem(TestDataItem testData)
@@ -86,18 +89,8 @@ namespace PresentationLayer.Explorer
         private void DeleteTestItem(int idTest)
         {
             testListBox.SuspendLayout();
-            var item = testListBox.Controls.Find(idTest.ToString(), true).First() as TestListItemCustom;
-            if (item != null)
-            {
-                int idx = testListBox.Controls.IndexOf(item);
-                testListBox.Controls.Remove(item);
-                testListBox.RowStyles.RemoveAt(idx);
-                testListBox.Refresh();
-            }
-            else
-            {
-                MessageBox.Show(this, "Delete Error", "Error", MessageBoxButtons.OK);
-            }
+            testListBox.Controls.RemoveAt(idTest - 1);
+            _dataItemController.TestBook.Remove(idTest.ToString());
             UpdateAllDataItem();
             testListBox.ResumeLayout();
             Refresh();
@@ -146,7 +139,6 @@ namespace PresentationLayer.Explorer
             var itemLayout = new TestListItemCustom(TestData);
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Update += ItemLayoutUpdate;
-           // itemLayout.MouseDown += ItemLayoutMouseDown;
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             return itemLayout;
         }
