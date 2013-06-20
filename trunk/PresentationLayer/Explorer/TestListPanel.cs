@@ -35,7 +35,8 @@ namespace PresentationLayer.Explorer
 
         private void OnAddTestItem(object sender, TestDataItem parameter)
         {
-            int idx = testListBox.Controls.Count +1;
+            int idx = testListBox.Controls.Count;
+
             parameter.IdTest = idx;
             testListBox.SuspendLayout();
             _dataItemController.TestBook.Add(idx.ToString(),parameter);
