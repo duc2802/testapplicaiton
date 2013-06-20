@@ -17,5 +17,13 @@ namespace TestApplication
                 return null;
             return result;
         }
+
+        public Boolean UpdateQuestion(BusinessEntities.QuestionBE question,String testId)
+        {
+            Boolean result = false;
+            QuestionDAL qDal = new QuestionDAL();
+            result = qDal.EditQuestion(question, testId);
+            return result;
+        }
     }
 }

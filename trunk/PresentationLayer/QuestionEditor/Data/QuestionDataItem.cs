@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using BusinessEntities;
 using PropertyChangedEventHandler = Commons.BusinessObjects.PropertyChangedEventHandler;
 
 namespace PresentationLayer.QuestionEditor.Data
@@ -47,6 +48,32 @@ namespace PresentationLayer.QuestionEditor.Data
         {
             set { this._answers = value; }
             get { return this._answers; }
+        }
+
+        public QuestionBE getQuestionBE()
+        {
+            QuestionBE qBe = new QuestionBE();
+            qBe.QuestionID = this.IdQuestion.ToString();
+            qBe.QuestionContent = this.ContentQuestion;
+            qBe.Explain = this.explain;
+            qBe.ListAnswers = new List<AnswerBE>();
+            foreach (var answer in this.AnswerData.AnswerData)
+            {
+                AnswerBE answerBe = new AnswerBE();
+                answerBe.AnswerID = answer.orderAnswer.ToString();
+                answerBe.Content = answer.ContentAnswer;
+                if(answer.isTrue)
+                {
+                    answerBe.Result = "1";
+                }
+                else
+                {
+                    answerBe.Result = "0";
+                }
+                qBe.ListAnswers.Add(answerBe);
+            }
+
+            return qBe;
         }
 
         #region Trigger Event

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item));
             this.orderAnswer = new System.Windows.Forms.Label();
             this.cbTrue = new System.Windows.Forms.CheckBox();
             this.tbAnswerContent = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.cbTrue.TabIndex = 4;
             this.cbTrue.Text = "True";
             this.cbTrue.UseVisualStyleBackColor = true;
+            this.cbTrue.CheckedChanged += new System.EventHandler(this.cbTrue_CheckedChanged);
             // 
             // tbAnswerContent
             // 
@@ -60,17 +62,19 @@
             this.tbAnswerContent.Name = "tbAnswerContent";
             this.tbAnswerContent.Size = new System.Drawing.Size(264, 20);
             this.tbAnswerContent.TabIndex = 5;
+            this.tbAnswerContent.TextChanged += new System.EventHandler(this.tbAnswerContent_TextChanged);
             // 
             // btDelete
             // 
-            this.btDelete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDelete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btDelete.BackgroundImage")));
+            this.btDelete.FlatAppearance.BorderSize = 0;
             this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDelete.Location = new System.Drawing.Point(361, 11);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(21, 23);
             this.btDelete.TabIndex = 6;
-            this.btDelete.Text = "X";
             this.btDelete.UseVisualStyleBackColor = true;
             // 
             // Item
