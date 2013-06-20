@@ -13,6 +13,8 @@ namespace PresentationLayer.ActionController
         private int _testId;
         private int _leaveTest;
 
+        private int _questionID;
+
         public string FolderId
         {
             set
@@ -22,6 +24,26 @@ namespace PresentationLayer.ActionController
             }
             get { return _folderId; }
         }
+        public int QuestionId
+        {
+            set
+            {
+                _questionID = value;
+                OnChangeQuestionId(_questionID);
+            }
+            get { return _questionID; }
+        }
+
+        public int LeaveQuestion
+        {
+            set
+            {
+                _questionID = value;
+                OnChangeLeaveQuestion(_questionID);
+            }
+            get { return _questionID; }
+        }
+
         public int LeaveTest
         {
             set
@@ -323,6 +345,84 @@ namespace PresentationLayer.ActionController
         public void OnChangeLeaveTest(int id)
         {
             ActionEventHandler<int> handler = _changeLeaveTestEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, id);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        #region Event Change Question id
+
+        private readonly object _changeQuestionIdEventLocker = new object();
+        private ActionEventHandler<int> _changeQuestionIdEvent;
+
+        public event ActionEventHandler<int> ChangeQuestionId
+        {
+            add
+            {
+                lock (_changeQuestionIdEventLocker)
+                {
+                    _changeQuestionIdEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_changeQuestionIdEventLocker)
+                {
+                    _changeQuestionIdEvent -= value;
+                }
+            }
+        }
+
+        public void OnChangeQuestionId(int id)
+        {
+            ActionEventHandler<int> handler = _changeQuestionIdEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, id);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        #endregion End event change question id
+
+        private readonly object _changeLeaveQuestionEventLocker = new object();
+        private ActionEventHandler<int> _changeLeaveQuestionEvent;
+
+        public event ActionEventHandler<int> ChangeLeaveQuestion
+        {
+            add
+            {
+                lock (_changeLeaveQuestionEventLocker)
+                {
+                    _changeLeaveQuestionEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_changeLeaveQuestionEventLocker)
+                {
+                    _changeLeaveQuestionEvent -= value;
+                }
+            }
+        }
+
+        public void OnChangeLeaveQuestion(int id)
+        {
+            ActionEventHandler<int> handler = _changeLeaveQuestionEvent;
             if (handler != null)
             {
                 try

@@ -32,6 +32,8 @@ namespace PresentationLayer
         {
             btExportExam.Enabled = false;
             btExportExam.Enabled = false;
+            btNewQuestion.Enabled = false;
+            btEditQuestion.Enabled = false;
 
             ExplorerPanel catologuePanel = new ExplorerPanel();
             catologuePanel.Dock = DockStyle.Fill;
@@ -50,18 +52,35 @@ namespace PresentationLayer
             InitButtonEvent();
             Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
             Singleton<GuiActionEventController>.Instance.ChangeLeaveTest += LeaveTest;
+            Singleton<GuiActionEventController>.Instance.ChangeQuestionId += ChangeQuestionId;
+            Singleton<GuiActionEventController>.Instance.ChangeLeaveQuestion += LeaveQuestion;
 
         }
 
         private void LeaveTest(object sender, int parameter)
         {
             btExportExam.Enabled = false;
+            btNewQuestion.Enabled = false;
 
         }
+
+        private void LeaveQuestion(object sender, int parameter)
+        {
+            btEditQuestion.Enabled = false;
+
+        }
+
         private void ChangeTestId(object sender, int parameter)
         {
             btExportExam.Enabled = true;
+            btNewQuestion.Enabled = true;
             
+        }
+
+        private void ChangeQuestionId(object sender, int parameter)
+        {
+            btEditQuestion.Enabled = true;
+
         }
 
         private void InitButtonEvent()
@@ -69,9 +88,19 @@ namespace PresentationLayer
             this.btNewExam.Click += NewExamButtonClick;
             this.btNewQuestion.Click += NewQuestionButtonClick;
             this.btExportExam.Click += ButtonExportTestToXML;
+            this.btOpenFile.Click += ButtonOpenFileClick;
         }
 
         #region implement Event
+
+        private void ButtonOpenFileClick(object sender, EventArgs e)
+        {
+            if (openFolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Singleton<GuiActionEventController>.Instance.OnChangeFolderId(openFolderBrowserDialog.SelectedPath);
+            }
+            
+        }
 
         private void ButtonExportTestToXML(object sender, EventArgs e)
         {
@@ -98,7 +127,7 @@ namespace PresentationLayer
             TestBE testContent = new TestBE();
 
             saveTestToXmlFileDialog.Filter = "XML|*.xml";
-            saveTestToXmlFileDialog.Title = "Save an Test File";
+            saveTestToXmlFileDialog.Title = "Export an Test File";
             saveTestToXmlFileDialog.ShowDialog();
             bool result = false;
 
