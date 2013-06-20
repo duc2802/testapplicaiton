@@ -67,6 +67,20 @@ namespace PresentationLayer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap editquestion {
+            get {
+                object obj = ResourceManager.GetObject("editquestion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Export {
+            get {
+                object obj = ResourceManager.GetObject("Export", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap NewQuestion {
             get {
                 object obj = ResourceManager.GetObject("NewQuestion", resourceCulture);
