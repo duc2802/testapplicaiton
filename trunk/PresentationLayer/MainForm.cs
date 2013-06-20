@@ -7,6 +7,8 @@ using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer.ExamEditor;
 using PresentationLayer.Splash;
 using SingleInstanceObject;
+using BusinessEntities;
+using System.Collections.Generic;
 
 namespace PresentationLayer
 {
@@ -14,6 +16,8 @@ namespace PresentationLayer
     {
         private WelcomeScreen _welcomeScreen;
         private bool done = false;
+        private TestDataItem _dataTestDataItem;
+
 
         public MainForm()
         {
@@ -26,6 +30,9 @@ namespace PresentationLayer
 
         private void InitCommonGui()
         {
+            btExportExam.Enabled = false;
+            btExportExam.Enabled = false;
+
             ExplorerPanel catologuePanel = new ExplorerPanel();
             catologuePanel.Dock = DockStyle.Fill;
             this.explorerSplitContainer.Panel1.Controls.Add(catologuePanel);
@@ -41,15 +48,77 @@ namespace PresentationLayer
         private void InitEvent()
         {
             InitButtonEvent();
+            Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
+            Singleton<GuiActionEventController>.Instance.ChangeLeaveTest += LeaveTest;
+
+        }
+
+        private void LeaveTest(object sender, int parameter)
+        {
+            btExportExam.Enabled = false;
+
+        }
+        private void ChangeTestId(object sender, int parameter)
+        {
+            btExportExam.Enabled = true;
+            
         }
 
         private void InitButtonEvent()
         {
             this.btNewExam.Click += NewExamButtonClick;
             this.btNewQuestion.Click += NewQuestionButtonClick;
+            this.btExportExam.Click += ButtonExportTestToXML;
         }
 
         #region implement Event
+
+        private void ButtonExportTestToXML(object sender, EventArgs e)
+        {
+            // Test data
+            List<BusinessEntities.AnswerBE> la = new List<BusinessEntities.AnswerBE>();
+            List<BusinessEntities.QuestionBE> lq = new List<BusinessEntities.QuestionBE>();
+
+            BusinessEntities.AnswerBE ans = new BusinessEntities.AnswerBE();
+            ans.AnswerID = "2";
+            ans.Content = "content ans";
+            ans.Result = "true";
+            la.Add(ans);
+            BusinessEntities.QuestionBE qs = new BusinessEntities.QuestionBE();
+            qs.ListAnswers = la;
+            qs.LevelQuestion = "c";
+            qs.QuestionContent = "content question";
+            qs.QuestionID = "5";
+            lq.Add(qs);
+            BusinessEntities.TestBE t = new BusinessEntities.TestBE();
+            t.ListQuestion = lq;
+            t.TestID = "4";
+
+            // Export to XML
+            TestBE testContent = new TestBE();
+
+            saveTestToXmlFileDialog.Filter = "XML|*.xml";
+            saveTestToXmlFileDialog.Title = "Save an Test File";
+            saveTestToXmlFileDialog.ShowDialog();
+            bool result = false;
+
+            if (saveTestToXmlFileDialog.FileName != "")
+            {
+                String url = System.IO.Path.GetDirectoryName(saveTestToXmlFileDialog.FileName);
+                TestApplication.TestBLL testMakeFile = new TestApplication.TestBLL();
+                result = testMakeFile.exportTestXMLFile(t, saveTestToXmlFileDialog.FileName, url);
+            }
+
+            if (result == false)
+            {
+                MessageBox.Show(this, "Export Test error", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show(this, "Export Test OK", "Ok", MessageBoxButtons.OK);
+            }
+            
+        }
 
         private void NewQuestionButtonClick(object sender, EventArgs e)
         {

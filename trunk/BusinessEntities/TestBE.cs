@@ -20,7 +20,8 @@ namespace BusinessEntities
     {
         string time;
         List<QuestionBE> listQuestion;
-        string information;
+        string name;
+        string datecreate;
         string testID;
 
         public string TestID
@@ -31,8 +32,13 @@ namespace BusinessEntities
 
         public string Information
         {
-            get { return information; }
-            set { information = value; }
+            get { return name; }
+            set { name = value; }
+        }
+        public string Datecreate
+        {
+            get { return datecreate; }
+            set { datecreate = value; }
         }
         public List<QuestionBE> ListQuestion
         {

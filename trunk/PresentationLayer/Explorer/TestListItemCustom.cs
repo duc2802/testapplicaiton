@@ -92,6 +92,7 @@ namespace PresentationLayer.Explorer
         private void ListTestItemCustomLeave(object sender, EventArgs e)
         {
             BackColor = Color.White;
+            Singleton<GuiActionEventController>.Instance.LeaveTest = 1;
         }
 
         #endregion

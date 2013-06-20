@@ -10,9 +10,8 @@ namespace PresentationLayer.ActionController
         #region Properties
 
         private string _folderId;
-
-
         private int _testId;
+        private int _leaveTest;
 
         public string FolderId
         {
@@ -22,6 +21,16 @@ namespace PresentationLayer.ActionController
                 OnChangeFolderId(_folderId);
             }
             get { return _folderId; }
+        }
+        public int LeaveTest
+        {
+            set
+            {
+                _leaveTest = value;
+                OnChangeLeaveTest(_leaveTest);
+            }
+            get { return _testId; }
+ 
         }
 
         public int TestId
@@ -290,6 +299,42 @@ namespace PresentationLayer.ActionController
             }
         }
 
+        private readonly object _changeLeaveTestEventLocker = new object();
+        private ActionEventHandler<int> _changeLeaveTestEvent;
+
+        public event ActionEventHandler<int> ChangeLeaveTest
+        {
+            add
+            {
+                lock (_changeLeaveTestEventLocker)
+                {
+                    _changeLeaveTestEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_changeLeaveTestEventLocker)
+                {
+                    _changeLeaveTestEvent -= value;
+                }
+            }
+        }
+
+        public void OnChangeLeaveTest(int id)
+        {
+            ActionEventHandler<int> handler = _changeLeaveTestEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, id);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
 
 
     }
