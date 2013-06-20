@@ -231,6 +231,8 @@
     <None Include="app.config" />
     <Content Include="Resources\AddNew.png" />
     <None Include="Resources\Clock.png" />
+    <None Include="Resources\Export.png" />
+    <None Include="Resources\editquestion.png" />
     <Content Include="Resources\NewQuestion.png" />
     <Content Include="Resources\Program.png" />
     <None Include="Resources\test.png" />

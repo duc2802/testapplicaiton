@@ -126,7 +126,6 @@ namespace PresentationLayer.Explorer
         {
             //Init list from dataItemController.
             FillTestItem("Data");
-           // FillQuestionItem();
         }
 
         private void FillQuestionItem()
@@ -166,6 +165,8 @@ namespace PresentationLayer.Explorer
             {
                 TestDataItem itemData = _dataItemController.TestBook[key];
                 var itemLayout = new TestListItemCustom(itemData);
+                itemLayout.Delete += ItemLayoutDelete;
+                itemLayout.Update += ItemLayoutUpdate;
                 itemLayout.Location = new Point(0, idx * itemLayout.Height);
                 itemLayout.Size = new Size(testListBox.Width - 20, itemLayout.Height);
                 itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top)));
