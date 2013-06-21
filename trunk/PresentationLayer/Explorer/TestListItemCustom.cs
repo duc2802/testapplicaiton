@@ -86,7 +86,7 @@ namespace PresentationLayer.Explorer
         {
             Focus();
             BackColor = ConstantGUI.FocusColor;
-            Singleton<GuiActionEventController>.Instance.TestId = 1;
+            Singleton<GuiActionEventController>.Instance.TestId = this.DataItem.IdTest;
         }
 
         private void ListTestItemCustomLeave(object sender, EventArgs e)

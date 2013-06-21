@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
 using PresentationLayer.Explorer;
+using PresentationLayer.Export;
 using PresentationLayer.QuestionEditor;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer.ExamEditor;
@@ -31,7 +32,7 @@ namespace PresentationLayer
         private void InitCommonGui()
         {
             btExportExam.Enabled = false;
-            btExportExam.Enabled = false;
+            btExportDocsExam.Enabled = false;
             btNewQuestion.Enabled = false;
             btEditQuestion.Enabled = false;
 
@@ -61,6 +62,7 @@ namespace PresentationLayer
         {
             btExportExam.Enabled = false;
             btNewQuestion.Enabled = false;
+            btExportDocsExam.Enabled = false;
 
         }
 
@@ -74,7 +76,8 @@ namespace PresentationLayer
         {
             btExportExam.Enabled = true;
             btNewQuestion.Enabled = true;
-            
+            btExportDocsExam.Enabled = true;
+
         }
 
         private void ChangeQuestionId(object sender, int parameter)
@@ -89,6 +92,14 @@ namespace PresentationLayer
             this.btNewQuestion.Click += NewQuestionButtonClick;
             this.btExportExam.Click += ButtonExportTestToXML;
             this.btOpenFile.Click += ButtonOpenFileClick;
+            this.btExportDocsExam.Click += BtExportDocsExamOnClick;
+        }
+
+        private void BtExportDocsExamOnClick(object sender, EventArgs eventArgs)
+        {
+            int testId = Singleton<GuiActionEventController>.Instance.TestId;
+            ExportForm exportForm = new ExportForm(testId);
+            exportForm.ShowDialog();
         }
 
         #region implement Event
@@ -228,6 +239,12 @@ namespace PresentationLayer
         private void newFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
           
+        }
+
+        private void btExportExam_Click(object sender, EventArgs e)
+        {
+            ExportForm exForm = new ExportForm();
+            exForm.ShowDialog();
         }
     }
 }
