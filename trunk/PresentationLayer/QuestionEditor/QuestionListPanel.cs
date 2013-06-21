@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Commons.BusinessObjects;
 using PresentationLayer.ActionController;
 using PresentationLayer.QuestionEditor.Data;
 using SingleInstanceObject;
@@ -11,6 +12,7 @@ namespace PresentationLayer.QuestionEditor
     {
         private QuestionDataController _dataController;
         private Point _originalPoint = Point.Empty;
+        private object _displayLocker = new object();
 
         public QuestionListPanel()
         {
@@ -57,6 +59,7 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.Controls.Clear();
             FillQuestionItem();
             questionPanel.ResumeLayout(true);
+
         }
 
         private QuestionListItemCustom CreateQuestionItem(QuestionDataItem questionData)
@@ -157,7 +160,7 @@ namespace PresentationLayer.QuestionEditor
 
         private void ChangeTestId(object sender, int parameter)
         {
-            UpdateEditor(parameter);
+            Invoke((MethodInvoker) (() => UpdateEditor(parameter)));
         }
 
         private void OnAddQuestionItem(object sender, QuestionDataItem parameter)

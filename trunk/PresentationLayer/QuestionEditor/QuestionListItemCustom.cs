@@ -9,7 +9,9 @@ using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer;
 using PresentationLayer.ActionController;
+using PresentationLayer.ThreadCmd;
 using SingleInstanceObject;
+using ThreadQueueManager;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -242,9 +244,10 @@ namespace PresentationLayer.QuestionEditor
 
         private void QuestionListItemCustomClick(object sender, EventArgs e)
         {
-
-            Focus();
-            Singleton<GuiActionEventController>.Instance.QuestionId = 1;
+            //Focus();
+            //int testId = 1; //get from item click.
+            //ICommand command = new LoadQuestionCmd(ExecuteMethod.Async, testId);
+            //Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
         }
 
         private void AnswerChoiseContainerClick(object sender, EventArgs e)

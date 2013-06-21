@@ -178,6 +178,8 @@
     <Compile Include="Splash\WelcomeScreen.designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThreadCmd\GuiQueueThreadController.cs" />
+    <Compile Include="ThreadCmd\LoadQuestionCmd.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ExamEditor\NewExam.resx">
@@ -255,6 +257,10 @@
     <ProjectReference Include="..\TestApplication\BusinessLogicLayer.csproj">
       <Project>{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}</Project>
       <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThreadQueueManager\ThreadQueueManager.csproj">
+      <Project>{134E9CBB-0EB0-4D3F-B526-0447BC0AD3DC}</Project>
+      <Name>ThreadQueueManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\WeiFenLuoDockingMaster\WinFormsUI\WeifenLuo.WinFormsUI.Docking.csproj">
       <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>

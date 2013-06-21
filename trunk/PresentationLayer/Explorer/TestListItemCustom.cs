@@ -3,9 +3,11 @@ using System.Drawing;
 using System.Windows.Forms;
 using Commons;
 using PresentationLayer.ActionController;
+using PresentationLayer.ThreadCmd;
 using SingleInstanceObject;
 using Commons;
 using Commons.BusinessObjects;
+using ThreadQueueManager;
 
 namespace PresentationLayer.Explorer
 {
@@ -41,10 +43,12 @@ namespace PresentationLayer.Explorer
 
         private void InitGui(TestDataItem data)
         {
+            SuspendLayout();
             DataItem = data;
             lbNameExam.Text = data.Name;
             dateTextValue.Text = data.DateCreate.ToString();
             lbNumberQuestion.Text = "Comment here! ";
+            ResumeLayout();
         }
 
         private void InitEvent()
@@ -84,9 +88,15 @@ namespace PresentationLayer.Explorer
 
         private void ListTestItemCustomClick(object sender, EventArgs e)
         {
+            SuspendLayout();
             Focus();
             BackColor = ConstantGUI.FocusColor;
-            Singleton<GuiActionEventController>.Instance.TestId = this.DataItem.IdTest;
+            Refresh();
+            ResumeLayout();
+
+            int testId = DataItem.IdTest;
+            ICommand command = new LoadQuestionCmd(ExecuteMethod.Async, testId);
+            Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
         }
 
         private void ListTestItemCustomLeave(object sender, EventArgs e)

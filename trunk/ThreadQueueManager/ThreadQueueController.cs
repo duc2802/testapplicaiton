@@ -120,7 +120,5 @@ namespace ThreadQueueManager
         {
             return _commandThreads.Thread == Thread.CurrentThread;
         }
-
-        
     } 
 }
