@@ -98,7 +98,7 @@ namespace PresentationLayer
         private void BtExportDocsExamOnClick(object sender, EventArgs eventArgs)
         {
             int testId = Singleton<GuiActionEventController>.Instance.TestId;
-            ExportForm exportForm = new ExportForm(testId);
+            ExportForm exportForm = new ExportForm(testId + 1);
             exportForm.ShowDialog();
         }
 

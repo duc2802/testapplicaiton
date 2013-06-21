@@ -52,55 +52,93 @@ namespace PresentationLayer.Export
                 path = folderBrowser.SelectedPath;
             }
 
-            Microsoft.Office.Interop.Word._Application oWord = new Microsoft.Office.Interop.Word.Application();
-            var oDoc = oWord.Documents.Add(Missing.Value, Missing.Value);
+            // create MS-Word application 
+            Microsoft.Office.Interop.Word.Application msWord = new Microsoft.Office.Interop.Word.Application();            
+            Microsoft.Office.Interop.Word.Document doc = null;
+            object objMiss = System.Reflection.Missing.Value;
 
-            //Insert a paragraph at the beginning of the document.
-            var paragraphTitle = oDoc.Content.Paragraphs.Add(Missing.Value);                        
-            paragraphTitle.Range.Font.Bold = 1;
-            paragraphTitle.Range.Font.Size = 20;
-            paragraphTitle.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-            String content = tbTestName.Text + "\n";            
-            content += "Time : 30 minutes" + "\n";
+            try
+            {                
+                // add blank documnet in word application
+                doc = msWord.Documents.Add(ref objMiss, ref objMiss, ref objMiss, ref objMiss);
+                // create para
+                HeaderPara(doc, objMiss);
+                InfoPara(doc, objMiss);
+                ContentPara(doc, objMiss);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+            if (doc != null) 
+            doc.SaveAs(path + "\\" + tbTestName.Text + ".doc");
+            MessageBox.Show(@"Export Successfully");
+            msWord.Quit();
+            this.Close();
+        }       
+
+        private void HeaderPara(Document doc, object objMiss)
+        {
+
+            Microsoft.Office.Interop.Word.Paragraph headerPara;
+            headerPara = doc.Content.Paragraphs.Add(ref objMiss);
+            object styleHeading1 = "Heading 1";
+            headerPara.Range.set_Style(ref styleHeading1);
+            headerPara.Range.Text = Indent(50)+tbTestName.Text;
+            headerPara.Range.Font.Bold = 1;
+            headerPara.Format.SpaceAfter = 10;            
+            headerPara.Range.InsertParagraphAfter();
+        }
+
+        private void InfoPara(Document doc, object objMiss)
+        {
+            Microsoft.Office.Interop.Word.Paragraph infoPara;
+            infoPara = doc.Content.Paragraphs.Add(ref objMiss);
+            object styleHeading2 = "Heading 2";
+            infoPara.Range.set_Style(ref styleHeading2);
+            String content = "Time : 30 minutes" + "\n";
             content += "Number of Question : 10" + "\n";
-            content += "Date : " +DateTime.Now.Day +"/"+DateTime.Now.Month+"/"+DateTime.Now.Year + "\n";
-            paragraphTitle.Range.Text = content; 
-            paragraphTitle.Range.InsertParagraphAfter();
+            content += "Date : " + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+            infoPara.Range.Text = content;
+            infoPara.Range.Font.Bold = 1;
+            infoPara.Format.SpaceAfter = 10;
+            infoPara.Format.RightIndent = 5;
+            infoPara.Range.InsertParagraphAfter();
+        }
 
+        private void ContentPara(Document doc, object objMiss)
+        {
             var controller = new QuestionDataController();
             controller.CreateDataForTest();
             List<QuestionDataItem> dataItems = controller.DataItems;
 
-          
+
             for (int i = 0; i < dataItems.Count; i++)
             {
                 QuestionDataItem item = dataItems[i];
-                var paragraph = oDoc.Content.Paragraphs.Add(Missing.Value);
-                String question = (i+1).ToString() + "/ " + item.ContentQuestion +"\n";
+                var paragraph = doc.Content.Paragraphs.Add(ref objMiss);
+                String question = (i + 1).ToString() + "/ " + item.ContentQuestion + "\n";
                 foreach (AnswerDataItem a in item.AnswerData.AnswerData)
                 {
-                    paragraphTitle.Format.LineSpacing = 23;
-                    if(a.isTrue && ckResult.Checked == true){
-                        question += a.OrderAnswer + "." + a.ContentAnswer +" \u221A"+"\n";
+                    
+                    if (a.isTrue && ckResult.Checked == true)
+                    {
+                        question += Indent(5) + a.OrderAnswer + "." + a.ContentAnswer + " \u221A" + "\n";
                     }
                     else
                     {
-                        question += a.OrderAnswer + "." + a.ContentAnswer + "\n";
+                        question += Indent(5) + a.OrderAnswer + "." + a.ContentAnswer + "\n";
                     }
                 }
                 paragraph.Range.Text += question;
                 paragraph.Range.Font.Bold = 0;
                 paragraph.Range.Font.Size = 12;
-                paragraph.Format.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
                 paragraph.Range.InsertParagraphAfter();
             }
-
-            oDoc.SaveAs(path + "\\" + tbTestName.Text + ".doc");
-
-            oWord.Quit();
         }
 
-       
+        private static string Indent(int count)
+        {
+            return "".PadLeft(count);
+        }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
