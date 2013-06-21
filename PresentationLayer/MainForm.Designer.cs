@@ -75,6 +75,7 @@ namespace PresentationLayer
             this.saveTestToXmlFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileForderDialog = new System.Windows.Forms.OpenFileDialog();
             this.openFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.btExportDocsExam = new DevComponents.DotNetBar.ButtonItem();
             this.dockSite9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
@@ -502,10 +503,11 @@ namespace PresentationLayer
             this.Exam.AutoOverflowEnabled = true;
             this.Exam.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btNewExam,
-            this.btExportExam});
+            this.btExportExam,
+            this.btExportDocsExam});
             this.Exam.Location = new System.Drawing.Point(93, 58);
             this.Exam.Name = "Exam";
-            this.Exam.Size = new System.Drawing.Size(123, 70);
+            this.Exam.Size = new System.Drawing.Size(175, 70);
             this.Exam.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.Exam.TabIndex = 19;
             this.Exam.Text = "Exam";
@@ -523,6 +525,7 @@ namespace PresentationLayer
             this.btExportExam.ImagePaddingHorizontal = 8;
             this.btExportExam.Name = "btExportExam";
             this.btExportExam.Text = "buttonItem1";
+            this.btExportExam.Click += new System.EventHandler(this.btExportExam_Click);
             // 
             // Question
             // 
@@ -530,7 +533,7 @@ namespace PresentationLayer
             this.Question.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btEditQuestion,
             this.btNewQuestion});
-            this.Question.Location = new System.Drawing.Point(231, 58);
+            this.Question.Location = new System.Drawing.Point(274, 58);
             this.Question.Name = "Question";
             this.Question.Size = new System.Drawing.Size(125, 70);
             this.Question.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -554,6 +557,14 @@ namespace PresentationLayer
             // openFolderBrowserDialog
             // 
             this.openFolderBrowserDialog.ShowNewFolderButton = false;
+            // 
+            // btExportDocsExam
+            // 
+            this.btExportDocsExam.Image = global::PresentationLayer.Properties.Resources.docs;
+            this.btExportDocsExam.ImageFixedSize = new System.Drawing.Size(45, 45);
+            this.btExportDocsExam.ImagePaddingHorizontal = 8;
+            this.btExportDocsExam.Name = "btExportDocsExam";
+            this.btExportDocsExam.Text = "buttonItem1";
             // 
             // MainForm
             // 
@@ -636,6 +647,7 @@ namespace PresentationLayer
         private SaveFileDialog saveTestToXmlFileDialog;
         private OpenFileDialog openFileForderDialog;
         private FolderBrowserDialog openFolderBrowserDialog;
+        private DevComponents.DotNetBar.ButtonItem btExportDocsExam;
 
 
     }
