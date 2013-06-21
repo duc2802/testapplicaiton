@@ -71,7 +71,6 @@ namespace ThreadQueueManager
                     ICommand cmd = QueueAsyncCommands.Pop();
                     if (cmd != null)
                     {
-                        System.Console.WriteLine("Name Queue: " + cmd.GetName());
                         cmd.Execute();
                     }
                 }

@@ -30,7 +30,7 @@ namespace PresentationLayer.Explorer
             addToolStripMenuItem.Click += AddChildToolStripMenuItemClick;
             renameToolStripMenuItem.Click += RenameToolStripMenuItemClick;
             deleteToolStripMenuItem.Click += DeleteToolStripMenuItemClick;
-            Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeForderId;
+            //Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeForderId;
         }
 
         private void ChangeForderId(object sender, string parameter)

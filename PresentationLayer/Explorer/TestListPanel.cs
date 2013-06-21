@@ -146,6 +146,7 @@ namespace PresentationLayer.Explorer
 
         private void FillTestItem(string idFolder)
         {
+            SuspendLayout();
             testListBox.SuspendLayout();
             testListBox.Controls.Clear();
 
@@ -167,6 +168,7 @@ namespace PresentationLayer.Explorer
                 idx++;
             }
             testListBox.ResumeLayout();
+            ResumeLayout();
         }
 
         private void LoadTestDataItemController(string idFolder)

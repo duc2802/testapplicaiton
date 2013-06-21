@@ -2,14 +2,16 @@
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
 using PresentationLayer.Explorer;
-using PresentationLayer.Export;
+//using PresentationLayer.Export;
 using PresentationLayer.QuestionEditor;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer.ExamEditor;
 using PresentationLayer.Splash;
+using PresentationLayer.ThreadCmd;
 using SingleInstanceObject;
 using BusinessEntities;
 using System.Collections.Generic;
+using ThreadQueueManager;
 
 namespace PresentationLayer
 {
@@ -19,14 +21,13 @@ namespace PresentationLayer
         private bool done = false;
         private TestDataItem _dataTestDataItem;
 
-
         public MainForm()
         {
             InitializeComponent();
             InitCommonGui();
             InitEvent();
+            InitSingletonObject();
             //DoSplash();
-            this.Load += HandleFormLoad;
         }
 
         private void InitCommonGui()
@@ -56,6 +57,12 @@ namespace PresentationLayer
             Singleton<GuiActionEventController>.Instance.ChangeQuestionId += ChangeQuestionId;
             Singleton<GuiActionEventController>.Instance.ChangeLeaveQuestion += LeaveQuestion;
 
+            Load += HandleFormLoad;
+        }
+
+        private void InitSingletonObject()
+        {
+            Singleton<GuiQueueThreadController>.Instance.InitializeThreadQueueController("GuiQueueThreadController");
         }
 
         private void LeaveTest(object sender, int parameter)
@@ -97,9 +104,9 @@ namespace PresentationLayer
 
         private void BtExportDocsExamOnClick(object sender, EventArgs eventArgs)
         {
-            int testId = Singleton<GuiActionEventController>.Instance.TestId;
-            ExportForm exportForm = new ExportForm(testId + 1);
-            exportForm.ShowDialog();
+            //int testId = Singleton<GuiActionEventController>.Instance.TestId;
+            //ExportForm exportForm = new ExportForm(testId + 1);
+            //exportForm.ShowDialog();
         }
 
         #region implement Event
@@ -243,8 +250,8 @@ namespace PresentationLayer
 
         private void btExportExam_Click(object sender, EventArgs e)
         {
-            ExportForm exForm = new ExportForm();
-            exForm.ShowDialog();
+            //ExportForm exForm = new ExportForm();
+            //exForm.ShowDialog();
         }
     }
 }
