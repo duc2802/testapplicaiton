@@ -11,20 +11,8 @@ namespace PresentationLayer.Splash
         public WelcomeScreen()
         {
             InitializeComponent();
-            this.progressBar1.Maximum = 100;
-            del = this.UpdateProgressInternal;
         }
-
-        private void UpdateProgressInternal(int progress)
-        {
-            if (this.Handle == null)
-            {
-                return;
-            }
-
-            this.progressBar1.Value = progress;
-        }
-
+        
         public void UpdateProgress(int progress)
         {
             this.Invoke(del, progress);

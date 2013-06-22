@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BusinessEntities;
 using PresentationLayer.Explorer.Data;
+using SingleInstanceObject;
+using TestApplication;
+using System.Linq;
 
 namespace PresentationLayer.Explorer
 {
     public class TestListDataItemController
     {
         #region TeskBook Propertiy
+
         private Dictionary<string, TestDataItem> _testBook = new Dictionary<string, TestDataItem>();
 
         public Dictionary<string, TestDataItem> TestBook
         {
-            get{ return _testBook; }
-            private set { this._testBook = value; }
+            get { return _testBook; }
+            private set { _testBook = value; }
         }
+
         #endregion End TestBook Property.
 
         public TestListDataItemController()
@@ -27,7 +31,8 @@ namespace PresentationLayer.Explorer
         {
             for (int i = 0; i <= 20; i++)
             {
-                TestDataItem testDataItem = new TestDataItem(i.ToString(), string.Format("De thi {0} tieng anh HK 2", i + 1), new DateTime(), 20,30);
+                var testDataItem = new TestDataItem(i.ToString(), string.Format("De thi {0} tieng anh HK 2", i + 1),
+                                                    new DateTime(), 20, 30);
                 _testBook.Add(i.ToString(), testDataItem);
             }
         }
@@ -35,10 +40,14 @@ namespace PresentationLayer.Explorer
         public void LoadTestDataItem(string idFolder)
         {
             _testBook.Clear();
-            for (int i = 0; i <= 10; i++)
+            var listTestBE = (from test in Singleton<List<TestBE>>.Instance
+                                 where test.FolderId.Equals(idFolder)
+                                 select test);
+            foreach (var test in listTestBE)
             {
-                TestDataItem testDataItem = new TestDataItem(i.ToString(), string.Format("De thi {0} Test", i + 1), new DateTime(), 20, 60);
-                _testBook.Add(i.ToString(), testDataItem);
+                var testDataItem = new TestDataItem();
+                testDataItem.ConvertFrom(test);
+                _testBook.Add(testDataItem.IdTest, testDataItem);
             }
         }
     }

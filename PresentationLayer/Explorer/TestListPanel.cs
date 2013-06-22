@@ -1,9 +1,13 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessEntities;
 using PresentationLayer.ActionController;
 using PresentationLayer.Explorer.Data;
+using PresentationLayer.ThreadManager.DataThread;
 using SingleInstanceObject;
+using ThreadQueueManager;
 
 namespace PresentationLayer.Explorer
 {
@@ -91,10 +95,14 @@ namespace PresentationLayer.Explorer
         {
             testListBox.SuspendLayout();
             testListBox.Controls.RemoveAt(0);
-            _dataItemController.TestBook.Remove(idTest.ToString());
+            _dataItemController.TestBook.Remove(idTest);
             UpdateAllDataItem();
             testListBox.ResumeLayout();
             Refresh();
+
+            var testBE = Singleton<List<TestBE>>.Instance.FirstOrDefault(test => test.TestID.Equals(idTest));
+            ICommand command = new DeleteTestCmd(ExecuteMethod.Async, testBE);
+            Singleton<DataQueueThreadController>.Instance.PutCmd(command);
         }
 
         private void UpdateAllDataItem()
