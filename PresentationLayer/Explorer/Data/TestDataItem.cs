@@ -7,12 +7,15 @@ namespace PresentationLayer.Explorer.Data
     public class TestDataItem : IDataItem
     {
         #region Properties of TestDataItem
+
         public string IdTest { set; get; }
         public string Name { set; get; }
         public DateTime DateCreate { set; get; }
         public int NumberQuestion { set; get; }
         public int Time { set; get; }
         public int OrderNumber { set; get; }
+        public string FolderId { set; get; }
+
         #endregion
 
         public TestDataItem()
@@ -35,7 +38,8 @@ namespace PresentationLayer.Explorer.Data
                              {
                                  DateCreate = Time.ToString(),
                                  TestID = IdTest,
-                                 Information = Name
+                                 Information = Name,
+                                 FolderId = FolderId
                              };
             return testBe;
         }

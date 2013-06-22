@@ -92,6 +92,10 @@
       <Project>{EAE0FA35-5202-4F99-915D-B48FE68976D8}</Project>
       <Name>BusinessEntities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Commons\Commons.csproj">
+      <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Exam.xml" />
