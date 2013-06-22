@@ -164,7 +164,6 @@
     <Compile Include="QuestionEditor\TrueFalseEditor.Designer.cs">
       <DependentUpon>TrueFalseEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting\SettingManager.cs" />
     <Compile Include="Splash\WelcomeSrceenTimer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

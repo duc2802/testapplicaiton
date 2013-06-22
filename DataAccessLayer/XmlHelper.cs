@@ -1,26 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using BusinessEntities;
+using Commons;
+using SingleInstanceObject;
 
 namespace DataAccessLayer
 {
-    public class ActionXML
+    public class XmlHelper
     {
+        public static bool WriteExamFile(TestBE testObject, String nameOfFile, String placeToSave)
+        {
+            try
+            {
+                string path = Singleton<SettingManager>.Instance.GetTestEasyFolder() + "\\" + placeToSave + "\\" + nameOfFile
+                              + ".exam";
+                var writer = new XmlSerializer(typeof(TestBE));
+                var file = new StreamWriter(path);
+                writer.Serialize(file, testObject);
+                file.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public static XElement buildQuestionTree(TestBE test)
         {
-            var treeQuestion = new XElement("listquestions",
-                                            from question in test.ListQuestion
-                                            select
-                                                new XElement("question",
-                                                             new XAttribute("id", question.QuestionID),
-                                                             new XElement("content", question.QuestionContent),
-                                                             new XElement(buildAnswerTree(question)),
-                                                             new XElement("explain", question.Explain),
-                                                             new XElement("level", question.LevelQuestion)));
+            if (test.ListQuestion != null)
+            {
+                var treeQuestion = new XElement("listquestions",
+                                                from question in test.ListQuestion
+                                                select
+                                                    new XElement("question",
+                                                                 new XAttribute("id", question.QuestionID),
+                                                                 new XElement("content", question.QuestionContent),
+                                                                 new XElement(buildAnswerTree(question)),
+                                                                 new XElement("explain", question.Explain),
+                                                                 new XElement("level", question.LevelQuestion)));
 
-            return treeQuestion;
+                return treeQuestion;
+            }
+            return new XElement("listquestions");
         }
 
         public static XElement buildQuestion(QuestionBE q, String id)
@@ -46,21 +72,27 @@ namespace DataAccessLayer
             return treeAnswer;
         }
 
-
-        public static Boolean SaveExam(TestBE test, String placeToSave, String nameofFile)
+        public static Boolean SaveExam(TestBE test, String nameofFile, String placeToSave)
         {
-            var result = true;
-            var doc = new XDocument(
-                new XDeclaration("1.0", "utf-8", "yes"),
-                new XComment("This is content of Exam that you input"),
-                new XElement("exam",
-                             new XAttribute("id", test.TestID),
-                             new XElement(buildQuestionTree(test)),
-                             new XElement("infomation", test.Information)));
+            try
+            {
+                bool result = true;
+                var doc = new XDocument(
+                    new XDeclaration("1.0", "utf-8", "yes"),
+                    new XComment("This is content of Exam that you input"),
+                    new XElement("exam",
+                                 new XAttribute("id", test.TestID),
+                                 new XElement(buildQuestionTree(test)),
+                                 new XElement("infomation", test.Information)));
 
-            string placeSave = placeToSave + "\\" + nameofFile + ".xml";
-            doc.Save(@placeToSave);
-            return result;
+                string placeSave = placeToSave + "\\" + nameofFile + ".xml";
+                doc.Save(@placeToSave);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public static List<TestBE> loadExam(String addressXMLFile)
