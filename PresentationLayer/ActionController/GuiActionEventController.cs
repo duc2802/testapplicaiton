@@ -1,5 +1,6 @@
 ﻿using System;
 using Commons.BusinessObjects;
+using PresentationLayer.Explorer.Data;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer.Explorer;
 
@@ -435,47 +436,5 @@ namespace PresentationLayer.ActionController
                 }
             }
         }
-        #region Event create exam.
-        /// <summary>
-        /// 
-        /// </summary>
-        private readonly object _createExamEventLocker = new object();
-        private ActionEventHandler<TestDataItem> _createExamEvent;
-        public event ActionEventHandler<TestDataItem> CreateExam
-        {
-            add
-            {
-                lock (_createExamEventLocker)
-                {
-                    _createExamEvent += value;
-                }
-            }
-            remove
-            {
-                lock (_createExamEventLocker)
-                {
-                    _createExamEvent -= value;
-                }
-            }
-        }
-
-        public void OnCreateExam(TestDataItem testData)
-        {
-            ActionEventHandler<TestDataItem> handler = _createExamEvent;
-            if (handler != null)
-            {
-                try
-                {
-                    handler(this, testData);
-                    OnAddTestItem(testData);
-                }
-                catch (Exception ex)
-                {
-                    //Log
-                }
-            }
-        }
-
-        #endregion End event clear question item on list panel
     }
 }

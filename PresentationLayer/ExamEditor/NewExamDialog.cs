@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using BusinessEntities;
 using PresentationLayer.ActionController;
 using PresentationLayer.Explorer;
+using PresentationLayer.Explorer.Data;
 using PresentationLayer.ThreadManager.DataThread;
 using SingleInstanceObject;
 using ThreadQueueManager;
@@ -60,8 +62,7 @@ namespace PresentationLayer.ExamEditor
             dataItem.DateCreate = DateTime.Now;
             Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
 
-
-            ICommand command = new SaveTestCmd(ExecuteMethod.Async, )
+            ICommand command = new SaveTestCmd(ExecuteMethod.Async, (TestBE) dataItem.TranslateToBE());
             Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             Close();
         }

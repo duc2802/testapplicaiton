@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
+using PresentationLayer.Explorer.Data;
 using SingleInstanceObject;
 
 namespace PresentationLayer.Explorer

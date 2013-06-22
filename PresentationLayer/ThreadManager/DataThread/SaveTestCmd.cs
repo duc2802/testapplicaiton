@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BusinessEntities;
 using SingleInstanceObject;
+using TestApplication;
 using ThreadQueueManager;
 
 namespace PresentationLayer.ThreadManager.DataThread
@@ -43,7 +44,8 @@ namespace PresentationLayer.ThreadManager.DataThread
         {
             try
             {
-
+                var businessObject = new TestBLL();
+                businessObject.exportTestXMLFile(_testBE);
             }
             catch (Exception ex)
             {
