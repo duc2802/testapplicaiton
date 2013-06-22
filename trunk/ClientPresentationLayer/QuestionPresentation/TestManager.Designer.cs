@@ -41,6 +41,7 @@
             this.importButton = new System.Windows.Forms.Button();
             this.startExamButton = new System.Windows.Forms.Button();
             this.aboutTabPage = new System.Windows.Forms.TabPage();
+            this.timeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.managerTabControl.SuspendLayout();
             this.learningModeTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -129,7 +130,8 @@
             this.testlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.titleColumn,
             this.numberQuesColumn,
-            this.dateColumn});
+            this.dateColumn,
+            this.timeColumn});
             this.testlistView.FullRowSelect = true;
             this.testlistView.GridLines = true;
             this.testlistView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -145,7 +147,7 @@
             // titleColumn
             // 
             this.titleColumn.Text = "Title";
-            this.titleColumn.Width = 300;
+            this.titleColumn.Width = 230;
             // 
             // numberQuesColumn
             // 
@@ -191,6 +193,12 @@
             this.aboutTabPage.TabIndex = 1;
             this.aboutTabPage.Text = "About TestEasy";
             // 
+            // timeColumn
+            // 
+            this.timeColumn.Text = "Time";
+            this.timeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeColumn.Width = 92;
+            // 
             // TestManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +228,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader numberQuesColumn;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.ColumnHeader timeColumn;
     }
 }
