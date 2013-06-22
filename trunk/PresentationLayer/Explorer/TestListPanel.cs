@@ -36,8 +36,7 @@ namespace PresentationLayer.Explorer
         private void OnAddTestItem(object sender, TestDataItem parameter)
         {
             int idx = testListBox.Controls.Count;
-
-            parameter.IdTest = idx;
+            parameter.IdTest = parameter.IdTest;
             testListBox.SuspendLayout();
             _dataItemController.TestBook.Add(idx.ToString(),parameter);
             AddTestItem(parameter, idx + 1);
@@ -48,7 +47,7 @@ namespace PresentationLayer.Explorer
         {
             testListBox.SuspendLayout();
             TestListItemCustom testItem = CreateTestItem(testData);
-            testItem.DataItem.IdTest = idx;
+            testItem.DataItem.IdTest = testData.IdTest;
             var style = new RowStyle(SizeType.AutoSize);
             testListBox.RowStyles.Add(style);
             testListBox.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
@@ -104,7 +103,7 @@ namespace PresentationLayer.Explorer
                 var item = testListBox.Controls[idx] as TestListItemCustom;
                 if (item != null)
                 {
-                    item.DataItem.IdTest = idx + 1;
+                    //item.DataItem. = idx + 1;
                 }
             }
             testListBox.Refresh();
