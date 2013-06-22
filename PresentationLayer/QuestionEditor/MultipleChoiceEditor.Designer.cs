@@ -46,7 +46,7 @@
             // 
             this.lbExplain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbExplain.AutoSize = true;
-            this.lbExplain.Location = new System.Drawing.Point(9, 331);
+            this.lbExplain.Location = new System.Drawing.Point(97, 334);
             this.lbExplain.Name = "lbExplain";
             this.lbExplain.Size = new System.Drawing.Size(41, 13);
             this.lbExplain.TabIndex = 0;
@@ -57,10 +57,10 @@
             // 
             this.tbQuestionContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbQuestionContent.Location = new System.Drawing.Point(87, 34);
+            this.tbQuestionContent.Location = new System.Drawing.Point(98, 34);
             this.tbQuestionContent.Multiline = true;
             this.tbQuestionContent.Name = "tbQuestionContent";
-            this.tbQuestionContent.Size = new System.Drawing.Size(396, 129);
+            this.tbQuestionContent.Size = new System.Drawing.Size(436, 129);
             this.tbQuestionContent.TabIndex = 1;
             this.tbQuestionContent.TextChanged += new System.EventHandler(this.tbQuestionContent_TextChanged);
             // 
@@ -75,7 +75,7 @@
             this.lbImportImage.BackColor = System.Drawing.SystemColors.Highlight;
             this.lbImportImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbImportImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbImportImage.Location = new System.Drawing.Point(12, 79);
+            this.lbImportImage.Location = new System.Drawing.Point(12, 37);
             this.lbImportImage.Name = "lbImportImage";
             this.lbImportImage.Size = new System.Drawing.Size(70, 15);
             this.lbImportImage.TabIndex = 2;
@@ -93,7 +93,7 @@
             // lbAnswer
             // 
             this.lbAnswer.AutoSize = true;
-            this.lbAnswer.Location = new System.Drawing.Point(12, 197);
+            this.lbAnswer.Location = new System.Drawing.Point(97, 181);
             this.lbAnswer.Name = "lbAnswer";
             this.lbAnswer.Size = new System.Drawing.Size(47, 13);
             this.lbAnswer.TabIndex = 0;
@@ -108,27 +108,27 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
-            this.tbListAnswer.Location = new System.Drawing.Point(87, 197);
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 434F));
+            this.tbListAnswer.Location = new System.Drawing.Point(98, 197);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(418, 117);
+            this.tbListAnswer.Size = new System.Drawing.Size(438, 134);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
             // 
             this.tbQuestionExplain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbQuestionExplain.Location = new System.Drawing.Point(87, 331);
+            this.tbQuestionExplain.Location = new System.Drawing.Point(98, 355);
             this.tbQuestionExplain.Multiline = true;
             this.tbQuestionExplain.Name = "tbQuestionExplain";
-            this.tbQuestionExplain.Size = new System.Drawing.Size(396, 94);
+            this.tbQuestionExplain.Size = new System.Drawing.Size(436, 94);
             this.tbQuestionExplain.TabIndex = 5;
             this.tbQuestionExplain.TextChanged += new System.EventHandler(this.tbQuestionExplain_TextChanged);
             // 
             // btCreate
             // 
             this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCreate.Location = new System.Drawing.Point(411, 438);
+            this.btCreate.Location = new System.Drawing.Point(446, 455);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(68, 23);
             this.btCreate.TabIndex = 6;
@@ -139,7 +139,7 @@
             // btCancel
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancel.Location = new System.Drawing.Point(330, 438);
+            this.btCancel.Location = new System.Drawing.Point(365, 455);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 7;
@@ -150,7 +150,7 @@
             // lbQuestion
             // 
             this.lbQuestion.AutoSize = true;
-            this.lbQuestion.Location = new System.Drawing.Point(15, 34);
+            this.lbQuestion.Location = new System.Drawing.Point(95, 18);
             this.lbQuestion.Name = "lbQuestion";
             this.lbQuestion.Size = new System.Drawing.Size(49, 13);
             this.lbQuestion.TabIndex = 0;
@@ -163,7 +163,7 @@
             this.btMoreAnswer.FlatAppearance.BorderSize = 0;
             this.btMoreAnswer.Image = global::PresentationLayer.Properties.Resources.add;
             this.btMoreAnswer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMoreAnswer.Location = new System.Drawing.Point(12, 227);
+            this.btMoreAnswer.Location = new System.Drawing.Point(13, 197);
             this.btMoreAnswer.Name = "btMoreAnswer";
             this.btMoreAnswer.Size = new System.Drawing.Size(69, 28);
             this.btMoreAnswer.TabIndex = 8;
@@ -177,7 +177,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(506, 473);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
+            this.ClientSize = new System.Drawing.Size(541, 490);
             this.Controls.Add(this.btMoreAnswer);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btCreate);
@@ -189,6 +190,7 @@
             this.Controls.Add(this.lbAnswer);
             this.Controls.Add(this.lbQuestion);
             this.Controls.Add(this.lbExplain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MultipleChoiceEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MultipleChoiceEditor_Load);

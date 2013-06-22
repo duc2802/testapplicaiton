@@ -96,6 +96,7 @@ namespace PresentationLayer.QuestionEditor
                 tbListAnswer.Controls.Add(itemLayout);
             }
             tbListAnswer.ResumeLayout();
+            
         }
 
         private void InitCommonGui(QuestionDataItem questionData)
