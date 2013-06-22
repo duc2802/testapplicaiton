@@ -10,60 +10,29 @@ using Commons.BusinessObjects;
 
 namespace ClientPresentationLayer.QuestionPresentation
 {
-    public partial class QuestionPresentPanel : UserControl
+    public partial class QuestionExplainPanel : UserControl
     {
-        int timetestInSeconds =60;
-        public QuestionPresentPanel()
+        public QuestionExplainPanel()
         {
             InitializeComponent();
             InitEvent();
             InitGui();
         }
 
-        private void InitGui() 
+        void InitGui() 
         {
-            timeTest.Interval = 1000;
-            timeTest.Start();
-            
+            splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
         }
+
         private void InitEvent()
         {
-            endExamButton.Click += EndExamButtonClick;
-            timeTest.Tick += new EventHandler(Timer_Tick);
-            lbTime.Text = getTime(); 
+            btCloseViewExplain.Click += EndExamButtonClick;
         }
 
         private void EndExamButtonClick(object sender, EventArgs e)
         {
             OnEndExam();
         }
-
-        public string getTime()
-        {
-            string time = "";
-            timetestInSeconds--;
-
-            if (timetestInSeconds == 0)
-            {
-                startStop();
-            }
-            else
-            {
-                TimeSpan ts = TimeSpan.FromSeconds(Convert.ToDouble(timetestInSeconds));
-                time = ts.ToString("hh\\:mm\\:ss");
-            }
-            return time;
-        }
-
-        private void startStop()
-        {
-            // Do some thing with exam
-        }
-
-        public void Timer_Tick(object sender, EventArgs eArgs)
-        {
-                lbTime.Text = getTime();
-        }  
 
         #region Register new event
 
