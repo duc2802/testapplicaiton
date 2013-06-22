@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using BusinessEntities;
 using SingleInstanceObject;
 using TestApplication;
@@ -45,7 +46,10 @@ namespace PresentationLayer.ThreadManager.DataThread
             try
             {
                 var businessObject = new TestBLL();
-                businessObject.exportTestXMLFile(_testBE);
+                if(businessObject.exportTestXMLFile(_testBE, _testBE.TestID, _testBE.FolderId))
+                {
+                    MessageBox.Show(string.Format("Can't save {0}", _testBE.TestID), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {

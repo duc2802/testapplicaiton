@@ -24,5 +24,7 @@ namespace BusinessEntities
         public List<QuestionBE> ListQuestion { get; set; }
 
         public string Time { get; set; }
+
+        public string FolderId { set; get; }
     }
 }

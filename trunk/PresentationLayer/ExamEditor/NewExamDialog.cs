@@ -59,6 +59,7 @@ namespace PresentationLayer.ExamEditor
             dataItem.NumberQuestion = Int32.Parse(numQuestionTextBox.Text);
             dataItem.Name = tbNameExam.Text;
             dataItem.Time = Int32.Parse(tbTime.Text);
+            dataItem.FolderId = FolderId;
             dataItem.DateCreate = DateTime.Now;
             Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
 

@@ -7,7 +7,7 @@ namespace TestApplication
     {
         public bool exportTestXMLFile(TestBE testData, string name, string placeToSave)
         {
-            bool result = ActionXML.saveExam(testData, name, placeToSave);
+            bool result = ActionXML.SaveExam(testData, name, placeToSave);
             return result;
         }
 
