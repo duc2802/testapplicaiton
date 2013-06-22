@@ -99,7 +99,7 @@
             this.numQuestionTextBox.Location = new System.Drawing.Point(105, 54);
             this.numQuestionTextBox.Name = "numQuestionTextBox";
             this.numQuestionTextBox.Size = new System.Drawing.Size(139, 20);
-            this.numQuestionTextBox.TabIndex = 6;
+            this.numQuestionTextBox.TabIndex = 2;
             // 
             // createExamButton
             // 
@@ -109,7 +109,7 @@
             this.createExamButton.Location = new System.Drawing.Point(164, 118);
             this.createExamButton.Name = "createExamButton";
             this.createExamButton.Size = new System.Drawing.Size(75, 23);
-            this.createExamButton.TabIndex = 7;
+            this.createExamButton.TabIndex = 4;
             this.createExamButton.Text = "Create";
             this.createExamButton.UseVisualStyleBackColor = true;
             // 
@@ -120,7 +120,7 @@
             this.cancelButton.Location = new System.Drawing.Point(245, 118);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 8;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 

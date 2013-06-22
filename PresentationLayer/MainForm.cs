@@ -62,6 +62,15 @@ namespace PresentationLayer
             mainSplitContainer.Panel2.Controls.Add(questionListPanel);
         }
 
+        private void InitButtonEvent()
+        {
+            btNewExam.Click += NewExamButtonClick;
+            btNewQuestion.Click += NewQuestionButtonClick;
+            btExportExam.Click += ButtonExportTestToXML;
+            openFileButton.Click += ButtonOpenFileButtonClick;
+            exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
+        }
+
         private void InitEvent()
         {
             InitButtonEvent();
@@ -133,15 +142,6 @@ namespace PresentationLayer
         private void ChangeQuestionId(object sender, int parameter)
         {
             btEditQuestion.Enabled = true;
-        }
-
-        private void InitButtonEvent()
-        {
-            btNewExam.Click += NewExamButtonClick;
-            btNewQuestion.Click += NewQuestionButtonClick;
-            btExportExam.Click += ButtonExportTestToXML;
-            openFileButton.Click += ButtonOpenFileButtonClick;
-            exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
         }
 
         private void ExportDocsExamButtonButtonClick(object sender, EventArgs eventArgs)
@@ -281,9 +281,17 @@ namespace PresentationLayer
         private void NewExamButtonClick(object sender, EventArgs e)
         {
             string idFolder = Singleton<GuiActionEventController>.Instance.FolderId;
-            using (var newExamDialog = new NewExamDialog(idFolder))
+            if (idFolder != null && !idFolder.Equals("Data"))
             {
-                newExamDialog.ShowDialog();
+                using (var newExamDialog = new NewExamDialog(idFolder))
+                {
+                    newExamDialog.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You can't create test item in data folder. Please add a sub folder before.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

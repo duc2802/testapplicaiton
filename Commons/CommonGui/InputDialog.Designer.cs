@@ -63,12 +63,12 @@
             // 
             // txtInput
             // 
+            this.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtInput.Location = new System.Drawing.Point(50, 3);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(169, 21);
             this.txtInput.TabIndex = 0;
-            this.txtInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtInput.TextChanged += new System.EventHandler(this.TxtInputTextChanged);
             // 
             // btnOk
@@ -76,6 +76,7 @@
             this.btnOk.AutoSize = true;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Enabled = false;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Location = new System.Drawing.Point(112, 48);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(57, 26);
@@ -88,6 +89,7 @@
             // 
             this.btnCancel.AutoSize = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Location = new System.Drawing.Point(174, 48);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(57, 26);
@@ -100,6 +102,7 @@
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(243, 85);
             this.ControlBox = false;
@@ -107,7 +110,7 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.tblLayout);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InputDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " Input Dialog";
