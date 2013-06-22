@@ -140,9 +140,9 @@ namespace PresentationLayer.QuestionEditor
             //Load image in new form
             Graphics g = CreateGraphics();
             var rect = new Rectangle(50, 30, 100, 100);
-            var image = new Bitmap("c:\\test.jpg");
-            var p = new Point(10, 10);
-            g.DrawImage(image, p);
+            var image = new Bitmap(label1.Text);            
+            var p = new Point(15, 110);
+            g.DrawImage(image, p.X,p.Y,60,60);            
             g.Dispose();
         }
 
@@ -211,8 +211,8 @@ namespace PresentationLayer.QuestionEditor
 
         private void label2_Click(object sender, EventArgs e)
         {
-            opFileChoseImage.ShowDialog();
-            opFileChoseImage.InitialDirectory = @"C:\";
+            //opFileChoseImage.ShowDialog();
+            //opFileChoseImage.InitialDirectory = @"C:\";
             if (opFileChoseImage.ShowDialog() == DialogResult.OK)
             {
                 label1.Text = "" + opFileChoseImage.FileName + "";
