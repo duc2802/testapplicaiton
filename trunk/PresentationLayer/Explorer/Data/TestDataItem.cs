@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BusinessEntities;
 using Commons;
 
-namespace PresentationLayer.Explorer
+namespace PresentationLayer.Explorer.Data
 {
     public class TestDataItem : IDataItem
     {

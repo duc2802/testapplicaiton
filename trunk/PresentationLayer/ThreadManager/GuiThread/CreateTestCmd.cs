@@ -1,5 +1,6 @@
 ﻿using System;
 using PresentationLayer.Explorer;
+using PresentationLayer.Explorer.Data;
 using ThreadQueueManager;
 
 namespace PresentationLayer.ThreadManager.GuiThread
