@@ -94,7 +94,7 @@ namespace PresentationLayer.Explorer
             Refresh();
             ResumeLayout();
 
-            int testId = DataItem.IdTest;
+            string testId = DataItem.IdTest;
             ICommand command = new LoadQuestionCmd(ExecuteMethod.Async, testId);
             Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
         }
@@ -102,13 +102,13 @@ namespace PresentationLayer.Explorer
         private void ListTestItemCustomLeave(object sender, EventArgs e)
         {
             BackColor = Color.White;
-            Singleton<GuiActionEventController>.Instance.LeaveTest = 1;
+            //Singleton<GuiActionEventController>.Instance.LeaveTest = 1;
         }
 
         #endregion
 
         #region Trigger Event
-        public event ActionEventHandler<int> Delete
+        public event ActionEventHandler<string> Delete
         {
             add
             {
@@ -126,12 +126,12 @@ namespace PresentationLayer.Explorer
             }
         }
 
-        private ActionEventHandler<int> _deleteEvent;
+        private ActionEventHandler<string> _deleteEvent;
         private readonly object _deleteEventLocker = new object();
 
-        private void OnDelete(int idTest)
+        private void OnDelete(string idTest)
         {
-            ActionEventHandler<int> handler = _deleteEvent;
+            ActionEventHandler<string> handler = _deleteEvent;
             if (handler != null)
             {
                 try

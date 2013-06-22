@@ -17,7 +17,7 @@ namespace PresentationLayer.ThreadCmd
         public CreateTestCmd(ExecuteMethod synch, TestDataItem dataItem)
         {
             synch_ = synch;
-            _name = "LoadQuestionCmd";
+            _name = "CreateTestCmd";
             _dataItem = dataItem;
         }
 

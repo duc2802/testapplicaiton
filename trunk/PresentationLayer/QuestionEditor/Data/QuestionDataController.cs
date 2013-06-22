@@ -48,8 +48,8 @@ namespace PresentationLayer.QuestionEditor.Data
 
         #endregion 
 
-        private int _idTest;
-        public int IdTest
+        private string _idTest;
+        public string IdTest
         {
             set
             { 

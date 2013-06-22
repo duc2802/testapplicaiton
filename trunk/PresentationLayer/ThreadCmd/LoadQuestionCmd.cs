@@ -10,9 +10,9 @@ namespace PresentationLayer.ThreadCmd
         private readonly string _name;
         private readonly ExecuteMethod synch_ = ExecuteMethod.Async;
 
-        private int _testId;
+        private string _testId;
 
-        public LoadQuestionCmd(ExecuteMethod synch, int testId)
+        public LoadQuestionCmd(ExecuteMethod synch, string testId)
         {
             synch_ = synch;
             _name = "LoadQuestionCmd";

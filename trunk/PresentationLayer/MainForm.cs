@@ -76,7 +76,7 @@ namespace PresentationLayer
             Singleton<GuiQueueThreadController>.Instance.InitializeThreadQueueController("GuiQueueThreadController");
         }
 
-        private void LeaveTest(object sender, int parameter)
+        private void LeaveTest(object sender, string parameter)
         {
             btExportExam.Enabled = false;
             btNewQuestion.Enabled = false;
@@ -88,7 +88,7 @@ namespace PresentationLayer
             btEditQuestion.Enabled = false;
         }
 
-        private void ChangeTestId(object sender, int parameter)
+        private void ChangeTestId(object sender, string parameter)
         {
             btExportExam.Enabled = true;
             btNewQuestion.Enabled = true;

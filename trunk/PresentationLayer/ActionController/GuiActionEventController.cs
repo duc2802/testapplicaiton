@@ -10,8 +10,8 @@ namespace PresentationLayer.ActionController
         #region Properties
 
         private string _folderId;
-        private int _testId;
-        private int _leaveTest;
+        private string _testId;
+        private string _leaveTest;
 
         private int _questionID;
 
@@ -44,7 +44,7 @@ namespace PresentationLayer.ActionController
             get { return _questionID; }
         }
 
-        public int LeaveTest
+        public string LeaveTest
         {
             set
             {
@@ -55,7 +55,7 @@ namespace PresentationLayer.ActionController
  
         }
 
-        public int TestId
+        public string TestId
         {
             set
             {
@@ -116,9 +116,9 @@ namespace PresentationLayer.ActionController
         #region Event Change Test id
 
         private readonly object _changeTestIdEventLocker = new object();
-        private ActionEventHandler<int> _changeTestIdEvent;
+        private ActionEventHandler<string> _changeTestIdEvent;
 
-        public event ActionEventHandler<int> ChangeTestId
+        public event ActionEventHandler<string> ChangeTestId
         {
             add
             {
@@ -136,9 +136,9 @@ namespace PresentationLayer.ActionController
             }
         }
 
-        public void OnChangeTestId(int id)
+        public void OnChangeTestId(string id)
         {
-            ActionEventHandler<int> handler = _changeTestIdEvent;
+            ActionEventHandler<string> handler = _changeTestIdEvent;
             if (handler != null)
             {
                 try
@@ -322,9 +322,9 @@ namespace PresentationLayer.ActionController
         }
 
         private readonly object _changeLeaveTestEventLocker = new object();
-        private ActionEventHandler<int> _changeLeaveTestEvent;
+        private ActionEventHandler<string> _changeLeaveTestEvent;
 
-        public event ActionEventHandler<int> ChangeLeaveTest
+        public event ActionEventHandler<string> ChangeLeaveTest
         {
             add
             {
@@ -342,9 +342,9 @@ namespace PresentationLayer.ActionController
             }
         }
 
-        public void OnChangeLeaveTest(int id)
+        public void OnChangeLeaveTest(string id)
         {
-            ActionEventHandler<int> handler = _changeLeaveTestEvent;
+            ActionEventHandler<string> handler = _changeLeaveTestEvent;
             if (handler != null)
             {
                 try
