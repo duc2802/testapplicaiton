@@ -96,7 +96,8 @@ namespace PresentationLayer.Export
             infoPara.Range.set_Style(ref styleHeading2);
             String content = "Time : 30 minutes" + "\n";
             content += "Number of Question : 10" + "\n";
-            content += "Date : " + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+            content += "Date : " + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year + "\n";
+            content += "____________________________________________________________________";
             infoPara.Range.Text = content;
             infoPara.Range.Font.Bold = 1;
             infoPara.Format.SpaceAfter = 10;
