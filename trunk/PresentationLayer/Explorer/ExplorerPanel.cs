@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using Commons;
 using Commons.CommonGui;
 using PresentationLayer.ActionController;
-using PresentationLayer.Setting;
 using SingleInstanceObject;
 
 namespace PresentationLayer.Explorer

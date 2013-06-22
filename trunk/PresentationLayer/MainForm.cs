@@ -229,7 +229,7 @@ namespace PresentationLayer
             {
                 String url = Path.GetDirectoryName(saveTestToXmlFileDialog.FileName);
                 var testMakeFile = new TestBLL();
-                result = testMakeFile.exportTestXMLFile(t, saveTestToXmlFileDialog.FileName, url);
+                result = testMakeFile.ExportTestExamFile(t, saveTestToXmlFileDialog.FileName, url);
             }
 
             if (result == false)

@@ -5,10 +5,9 @@ namespace TestApplication
 {
     public class TestBLL
     {
-        public bool exportTestXMLFile(TestBE testData, string name, string placeToSave)
+        public bool ExportTestExamFile(TestBE testData, string name, string placeToSave)
         {
-            bool result = ActionXML.SaveExam(testData, name, placeToSave);
-            return result;
+            return XmlHelper.WriteExamFile(testData, name, placeToSave);
         }
 
     }

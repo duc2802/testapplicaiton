@@ -55,7 +55,7 @@ namespace PresentationLayer.ExamEditor
         private void CreateNewExamButtonClick(object sender, EventArgs e)
         {
             var dataItem = new TestDataItem();
-            dataItem.IdTest = DateTime.Now.ToLongDateString();
+            dataItem.IdTest = String.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
             dataItem.NumberQuestion = Int32.Parse(numQuestionTextBox.Text);
             dataItem.Name = tbNameExam.Text;
             dataItem.Time = Int32.Parse(tbTime.Text);

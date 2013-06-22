@@ -46,7 +46,7 @@ namespace PresentationLayer.ThreadManager.DataThread
             try
             {
                 var businessObject = new TestBLL();
-                if(businessObject.exportTestXMLFile(_testBE, _testBE.TestID, _testBE.FolderId))
+                if (!businessObject.ExportTestExamFile(_testBE, _testBE.TestID, _testBE.FolderId))
                 {
                     MessageBox.Show(string.Format("Can't save {0}", _testBE.TestID), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
