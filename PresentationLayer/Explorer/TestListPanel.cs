@@ -81,15 +81,15 @@ namespace PresentationLayer.Explorer
             }
         }
 
-        private void ItemLayoutDelete(object sender, int parameter)
+        private void ItemLayoutDelete(object sender, string parameter)
         {
             DeleteTestItem(parameter);
         }
 
-        private void DeleteTestItem(int idTest)
+        private void DeleteTestItem(string idTest)
         {
             testListBox.SuspendLayout();
-            testListBox.Controls.RemoveAt(idTest - 1);
+            testListBox.Controls.RemoveAt(0);
             _dataItemController.TestBook.Remove(idTest.ToString());
             UpdateAllDataItem();
             testListBox.ResumeLayout();

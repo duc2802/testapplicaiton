@@ -13,6 +13,7 @@ namespace PresentationLayer.Explorer
         public DateTime DateCreate { set; get; }
         public int NumberQuestion { set; get; }
         public int Time { set; get; }
+        public int OrderNumber { set; get; }
         #endregion
 
         public TestDataItem()
@@ -27,7 +28,6 @@ namespace PresentationLayer.Explorer
             DateCreate = date;
             NumberQuestion = numOfQuestion;
             Time = time;
-
         }
     }
 }

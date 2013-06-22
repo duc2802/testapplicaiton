@@ -51,7 +51,7 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        private void UpdateEditor(int idTest)
+        private void UpdateEditor(string idTest)
         {
             questionPanel.SuspendLayout();
             _dataController.DataItems.Clear();
@@ -158,7 +158,7 @@ namespace PresentationLayer.QuestionEditor
 
         #region Implement registed event
 
-        private void ChangeTestId(object sender, int parameter)
+        private void ChangeTestId(object sender, string parameter)
         {
             Invoke((MethodInvoker) (() => UpdateEditor(parameter)));
         }

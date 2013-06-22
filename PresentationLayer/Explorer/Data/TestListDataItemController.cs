@@ -26,7 +26,7 @@ namespace PresentationLayer.Explorer
         {
             for (int i = 0; i <= 20; i++)
             {
-                TestDataItem testDataItem = new TestDataItem(i, string.Format("De thi {0} tieng anh HK 2", i + 1), new DateTime(), 20,30);
+                TestDataItem testDataItem = new TestDataItem(i.ToString(), string.Format("De thi {0} tieng anh HK 2", i + 1), new DateTime(), 20,30);
                 _testBook.Add(i.ToString(), testDataItem);
             }
         }
@@ -36,7 +36,7 @@ namespace PresentationLayer.Explorer
             _testBook.Clear();
             for (int i = 0; i <= 10; i++)
             {
-                TestDataItem testDataItem = new TestDataItem(i, string.Format("De thi {0} Test", i + 1), new DateTime(), 20, 60);
+                TestDataItem testDataItem = new TestDataItem(i.ToString(), string.Format("De thi {0} Test", i + 1), new DateTime(), 20, 60);
                 _testBook.Add(i.ToString(), testDataItem);
             }
         }
