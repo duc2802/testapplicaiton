@@ -54,6 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=6.6.0.5, Culture=neutral, PublicKeyToken=7c5c3e3e32ebc94e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Ribbon">
       <HintPath>C:\Users\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll</HintPath>
     </Reference>
@@ -98,6 +101,12 @@
     </Compile>
     <Compile Include="Explorer\TestListPanel.Designer.cs">
       <DependentUpon>TestListPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\ExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ExportForm.Designer.cs">
+      <DependentUpon>ExportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -196,6 +205,9 @@
     <EmbeddedResource Include="Explorer\TestListPanel.resx">
       <DependentUpon>TestListPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Export\ExportForm.resx">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +249,7 @@
     <None Include="Resources\Clock.png" />
     <None Include="Resources\Export.png" />
     <None Include="Resources\editquestion.png" />
+    <Content Include="Resources\docs.png" />
     <Content Include="Resources\NewQuestion.png" />
     <Content Include="Resources\Program.png" />
     <None Include="Resources\test.png" />
