@@ -27,7 +27,6 @@ namespace PresentationLayer.Explorer
             Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeFolderId;
             Singleton<GuiActionEventController>.Instance.AddTestItem += OnAddTestItem;
             Singleton<GuiActionEventController>.Instance.ClearAllTestItem += ClearAllTestItem;
-
         }
 
         private void ClearAllTestItem(object sender)
@@ -64,7 +63,6 @@ namespace PresentationLayer.Explorer
             var itemLayout = new TestListItemCustom(testData);
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Update += ItemLayoutUpdate;
-            //itemLayout.MouseDown += ItemLayoutMouseDown;
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             return itemLayout;
         }
@@ -99,6 +97,7 @@ namespace PresentationLayer.Explorer
             UpdateAllDataItem();
             testListBox.ResumeLayout();
             Refresh();
+            Singleton<GuiActionEventController>.Instance.OnClearAllQuestionItem();
 
             var testBE = Singleton<List<TestBE>>.Instance.FirstOrDefault(test => test.TestID.Equals(idTest));
             ICommand command = new DeleteTestCmd(ExecuteMethod.Async, testBE);

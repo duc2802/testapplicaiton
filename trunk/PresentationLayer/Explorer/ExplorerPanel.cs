@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessEntities;
 using Commons;
 using Commons.CommonGui;
 using PresentationLayer.ActionController;
+using PresentationLayer.ThreadManager.DataThread;
 using SingleInstanceObject;
+using ThreadQueueManager;
 
 namespace PresentationLayer.Explorer
 {
@@ -62,10 +66,10 @@ namespace PresentationLayer.Explorer
 
         private void RemoveDirectoty(string folderName)
         {
-            string folderDirectory = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folderName;
-            if (!Directory.Exists(folderDirectory))
+            var folder = Singleton<List<Folder>>.Instance.FirstOrDefault(f => f.FolderName.Equals(folderName));
+            if(folder != null)
             {
-                Directory.Delete(folderDirectory, true);
+                Singleton<List<Folder>>.Instance.Remove(folder);
             }
         }
 
@@ -91,6 +95,7 @@ namespace PresentationLayer.Explorer
                     var newNode = new NodeExplorer(nodeText, contextMenuStrip1);
                     _rootNode.Nodes.Add(newNode);
                     CreateDirectory(nodeText);
+                    Singleton<List<Folder>>.Instance.Add(new Folder(nodeText));
                 }
             }
         }
@@ -121,8 +126,18 @@ namespace PresentationLayer.Explorer
                                     string.Format("Delete Node: {0}", selectedNode.Text),
                                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    RemoveDirectoty(selectedNode.Text);
-                    selectedNode.Remove();
+                    var folder =
+                        Singleton<List<Folder>>.Instance.FirstOrDefault(f => f.FolderName.Equals(selectedNode.Text));
+                    if (folder != null)
+                    {
+                        RemoveDirectoty(folder.FolderName);
+                        selectedNode.Remove();
+                        Singleton<GuiActionEventController>.Instance.OnClearAllQuestionItem();
+                        Singleton<GuiActionEventController>.Instance.OnClearAllTestItem();
+
+                        ICommand command = new DeleteNodeExplorerCmd(ExecuteMethod.Async, folder);
+                        Singleton<DataQueueThreadController>.Instance.PutCmd(command);
+                    }
                 }
             }
             else
