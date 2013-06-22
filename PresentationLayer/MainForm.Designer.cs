@@ -65,7 +65,7 @@ namespace PresentationLayer
             this.dockSite7 = new DevComponents.DotNetBar.DockSite();
             this.dockSite3 = new DevComponents.DotNetBar.DockSite();
             this.File = new DevComponents.DotNetBar.RibbonBar();
-            this.btOpenFile = new DevComponents.DotNetBar.ButtonItem();
+            this.openFileButton = new DevComponents.DotNetBar.ButtonItem();
             this.Exam = new DevComponents.DotNetBar.RibbonBar();
             this.btNewExam = new DevComponents.DotNetBar.ButtonItem();
             this.btExportExam = new DevComponents.DotNetBar.ButtonItem();
@@ -75,7 +75,7 @@ namespace PresentationLayer
             this.saveTestToXmlFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileForderDialog = new System.Windows.Forms.OpenFileDialog();
             this.openFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.btExportDocsExam = new DevComponents.DotNetBar.ButtonItem();
+            this.exportDocsExamButton = new DevComponents.DotNetBar.ButtonItem();
             this.dockSite9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
@@ -483,7 +483,7 @@ namespace PresentationLayer
             // 
             this.File.AutoOverflowEnabled = true;
             this.File.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btOpenFile});
+            this.openFileButton});
             this.File.Location = new System.Drawing.Point(7, 58);
             this.File.Name = "File";
             this.File.Size = new System.Drawing.Size(80, 70);
@@ -491,12 +491,12 @@ namespace PresentationLayer
             this.File.TabIndex = 18;
             this.File.Text = "File";
             // 
-            // btOpenFile
+            // openFileButton
             // 
-            this.btOpenFile.Image = global::PresentationLayer.Properties.Resources.test;
-            this.btOpenFile.ImagePaddingHorizontal = 8;
-            this.btOpenFile.Name = "btOpenFile";
-            this.btOpenFile.Text = "ButtonOpenFile";
+            this.openFileButton.Image = global::PresentationLayer.Properties.Resources.test;
+            this.openFileButton.ImagePaddingHorizontal = 8;
+            this.openFileButton.Name = "btOpenFile";
+            this.openFileButton.Text = "ButtonOpenFile";
             // 
             // Exam
             // 
@@ -504,7 +504,7 @@ namespace PresentationLayer
             this.Exam.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btNewExam,
             this.btExportExam,
-            this.btExportDocsExam});
+            this.exportDocsExamButton});
             this.Exam.Location = new System.Drawing.Point(93, 58);
             this.Exam.Name = "Exam";
             this.Exam.Size = new System.Drawing.Size(175, 70);
@@ -558,13 +558,13 @@ namespace PresentationLayer
             // 
             this.openFolderBrowserDialog.ShowNewFolderButton = false;
             // 
-            // btExportDocsExam
+            // exportDocsExamButton
             // 
-            this.btExportDocsExam.Image = global::PresentationLayer.Properties.Resources.docs;
-            this.btExportDocsExam.ImageFixedSize = new System.Drawing.Size(45, 45);
-            this.btExportDocsExam.ImagePaddingHorizontal = 8;
-            this.btExportDocsExam.Name = "btExportDocsExam";
-            this.btExportDocsExam.Text = "buttonItem1";
+            this.exportDocsExamButton.Image = global::PresentationLayer.Properties.Resources.docs;
+            this.exportDocsExamButton.ImageFixedSize = new System.Drawing.Size(45, 45);
+            this.exportDocsExamButton.ImagePaddingHorizontal = 8;
+            this.exportDocsExamButton.Name = "btExportDocsExam";
+            this.exportDocsExamButton.Text = "buttonItem1";
             // 
             // MainForm
             // 
@@ -637,7 +637,7 @@ namespace PresentationLayer
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.SplitContainer explorerSplitContainer;
         private DevComponents.DotNetBar.RibbonBar File;
-        private DevComponents.DotNetBar.ButtonItem btOpenFile;
+        private DevComponents.DotNetBar.ButtonItem openFileButton;
         private DevComponents.DotNetBar.RibbonBar Question;
         private DevComponents.DotNetBar.RibbonBar Exam;
         private DevComponents.DotNetBar.ButtonItem btNewExam;
@@ -647,7 +647,7 @@ namespace PresentationLayer
         private SaveFileDialog saveTestToXmlFileDialog;
         private OpenFileDialog openFileForderDialog;
         private FolderBrowserDialog openFolderBrowserDialog;
-        private DevComponents.DotNetBar.ButtonItem btExportDocsExam;
+        private DevComponents.DotNetBar.ButtonItem exportDocsExamButton;
 
 
     }

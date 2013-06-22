@@ -8,7 +8,7 @@ namespace PresentationLayer.Explorer
     public class TestDataItem
     {
         #region Properties of TestDataItem
-        public int IdTest { set; get; }
+        public string IdTest { set; get; }
         public string Name { set; get; }
         public DateTime DateCreate { set; get; }
         public int NumberQuestion { set; get; }
@@ -20,7 +20,7 @@ namespace PresentationLayer.Explorer
             
         }
 
-        public TestDataItem(int id, string name, DateTime date, int numOfQuestion, int time)
+        public TestDataItem(string id, string name, DateTime date, int numOfQuestion, int time)
         {
             IdTest = id;
             Name = name;

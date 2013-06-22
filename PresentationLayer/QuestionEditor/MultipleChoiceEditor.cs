@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using BusinessEntities;
-using Commons;
-using Commons.BusinessObjects;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using BusinessEntities;
+using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
 using TestApplication;
 
@@ -16,15 +12,15 @@ namespace PresentationLayer.QuestionEditor
 {
     public partial class MultipleChoiceEditor : Form
     {
-        private QuestionDataItem _dataItem;
+        private readonly String _action = "";
         private int MAX_SHOW_ITEM = 6;
-        private String _action = "";
+        private QuestionDataItem _dataItem;
 
         public MultipleChoiceEditor()
         {
-            _action = "create";            
+            _action = "create";
             InitializeComponent();
-            this.btCreate.Text = @"Create";
+            btCreate.Text = @"Create";
             InitEvent();
             InitCommonGui();
         }
@@ -32,17 +28,28 @@ namespace PresentationLayer.QuestionEditor
         public MultipleChoiceEditor(QuestionDataItem question)
         {
             _action = "edit";
-            
+
             InitializeComponent();
-            this.btCreate.Text = @"Ok";
+            btCreate.Text = @"Ok";
             InitEvent();
             InitCommonGui(question);
+        }
+
+        public QuestionDataItem DataItem
+        {
+            set
+            {
+                _dataItem = value;
+                Name = _dataItem.IdQuestion.ToString();
+                OnDataItemChanged();
+            }
+            get { return _dataItem; }
         }
 
         private void InitEvent()
         {
             // Add answer Events.
-            btMoreAnswer.Click += MoreAnswerButtonClick;            
+            btMoreAnswer.Click += MoreAnswerButtonClick;
         }
 
         private void MoreAnswerButtonClick(object sender, EventArgs e)
@@ -54,27 +61,27 @@ namespace PresentationLayer.QuestionEditor
                 return;
             }
 
-            Item itemLayout=null;
+            Item itemLayout = null;
             AnswerDataItem newItem = null;
             tbListAnswer.SuspendLayout();
             int oderNumber = 1;
-            if (DataItem != null){
+            if (DataItem != null)
+            {
                 //oderNumber = DataItem.AnswerData.AnswerData.Count + 1;
                 oderNumber = tbListAnswer.Controls.Count + 1;
             }
-            newItem = new AnswerDataItem(oderNumber,"",false);
+            newItem = new AnswerDataItem(oderNumber, "", false);
             DataItem.AnswerData.AnswerData.Add(newItem);
             itemLayout = new Item(newItem, oderNumber);
             itemLayout.DataItem.orderAnswer = oderNumber;
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Location = new Point(0, itemLayout.Height);
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+            itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
 
-           
-            tbListAnswer.ResumeLayout();
 
+            tbListAnswer.ResumeLayout();
         }
 
         private void InitCommonGui()
@@ -82,13 +89,13 @@ namespace PresentationLayer.QuestionEditor
             tbListAnswer.SuspendLayout();
             for (int idx = 0; idx < 2; idx++)
             {
-                Item itemLayout = new Item();
-                itemLayout.Location = new Point(0, idx * itemLayout.Height);
+                var itemLayout = new Item();
+                itemLayout.Location = new Point(0, idx*itemLayout.Height);
                 itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-                itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+                itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
                 tbListAnswer.Controls.Add(itemLayout);
             }
-            tbListAnswer.ResumeLayout();                      
+            tbListAnswer.ResumeLayout();
         }
 
         private void InitCommonGui(QuestionDataItem questionData)
@@ -106,30 +113,18 @@ namespace PresentationLayer.QuestionEditor
             }
             if (e.PropertyName.Equals("OrderAnswer"))
             {
-                this.Text = DataItem.OrderQuestion.ToString();
+                Text = DataItem.OrderQuestion.ToString();
             }
             else if (true)
             {
-
             }
             OnUpdate(DataItem.IdQuestion);
-        }
-
-        public QuestionDataItem DataItem
-        {
-            set
-            {
-                _dataItem = value;
-                Name = _dataItem.IdQuestion.ToString();
-                OnDataItemChanged();
-            }
-            get { return _dataItem; }
         }
 
         private void OnDataItemChanged()
         {
             tbQuestionContent.Text = DataItem.ContentQuestion;
-            this.Text ="Question "+ DataItem.OrderQuestion.ToString();
+            Text = "Question " + DataItem.OrderQuestion.ToString();
             if (DataItem.imageName != null)
             {
                 label1.Text = "Click here to view image";
@@ -142,13 +137,12 @@ namespace PresentationLayer.QuestionEditor
         private void ShowImageofQuestion(object sender, EventArgs e)
         {
             //Load image in new form
-            Graphics g = this.CreateGraphics();
-            Rectangle rect = new Rectangle(50, 30, 100, 100);
-            Bitmap image = new Bitmap("c:\\test.jpg");
-            Point p = new Point(10, 10);
+            Graphics g = CreateGraphics();
+            var rect = new Rectangle(50, 30, 100, 100);
+            var image = new Bitmap("c:\\test.jpg");
+            var p = new Point(10, 10);
             g.DrawImage(image, p);
             g.Dispose();
-            
         }
 
         private void AddAnswerOptions()
@@ -164,14 +158,14 @@ namespace PresentationLayer.QuestionEditor
         private void AddNewLine(AnswerDataItem item, int orderNumber)
         {
             tbListAnswer.SuspendLayout();
-            Item itemLayout = new Item(item,orderNumber);
+            var itemLayout = new Item(item, orderNumber);
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.DataItem.OrderAnswer = orderNumber;
             itemLayout.DataItem.orderAnswer = orderNumber;
             //itemLayout.Update += ItemLayoutUpdate;
             itemLayout.Location = new Point(0, itemLayout.Height);
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            itemLayout.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
+            itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
             tbListAnswer.ResumeLayout();
         }
@@ -180,6 +174,7 @@ namespace PresentationLayer.QuestionEditor
         {
             DeleteAnswerItem(parameter);
         }
+
         private void ItemLayoutUpdate(object sender, int parameter)
         {
             UpdateAnswerItem(parameter);
@@ -211,7 +206,6 @@ namespace PresentationLayer.QuestionEditor
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -226,13 +220,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void MultipleChoiceEditor_Load(object sender, EventArgs e)
         {
-
         }
 
         private void DeleteAnswerItem(int orderAnswer)
         {
             tbListAnswer.SuspendLayout();
-            tbListAnswer.Controls.RemoveAt(orderAnswer-1);            
+            tbListAnswer.Controls.RemoveAt(orderAnswer - 1);
             /*
             var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
             if (item != null)
@@ -247,7 +240,7 @@ namespace PresentationLayer.QuestionEditor
             }*/
             UpdateAllDataItem();
             tbListAnswer.ResumeLayout();
-            this.Refresh();
+            Refresh();
             //Refresh();
         }
 
@@ -260,13 +253,68 @@ namespace PresentationLayer.QuestionEditor
                 {
                     item.DataItem.OrderAnswer = idx + 1;
                     item.Size = new Size(tbListAnswer.Width - 10, item.Height);
-                }   
+                }
             }
             tbListAnswer.Refresh();
         }
 
-       
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btCreate_Click(object sender, EventArgs e)
+        {
+            DataItem.AnswerData.AnswerData.Clear();
+
+            for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
+            {
+                var item = tbListAnswer.Controls[idx] as Item;
+                if (item != null && item.DataItem.ContentAnswer != "")
+                {
+                    DataItem.AnswerData.AnswerData.Add(item.DataItem);
+                }
+            }
+
+            QuestionBE qbe = DataItem.getQuestionBE();
+
+            if (_action == "edit")
+            {
+                var qBll = new QuestionBLL();
+                //hard code test id = 1
+                if (qBll.UpdateQuestion(qbe, "xx"))
+                {
+                    MessageBox.Show(@"Update Succesful");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(@"Update Fail");
+                }
+            }
+            if (_action == "create")
+            {
+                var qBll = new QuestionBLL();
+                //hard code test id = 1
+                if (qBll.AddQuestion(qbe, "xx"))
+                {
+                    MessageBox.Show(@"Add Succesful");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(@"Add Fail");
+                }
+            }
+        }
+
         #region Trigger Event
+
+        private readonly object _deleteEventLocker = new object();
+        private readonly object _updateEventLocker = new object();
+        private ActionEventHandler<int> _deleteEvent;
+        private ActionEventHandler<int> _updateEvent;
+
         public event ActionEventHandler<int> Delete
         {
             add
@@ -284,9 +332,6 @@ namespace PresentationLayer.QuestionEditor
                 }
             }
         }
-
-        private ActionEventHandler<int> _deleteEvent;
-        private readonly object _deleteEventLocker = new object();
 
         private void OnDelete(int idQuestion)
         {
@@ -322,9 +367,6 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        private ActionEventHandler<int> _updateEvent;
-        private readonly object _updateEventLocker = new object();
-
         private void OnUpdate(int idQuestion)
         {
             ActionEventHandler<int> handler = _updateEvent;
@@ -341,55 +383,6 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        #endregion 
-
-        private void btCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btCreate_Click(object sender, EventArgs e)
-        {
-            DataItem.AnswerData.AnswerData.Clear();
-
-            for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
-            {
-                var item = tbListAnswer.Controls[idx] as Item;
-                if (item != null && item.DataItem.ContentAnswer != "")
-                {
-                    DataItem.AnswerData.AnswerData.Add(item.DataItem);
-                }
-            }
-
-            QuestionBE qbe = DataItem.getQuestionBE();
-
-            if(_action == "edit"){                             
-                QuestionBLL qBll = new QuestionBLL();
-                //hard code test id = 1
-                if(qBll.UpdateQuestion(qbe, "xx"))
-                {
-                    MessageBox.Show(@"Update Succesful");
-                    this.Close();
-                }else
-                {
-                    MessageBox.Show(@"Update Fail");
-                }
-            }
-            if (_action == "create")
-            {
-                QuestionBLL qBll = new QuestionBLL();
-                //hard code test id = 1
-                if (qBll.AddQuestion(qbe, "xx"))
-                {
-                    MessageBox.Show(@"Add Succesful");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(@"Add Fail");
-                }
-            }
-
-        }
+        #endregion
     }
 }

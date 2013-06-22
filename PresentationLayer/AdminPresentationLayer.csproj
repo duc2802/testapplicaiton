@@ -71,11 +71,11 @@
     <Compile Include="Category\CategoryExplorer.Designer.cs">
       <DependentUpon>CategoryExplorer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExamEditor\NewExam.cs">
+    <Compile Include="ExamEditor\NewExamDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExamEditor\NewExam.Designer.cs">
-      <DependentUpon>NewExam.cs</DependentUpon>
+    <Compile Include="ExamEditor\NewExamDialog.Designer.cs">
+      <DependentUpon>NewExamDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Explorer\ExplorerPanel.cs">
       <SubType>UserControl</SubType>
@@ -83,7 +83,7 @@
     <Compile Include="Explorer\ExplorerPanel.Designer.cs">
       <DependentUpon>ExplorerPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Explorer\NodeDateItem.cs" />
+    <Compile Include="Explorer\Data\NodeDateItem.cs" />
     <Compile Include="Explorer\NodeExplorer.cs" />
     <Compile Include="Explorer\TestListItemCustom.cs">
       <SubType>UserControl</SubType>
@@ -91,8 +91,8 @@
     <Compile Include="Explorer\TestListItemCustom.Designer.cs">
       <DependentUpon>TestListItemCustom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Explorer\TestDataItem.cs" />
-    <Compile Include="Explorer\TestListDataItemController.cs" />
+    <Compile Include="Explorer\Data\TestDataItem.cs" />
+    <Compile Include="Explorer\Data\TestListDataItemController.cs" />
     <Compile Include="Explorer\TestListPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,12 +178,13 @@
     <Compile Include="Splash\WelcomeScreen.designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThreadCmd\CreateTestCmd.cs" />
     <Compile Include="ThreadCmd\GuiQueueThreadController.cs" />
     <Compile Include="ThreadCmd\LoadQuestionCmd.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExamEditor\NewExam.resx">
-      <DependentUpon>NewExam.cs</DependentUpon>
+    <EmbeddedResource Include="ExamEditor\NewExamDialog.resx">
+      <DependentUpon>NewExamDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Explorer\ExplorerPanel.resx">
       <DependentUpon>ExplorerPanel.cs</DependentUpon>
