@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 /**-----------------------------------------------------------
 * Program : TestApplication
@@ -13,6 +14,7 @@
 
 namespace BusinessEntities
 {
+    [Serializable()]
     public class TestBE : IDataBE
     {
         public string TestID { get; set; }

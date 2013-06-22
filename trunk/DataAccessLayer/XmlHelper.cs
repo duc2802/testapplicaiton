@@ -16,17 +16,33 @@ namespace DataAccessLayer
         {
             try
             {
-                string path = Singleton<SettingManager>.Instance.GetTestEasyFolder() + "\\" + placeToSave + "\\" + nameOfFile
+                string path = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + placeToSave + "\\" + nameOfFile
                               + ".exam";
-                var writer = new XmlSerializer(typeof(TestBE));
+                var serializerObject = new XmlSerializer(typeof(TestBE));
                 var file = new StreamWriter(path);
-                writer.Serialize(file, testObject);
+                serializerObject.Serialize(file, testObject);
                 file.Close();
                 return true;
             }
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        public static TestBE ReadExamFile(string filePath)
+        {
+            try
+            {
+                var readFileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                var serializerObject = new XmlSerializer(typeof (TestBE));
+                var testBe = (TestBE) serializerObject.Deserialize(readFileStream);
+                readFileStream.Close();
+                return testBe;
+            }
+            catch(Exception ex)
+            {
+                return null;
             }
         }
 

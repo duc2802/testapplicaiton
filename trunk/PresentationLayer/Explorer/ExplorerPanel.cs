@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Commons;
 using Commons.CommonGui;
@@ -30,18 +31,8 @@ namespace PresentationLayer.Explorer
             addToolStripMenuItem.Click += AddChildToolStripMenuItemClick;
             renameToolStripMenuItem.Click += RenameToolStripMenuItemClick;
             deleteToolStripMenuItem.Click += DeleteToolStripMenuItemClick;
-            //Singleton<GuiActionEventController>.Instance.ChangeFolderId += ChangeForderId;
         }
-
-        private void ChangeForderId(object sender, string parameter)
-        {
-            _rootNode = new NodeExplorer(parameter, contextMenuStrip1);
-            _rootNode.ExpandAll();
-            fileTreeView.Nodes.Add(_rootNode);
-            //LoadTreeView();
-        }
-
-
+        
         private void InitTreeView()
         {
             _rootNode = new NodeExplorer("Data", contextMenuStrip1);
@@ -54,9 +45,8 @@ namespace PresentationLayer.Explorer
         {
             string dataFolder = Singleton<SettingManager>.Instance.GetDataFolder();
             var dataDirectory = new DirectoryInfo(dataFolder);
-            foreach (DirectoryInfo di in dataDirectory.GetDirectories())
+            foreach (var newNode in dataDirectory.GetDirectories().Select(di => new NodeExplorer(di.Name, contextMenuStrip1)))
             {
-                var newNode = new NodeExplorer(di.Name, contextMenuStrip1);
                 _rootNode.Nodes.Add(newNode);
             }
         }
@@ -85,7 +75,7 @@ namespace PresentationLayer.Explorer
         {
             if(e.Button == MouseButtons.Left)
             {
-                Singleton<GuiActionEventController>.Instance.FolderId = fileTreeView.SelectedNode.Text;
+                Singleton<GuiActionEventController>.Instance.FolderId = fileTreeView.GetNodeAt(e.X, e.Y).Text;
                 Singleton<GuiActionEventController>.Instance.OnClearAllQuestionItem();
             }
         }

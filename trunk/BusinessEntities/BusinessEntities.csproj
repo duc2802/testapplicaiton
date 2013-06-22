@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AnswerBE.cs" />
+    <Compile Include="Folder.cs" />
     <Compile Include="QuestionBE.cs" />
     <Compile Include="TestBE.cs" />
   </ItemGroup>

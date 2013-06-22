@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using BusinessEntities;
+using Commons;
 using DevComponents.DotNetBar;
 using PresentationLayer.ActionController;
 using PresentationLayer.ExamEditor;
@@ -32,14 +34,15 @@ namespace PresentationLayer
             InitCommonGui();
             InitEvent();
             InitSingletonObject();
+            done = true;
         }
 
         private void InitData()
         {
-            //DoSplash();
-            Singleton<GuiActionEventController>.Instance.FolderId = "Data";
+            DoSplash();
+            LoadData();
         }
-
+        
         private void InitCommonGui()
         {
             btExportExam.Enabled = false;
@@ -77,6 +80,35 @@ namespace PresentationLayer
         {
             Singleton<GuiQueueThreadController>.Instance.InitializeThreadQueueController("GuiQueueThreadController");
             Singleton<DataQueueThreadController>.Instance.InitializeThreadQueueController("DataQueueThreadController");
+        }
+
+        public void LoadData()
+        {
+            LoadNodeExplorerDataItem();
+            LoadTestBE();
+        }
+
+        private void LoadNodeExplorerDataItem()
+        {
+            string dataFolder = Singleton<SettingManager>.Instance.GetDataFolder();
+            var dataDirectory = new DirectoryInfo(dataFolder);
+            Singleton<List<Folder>>.Instance = dataDirectory.GetDirectories().Select(di => new Folder(di.Name)).ToList();
+        }
+
+        private void LoadTestBE()
+        {
+            var testBll = new TestBLL();
+            foreach (var folder in Singleton<List<Folder>>.Instance)
+            {
+                if (!folder.FolderName.Equals("Data"))
+                {
+                    var listTestBe = testBll.ScanTestExamFile(folder.FolderName);
+                    foreach (var testBe in listTestBe)
+                    {
+                        Singleton<List<TestBE>>.Instance.Add(testBe);
+                    }
+                }
+            }
         }
 
         private void LeaveTest(object sender, string parameter)
@@ -119,46 +151,23 @@ namespace PresentationLayer
             //exportForm.ShowDialog();
         }
 
-        // WelcomeScreen controler
         private void HandleFormLoad(object sender, EventArgs e)
         {
-            //this.Hide();
-
-            //Thread thread = new Thread(new ThreadStart(this.DoSplash));
-            //thread.Start();
-
-            //Hardworker worker = new Hardworker();
-            //worker.ProgressChanged += (o, ex) =>
-            //{
-            //    this.welcomeScreen.UpdateProgress(ex.Progress);
-            //};
-
-            //worker.HardWorkDone += (o, ex) =>
-            //{
-            //    done = true;
-            //    this.Show();
-            //};
-
-            //worker.DoHardWork();
-
-            //CloseSplash();
+            CloseSplash();
         }
 
         private void DoSplash()
         {
             _welcomeScreen = new WelcomeScreen();
             _welcomeScreen.Show();
-            while (!done)
-            {
-                Application.DoEvents();
-            }
-            _welcomeScreen.Close();
-            _welcomeScreen.Dispose();
+            Application.DoEvents();
         }
 
         private void CloseSplash()
         {
             _welcomeScreen.Close();
+            _welcomeScreen.Dispose();
+            Application.DoEvents();
         }
 
         private void newFormToolStripMenuItem_Click(object sender, EventArgs e)

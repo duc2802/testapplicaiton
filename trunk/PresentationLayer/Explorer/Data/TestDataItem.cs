@@ -32,6 +32,14 @@ namespace PresentationLayer.Explorer.Data
             Time = time;
         }
 
+        public void ConvertFrom(TestBE testBe)
+        {
+            IdTest = testBe.TestID;
+            Name = testBe.Information;
+            FolderId = testBe.FolderId;
+            //Time = new DateTime()      
+        }
+
         public IDataBE TranslateToBE()
         {
             var testBe = new TestBE
