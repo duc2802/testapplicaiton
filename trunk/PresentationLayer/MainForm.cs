@@ -10,7 +10,8 @@ using PresentationLayer.Explorer;
 using PresentationLayer.QuestionEditor;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer.Splash;
-using PresentationLayer.ThreadCmd;
+using PresentationLayer.ThreadManager.DataThread;
+using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using TestApplication;
 //using PresentationLayer.Export;
@@ -74,6 +75,7 @@ namespace PresentationLayer
         private void InitSingletonObject()
         {
             Singleton<GuiQueueThreadController>.Instance.InitializeThreadQueueController("GuiQueueThreadController");
+            Singleton<DataQueueThreadController>.Instance.InitializeThreadQueueController("DataQueueThreadController");
         }
 
         private void LeaveTest(object sender, string parameter)

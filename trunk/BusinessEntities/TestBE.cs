@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 /**-----------------------------------------------------------
 * Program : TestApplication
@@ -12,44 +9,20 @@ using System.Text;
 •	Modified date:
 •	Version: 1.0	
 •	Description: 
-----------------------------------------------------------*/ 
+----------------------------------------------------------*/
 
 namespace BusinessEntities
 {
-    public class TestBE
+    public class TestBE : IDataBE
     {
-        string time;
-        List<QuestionBE> listQuestion;
-        string name;
-        string datecreate;
-        string testID;
+        public string TestID { get; set; }
 
-        public string TestID
-        {
-            get { return testID; }
-            set { testID = value; }
-        }
+        public string Information { get; set; }
 
-        public string Information
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        public string Datecreate
-        {
-            get { return datecreate; }
-            set { datecreate = value; }
-        }
-        public List<QuestionBE> ListQuestion
-        {
-            get { return listQuestion; }
-            set { listQuestion = value; }
-        }
-        public string Time
-        {
-            get { return time; }
-            set { time = value; }
-        }
+        public string DateCreate { get; set; }
 
+        public List<QuestionBE> ListQuestion { get; set; }
+
+        public string Time { get; set; }
     }
 }

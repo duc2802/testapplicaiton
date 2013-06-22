@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PresentationLayer.Explorer;
 using ThreadQueueManager;
 
-namespace PresentationLayer.ThreadCmd
+namespace PresentationLayer.ThreadManager.GuiThread
 {
     public class CreateTestCmd : ICommand
     {

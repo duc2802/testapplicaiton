@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Commons;
 using PresentationLayer.ActionController;
-using PresentationLayer.ThreadCmd;
+using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using Commons;
 using Commons.BusinessObjects;

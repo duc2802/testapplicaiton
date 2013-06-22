@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BusinessEntities;
+using Commons;
 
 namespace PresentationLayer.Explorer
 {
-    public class TestDataItem
+    public class TestDataItem : IDataItem
     {
         #region Properties of TestDataItem
         public string IdTest { set; get; }
@@ -28,6 +30,17 @@ namespace PresentationLayer.Explorer
             DateCreate = date;
             NumberQuestion = numOfQuestion;
             Time = time;
+        }
+
+        public IDataBE TranslateToBE()
+        {
+            var testBe = new TestBE
+                             {
+                                 DateCreate = Time.ToString(),
+                                 TestID = IdTest,
+                                 Information = Name
+                             };
+            return testBe;
         }
     }
 }
