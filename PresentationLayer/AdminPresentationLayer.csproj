@@ -178,9 +178,11 @@
     <Compile Include="Splash\WelcomeScreen.designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreadCmd\CreateTestCmd.cs" />
-    <Compile Include="ThreadCmd\GuiQueueThreadController.cs" />
-    <Compile Include="ThreadCmd\LoadQuestionCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\DataQueueThreadController.cs" />
+    <Compile Include="ThreadManager\DataThread\SaveTestCmd.cs" />
+    <Compile Include="ThreadManager\GuiThread\CreateTestCmd.cs" />
+    <Compile Include="ThreadManager\GuiThread\GuiQueueThreadController.cs" />
+    <Compile Include="ThreadManager\GuiThread\LoadQuestionCmd.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ExamEditor\NewExamDialog.resx">

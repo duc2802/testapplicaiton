@@ -54,6 +54,9 @@
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ConstantGUI.cs" />
+    <Compile Include="IDataBE.cs" />
+    <Compile Include="IDataItem.cs" />
+    <Compile Include="ITranslateBE.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CommonGui\InputDialog.resx">

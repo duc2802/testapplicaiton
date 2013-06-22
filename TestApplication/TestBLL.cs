@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BusinessEntities;
+﻿using BusinessEntities;
 using DataAccessLayer;
 
 namespace TestApplication
@@ -11,8 +7,9 @@ namespace TestApplication
     {
         public bool exportTestXMLFile(TestBE testData, string name, string placeToSave)
         {
-            bool result = ActionXML.saveExam(testData,name,placeToSave);
+            bool result = ActionXML.saveExam(testData, name, placeToSave);
             return result;
         }
+
     }
 }

@@ -1,22 +1,25 @@
 ﻿using System;
-using PresentationLayer.ActionController;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BusinessEntities;
 using SingleInstanceObject;
 using ThreadQueueManager;
 
-namespace PresentationLayer.ThreadCmd
+namespace PresentationLayer.ThreadManager.DataThread
 {
-    public class LoadQuestionCmd : ICommand
+    public class SaveTestCmd : ICommand
     {
         private readonly string _name;
         private readonly ExecuteMethod synch_ = ExecuteMethod.Async;
 
-        private string _testId;
+        private TestBE _testBE;
 
-        public LoadQuestionCmd(ExecuteMethod synch, string testId)
+        public SaveTestCmd(ExecuteMethod synch, TestBE testBE)
         {
             synch_ = synch;
-            _name = "LoadQuestionCmd";
-            _testId = testId;
+            _name = "SaveTestCmd";
+            _testBE = testBE;
         }
 
         #region ICommand Members
@@ -40,7 +43,7 @@ namespace PresentationLayer.ThreadCmd
         {
             try
             {
-                Singleton<GuiActionEventController>.Instance.TestId = _testId;
+
             }
             catch (Exception ex)
             {

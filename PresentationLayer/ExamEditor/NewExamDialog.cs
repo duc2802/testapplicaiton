@@ -2,7 +2,9 @@
 using System.Windows.Forms;
 using PresentationLayer.ActionController;
 using PresentationLayer.Explorer;
+using PresentationLayer.ThreadManager.DataThread;
 using SingleInstanceObject;
+using ThreadQueueManager;
 
 namespace PresentationLayer.ExamEditor
 {
@@ -56,7 +58,11 @@ namespace PresentationLayer.ExamEditor
             dataItem.Name = tbNameExam.Text;
             dataItem.Time = Int32.Parse(tbTime.Text);
             dataItem.DateCreate = DateTime.Now;
-            Singleton<GuiActionEventController>.Instance.OnCreateExam(dataItem);
+            Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
+
+
+            ICommand command = new SaveTestCmd(ExecuteMethod.Async, )
+            Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             Close();
         }
 

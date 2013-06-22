@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ThreadQueueManager;
+﻿using ThreadQueueManager;
 
-namespace PresentationLayer.ThreadCmd
+namespace PresentationLayer.ThreadManager.GuiThread
 {
     public class GuiQueueThreadController : ThreadQueueController
     {
