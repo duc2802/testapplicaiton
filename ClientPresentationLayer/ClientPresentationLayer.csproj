@@ -69,6 +69,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionPresentation\Data\AnswerDataController.cs" />
+    <Compile Include="QuestionPresentation\Data\AnswerDataItem.cs" />
+    <Compile Include="QuestionPresentation\Data\QuestionDataController.cs" />
+    <Compile Include="QuestionPresentation\Data\QuestionDataItem.cs" />
     <Compile Include="QuestionPresentation\QuestionExplainPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,13 +151,25 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{EAE0FA35-5202-4F99-915D-B48FE68976D8}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commons\Commons.csproj">
       <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
       <Name>Commons</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SingleInstanceObject\SingleInstanceObject.csproj">
       <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
       <Name>SingleInstanceObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestApplication\BusinessLogicLayer.csproj">
+      <Project>{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}</Project>
+      <Name>BusinessLogicLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
