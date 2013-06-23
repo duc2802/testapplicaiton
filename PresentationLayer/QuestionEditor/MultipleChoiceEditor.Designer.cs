@@ -89,7 +89,7 @@
             this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 306F));
             this.tbListAnswer.Location = new System.Drawing.Point(515, 20);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(310, 256);
+            this.tbListAnswer.Size = new System.Drawing.Size(389, 270);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
@@ -106,7 +106,7 @@
             // 
             this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCreate.Location = new System.Drawing.Point(676, 301);
+            this.btCreate.Location = new System.Drawing.Point(757, 315);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(68, 23);
             this.btCreate.TabIndex = 6;
@@ -118,7 +118,7 @@
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancel.Location = new System.Drawing.Point(750, 301);
+            this.btCancel.Location = new System.Drawing.Point(831, 315);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 7;
@@ -141,7 +141,7 @@
             // 
             this.btMoreAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btMoreAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMoreAnswer.Location = new System.Drawing.Point(582, 301);
+            this.btMoreAnswer.Location = new System.Drawing.Point(663, 315);
             this.btMoreAnswer.Name = "btMoreAnswer";
             this.btMoreAnswer.Size = new System.Drawing.Size(88, 23);
             this.btMoreAnswer.TabIndex = 9;
@@ -152,7 +152,7 @@
             // 
             this.bt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt.Location = new System.Drawing.Point(488, 301);
+            this.bt.Location = new System.Drawing.Point(569, 315);
             this.bt.Name = "bt";
             this.bt.Size = new System.Drawing.Size(88, 23);
             this.bt.TabIndex = 11;
@@ -176,7 +176,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(840, 341);
+            this.ClientSize = new System.Drawing.Size(921, 355);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bt);
             this.Controls.Add(this.btMoreAnswer);
