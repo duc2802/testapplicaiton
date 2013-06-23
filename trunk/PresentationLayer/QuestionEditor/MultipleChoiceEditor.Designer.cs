@@ -31,15 +31,17 @@
             this.lbExplain = new System.Windows.Forms.Label();
             this.tbQuestionContent = new System.Windows.Forms.TextBox();
             this.opFileChoseImage = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbDislayImage = new System.Windows.Forms.Label();
             this.tbListAnswer = new System.Windows.Forms.TableLayoutPanel();
             this.tbQuestionExplain = new System.Windows.Forms.TextBox();
             this.btCreate = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.lbQuestion = new System.Windows.Forms.Label();
             this.btMoreAnswer = new System.Windows.Forms.Button();
-            this.bt = new System.Windows.Forms.Button();
+            this.btAddImage = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // lbExplain
@@ -52,7 +54,6 @@
             this.lbExplain.Size = new System.Drawing.Size(56, 13);
             this.lbExplain.TabIndex = 0;
             this.lbExplain.Text = "Explain: ";
-            this.lbExplain.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbQuestionContent
             // 
@@ -69,14 +70,14 @@
             this.opFileChoseImage.FileName = "openFileDialog1";
             this.opFileChoseImage.Filter = "(*.bmp, *.jpg)|*.bmp;*.jpg";
             // 
-            // label1
+            // lbDislayImage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 301);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "If have load image here";
+            this.lbDislayImage.AutoSize = true;
+            this.lbDislayImage.Location = new System.Drawing.Point(96, 301);
+            this.lbDislayImage.Name = "lbDislayImage";
+            this.lbDislayImage.Size = new System.Drawing.Size(143, 13);
+            this.lbDislayImage.TabIndex = 3;
+            this.lbDislayImage.Text = "This question have no image";
             // 
             // tbListAnswer
             // 
@@ -86,10 +87,10 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 306F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 393F));
             this.tbListAnswer.Location = new System.Drawing.Point(515, 20);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(389, 270);
+            this.tbListAnswer.Size = new System.Drawing.Size(397, 270);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
@@ -135,7 +136,6 @@
             this.lbQuestion.Size = new System.Drawing.Size(57, 13);
             this.lbQuestion.TabIndex = 0;
             this.lbQuestion.Text = "Question";
-            this.lbQuestion.Click += new System.EventHandler(this.label1_Click);
             // 
             // btMoreAnswer
             // 
@@ -148,16 +148,16 @@
             this.btMoreAnswer.Text = "Add Choice";
             this.btMoreAnswer.UseVisualStyleBackColor = true;
             // 
-            // bt
+            // btAddImage
             // 
-            this.bt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt.Location = new System.Drawing.Point(569, 315);
-            this.bt.Name = "bt";
-            this.bt.Size = new System.Drawing.Size(88, 23);
-            this.bt.TabIndex = 11;
-            this.bt.Text = "Add Image";
-            this.bt.UseVisualStyleBackColor = true;
+            this.btAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAddImage.Location = new System.Drawing.Point(569, 315);
+            this.btAddImage.Name = "btAddImage";
+            this.btAddImage.Size = new System.Drawing.Size(88, 23);
+            this.btAddImage.TabIndex = 11;
+            this.btAddImage.Text = "Add Image";
+            this.btAddImage.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -170,6 +170,16 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Image:";
             // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(99, 288);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(155, 55);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 13;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            // 
             // MultipleChoiceEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,14 +187,15 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 355);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.bt);
+            this.Controls.Add(this.btAddImage);
             this.Controls.Add(this.btMoreAnswer);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btCreate);
             this.Controls.Add(this.tbQuestionExplain);
             this.Controls.Add(this.tbListAnswer);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbDislayImage);
             this.Controls.Add(this.tbQuestionContent);
             this.Controls.Add(this.lbQuestion);
             this.Controls.Add(this.lbExplain);
@@ -192,6 +203,7 @@
             this.Name = "MultipleChoiceEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MultipleChoiceEditor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,15 +214,16 @@
         private System.Windows.Forms.Label lbExplain;
         private System.Windows.Forms.TextBox tbQuestionContent;
         private System.Windows.Forms.OpenFileDialog opFileChoseImage;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbDislayImage;
         private System.Windows.Forms.TableLayoutPanel tbListAnswer;
         private System.Windows.Forms.TextBox tbQuestionExplain;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Label lbQuestion;
         public System.Windows.Forms.Button btCreate;
         public System.Windows.Forms.Button btMoreAnswer;
-        public System.Windows.Forms.Button bt;
+        public System.Windows.Forms.Button btAddImage;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox;
 
     }
 }
