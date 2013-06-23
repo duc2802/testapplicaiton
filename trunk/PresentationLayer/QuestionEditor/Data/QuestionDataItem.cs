@@ -11,8 +11,8 @@ namespace PresentationLayer.QuestionEditor.Data
     public class QuestionDataItem
     {
         public int Height { set; get; }
-        public int IdQuestion { set; get; }
-        public string explain { set; get; }
+        public string IdQuestion { set; get; }
+        public string ExplainContent { set; get; }
         public string imageName { set; get; }
 
         private int _orderQuestion;
@@ -43,7 +43,7 @@ namespace PresentationLayer.QuestionEditor.Data
             }
         }
 
-        private AnswerDataController _answers;
+        private AnswerDataController _answers = new AnswerDataController();
         public AnswerDataController  AnswerData
         {
             set { this._answers = value; }
@@ -55,7 +55,7 @@ namespace PresentationLayer.QuestionEditor.Data
             QuestionBE qBe = new QuestionBE();
             qBe.QuestionID = this.IdQuestion.ToString();
             qBe.QuestionContent = this.ContentQuestion;
-            qBe.Explain = this.explain;
+            qBe.Explain = this.ExplainContent;
             qBe.ListAnswers = new List<AnswerBE>();
             foreach (var answer in this.AnswerData.AnswerData)
             {

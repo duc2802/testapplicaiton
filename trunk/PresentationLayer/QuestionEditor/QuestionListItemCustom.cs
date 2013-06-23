@@ -17,7 +17,7 @@ namespace PresentationLayer.QuestionEditor
     public partial class QuestionListItemCustom : UserControl
     {
         #region Trigger Event
-        public event ActionEventHandler<int> Delete
+        public event ActionEventHandler<string> Delete
         {
             add
             {
@@ -35,12 +35,12 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        private ActionEventHandler<int> _deleteEvent;
+        private ActionEventHandler<string> _deleteEvent;
         private readonly object _deleteEventLocker = new object();
 
-        private void OnDelete(int idQuestion)
+        private void OnDelete(string idQuestion)
         {
-            ActionEventHandler<int> handler = _deleteEvent;
+            ActionEventHandler<string> handler = _deleteEvent;
             if (handler != null)
             {
                 try
@@ -54,7 +54,7 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        public event ActionEventHandler<int> Update
+        public event ActionEventHandler<string> Update
         {
             add
             {
@@ -72,12 +72,12 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        private ActionEventHandler<int> _updateEvent;
+        private ActionEventHandler<string> _updateEvent;
         private readonly object _updateEventLocker = new object();
 
-        private void OnUpdate(int idQuestion)
+        private void OnUpdate(string idQuestion)
         {
-            ActionEventHandler<int> handler = _updateEvent;
+            ActionEventHandler<string> handler = _updateEvent;
             if (handler != null)
             {
                 try

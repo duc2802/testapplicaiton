@@ -26,18 +26,23 @@ namespace PresentationLayer.QuestionEditor
             _action = "create";
             InitializeComponent();
             btCreate.Text = @"Create";
+            InitData();
             InitEvent();
             InitCommonGui();
         }
 
         public MultipleChoiceEditor(QuestionDataItem question)
         {
-            _action = "edit";
-
             InitializeComponent();
+            _action = "edit";
             btCreate.Text = @"Ok";
             InitEvent();
             InitCommonGui(question);
+        }
+
+        private void InitData()
+        {
+            _dataItem = new QuestionDataItem();
         }
 
         public QuestionDataItem DataItem
@@ -146,7 +151,7 @@ namespace PresentationLayer.QuestionEditor
             else if (true)
             {
             }
-            OnUpdate(DataItem.IdQuestion);
+            OnUpdate(DataItem.IdQuestion.ToString());
         }
 
         private void OnDataItemChanged()
@@ -226,12 +231,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void tbQuestionContent_TextChanged(object sender, EventArgs e)
         {
-            DataItem.ContentQuestion = tbQuestionContent.Text;
+            //DataItem.ContentQuestion = tbQuestionContent.Text;
         }
 
         private void tbQuestionExplain_TextChanged(object sender, EventArgs e)
         {
-            DataItem.explain = tbQuestionExplain.Text;
+            //DataItem.ExplainContent = tbQuestionExplain.Text;
         }
         private void MultipleChoiceEditor_Load(object sender, EventArgs e)
         {
@@ -267,47 +272,51 @@ namespace PresentationLayer.QuestionEditor
 
         private void btCreate_Click(object sender, EventArgs e)
         {
-            DataItem.AnswerData.AnswerData.Clear();
-
+            DataItem.IdQuestion = string.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
+            DataItem.ContentQuestion = tbQuestionContent.Text;
+            DataItem.ExplainContent = tbQuestionContent.Text;
             for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
             {
                 var item = tbListAnswer.Controls[idx] as Item;
                 if (item != null && item.DataItem.ContentAnswer != "")
                 {
-                    DataItem.AnswerData.AnswerData.Add(item.DataItem);
+                    var answer = new AnswerDataItem();
+                    answer.ContentAnswer = item.DataItem.ContentAnswer;
+                    answer.OrderAnswer = idx;
+                    DataItem.AnswerData.AnswerData.Add(answer);
                 }
             }
 
-            QuestionBE qbe = DataItem.getQuestionBE();
+            //QuestionBE qbe = DataItem.getQuestionBE();
 
-            if (_action == "edit")
-            {
-                var qBll = new QuestionBLL();
-                //hard code test id = 1
-                if (qBll.UpdateQuestion(qbe, "xx"))
-                {
-                    MessageBox.Show(@"Update Succesful");
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show(@"Update Fail");
-                }
-            }
-            if (_action == "create")
-            {
-                var qBll = new QuestionBLL();
-                //hard code test id = 1
-                if (qBll.AddQuestion(qbe, "xx"))
-                {
-                    MessageBox.Show(@"Add Succesful");
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show(@"Add Fail");
-                }
-            }
+            //if (_action == "edit")
+            //{
+            //    var qBll = new QuestionBLL();
+            //    //hard code test id = 1
+            //    if (qBll.UpdateQuestion(qbe, "xx"))
+            //    {
+            //        MessageBox.Show(@"Update Succesful");
+            //        Close();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(@"Update Fail");
+            //    }
+            //}
+            //if (_action == "create")
+            //{
+            //    var qBll = new QuestionBLL();
+            //    //hard code test id = 1
+            //    if (qBll.AddQuestion(qbe, "xx"))
+            //    {
+            //        MessageBox.Show(@"Add Succesful");
+            //        Close();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(@"Add Fail");
+            //    }
+            //}
         }
 
         #region Trigger Event
@@ -315,7 +324,7 @@ namespace PresentationLayer.QuestionEditor
         private readonly object _deleteEventLocker = new object();
         private readonly object _updateEventLocker = new object();
         private ActionEventHandler<int> _deleteEvent;
-        private ActionEventHandler<int> _updateEvent;
+        private ActionEventHandler<string> _updateEvent;
 
         public event ActionEventHandler<int> Delete
         {
@@ -351,7 +360,7 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        public event ActionEventHandler<int> Update
+        public event ActionEventHandler<string> Update
         {
             add
             {
@@ -369,9 +378,9 @@ namespace PresentationLayer.QuestionEditor
             }
         }
 
-        private void OnUpdate(int idQuestion)
+        private void OnUpdate(string idQuestion)
         {
-            ActionEventHandler<int> handler = _updateEvent;
+            ActionEventHandler<string> handler = _updateEvent;
             if (handler != null)
             {
                 try

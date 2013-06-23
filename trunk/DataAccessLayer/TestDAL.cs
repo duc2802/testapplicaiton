@@ -35,5 +35,13 @@ namespace DataAccessLayer
                 return false;
             }
         }
+
+        public static TestBE LoadTestBE(string testId, string folder)
+        {
+            string path = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folder + "\\" + testId
+                              + ".exam";
+            var testBE = XmlHelper.ReadExamFile(path);
+            return testBE;
+        }
     }
 }

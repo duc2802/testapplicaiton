@@ -17,6 +17,7 @@ using PresentationLayer.ThreadManager.DataThread;
 using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using TestApplication;
+using ThreadQueueManager;
 
 //using PresentationLayer.Export;
 
@@ -271,25 +272,36 @@ namespace PresentationLayer
             if (MessageBox.Show(this, "Do you want to add more question.", "Add question", MessageBoxButtons.OK) ==
                 DialogResult.OK)
             {
-                var dataItem = new QuestionDataItem();
-                dataItem.ContentQuestion = "Which one of the five is least like the other four? " +
-                                           "Which one of the five is least like the other four?" +
-                                           "Which one of the five is least like the other four?" +
-                                           "Which one of the five is least like the other four?" +
-                                           "Which one of the five is least like the other four?" +
-                                           "Which one of the five is least like the other four?";
-                dataItem.IdQuestion = 0;
-                dataItem.OrderQuestion = 14;
-                var answerController = new AnswerDataController(14);
-                for (int j = 1; j <= 5; j++)
+                var form = new MultipleChoiceEditor();
+                if(DialogResult.OK == form.ShowDialog())
                 {
-                    var answer = new AnswerDataItem();
-                    answer.ContentAnswer = "Cat";
-                    answer.OrderAnswer = j;
-                    answerController.Add(answer);
+                    Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
+
+                    var question = form.DataItem.getQuestionBE();
+                    Singleton<TestBE>.Instance.ListQuestion.Add(question);
+
+                    ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
+                    Singleton<DataQueueThreadController>.Instance.PutCmd(command);
                 }
-                dataItem.AnswerData = answerController;
-                Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(dataItem);
+                //var dataItem = new QuestionDataItem();
+                //dataItem.ContentQuestion = "Which one of the five is least like the other four? " +
+                //                           "Which one of the five is least like the other four?" +
+                //                           "Which one of the five is least like the other four?" +
+                //                           "Which one of the five is least like the other four?" +
+                //                           "Which one of the five is least like the other four?" +
+                //                           "Which one of the five is least like the other four?";
+                //dataItem.IdQuestion = "0";
+                //dataItem.OrderQuestion = 14;
+                //var answerController = new AnswerDataController(14);
+                //for (int j = 1; j <= 5; j++)
+                //{
+                //    var answer = new AnswerDataItem();
+                //    answer.ContentAnswer = "Cat";
+                //    answer.OrderAnswer = j;
+                //    answerController.Add(answer);
+                //}
+                //dataItem.AnswerData = answerController;
+                
             }
         }
 

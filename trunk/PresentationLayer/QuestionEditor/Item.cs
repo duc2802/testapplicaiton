@@ -31,16 +31,29 @@ namespace PresentationLayer.QuestionEditor
         {
             InitializeComponent();
             InitEvent();
+            InitData();
         }
         public Item(AnswerDataItem item, int index)
         {
             InitializeComponent();
             InitEvent();
             InitCommonGui(item,index);
+            InitData();
         }
         private void InitEvent() 
         {
             btDelete.Click += DeleteAnswerButtonClick;
+            Leave += ItemLeave;
+        }
+
+        private void ItemLeave(object sender, EventArgs e)
+        {
+            _dataItem.ContentAnswer = tbAnswerContent.Text;
+        }
+
+        private void InitData()
+        {
+            _dataItem = new AnswerDataItem();
         }
 
 
@@ -166,10 +179,7 @@ namespace PresentationLayer.QuestionEditor
 
         private void tbAnswerContent_TextChanged(object sender, EventArgs e)
         {
-            _dataItem.ContentAnswer = tbAnswerContent.Text;
+            //_dataItem.ContentAnswer = tbAnswerContent.Text;
         }
-
-
-
     }
 }
