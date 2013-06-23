@@ -1,6 +1,7 @@
 ﻿using System;
 using BusinessEntities;
 using Commons;
+using PresentationLayer.QuestionEditor.Data;
 
 namespace PresentationLayer.Explorer.Data
 {
@@ -39,6 +40,13 @@ namespace PresentationLayer.Explorer.Data
             FolderId = testBe.FolderId;
             //Time = new DateTime()      
         }
+        private QuestionDataController _questions;
+        public QuestionDataController QuestionData
+        {
+            set { this._questions = value; }
+            get { return this._questions; }
+        }
+
 
         public IDataBE TranslateToBE()
         {
