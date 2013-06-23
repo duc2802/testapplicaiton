@@ -48,7 +48,7 @@
             this.lbResultAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbResultAnswer.AutoSize = true;
             this.lbResultAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lbResultAnswer.Location = new System.Drawing.Point(194, 11);
+            this.lbResultAnswer.Location = new System.Drawing.Point(196, 11);
             this.lbResultAnswer.Name = "lbResultAnswer";
             this.lbResultAnswer.Size = new System.Drawing.Size(29, 13);
             this.lbResultAnswer.TabIndex = 1;
@@ -67,13 +67,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BackColor = System.Drawing.Color.White;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lbContentAnswer);
             this.Controls.Add(this.lbResultAnswer);
             this.Controls.Add(this.lbAnswer);
             this.Name = "AnswerItem";
-            this.Size = new System.Drawing.Size(235, 57);
+            this.Size = new System.Drawing.Size(237, 59);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -17,6 +17,7 @@ using PresentationLayer.ThreadManager.DataThread;
 using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using TestApplication;
+
 //using PresentationLayer.Export;
 
 namespace PresentationLayer
@@ -25,7 +26,7 @@ namespace PresentationLayer
     {
         private TestDataItem _dataTestDataItem;
         private WelcomeScreen _welcomeScreen;
-        private bool done = false;
+        private bool done;
 
         public MainForm()
         {
@@ -42,7 +43,7 @@ namespace PresentationLayer
             DoSplash();
             LoadData();
         }
-        
+
         private void InitCommonGui()
         {
             btExportExam.Enabled = false;
@@ -84,7 +85,7 @@ namespace PresentationLayer
             explorerSplitContainer.SplitterMoved += ExplorerSplitContainerMoved;
             mainSplitContainer.SplitterMoved += MainSplitContainerMoved;
         }
-        
+
         private void InitSingletonObject()
         {
             Singleton<GuiQueueThreadController>.Instance.InitializeThreadQueueController("GuiQueueThreadController");
@@ -107,12 +108,12 @@ namespace PresentationLayer
         private void LoadTestBE()
         {
             var testBll = new TestBLL();
-            foreach (var folder in Singleton<List<Folder>>.Instance)
+            foreach (Folder folder in Singleton<List<Folder>>.Instance)
             {
                 if (!folder.FolderName.Equals("Data"))
                 {
-                    var listTestBe = testBll.ScanTestExamFile(folder.FolderName);
-                    foreach (var testBe in listTestBe)
+                    List<TestBE> listTestBe = testBll.ScanTestExamFile(folder.FolderName);
+                    foreach (TestBE testBe in listTestBe)
                     {
                         Singleton<List<TestBE>>.Instance.Add(testBe);
                     }
