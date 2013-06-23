@@ -25,6 +25,7 @@ namespace PresentationLayer
     public partial class MainForm : Office2007RibbonForm
     {
         private TestDataItem _dataTestDataItem;
+        private readonly TestListDataItemController _dataItemController = new TestListDataItemController();
         private WelcomeScreen _welcomeScreen;
         private bool done;
 
@@ -70,6 +71,7 @@ namespace PresentationLayer
             btExportExam.Click += ButtonExportTestToXML;
             openFileButton.Click += ButtonOpenFileButtonClick;
             exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
+            btEditQuestion.Click += EditQuestionButtonClick;
         }
 
         private void InitEvent()
@@ -150,6 +152,18 @@ namespace PresentationLayer
             //int testId = Singleton<GuiActionEventController>.Instance.FolderId;
             //ExportForm exportForm = new ExportForm(testId + 1);
             //exportForm.ShowDialog();
+        }
+        private void EditQuestionButtonClick(object sender, EventArgs eventArgs)
+        {
+            // Load test Item that 
+
+            string idTest = Singleton<GuiActionEventController>.Instance.TestId;
+            string idForder = Singleton<GuiActionEventController>.Instance.FolderId;
+            _dataItemController.LoadTestDataItem(idForder);
+            _dataTestDataItem = _dataItemController.TestBook[idTest];
+            int questionId = Singleton<GuiActionEventController>.Instance.QuestionId;
+            MultipleChoiceEditor test = new MultipleChoiceEditor(_dataTestDataItem.QuestionData.DataItems[questionId]);
+            test.ShowDialog();
         }
 
         private void HandleFormLoad(object sender, EventArgs e)
