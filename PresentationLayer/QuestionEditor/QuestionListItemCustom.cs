@@ -295,7 +295,7 @@ namespace PresentationLayer.QuestionEditor
         private void editButton_Click(object sender, EventArgs e)
         {
             MultipleChoiceEditor test = new MultipleChoiceEditor(_dataItem);
-            test.Show();
+            test.ShowDialog();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

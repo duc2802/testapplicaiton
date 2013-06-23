@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientPresentationLayer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "Commons\Commons.csproj", "{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AdminSetup", "AdminSetup\AdminSetup.vdproj", "{167A77B6-912A-4DB5-8E86-290D43A0FD52}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientSetup", "ClientSetup\ClientSetup.vdproj", "{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -174,6 +178,18 @@ Global
 		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|Mixed Platforms.Build.0 = Release|x86
 		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|x86.ActiveCfg = Release|x86
 		{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}.Release|x86.Build.0 = Release|x86
+		{167A77B6-912A-4DB5-8E86-290D43A0FD52}.Debug|Any CPU.ActiveCfg = Debug
+		{167A77B6-912A-4DB5-8E86-290D43A0FD52}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{167A77B6-912A-4DB5-8E86-290D43A0FD52}.Debug|x86.ActiveCfg = Debug
+		{167A77B6-912A-4DB5-8E86-290D43A0FD52}.Release|Any CPU.ActiveCfg = Release
+		{167A77B6-912A-4DB5-8E86-290D43A0FD52}.Release|Mixed Platforms.ActiveCfg = Release
+		{167A77B6-912A-4DB5-8E86-290D43A0FD52}.Release|x86.ActiveCfg = Release
+		{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}.Debug|Any CPU.ActiveCfg = Debug
+		{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}.Debug|x86.ActiveCfg = Debug
+		{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}.Release|Any CPU.ActiveCfg = Release
+		{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}.Release|Mixed Platforms.ActiveCfg = Release
+		{6A7790D0-8FDF-435B-BF2F-5A076029E7C2}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
