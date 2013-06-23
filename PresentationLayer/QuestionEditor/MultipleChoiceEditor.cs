@@ -8,6 +8,8 @@ using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
 using TestApplication;
 using System.IO;
+using SingleInstanceObject;
+using Commons;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -15,7 +17,8 @@ namespace PresentationLayer.QuestionEditor
     {
         private readonly String _action = "";
         private int MAX_SHOW_ITEM = 6;
-        private string PATH_FORDER_IMAGE ="D:\\";
+       
+        private string PATH_FORDER_IMAGE =Singleton<SettingManager>.Instance.GetImageFolder();
         private QuestionDataItem _dataItem;
 
         public MultipleChoiceEditor()
