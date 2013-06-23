@@ -124,6 +124,12 @@
     <Compile Include="QuestionEditor\Data\AnswerDataItem.cs" />
     <Compile Include="QuestionEditor\Data\QuestionDataController.cs" />
     <Compile Include="QuestionEditor\Data\QuestionDataItem.cs" />
+    <Compile Include="QuestionEditor\DislayImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\DislayImageForm.Designer.cs">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionEditor\FillInBlankEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\AnswerItem.resx">
       <DependentUpon>AnswerItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\DislayImageForm.resx">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\Item.resx">
       <DependentUpon>Item.cs</DependentUpon>

@@ -7,6 +7,7 @@ using BusinessEntities;
 using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
 using TestApplication;
+using System.IO;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -14,6 +15,7 @@ namespace PresentationLayer.QuestionEditor
     {
         private readonly String _action = "";
         private int MAX_SHOW_ITEM = 6;
+        private string PATH_FORDER_IMAGE ="D:\\";
         private QuestionDataItem _dataItem;
 
         public MultipleChoiceEditor()
@@ -50,6 +52,28 @@ namespace PresentationLayer.QuestionEditor
         {
             // Add answer Events.
             btMoreAnswer.Click += MoreAnswerButtonClick;
+            btAddImage.Click += AddImageButtonClick;
+        }
+
+        private void AddImageButtonClick(object sender, EventArgs e) 
+        {
+            if (opFileChoseImage.ShowDialog() == DialogResult.OK)
+            {
+                if (File.Exists(opFileChoseImage.FileName))
+                {
+                    string newName =   Guid.NewGuid().ToString();
+                    string ext = Path.GetExtension(opFileChoseImage.FileName);
+                    newName = newName + ext;
+                    string newPath = PATH_FORDER_IMAGE +newName;
+                    File.Copy(opFileChoseImage.FileName, newPath);
+                    _dataItem.imageName = newName;
+                    DataItem.imageName = newName;
+                    pictureBox.Image = new Bitmap(newPath);
+                    pictureBox.Show();
+                    this.Refresh();
+                    // Show Thuilmnal in label
+                }
+            }
         }
 
         private void MoreAnswerButtonClick(object sender, EventArgs e)
@@ -126,24 +150,26 @@ namespace PresentationLayer.QuestionEditor
         {
             tbQuestionContent.Text = DataItem.ContentQuestion;
             Text = "Question " + DataItem.OrderQuestion.ToString();
-            if (DataItem.imageName != null)
+            if (DataItem.imageName != null && DataItem.imageName != "")
             {
-                label1.Text = "Click here to view image";
-                label1.MouseClick += ShowImageofQuestion;
-                label1.Visible = true;
+                // Dislay Image;
+                pictureBox.Image = new Bitmap(PATH_FORDER_IMAGE + DataItem.imageName);
+                pictureBox.Show();
+                lbDislayImage.Visible = false;
+            }
+            else
+            {
+                pictureBox.Visible = false;
+                lbDislayImage.Visible = true;
             }
             AddAnswerOptions();
         }
 
-        private void ShowImageofQuestion(object sender, EventArgs e)
+        private void ShowImageofQuestion( string pathImage)
         {
             //Load image in new form
-            Graphics g = CreateGraphics();
-            var rect = new Rectangle(50, 30, 100, 100);
-            var image = new Bitmap(label1.Text);            
-            var p = new Point(15, 110);
-            g.DrawImage(image, p.X,p.Y,60,60);            
-            g.Dispose();
+            DislayImageForm picture = new DislayImageForm(PATH_FORDER_IMAGE +pathImage);
+            picture.ShowDialog();
         }
 
         private void AddAnswerOptions()
@@ -204,21 +230,6 @@ namespace PresentationLayer.QuestionEditor
         {
             DataItem.explain = tbQuestionExplain.Text;
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            //opFileChoseImage.ShowDialog();
-            //opFileChoseImage.InitialDirectory = @"C:\";
-            if (opFileChoseImage.ShowDialog() == DialogResult.OK)
-            {
-                label1.Text = "" + opFileChoseImage.FileName + "";
-            }
-        }
-
         private void MultipleChoiceEditor_Load(object sender, EventArgs e)
         {
         }
@@ -227,22 +238,9 @@ namespace PresentationLayer.QuestionEditor
         {
             tbListAnswer.SuspendLayout();
             tbListAnswer.Controls.RemoveAt(orderAnswer - 1);
-            /*
-            var item = tbListAnswer.Controls.Find(orderAnswer.ToString(), true).First() as Item;
-            if (item != null)
-            {
-                int idx = tbListAnswer.Controls.IndexOf(item);
-               
-                tbListAnswer.Refresh();
-            }
-            else
-            {
-                MessageBox.Show(this, "Delete Error", "Error", MessageBoxButtons.OK);
-            }*/
             UpdateAllDataItem();
             tbListAnswer.ResumeLayout();
             Refresh();
-            //Refresh();
         }
 
         private void UpdateAllDataItem()
@@ -386,9 +384,10 @@ namespace PresentationLayer.QuestionEditor
 
         #endregion
 
-        private void btMoreAnswer_Click(object sender, EventArgs e)
+        private void pictureBox_Click(object sender, EventArgs e)
         {
-
+            ShowImageofQuestion(DataItem.imageName);
         }
+
     }
 }
