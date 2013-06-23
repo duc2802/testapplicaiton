@@ -149,6 +149,12 @@
     <Compile Include="QuestionEditor\OptionItemCustom.Designer.cs">
       <DependentUpon>OptionItemCustom.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionEditor\QuestionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionEditor.Designer.cs">
+      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionEditor\QuestionListItemCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\OptionItemCustom.resx">
       <DependentUpon>OptionItemCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\QuestionEditor.resx">
+      <DependentUpon>QuestionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\QuestionListItemCustom.resx">
       <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
