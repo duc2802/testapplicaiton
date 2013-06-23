@@ -22,6 +22,11 @@ namespace PresentationLayer.QuestionEditor.Data
             InitEvent();
         }
 
+        public AnswerDataController()
+        {
+            _answerData = new List<AnswerDataItem>();
+        }
+
         private void Initialize(int IdAnswer)
         {
             this.IdQuestion = IdAnswer;

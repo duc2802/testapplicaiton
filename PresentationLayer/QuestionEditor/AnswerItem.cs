@@ -13,11 +13,28 @@ namespace PresentationLayer.QuestionEditor
     {
         public static int WIDTH = 237;
         public static int HEIGHT = 47;
+
+        public string AnswerContent { set; get; }
+        public string AnswerId { set; get; }
+        public string Result { set; get; }
+        private int AnswerOrder { set; get; }
+
         public AnswerItem()
         {
             InitializeComponent();
-
+            InitEvent();
         }
+
+        public void InitEvent()
+        {
+            Leave += AnswerItemLeave;
+        }
+
+        private void AnswerItemLeave(object sender, EventArgs e)
+        {
+            AnswerContent = lbContentAnswer.Text;
+        }
+
         public AnswerItem(String idAnswer, String result, String answerContent)
         {
             InitializeComponent();
@@ -29,6 +46,5 @@ namespace PresentationLayer.QuestionEditor
             this.lbResultAnswer.Text = result;
             this.lbContentAnswer.Text = answerContent;
         }
-       
     }
 }

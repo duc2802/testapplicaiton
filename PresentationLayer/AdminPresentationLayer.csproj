@@ -285,6 +285,10 @@
       <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
       <Name>Commons</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SingleInstanceObject\SingleInstanceObject.csproj">
       <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
       <Name>SingleInstanceObject</Name>

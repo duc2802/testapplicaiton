@@ -24,7 +24,6 @@ namespace PresentationLayer.QuestionEditor.Data
             this.orderAnswer = orderAnswer;
             this.contentAnswer = contentAnswer;
             this.isTrue = isTrue;
-
         }
 
         public static AnswerDataItem TranslateToAnswerDataItem()

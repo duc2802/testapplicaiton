@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessEntities;
 using Commons.BusinessObjects;
 using PresentationLayer.ActionController;
 using PresentationLayer.QuestionEditor.Data;
@@ -45,6 +46,10 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.RowStyles.Clear();
             questionPanel.AutoSize = true;
             questionPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            if (Singleton<TestBE>.Instance != null)
+            {
+                _dataController = new QuestionDataController(Singleton<TestBE>.Instance);
+            }
             for (int idx = 0; idx < _dataController.Count; idx++)
             {
                 AddQuestionItem(_dataController.DataItems[idx], idx + 1);
@@ -59,7 +64,6 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.Controls.Clear();
             FillQuestionItem();
             questionPanel.ResumeLayout(true);
-
         }
 
         private QuestionListItemCustom CreateQuestionItem(QuestionDataItem questionData)
@@ -84,10 +88,10 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.ResumeLayout(false);
         }
 
-        private void DeleteQuestionItem(int idQuestion)
+        private void DeleteQuestionItem(string idQuestion)
         {
             questionPanel.SuspendLayout();
-            var item = questionPanel.Controls.Find(idQuestion.ToString(), true).First() as QuestionListItemCustom;
+            var item = questionPanel.Controls.Find(idQuestion, true).First() as QuestionListItemCustom;
             if (item != null)
             {
                 int idx = questionPanel.Controls.IndexOf(item);
@@ -104,7 +108,7 @@ namespace PresentationLayer.QuestionEditor
             Refresh();
         }
 
-        private void UpdateQueationItem(int idQuestion)
+        private void UpdateQueationItem(string idQuestion)
         {
             var item = questionPanel.Controls.Find(idQuestion.ToString(), true).First() as QuestionListItemCustom;
             if (item != null)
@@ -172,12 +176,12 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.ResumeLayout(true);
         }
 
-        private void ItemLayoutDelete(object sender, int parameter)
+        private void ItemLayoutDelete(object sender, string parameter)
         {
             DeleteQuestionItem(parameter);
         }
 
-        private void ItemLayoutUpdate(object sender, int parameter)
+        private void ItemLayoutUpdate(object sender, string parameter)
         {
             UpdateQueationItem(parameter);
         }

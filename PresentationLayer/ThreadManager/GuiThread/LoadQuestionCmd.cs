@@ -1,4 +1,6 @@
 ﻿using System;
+using BusinessEntities;
+using DataAccessLayer;
 using PresentationLayer.ActionController;
 using SingleInstanceObject;
 using ThreadQueueManager;
@@ -40,6 +42,8 @@ namespace PresentationLayer.ThreadManager.GuiThread
         {
             try
             {
+                var folder = Singleton<GuiActionEventController>.Instance.FolderId;
+                Singleton<TestBE>.Instance = TestDAL.LoadTestBE(_testId, folder);
                 Singleton<GuiActionEventController>.Instance.TestId = _testId;
             }
             catch (Exception ex)

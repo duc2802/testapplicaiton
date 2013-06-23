@@ -87,10 +87,10 @@
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 395F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 397F));
             this.tbListAnswer.Location = new System.Drawing.Point(515, 20);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(399, 270);
+            this.tbListAnswer.Size = new System.Drawing.Size(401, 270);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
@@ -106,6 +106,7 @@
             // btCreate
             // 
             this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCreate.Location = new System.Drawing.Point(757, 315);
             this.btCreate.Name = "btCreate";
