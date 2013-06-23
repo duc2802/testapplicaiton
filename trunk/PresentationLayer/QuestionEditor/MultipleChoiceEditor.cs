@@ -385,5 +385,10 @@ namespace PresentationLayer.QuestionEditor
         }
 
         #endregion
+
+        private void btMoreAnswer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
