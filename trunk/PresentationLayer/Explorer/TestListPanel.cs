@@ -66,10 +66,12 @@ namespace PresentationLayer.Explorer
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             return itemLayout;
         }
+
         private void ItemLayoutUpdate(object sender, int parameter)
         {
             UpdateTestItem(parameter);
         }
+
         private void UpdateTestItem(int idTest)
         {
             var item = testListBox.Controls.Find(idTest.ToString(), true).First() as TestListItemCustom;
