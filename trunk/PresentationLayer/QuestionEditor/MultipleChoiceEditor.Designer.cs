@@ -73,7 +73,7 @@
             // lbDislayImage
             // 
             this.lbDislayImage.AutoSize = true;
-            this.lbDislayImage.Location = new System.Drawing.Point(96, 301);
+            this.lbDislayImage.Location = new System.Drawing.Point(96, 317);
             this.lbDislayImage.Name = "lbDislayImage";
             this.lbDislayImage.Size = new System.Drawing.Size(143, 13);
             this.lbDislayImage.TabIndex = 3;
@@ -86,11 +86,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSize = true;
+            this.tbListAnswer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 397F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 399F));
             this.tbListAnswer.Location = new System.Drawing.Point(515, 20);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(401, 270);
+            this.tbListAnswer.Size = new System.Drawing.Size(403, 2);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
@@ -99,18 +100,20 @@
             this.tbQuestionExplain.Location = new System.Drawing.Point(99, 184);
             this.tbQuestionExplain.Multiline = true;
             this.tbQuestionExplain.Name = "tbQuestionExplain";
-            this.tbQuestionExplain.Size = new System.Drawing.Size(399, 94);
+            this.tbQuestionExplain.Size = new System.Drawing.Size(399, 106);
             this.tbQuestionExplain.TabIndex = 5;
             this.tbQuestionExplain.TextChanged += new System.EventHandler(this.tbQuestionExplain_TextChanged);
             // 
             // btCreate
             // 
-            this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCreate.Location = new System.Drawing.Point(757, 315);
+            this.btCreate.Location = new System.Drawing.Point(760, 360);
             this.btCreate.Name = "btCreate";
-            this.btCreate.Size = new System.Drawing.Size(68, 23);
+            this.btCreate.Size = new System.Drawing.Size(75, 23);
             this.btCreate.TabIndex = 6;
             this.btCreate.Text = "Create";
             this.btCreate.UseVisualStyleBackColor = true;
@@ -118,11 +121,13 @@
             // 
             // btCancel
             // 
-            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancel.Location = new System.Drawing.Point(831, 315);
+            this.btCancel.Location = new System.Drawing.Point(834, 360);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(75, 23);
+            this.btCancel.Size = new System.Drawing.Size(82, 23);
             this.btCancel.TabIndex = 7;
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
@@ -140,22 +145,26 @@
             // 
             // btMoreAnswer
             // 
-            this.btMoreAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMoreAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMoreAnswer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btMoreAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMoreAnswer.Location = new System.Drawing.Point(663, 315);
+            this.btMoreAnswer.Location = new System.Drawing.Point(666, 360);
             this.btMoreAnswer.Name = "btMoreAnswer";
-            this.btMoreAnswer.Size = new System.Drawing.Size(88, 23);
+            this.btMoreAnswer.Size = new System.Drawing.Size(95, 23);
             this.btMoreAnswer.TabIndex = 9;
             this.btMoreAnswer.Text = "Add Choice";
             this.btMoreAnswer.UseVisualStyleBackColor = true;
             // 
             // btAddImage
             // 
-            this.btAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAddImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAddImage.Location = new System.Drawing.Point(569, 315);
+            this.btAddImage.Location = new System.Drawing.Point(572, 360);
             this.btAddImage.Name = "btAddImage";
-            this.btAddImage.Size = new System.Drawing.Size(88, 23);
+            this.btAddImage.Size = new System.Drawing.Size(95, 23);
             this.btAddImage.TabIndex = 11;
             this.btAddImage.Text = "Add Image";
             this.btAddImage.UseVisualStyleBackColor = true;
@@ -165,7 +174,7 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 301);
+            this.label2.Location = new System.Drawing.Point(12, 313);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 12;
@@ -173,7 +182,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(99, 288);
+            this.pictureBox.Location = new System.Drawing.Point(99, 317);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(155, 55);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -185,9 +194,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(921, 355);
+            this.ClientSize = new System.Drawing.Size(928, 395);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btAddImage);
