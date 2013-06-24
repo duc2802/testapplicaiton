@@ -17,8 +17,8 @@ namespace ClientPresentationLayer
         public MainFormView()
         {
             InitializeComponent();
-            InitCommonGui();
             InitData();
+            InitCommonGui();
             InitEvent();
         }
         

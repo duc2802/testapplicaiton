@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BusinessEntities;
 
 namespace ClientPresentationLayer.QuestionPresentation.Data
 {
@@ -13,14 +14,14 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
         public int NumOfQuestion { set; get; }
         public string Date { set; get; }
 
-        public TestDataListViewItem()
+        public TestDataListViewItem(TestBE test)
         {
-            Title = "huynh minh Duc";
-            NumOfQuestion = 10;
-            Date = "20/06/2013";
+            Title = test.Information;
+            NumOfQuestion = test.ListQuestion.Count;
+            Date = test.DateCreate;
         }
 
-        public ListViewItem convertToListItem()
+        public ListViewItem ConvertToListItem()
         {
             var item = new ListViewItem(Title);
             item.Tag = Id;
