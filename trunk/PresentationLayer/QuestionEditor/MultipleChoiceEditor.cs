@@ -119,7 +119,7 @@ namespace PresentationLayer.QuestionEditor
         private void InitCommonGui()
         {
             tbListAnswer.SuspendLayout();
-            for (int idx = 0; idx < 2; idx++)
+            for (int idx = 0; idx < 4; idx++)
             {
                 var itemLayout = new Item();
                 itemLayout.Location = new Point(0, idx*itemLayout.Height);
