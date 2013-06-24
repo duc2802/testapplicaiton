@@ -5,7 +5,9 @@ using BusinessEntities;
 using Commons.BusinessObjects;
 using PresentationLayer.ActionController;
 using PresentationLayer.QuestionEditor.Data;
+using PresentationLayer.ThreadManager.DataThread;
 using SingleInstanceObject;
+using ThreadQueueManager;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -98,6 +100,12 @@ namespace PresentationLayer.QuestionEditor
                 questionPanel.Controls.Remove(item);
                 questionPanel.RowStyles.RemoveAt(idx);
                 questionPanel.Refresh();
+
+                var test =
+                    Singleton<TestBE>.Instance.ListQuestion.FirstOrDefault(ques => ques.QuestionID.Equals(idQuestion));
+                Singleton<TestBE>.Instance.ListQuestion.Remove(test);
+                ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
+                Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             }
             else
             {
