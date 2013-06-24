@@ -203,6 +203,7 @@ namespace PresentationLayer.QuestionEditor
             itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
             tbListAnswer.ResumeLayout();
+            this.ResumeLayout(false);
         }
 
         private void ItemLayoutDelete(object sender, int parameter)
