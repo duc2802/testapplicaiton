@@ -9,7 +9,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
 {
     public class TestDataListViewItem
     {
-        public int Id { set; get; }
+        public string Id { set; get; }
         public string Title { set; get; }
         public int NumOfQuestion { set; get; }
         public string Date { set; get; }
@@ -19,6 +19,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
             Title = test.Information;
             NumOfQuestion = test.ListQuestion.Count;
             Date = test.DateCreate;
+            Id = test.TestID;
         }
 
         public ListViewItem ConvertToListItem()
