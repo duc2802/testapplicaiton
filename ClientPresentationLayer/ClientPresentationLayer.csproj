@@ -69,6 +69,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionPresentation\DislayImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\DislayImageForm.Designer.cs">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionItem.Designer.cs">
+      <DependentUpon>QuestionItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\AnswerItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\AnswerItem.Designer.cs">
+      <DependentUpon>AnswerItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionPresentation\Data\AnswerDataController.cs" />
     <Compile Include="QuestionPresentation\Data\AnswerDataItem.cs" />
     <Compile Include="QuestionPresentation\Data\QuestionDataController.cs" />
@@ -115,6 +133,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuestionPresentation\DislayImageForm.resx">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionItem.resx">
+      <DependentUpon>QuestionItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\AnswerItem.resx">
+      <DependentUpon>AnswerItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\QuestionExplainPanel.resx">
       <DependentUpon>QuestionExplainPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +168,7 @@
   <ItemGroup>
     <Content Include="Lib\DevComponents.DotNetBar2.dll" />
     <Content Include="Lib\Ribbon.dll" />
+    <None Include="Resources\true.png" />
     <None Include="Resources\Results.png" />
     <None Include="Resources\Alarm.png" />
     <None Include="Resources\Clock.png" />

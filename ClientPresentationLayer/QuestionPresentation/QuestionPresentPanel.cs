@@ -7,12 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Commons.BusinessObjects;
+using ClientPresentationLayer.QuestionPresentation.Data;
 
 namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class QuestionPresentPanel : UserControl
     {
         int timetestInSeconds =60;
+        private TestDataListViewItem _dataItem;
+        public TestDataListViewItem DataItem
+        {
+            set
+            {
+                _dataItem = value;
+            }
+            get { return _dataItem; }
+        }
         public QuestionPresentPanel()
         {
             InitializeComponent();
@@ -24,8 +34,14 @@ namespace ClientPresentationLayer.QuestionPresentation
         {
             timeTest.Interval = 1000;
             timeTest.Start();
-            
+            LoadContentPanel();
         }
+        public void LoadContentPanel()
+        {
+            var questionItem = new QuestionItem();
+            contentQuestionPanel.Controls.Add(questionItem);
+        }
+
         private void InitEvent()
         {
             endExamButton.Click += EndExamButtonClick;

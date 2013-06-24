@@ -60,6 +60,13 @@ namespace ClientPresentationLayer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _true {
+            get {
+                object obj = ResourceManager.GetObject("_true", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap AddNew {
             get {
                 object obj = ResourceManager.GetObject("AddNew", resourceCulture);
