@@ -111,8 +111,6 @@ namespace PresentationLayer.QuestionEditor
             itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
             itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswer.Controls.Add(itemLayout);
-
-
             tbListAnswer.ResumeLayout();
         }
 
@@ -247,9 +245,17 @@ namespace PresentationLayer.QuestionEditor
         {
             tbListAnswer.SuspendLayout();
             tbListAnswer.Controls.RemoveAt(orderAnswer - 1);
+            _dataItem.AnswerData.AnswerData.RemoveAt(orderAnswer - 1);
             UpdateAllDataItem();
+            UpdateEditor();
             tbListAnswer.ResumeLayout();
             Refresh();
+        }
+        private void UpdateEditor()
+        {
+            tbListAnswer.Controls.Clear();
+            InitCommonGui(DataItem);
+            
         }
 
         private void UpdateAllDataItem()
@@ -273,19 +279,30 @@ namespace PresentationLayer.QuestionEditor
 
         private void btCreate_Click(object sender, EventArgs e)
         {
-            DataItem.IdQuestion = string.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
-            DataItem.ContentQuestion = tbQuestionContent.Text;
-            DataItem.ExplainContent = tbQuestionContent.Text;
-            for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
+            if (_action == "create")
             {
-                var item = tbListAnswer.Controls[idx] as Item;
-                if (item != null && item.DataItem.ContentAnswer != "")
+                // Create a question Action
+                DataItem.IdQuestion = string.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
+                DataItem.ContentQuestion = tbQuestionContent.Text;
+                DataItem.ExplainContent = tbQuestionContent.Text;
+                // Update Answer.
+                for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
                 {
-                    var answer = new AnswerDataItem();
-                    answer.ContentAnswer = item.DataItem.ContentAnswer;
-                    answer.OrderAnswer = idx;
-                    DataItem.AnswerData.AnswerData.Add(answer);
+                    var item = tbListAnswer.Controls[idx] as Item;
+                    if (item != null && item.DataItem.ContentAnswer != "")
+                    {
+                        var answer = new AnswerDataItem();
+                        answer.ContentAnswer = item.DataItem.ContentAnswer;
+                        answer.OrderAnswer = idx;
+                        DataItem.AnswerData.AnswerData.Add(answer);
+                    }
                 }
+                // Update for test
+            }
+            else 
+            {
+                // Edit a question
+ 
             }
 
             //QuestionBE qbe = DataItem.getQuestionBE();
