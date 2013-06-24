@@ -20,6 +20,15 @@ namespace DataAccessLayer
             return testBeList;
         }
 
+        public static List<TestBE> ScanClientTestExamFile(string folder)
+        {
+            string pathFolder = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + folder;
+            var directory = new DirectoryInfo(pathFolder);
+            var fileList = directory.GetFiles("*.exam");
+            var testBeList = fileList.Select(fileInfo => XmlHelper.ReadExamFile(fileInfo.FullName)).ToList();
+            return testBeList;
+        }
+
         public static bool DeleteTestExamFile(string fileName, string folder)
         {
             try
