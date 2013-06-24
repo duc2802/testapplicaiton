@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BusinessEntities;
 using ClientPresentationLayer.Common;
 using ClientPresentationLayer.QuestionPresentation.Data;
 using Commons.BusinessObjects;
@@ -63,7 +64,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             var itemSelected = testlistView.SelectedItems[0];
             if(itemSelected != null)
             {
-                Singleton<DataItemCollection>.Instance.TestItemDataSelected = TryGetDataItem((int)itemSelected.Tag);
+                Singleton<DataItemCollection>.Instance.TestItemDataSelected = TryGetDataItem(itemSelected.Tag.ToString());
                 deleteButton.Enabled = true;
                 startExamButton.Enabled = true;
             }
@@ -71,12 +72,15 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void StartExamButtonClick(object sender, EventArgs e)
         {
+            var testBe = Singleton<List<TestBE>>.Instance.FirstOrDefault(
+                test => test.TestID.Equals(Singleton<DataItemCollection>.Instance.TestItemDataSelected.Id));
+            Singleton<TestBE>.Instance = testBe;
             OnStartExam();
         }
 
         #endregion
 
-        private TestDataListViewItem TryGetDataItem(int id)
+        private TestDataListViewItem TryGetDataItem(string id)
         {
             return DataController.DataItems.FirstOrDefault(dataItem => dataItem.Id == id);
         }
