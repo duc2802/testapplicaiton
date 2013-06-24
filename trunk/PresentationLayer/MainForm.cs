@@ -283,24 +283,6 @@ namespace PresentationLayer
                     ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
                     Singleton<DataQueueThreadController>.Instance.PutCmd(command);
                 }
-                //var dataItem = new QuestionDataItem();
-                //dataItem.ContentQuestion = "Which one of the five is least like the other four? " +
-                //                           "Which one of the five is least like the other four?" +
-                //                           "Which one of the five is least like the other four?" +
-                //                           "Which one of the five is least like the other four?" +
-                //                           "Which one of the five is least like the other four?" +
-                //                           "Which one of the five is least like the other four?";
-                //dataItem.IdQuestion = "0";
-                //dataItem.OrderQuestion = 14;
-                //var answerController = new AnswerDataController(14);
-                //for (int j = 1; j <= 5; j++)
-                //{
-                //    var answer = new AnswerDataItem();
-                //    answer.ContentAnswer = "Cat";
-                //    answer.OrderAnswer = j;
-                //    answerController.Add(answer);
-                //}
-                //dataItem.AnswerData = answerController;
                 
             }
         }
