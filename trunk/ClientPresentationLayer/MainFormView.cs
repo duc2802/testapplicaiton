@@ -1,5 +1,10 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+using BusinessEntities;
 using ClientPresentationLayer.QuestionPresentation;
+using Commons;
+using SingleInstanceObject;
+using TestApplication;
 
 namespace ClientPresentationLayer
 {
@@ -13,9 +18,10 @@ namespace ClientPresentationLayer
         {
             InitializeComponent();
             InitCommonGui();
+            InitData();
             InitEvent();
         }
-
+        
         private void InitCommonGui()
         {
             _questionReview = new QuestionReviewPanel();
@@ -28,6 +34,11 @@ namespace ClientPresentationLayer
             _managerTest.Dock = DockStyle.Fill;
 
             Controls.Add(_managerTest);
+        }
+
+        private void InitData()
+        {
+            LoadTestBE();
         }
 
         private void InitEvent()
@@ -50,6 +61,16 @@ namespace ClientPresentationLayer
             Controls.Clear();
             Controls.Add(_questionPresent);
             ResumeLayout();
+        }
+
+        private void LoadTestBE()
+        {
+            var testBll = new TestBLL();
+            List<TestBE> listTestBe = testBll.ScanClientTestExamFile("ClientData");
+            foreach (TestBE testBe in listTestBe)
+            {
+                Singleton<List<TestBE>>.Instance.Add(testBe);
+            }
         }
     }
 }

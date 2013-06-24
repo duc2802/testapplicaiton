@@ -17,6 +17,12 @@ namespace TestApplication
             return testBEList;
         }
 
+        public List<TestBE> ScanClientTestExamFile(string testId)
+        {
+            var testBEList = TestDAL.ScanClientTestExamFile(testId);
+            return testBEList;
+        }
+
         public bool DeleteTestExamFile(string name, string place)
         {
             return TestDAL.DeleteTestExamFile(name, place);
