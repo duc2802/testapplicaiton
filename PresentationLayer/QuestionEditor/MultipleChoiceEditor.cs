@@ -96,21 +96,26 @@ namespace PresentationLayer.QuestionEditor
             Item itemLayout = null;
             AnswerDataItem newItem = null;
             tbListAnswer.SuspendLayout();
-            int oderNumber = 1;
+            int orderAnswer = 1;
             if (DataItem != null)
             {
                 //oderNumber = DataItem.AnswerData.AnswerData.Count + 1;
-                oderNumber = tbListAnswer.Controls.Count + 1;
+                orderAnswer = tbListAnswer.Controls.Count + 1;
             }
-            newItem = new AnswerDataItem(oderNumber, "", false);
+            newItem = new AnswerDataItem(orderAnswer, "", false);
             DataItem.AnswerData.AnswerData.Add(newItem);
-            itemLayout = new Item(newItem, oderNumber);
-            itemLayout.DataItem.orderAnswer = oderNumber;
+            itemLayout = new Item(newItem, orderAnswer);
+            itemLayout.DataItem.orderAnswer = orderAnswer;
             itemLayout.Delete += ItemLayoutDelete;
-            itemLayout.Location = new Point(0, itemLayout.Height);
-            itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
-            tbListAnswer.Controls.Add(itemLayout);
+            itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
+            var style = new RowStyle(SizeType.AutoSize);
+            tbListAnswer.RowStyles.Add(style);
+            tbListAnswer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+            tbListAnswer.Controls.Add(itemLayout, 0, orderAnswer - 1);
+            //itemLayout.Location = new Point(0, itemLayout.Height);
+            //itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
+            //itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
+            //tbListAnswer.Controls.Add(itemLayout);
             tbListAnswer.ResumeLayout();
         }
 
@@ -196,10 +201,11 @@ namespace PresentationLayer.QuestionEditor
             itemLayout.DataItem.OrderAnswer = orderNumber;
             itemLayout.DataItem.orderAnswer = orderNumber;
             //itemLayout.Update += ItemLayoutUpdate;
-            itemLayout.Location = new Point(0, itemLayout.Height);
-            itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
-            tbListAnswer.Controls.Add(itemLayout);
+            itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
+            var style = new RowStyle(SizeType.AutoSize);
+            tbListAnswer.RowStyles.Add(style);
+            tbListAnswer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+            tbListAnswer.Controls.Add(itemLayout, 0, orderNumber - 1);
             tbListAnswer.ResumeLayout();
             this.ResumeLayout(false);
         }

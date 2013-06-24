@@ -17,20 +17,26 @@ namespace PresentationLayer.QuestionEditor.Data
 
         public AnswerDataItem()
         {
-            
+
         }
-        public AnswerDataItem( int oderAnswer, string contentAnswer, bool isTrue)
+
+        public AnswerDataItem(int orderAnswer)
+        {
+            this.orderAnswer = orderAnswer;
+        }
+
+        public AnswerDataItem(int orderAnswer, string contentAnswer, bool isTrue)
         {
             this.orderAnswer = orderAnswer;
             this.contentAnswer = contentAnswer;
             this.isTrue = isTrue;
         }
 
-        public static AnswerDataItem TranslateToAnswerDataItem()
-        {
-            AnswerDataItem answer = new AnswerDataItem();
-            return answer;
-        }
+        //public static AnswerDataItem TranslateToAnswerDataItem()
+        //{
+        //    AnswerDataItem answer = new AnswerDataItem();
+        //    return answer;
+        //}
 
         public int OrderAnswer
         {
