@@ -25,20 +25,20 @@ namespace PresentationLayer.QuestionEditor
             }
             get { return _dataItem; }
         }
-      
 
-        public Item()
+
+        public Item(int index)
         {
             InitializeComponent();
             InitEvent();
-            InitData();
+            InitData(index);
         }
         public Item(AnswerDataItem item, int index)
         {
             InitializeComponent();
             InitEvent();
             InitCommonGui(item,index);
-            InitData();
+            //InitData();
         }
         private void InitEvent() 
         {
@@ -51,9 +51,13 @@ namespace PresentationLayer.QuestionEditor
             _dataItem.ContentAnswer = tbAnswerContent.Text;
         }
 
-        private void InitData()
+        private void InitData(int index)
         {
             _dataItem = new AnswerDataItem();
+            this.orderAnswer.Text = index.ToString();
+            DataItem = _dataItem;
+            DataItem.PropertyChanged += DataItemPropertyChanged;
+            this.Refresh();
         }
 
 

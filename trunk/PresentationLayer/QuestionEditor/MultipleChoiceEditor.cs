@@ -18,7 +18,7 @@ namespace PresentationLayer.QuestionEditor
         private readonly String _action = "";
         private int MAX_SHOW_ITEM = 6;
        
-        private string PATH_FORDER_IMAGE =Singleton<SettingManager>.Instance.GetImageFolder();
+        private string PATH_FORDER_IMAGE = Singleton<SettingManager>.Instance.GetImageFolder();
         private QuestionDataItem _dataItem;
 
         public MultipleChoiceEditor()
@@ -124,14 +124,19 @@ namespace PresentationLayer.QuestionEditor
             tbListAnswer.SuspendLayout();
             for (int idx = 0; idx < 4; idx++)
             {
-                var itemLayout = new Item();
-                itemLayout.Location = new Point(0, idx*itemLayout.Height);
-                itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-                itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
-                tbListAnswer.Controls.Add(itemLayout);
+                var newItem = new AnswerDataItem(idx + 1, "", false);
+                DataItem.AnswerData.AnswerData.Add(newItem);
+                var itemLayout = new Item(newItem, idx + 1);
+                itemLayout.DataItem.OrderAnswer = idx + 1;
+                itemLayout.DataItem.orderAnswer = idx + 1;
+                itemLayout.Delete += ItemLayoutDelete;
+                itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
+                var style = new RowStyle(SizeType.AutoSize);
+                tbListAnswer.RowStyles.Add(style);
+                tbListAnswer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                tbListAnswer.Controls.Add(itemLayout, 0, idx);
             }
             tbListAnswer.ResumeLayout();
-            
         }
 
         private void InitCommonGui(QuestionDataItem questionData)
@@ -260,8 +265,7 @@ namespace PresentationLayer.QuestionEditor
         private void UpdateEditor()
         {
             tbListAnswer.Controls.Clear();
-            InitCommonGui(DataItem);
-            
+            AddAnswerOptions();
         }
 
         private void UpdateAllDataItem()
