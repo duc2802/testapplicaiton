@@ -88,10 +88,10 @@
             this.tbListAnswer.AutoSize = true;
             this.tbListAnswer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tbListAnswer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 399F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 401F));
             this.tbListAnswer.Location = new System.Drawing.Point(515, 20);
             this.tbListAnswer.Name = "tbListAnswer";
-            this.tbListAnswer.Size = new System.Drawing.Size(403, 2);
+            this.tbListAnswer.Size = new System.Drawing.Size(405, 2);
             this.tbListAnswer.TabIndex = 4;
             // 
             // tbQuestionExplain
@@ -111,7 +111,7 @@
             this.btCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCreate.Location = new System.Drawing.Point(760, 360);
+            this.btCreate.Location = new System.Drawing.Point(753, 360);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(75, 23);
             this.btCreate.TabIndex = 6;
@@ -149,7 +149,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btMoreAnswer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btMoreAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMoreAnswer.Location = new System.Drawing.Point(666, 360);
+            this.btMoreAnswer.Location = new System.Drawing.Point(652, 360);
             this.btMoreAnswer.Name = "btMoreAnswer";
             this.btMoreAnswer.Size = new System.Drawing.Size(95, 23);
             this.btMoreAnswer.TabIndex = 9;
@@ -162,7 +162,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btAddImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAddImage.Location = new System.Drawing.Point(572, 360);
+            this.btAddImage.Location = new System.Drawing.Point(551, 360);
             this.btAddImage.Name = "btAddImage";
             this.btAddImage.Size = new System.Drawing.Size(95, 23);
             this.btAddImage.TabIndex = 11;
