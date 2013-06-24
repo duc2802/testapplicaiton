@@ -22,7 +22,7 @@ namespace DataAccessLayer
 
         public static List<TestBE> ScanClientTestExamFile(string folder)
         {
-            string pathFolder = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + folder;
+            string pathFolder = Singleton<SettingManager>.Instance.GetClientDataFolder();
             var directory = new DirectoryInfo(pathFolder);
             var fileList = directory.GetFiles("*.exam");
             var testBeList = fileList.Select(fileInfo => XmlHelper.ReadExamFile(fileInfo.FullName)).ToList();
