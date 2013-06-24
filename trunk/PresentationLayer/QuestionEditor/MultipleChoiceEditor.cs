@@ -296,6 +296,7 @@ namespace PresentationLayer.QuestionEditor
                 DataItem.ContentQuestion = tbQuestionContent.Text;
                 DataItem.ExplainContent = tbQuestionContent.Text;
                 // Update Answer.
+                DataItem.AnswerData.AnswerData.Clear();
                 for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
                 {
                     var item = tbListAnswer.Controls[idx] as Item;
@@ -309,42 +310,24 @@ namespace PresentationLayer.QuestionEditor
                 }
                 // Update for test
             }
-            else 
+            else
             {
-                // Edit a question
- 
+                DataItem.ContentQuestion = tbQuestionContent.Text;
+                DataItem.ExplainContent = tbQuestionContent.Text;
+                // Update Answer.
+                DataItem.AnswerData.AnswerData.Clear();
+                for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
+                {
+                    var item = tbListAnswer.Controls[idx] as Item;
+                    if (item != null && item.DataItem.ContentAnswer != "")
+                    {
+                        var answer = new AnswerDataItem();
+                        answer.ContentAnswer = item.DataItem.ContentAnswer;
+                        answer.OrderAnswer = idx;
+                        DataItem.AnswerData.AnswerData.Add(answer);
+                    }
+                }
             }
-
-            //QuestionBE qbe = DataItem.getQuestionBE();
-
-            //if (_action == "edit")
-            //{
-            //    var qBll = new QuestionBLL();
-            //    //hard code test id = 1
-            //    if (qBll.UpdateQuestion(qbe, "xx"))
-            //    {
-            //        MessageBox.Show(@"Update Succesful");
-            //        Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show(@"Update Fail");
-            //    }
-            //}
-            //if (_action == "create")
-            //{
-            //    var qBll = new QuestionBLL();
-            //    //hard code test id = 1
-            //    if (qBll.AddQuestion(qbe, "xx"))
-            //    {
-            //        MessageBox.Show(@"Add Succesful");
-            //        Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show(@"Add Fail");
-            //    }
-            //}
         }
 
         #region Trigger Event

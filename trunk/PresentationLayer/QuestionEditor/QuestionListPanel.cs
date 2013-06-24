@@ -29,6 +29,7 @@ namespace PresentationLayer.QuestionEditor
             Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
             Singleton<GuiActionEventController>.Instance.AddQuestionItem += OnAddQuestionItem;
             Singleton<GuiActionEventController>.Instance.ClearAllQuestionItem += ClearAllQuestionItem;
+            Singleton<GuiActionEventController>.Instance.ChangeQuestion += ChangeQuestion;
 
             questionPanel.DragDrop += QuestionPanelDragDrop;
             questionPanel.DragOver += QuestionPanelDragOver;
@@ -74,6 +75,7 @@ namespace PresentationLayer.QuestionEditor
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Update += ItemLayoutUpdate;
             itemLayout.MouseDown += ItemLayoutMouseDown;
+            itemLayout.Edit += ItemLayoutEdit;
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             return itemLayout;
         }
@@ -200,6 +202,44 @@ namespace PresentationLayer.QuestionEditor
             _dataController.DataItems.Clear();
             questionPanel.Controls.Clear();
             questionPanel.ResumeLayout(true);
+        }
+
+        private void ItemLayoutEdit(object sender, QuestionDataItem parameter)
+        {
+            ChangeDataQuestion(parameter);
+        }
+
+        private void ChangeQuestion(object sender, QuestionDataItem parameter)
+        {
+            ChangeDataQuestion(parameter);
+        }
+
+        private void ChangeDataQuestion(QuestionDataItem parameter)
+        {
+            questionPanel.SuspendLayout();
+            var dataItem =
+            _dataController.DataItems.FirstOrDefault(d => d.IdQuestion == parameter.IdQuestion);
+            if (dataItem != null)
+            {
+                dataItem.ExplainContent = parameter.ExplainContent;
+                dataItem.ContentQuestion = parameter.ContentQuestion;
+                dataItem.AnswerData = parameter.AnswerData;
+
+                var item = questionPanel.Controls.Find(dataItem.IdQuestion, true).First() as QuestionListItemCustom;
+                item.DataItem = dataItem;
+                item.Refresh();
+            }
+            questionPanel.ResumeLayout(true);
+
+            var question = parameter.getQuestionBE();
+            var ques =
+                Singleton<TestBE>.Instance.ListQuestion.FirstOrDefault(q => q.QuestionID == question.QuestionID);
+            ques.QuestionContent = question.QuestionContent;
+            ques.Explain = question.Explain;
+            ques.ListAnswers = question.ListAnswers;
+
+            ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
+            Singleton<DataQueueThreadController>.Instance.PutCmd(command);
         }
 
         #endregion

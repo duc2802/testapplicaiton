@@ -436,5 +436,45 @@ namespace PresentationLayer.ActionController
                 }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly object _changeQuestionEventLocker = new object();
+        private ActionEventHandler<QuestionDataItem> _changeQuestionEvent;
+
+        public event ActionEventHandler<QuestionDataItem> ChangeQuestion
+        {
+            add
+            {
+                lock (_changeQuestionEventLocker)
+                {
+                    _changeQuestionEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_changeQuestionEventLocker)
+                {
+                    _changeQuestionEvent -= value;
+                }
+            }
+        }
+
+        public void OnChangeQuestion(QuestionDataItem id)
+        {
+            ActionEventHandler<QuestionDataItem> handler = _changeQuestionEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, id);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
     }
 }

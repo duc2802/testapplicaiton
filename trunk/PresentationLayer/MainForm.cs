@@ -163,8 +163,11 @@ namespace PresentationLayer
             _dataItemController.LoadTestDataItem(idForder);
             _dataTestDataItem = _dataItemController.TestBook[idTest];
             int questionId = Singleton<GuiActionEventController>.Instance.QuestionId;
-            MultipleChoiceEditor test = new MultipleChoiceEditor(_dataTestDataItem.QuestionData.DataItems[questionId]);
-            test.ShowDialog();
+            MultipleChoiceEditor form = new MultipleChoiceEditor(_dataTestDataItem.QuestionData.DataItems[questionId]);
+            if(DialogResult.OK == form.ShowDialog())
+            {
+                Singleton<GuiActionEventController>.Instance.OnChangeQuestion(form.DataItem);
+            }
         }
 
         private void HandleFormLoad(object sender, EventArgs e)
@@ -283,7 +286,6 @@ namespace PresentationLayer
                     ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
                     Singleton<DataQueueThreadController>.Instance.PutCmd(command);
                 }
-                
             }
         }
 

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BusinessEntities;
 using Commons;
 using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor.Data;
@@ -17,6 +18,44 @@ namespace PresentationLayer.QuestionEditor
     public partial class QuestionListItemCustom : UserControl
     {
         #region Trigger Event
+
+        public event ActionEventHandler<QuestionDataItem> Edit
+        {
+            add
+            {
+                lock (_editEventLocker)
+                {
+                    _editEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_editEventLocker)
+                {
+                    _editEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<QuestionDataItem> _editEvent;
+        private readonly object _editEventLocker = new object();
+
+        private void OnEdit(QuestionDataItem idQuestion)
+        {
+            ActionEventHandler<QuestionDataItem> handler = _editEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, idQuestion);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
         public event ActionEventHandler<string> Delete
         {
             add
@@ -295,7 +334,10 @@ namespace PresentationLayer.QuestionEditor
         private void editButton_Click(object sender, EventArgs e)
         {
             MultipleChoiceEditor test = new MultipleChoiceEditor(_dataItem);
-            test.ShowDialog();
+            if(DialogResult.OK == test.ShowDialog())
+            {
+                OnEdit(test.DataItem);
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
