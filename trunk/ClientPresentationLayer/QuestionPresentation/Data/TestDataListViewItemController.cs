@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BusinessEntities;
+using SingleInstanceObject;
 
 namespace ClientPresentationLayer.QuestionPresentation.Data
 {
@@ -17,16 +19,16 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
 
         public TestDataListViewItemController()
         {
-            for(int idx = 0; idx < 20; idx++)
+            foreach (var test in Singleton<List<TestBE>>.Instance)
             {
-                var item = new TestDataListViewItem();
+                var item = new TestDataListViewItem(test);
                 DataItems.Add(item);
             }
         }
 
         private List<ListViewItem> TranslatDisplayItem()
         {
-            return DataItems.Select(dataItem => dataItem.convertToListItem()).ToList();
+            return DataItems.Select(dataItem => dataItem.ConvertToListItem()).ToList();
         }
     }
 }
