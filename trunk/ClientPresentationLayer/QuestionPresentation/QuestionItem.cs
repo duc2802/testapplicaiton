@@ -32,11 +32,17 @@ namespace ClientPresentationLayer
         public QuestionItem(QuestionBE Item)
         {
             InitializeComponent();
+            InitData(Item);
             InitGui(Item);
             InitEvent();
         }
         public void InitEvent() 
         {
+        }
+
+        private void InitData(QuestionBE Item)
+        {
+            DataBEItem = Item;
         }
         
         public void InitGui(QuestionDataItem Item)
@@ -49,19 +55,19 @@ namespace ClientPresentationLayer
                 pictureBox.Image = new Bitmap(newPath);
                 pictureBox.Show();
             }
-            AddAnswerOptions(DataBEItem);
+            AddAnswerOptions();
         }
         public void InitGui(QuestionBE Item)
         {
             //DataItem = Item;
-            tbQuestionContent.Text = DataItem.ContentQuestion;
+            tbQuestionContent.Text = DataBEItem.QuestionContent;
             if (DataBEItem.NameImage != null && DataBEItem.NameImage != "")
             {
                 string newPath = PATH_FORDER_IMAGE + DataBEItem.NameImage;
                 pictureBox.Image = new Bitmap(newPath);
                 pictureBox.Show();
             }
-            AddAnswerOptions();
+            AddAnswerOptionsFromBE();
         }
 
         private void QuestionItem_Load(object sender, EventArgs e)
@@ -75,7 +81,7 @@ namespace ClientPresentationLayer
                 AddNewLine(answerItem);
             }
         }
-        private void AddAnswerOptions(QuestionBE data)
+        private void AddAnswerOptionsFromBE()
         {
             foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
             {
@@ -120,7 +126,7 @@ namespace ClientPresentationLayer
             set
             {
                 _dataBEItem = value;
-                Name = _dataItem.IdQuestion.ToString();
+                Name = _dataBEItem.QuestionID;
             }
             get { return _dataBEItem; }
         }

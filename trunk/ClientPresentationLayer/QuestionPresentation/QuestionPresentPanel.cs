@@ -19,7 +19,6 @@ namespace ClientPresentationLayer.QuestionPresentation
     {
         int timetestInSeconds =60;
         private TestBE _dataItem;
-        
 
         public TestBE DataItem
         {
@@ -33,7 +32,13 @@ namespace ClientPresentationLayer.QuestionPresentation
         {
             InitializeComponent();
             InitEvent();
+            InitData();
             InitGui();
+        }
+
+        private void InitData()
+        {
+            DataItem = new TestBE();
         }
 
         private void InitGui() 
@@ -44,7 +49,8 @@ namespace ClientPresentationLayer.QuestionPresentation
         }
         public void LoadContentPanel()
         {
-            if (Singleton<TestBE>.Instance.TestID != null)
+            SuspendLayout();
+            if (DataItem.TestID != null)
             {
                 DataItem = Singleton<TestBE>.Instance;
                 timeTest.Interval = 1000;
@@ -52,6 +58,7 @@ namespace ClientPresentationLayer.QuestionPresentation
                 var questionItem = new QuestionItem(DataItem.ListQuestion[1]);
                 contentQuestionPanel.Controls.Add(questionItem);            
             }
+            ResumeLayout();
         }
 
         private void InitEvent()
