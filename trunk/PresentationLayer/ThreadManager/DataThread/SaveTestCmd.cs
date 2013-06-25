@@ -49,7 +49,9 @@ namespace PresentationLayer.ThreadManager.DataThread
                 if (!businessObject.ExportTestExamFile(_testBE, _testBE.TestID, _testBE.FolderId))
                 {
                     MessageBox.Show(string.Format("Can't save {0}", _testBE.TestID), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                Singleton<List<TestBE>>.Instance.Add(_testBE);
             }
             catch (Exception ex)
             {

@@ -48,7 +48,8 @@ namespace PresentationLayer.Explorer
             DataItem = data;
             lbNameExam.Text = data.Name;
             dateTextValue.Text = data.DateCreate.ToString();
-            lbNumberQuestion.Text = "Comment here! ";
+            lbNumberQuestion.Text = data.NumberQuestion.ToString();
+            lbTimeExam.Text = data.Time.ToString();
             ResumeLayout();
         }
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.lbNameExam = new System.Windows.Forms.Label();
-            this.tbNameExam = new System.Windows.Forms.TextBox();
+            this.nameExamTextBox = new System.Windows.Forms.TextBox();
             this.lbTimeExam = new System.Windows.Forms.Label();
-            this.tbTime = new System.Windows.Forms.TextBox();
+            this.timeTestTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numQuestionTextBox = new System.Windows.Forms.TextBox();
@@ -48,15 +48,15 @@
             this.lbNameExam.TabIndex = 0;
             this.lbNameExam.Text = "Name Exam";
             // 
-            // tbNameExam
+            // nameExamTextBox
             // 
-            this.tbNameExam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbNameExam.Location = new System.Drawing.Point(105, 12);
-            this.tbNameExam.Multiline = true;
-            this.tbNameExam.Name = "tbNameExam";
-            this.tbNameExam.Size = new System.Drawing.Size(366, 35);
-            this.tbNameExam.TabIndex = 1;
-            this.tbNameExam.TextChanged += new System.EventHandler(this.NameExamTextBoxChanged);
+            this.nameExamTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nameExamTextBox.Location = new System.Drawing.Point(105, 12);
+            this.nameExamTextBox.Multiline = true;
+            this.nameExamTextBox.Name = "nameExamTextBox";
+            this.nameExamTextBox.Size = new System.Drawing.Size(366, 35);
+            this.nameExamTextBox.TabIndex = 1;
+            this.nameExamTextBox.TextChanged += new System.EventHandler(this.NameExamTextBoxChanged);
             // 
             // lbTimeExam
             // 
@@ -67,13 +67,13 @@
             this.lbTimeExam.TabIndex = 2;
             this.lbTimeExam.Text = "Time";
             // 
-            // tbTime
+            // timeTestTextBox
             // 
-            this.tbTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbTime.Location = new System.Drawing.Point(105, 84);
-            this.tbTime.Name = "tbTime";
-            this.tbTime.Size = new System.Drawing.Size(139, 20);
-            this.tbTime.TabIndex = 3;
+            this.timeTestTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.timeTestTextBox.Location = new System.Drawing.Point(105, 84);
+            this.timeTestTextBox.Name = "timeTestTextBox";
+            this.timeTestTextBox.Size = new System.Drawing.Size(139, 20);
+            this.timeTestTextBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -115,6 +115,7 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Location = new System.Drawing.Point(245, 118);
@@ -135,9 +136,9 @@
             this.Controls.Add(this.numQuestionTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbTime);
+            this.Controls.Add(this.timeTestTextBox);
             this.Controls.Add(this.lbTimeExam);
-            this.Controls.Add(this.tbNameExam);
+            this.Controls.Add(this.nameExamTextBox);
             this.Controls.Add(this.lbNameExam);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NewExamDialog";
@@ -151,9 +152,9 @@
         #endregion
 
         private System.Windows.Forms.Label lbNameExam;
-        private System.Windows.Forms.TextBox tbNameExam;
+        private System.Windows.Forms.TextBox nameExamTextBox;
         private System.Windows.Forms.Label lbTimeExam;
-        private System.Windows.Forms.TextBox tbTime;
+        private System.Windows.Forms.TextBox timeTestTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox numQuestionTextBox;
