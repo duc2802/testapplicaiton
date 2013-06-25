@@ -65,7 +65,6 @@ namespace PresentationLayer.Explorer
             lbNameExam.Click += ListTestItemCustomClick;
             dateTextValue.Click += ListTestItemCustomClick;
             lbNumberQuestion.Click += ListTestItemCustomClick;
-
         }
 
         #region Register Event
@@ -84,7 +83,12 @@ namespace PresentationLayer.Explorer
         private void ListTestItemCustomGotFocus(object sender, EventArgs e)
         {
             Focus();
-            BackColor = ConstantGUI.FocusColor;
+            BackColor = ConstantGUI.HoverColor;
+        }
+
+        private void TestListItemCustomMouseHover(object sender, EventArgs e)
+        {
+            BackColor = ConstantGUI.HoverColor;
         }
 
         private void ListTestItemCustomClick(object sender, EventArgs e)

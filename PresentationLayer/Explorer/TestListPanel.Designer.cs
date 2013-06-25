@@ -36,9 +36,9 @@ namespace PresentationLayer.Explorer
             // 
             // testListBox
             // 
-            this.testListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.testListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.testListBox.AutoScroll = true;
             this.testListBox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.testListBox.Location = new System.Drawing.Point(3, 33);
@@ -48,9 +48,9 @@ namespace PresentationLayer.Explorer
             // 
             // headingButton
             // 
-            this.headingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.headingButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.headingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headingButton.BackColor = System.Drawing.Color.White;
             this.headingButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.headingButton.Location = new System.Drawing.Point(3, 4);
             this.headingButton.Name = "headingButton";

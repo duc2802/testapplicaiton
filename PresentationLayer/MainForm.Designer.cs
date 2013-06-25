@@ -120,7 +120,7 @@ namespace PresentationLayer
             this.startButton.AutoExpandOnClick = true;
             this.startButton.CanCustomize = false;
             this.startButton.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.startButton.Image = global::PresentationLayer.Properties.Resources.Program;
+            this.startButton.Image = global::PresentationLayer.Properties.Resources.Tatice_Cristal_Intense_Ok;
             this.startButton.ImagePaddingHorizontal = 2;
             this.startButton.ImagePaddingVertical = 2;
             this.startButton.Name = "startButton";
