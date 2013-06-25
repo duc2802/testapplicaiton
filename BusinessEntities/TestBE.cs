@@ -28,5 +28,7 @@ namespace BusinessEntities
         public string Time { get; set; }
 
         public string FolderId { set; get; }
+
+        public int NumberOfQuestion { set; get; }
     }
 }

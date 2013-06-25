@@ -19,7 +19,6 @@ using SingleInstanceObject;
 using TestApplication;
 using ThreadQueueManager;
 
-//using PresentationLayer.Export;
 
 namespace PresentationLayer
 {

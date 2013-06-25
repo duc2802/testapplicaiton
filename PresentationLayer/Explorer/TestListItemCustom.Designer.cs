@@ -62,7 +62,7 @@
             // 
             this.dateTextValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTextValue.AutoSize = true;
-            this.dateTextValue.Location = new System.Drawing.Point(187, 9);
+            this.dateTextValue.Location = new System.Drawing.Point(157, 9);
             this.dateTextValue.Name = "dateTextValue";
             this.dateTextValue.Size = new System.Drawing.Size(65, 13);
             this.dateTextValue.TabIndex = 2;

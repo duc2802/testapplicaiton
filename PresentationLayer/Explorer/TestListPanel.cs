@@ -40,9 +40,8 @@ namespace PresentationLayer.Explorer
         private void OnAddTestItem(object sender, TestDataItem parameter)
         {
             int idx = testListBox.Controls.Count;
-            parameter.IdTest = parameter.IdTest;
             testListBox.SuspendLayout();
-            _dataItemController.TestBook.Add(idx.ToString(),parameter);
+            _dataItemController.TestBook.Add(idx.ToString(), parameter);
             AddTestItem(parameter, idx + 1);
             testListBox.ResumeLayout(true);
         }

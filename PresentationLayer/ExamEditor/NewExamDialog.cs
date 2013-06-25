@@ -33,7 +33,32 @@ namespace PresentationLayer.ExamEditor
         {
             cancelButton.Click += CancelNewExamButtonClick;
             createExamButton.Click += CreateNewExamButtonClick;
-            numQuestionTextBox.KeyPress += NumQuestionTextBoxKeyPress;
+
+            nameExamTextBox.Validating += TextBoxValidating;
+            numQuestionTextBox.Validating += NumberValidating;
+            timeTestTextBox.Validating += NumberValidating;
+        }
+
+        private void TextBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            if(string.IsNullOrWhiteSpace(textbox.Text))
+            {
+                e.Cancel = true;
+                MessageBox.Show(string.Format("{0} cannot be empty", "Name"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void NumberValidating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            int num;
+            if (string.IsNullOrWhiteSpace(textbox.Text) || !int.TryParse(textbox.Text, out num))
+            {
+                e.Cancel = true;
+                MessageBox.Show(string.Format("{0} must type number", "Text box"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         public void InitData(string idFolder)
@@ -54,13 +79,33 @@ namespace PresentationLayer.ExamEditor
 
         private void CreateNewExamButtonClick(object sender, EventArgs e)
         {
-            var dataItem = new TestDataItem();
-            dataItem.IdTest = String.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
-            dataItem.NumberQuestion = Int32.Parse(numQuestionTextBox.Text);
-            dataItem.Name = tbNameExam.Text;
-            dataItem.Time = Int32.Parse(tbTime.Text);
-            dataItem.FolderId = FolderId;
-            dataItem.DateCreate = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(nameExamTextBox.Text))
+            {
+                MessageBox.Show(string.Format("{0} cannot be empty", "Name"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int num;
+            if (string.IsNullOrWhiteSpace(timeTestTextBox.Text) || !int.TryParse(timeTestTextBox.Text, out num))
+            {
+                MessageBox.Show(string.Format("{0} must type number", "Text box"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(numQuestionTextBox.Text) || !int.TryParse(numQuestionTextBox.Text, out num))
+            {
+                MessageBox.Show(string.Format("{0} must type number", "Text box"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var dataItem = new TestDataItem
+                               {
+                                   IdTest = String.Format("{0:ddmmyyyyHHmmss}", DateTime.Now),
+                                   NumberQuestion = Int32.Parse(numQuestionTextBox.Text),
+                                   Name = nameExamTextBox.Text,
+                                   Time = Int32.Parse(timeTestTextBox.Text),
+                                   FolderId = FolderId,
+                                   DateCreate = DateTime.Now
+                               };
             Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
 
             ICommand command = new SaveTestCmd(ExecuteMethod.Async, (TestBE) dataItem.TranslateToBE());

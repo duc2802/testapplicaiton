@@ -38,8 +38,11 @@ namespace PresentationLayer.Explorer.Data
             IdTest = testBe.TestID;
             Name = testBe.Information;
             FolderId = testBe.FolderId;
-            //Time = new DateTime()      
+            DateCreate = DateTime.Parse(testBe.DateCreate);
+            Time = int.Parse(testBe.Time);
+            NumberQuestion = int.Parse(testBe.NumberOfQuestion.ToString());
         }
+
         private QuestionDataController _questions;
         public QuestionDataController QuestionData
         {
@@ -52,10 +55,12 @@ namespace PresentationLayer.Explorer.Data
         {
             var testBe = new TestBE
                              {
-                                 DateCreate = Time.ToString(),
+                                 DateCreate = DateCreate.ToString(),
                                  TestID = IdTest,
                                  Information = Name,
-                                 FolderId = FolderId
+                                 FolderId = FolderId,
+                                 Time = Time.ToString(),
+                                 NumberOfQuestion = NumberQuestion
                              };
             return testBe;
         }
