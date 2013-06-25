@@ -9,6 +9,7 @@ namespace Commons
     public class ConstantGUI
     {
         public static int PaddingGUI = 5;
-        public static Color FocusColor = Color.CadetBlue;
+        public static Color FocusColor = Color.LightBlue;
+        public static Color HoverColor = Color.Lavender;
     }
 }
