@@ -6,16 +6,22 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Commons.BusinessObjects;
+using BusinessEntities;
+using ClientPresentationLayer.Common;
 using ClientPresentationLayer.QuestionPresentation.Data;
+using Commons.BusinessObjects;
+using SingleInstanceObject;
+
 
 namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class QuestionPresentPanel : UserControl
     {
         int timetestInSeconds =60;
-        private TestDataListViewItem _dataItem;
-        public TestDataListViewItem DataItem
+        private TestBE _dataItem;
+        
+
+        public TestBE DataItem
         {
             set
             {
@@ -38,8 +44,14 @@ namespace ClientPresentationLayer.QuestionPresentation
         }
         public void LoadContentPanel()
         {
-            var questionItem = new QuestionItem();
-            contentQuestionPanel.Controls.Add(questionItem);
+            if (Singleton<TestBE>.Instance.TestID != null)
+            {
+                DataItem = Singleton<TestBE>.Instance;
+                timeTest.Interval = 1000;
+                timeTest.Start();
+                var questionItem = new QuestionItem(DataItem.ListQuestion[1]);
+                contentQuestionPanel.Controls.Add(questionItem);            
+            }
         }
 
         private void InitEvent()

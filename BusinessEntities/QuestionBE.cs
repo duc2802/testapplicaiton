@@ -22,12 +22,19 @@ namespace BusinessEntities
         private string _questionContent;
         private List<AnswerBE> _listAnswers;
         private string _levelQuestion;
+        private string _nameImage;
         private string _explain;
 
         public string Explain
         {
             get { return _explain; }
             set { _explain = value; }
+        }
+
+        public string NameImage
+        {
+            get { return _nameImage; }
+            set { _nameImage = value; }
         }
 
         public string QuestionID

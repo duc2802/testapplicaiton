@@ -10,23 +10,26 @@ using ClientPresentationLayer.QuestionPresentation.Data;
 using ClientPresentationLayer.QuestionPresentation;
 using Commons;
 using SingleInstanceObject;
-
+using BusinessEntities;
 namespace ClientPresentationLayer
 {
     public partial class QuestionItem : UserControl
     {
         private QuestionDataItem _dataItem;
+        private QuestionBE _dataBEItem;
         private string PATH_FORDER_IMAGE = Singleton<SettingManager>.Instance.GetImageFolder();
-
-        /// <summary>
-        /// Init to test
-        /// </summary>
-        /// 
+        
         public QuestionItem()
         {
             InitializeComponent();
         }
         public QuestionItem(QuestionDataItem Item)
+        {
+            InitializeComponent();
+            InitGui(Item);
+            InitEvent();
+        }
+        public QuestionItem(QuestionBE Item)
         {
             InitializeComponent();
             InitGui(Item);
@@ -46,6 +49,18 @@ namespace ClientPresentationLayer
                 pictureBox.Image = new Bitmap(newPath);
                 pictureBox.Show();
             }
+            AddAnswerOptions(DataBEItem);
+        }
+        public void InitGui(QuestionBE Item)
+        {
+            //DataItem = Item;
+            tbQuestionContent.Text = DataItem.ContentQuestion;
+            if (DataBEItem.NameImage != null && DataBEItem.NameImage != "")
+            {
+                string newPath = PATH_FORDER_IMAGE + DataBEItem.NameImage;
+                pictureBox.Image = new Bitmap(newPath);
+                pictureBox.Show();
+            }
             AddAnswerOptions();
         }
 
@@ -60,8 +75,27 @@ namespace ClientPresentationLayer
                 AddNewLine(answerItem);
             }
         }
+        private void AddAnswerOptions(QuestionBE data)
+        {
+            foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
+            {
+                AddNewLine(answerItem);
+            }
+        }
+
 
         private void AddNewLine(AnswerDataItem item)
+        {
+            tbListAnswerItem.SuspendLayout();
+            var answerItem = new AnswerItem();
+            answerItem.Location = new Point(0, answerItem.Height);
+            answerItem.Size = new Size(tbListAnswerItem.Width - 10, answerItem.Height);
+            answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
+            tbListAnswerItem.Controls.Add(answerItem);
+            tbListAnswerItem.ResumeLayout();
+        }
+
+        private void AddNewLine(AnswerBE item)
         {
             tbListAnswerItem.SuspendLayout();
             var answerItem = new AnswerItem();
@@ -80,6 +114,15 @@ namespace ClientPresentationLayer
                 Name = _dataItem.IdQuestion.ToString();
             }
             get { return _dataItem; }
+        }
+        public QuestionBE DataBEItem
+        {
+            set
+            {
+                _dataBEItem = value;
+                Name = _dataItem.IdQuestion.ToString();
+            }
+            get { return _dataBEItem; }
         }
         private void ShowImageofQuestion(string pathImage)
         {
