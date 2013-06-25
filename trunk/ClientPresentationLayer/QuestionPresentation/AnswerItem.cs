@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClientPresentationLayer.QuestionPresentation.Data;
+using BusinessEntities;
 
 namespace ClientPresentationLayer.QuestionPresentation
 {
@@ -23,6 +24,17 @@ namespace ClientPresentationLayer.QuestionPresentation
             get { return _dataItem; }
         }
 
+        private AnswerBE _dataBEItem;
+        public AnswerBE DataBEItem
+        {
+            set
+            {
+                _dataBEItem = value;
+                Name = _dataBEItem.AnswerID.ToString();
+            }
+            get { return _dataBEItem; }
+        }
+
         public AnswerItem()
         {
             InitializeComponent();
@@ -35,10 +47,23 @@ namespace ClientPresentationLayer.QuestionPresentation
             InitGui();
         }
 
+        public AnswerItem(AnswerBE dataItem)
+        {
+            DataBEItem = dataItem;
+            InitializeComponent();
+            InitGui(dataItem);
+        }
+
         public void InitGui() 
         {
             orderAnswer.Text = DataItem.OrderAnswer.ToString();
             lbAnswerContent.Text = DataItem.ContentAnswer;
+            btTrueFail.Visible = false;
+        }
+        public void InitGui(AnswerBE dataItem)
+        {
+            orderAnswer.Text = DataBEItem.AnswerID.ToString();
+            lbAnswerContent.Text = DataBEItem.Content;
             btTrueFail.Visible = false;
         }
 
