@@ -59,6 +59,8 @@ namespace ClientPresentationLayer
         {
             SuspendLayout();
             Controls.Clear();
+            _questionPresent.DataItem = Singleton<TestBE>.Instance;
+            _questionPresent.LoadContentPanel();
             Controls.Add(_questionPresent);
             ResumeLayout();
         }
