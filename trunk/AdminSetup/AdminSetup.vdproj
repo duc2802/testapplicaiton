@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_18E4250077774B0EA41A0BC321C378A1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1F147B56B88AAE10BBEC4DD7C92E1438"
         "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "MsmSig" = "8:_UNDEFINED"
@@ -53,6 +59,12 @@
         {
         "MsmKey" = "8:_5F0AD78C8EF77761275D1AE05CA71FB7"
         "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_63BA3DC4D48F4078AF6A998ADEC9C23C"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -311,6 +323,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18E4250077774B0EA41A0BC321C378A1"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\..\\AppData\\Roaming\\TestEasy\\Data\\TestColection\\26192013041920.exam"
+            "TargetName" = "8:26192013041920.exam"
+            "Tag" = "8:"
+            "Folder" = "8:_B2C4473472EB460280D7F8277E1C81EA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F147B56B88AAE10BBEC4DD7C92E1438"
             {
             "AssemblyRegister" = "3:1"
@@ -402,6 +434,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63BA3DC4D48F4078AF6A998ADEC9C23C"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\..\\AppData\\Roaming\\TestEasy\\Data\\TestColection\\26252013092527.exam"
+            "TargetName" = "8:26252013092527.exam"
+            "Tag" = "8:"
+            "Folder" = "8:_B2C4473472EB460280D7F8277E1C81EA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_64D4EFEE8C84A5B00F1AE89529D7111E"
@@ -635,6 +687,17 @@
                             "Property" = "8:_7A1DFE25E96C4CD7887F82C1227AE242"
                                 "Folders"
                                 {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B2C4473472EB460280D7F8277E1C81EA"
+                                    {
+                                    "Name" = "8:TestCollection"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_2D1DCF1E52BE48E1926A556F1416A4B5"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -680,7 +743,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AdminSetup"
         "ProductCode" = "8:{0FCA26F4-E282-4B20-9702-457AA0ECCFE8}"
-        "PackageCode" = "8:{D015F73C-7BD5-4BAD-87AE-B7A5A40C6C9A}"
+        "PackageCode" = "8:{E1B38580-133C-489C-B6A0-68DB6F01C7F4}"
         "UpgradeCode" = "8:{6D8AB4F3-CDBF-4536-9D02-BB97E2C09610}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
