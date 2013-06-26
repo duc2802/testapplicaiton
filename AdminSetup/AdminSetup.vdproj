@@ -16,12 +16,6 @@
         "Entry"
         {
         "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
-        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
         "OwnerKey" = "8:_94B2B478AF4403C8CD9BEC84BAA2B7A5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -29,6 +23,12 @@
         {
         "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
         "OwnerKey" = "8:_E5D0977A95EDF86FC0F00DE22EBAFCB5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,13 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_94B2B478AF4403C8CD9BEC84BAA2B7A5"
-        "OwnerKey" = "8:_E5D0977A95EDF86FC0F00DE22EBAFCB5"
+        "OwnerKey" = "8:_E3FB9EBD3728A32681E87066863011E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_94B2B478AF4403C8CD9BEC84BAA2B7A5"
-        "OwnerKey" = "8:_E3FB9EBD3728A32681E87066863011E4"
+        "OwnerKey" = "8:_E5D0977A95EDF86FC0F00DE22EBAFCB5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -111,8 +111,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_94B2B478AF4403C8CD9BEC84BAA2B7A5"
+        "MsmKey" = "8:_F46B2B0E778144899BAB33AF5A13F2C9"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,6 +166,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_94B2B478AF4403C8CD9BEC84BAA2B7A5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -194,6 +200,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -218,6 +237,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -527,6 +559,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F46B2B0E778144899BAB33AF5A13F2C9"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\..\\Downloads\\Tatice-Cristal-Intense-Ok.ico"
+            "TargetName" = "8:Tatice-Cristal-Intense-Ok.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -750,7 +802,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F57F72CFA4F34F6A836A8A65C7E8B1FE"
             {
-            "Name" = "8:Shortcut to Primary output from AdminPresentationLayer (Active)"
+            "Name" = "8:TestEasy"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -759,7 +811,7 @@
             "Target" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
             "Folder" = "8:_048FE86C13F54CB986E87919A8C1DE83"
             "WorkingFolder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
-            "Icon" = "8:"
+            "Icon" = "8:_F46B2B0E778144899BAB33AF5A13F2C9"
             "Feature" = "8:"
             }
         }

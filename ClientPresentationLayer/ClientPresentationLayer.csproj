@@ -99,6 +99,12 @@
     </Compile>
     <Compile Include="QuestionPresentation\Data\TestDataListViewItem.cs" />
     <Compile Include="QuestionPresentation\Data\TestDataListViewItemController.cs" />
+    <Compile Include="QuestionPresentation\QuestionListItemCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionListItemCustom.Designer.cs">
+      <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionPresentation\QuestionPresentPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\QuestionExplainPanel.resx">
       <DependentUpon>QuestionExplainPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionListItemCustom.resx">
+      <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\QuestionPresentPanel.resx">
       <DependentUpon>QuestionPresentPanel.cs</DependentUpon>
