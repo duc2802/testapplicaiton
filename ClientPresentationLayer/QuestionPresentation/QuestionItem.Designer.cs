@@ -38,6 +38,7 @@
             // 
             this.tbQuestionContent.BackColor = System.Drawing.Color.White;
             this.tbQuestionContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbQuestionContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbQuestionContent.Location = new System.Drawing.Point(12, 13);
             this.tbQuestionContent.Multiline = true;
             this.tbQuestionContent.Name = "tbQuestionContent";
@@ -56,14 +57,14 @@
             // 
             // tbListAnswerItem
             // 
-            this.tbListAnswerItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbListAnswerItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbListAnswerItem.AutoSize = true;
             this.tbListAnswerItem.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tbListAnswerItem.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
             this.tbListAnswerItem.Location = new System.Drawing.Point(12, 147);
             this.tbListAnswerItem.Name = "tbListAnswerItem";
-            this.tbListAnswerItem.Size = new System.Drawing.Size(394, 96);
+            this.tbListAnswerItem.Size = new System.Drawing.Size(413, 0);
             this.tbListAnswerItem.TabIndex = 2;
             // 
             // QuestionItem
@@ -71,11 +72,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.tbListAnswerItem);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.tbQuestionContent);
             this.Name = "QuestionItem";
-            this.Size = new System.Drawing.Size(515, 254);
+            this.Size = new System.Drawing.Size(553, 203);
             this.Load += new System.EventHandler(this.QuestionItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
