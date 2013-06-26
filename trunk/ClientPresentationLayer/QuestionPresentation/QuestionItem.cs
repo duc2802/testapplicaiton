@@ -18,7 +18,7 @@ namespace ClientPresentationLayer
         private QuestionDataItem _dataItem;
         private QuestionBE _dataBEItem;
         private string PATH_FORDER_IMAGE = Singleton<SettingManager>.Instance.GetImageFolder();
-        
+        public bool isExplainStatus;
         public QuestionItem()
         {
             InitializeComponent();
@@ -68,6 +68,7 @@ namespace ClientPresentationLayer
                 pictureBox.Show();
             }
             AddAnswerOptionsFromBE();
+            ResumeLayout();
         }
 
         private void QuestionItem_Load(object sender, EventArgs e)
@@ -103,13 +104,15 @@ namespace ClientPresentationLayer
 
         private void AddNewLine(AnswerBE item)
         {
+            SuspendLayout();
             tbListAnswerItem.SuspendLayout();
-            var answerItem = new AnswerItem();
+            var answerItem = new AnswerItem(item);
             answerItem.Location = new Point(0, answerItem.Height);
-            answerItem.Size = new Size(tbListAnswerItem.Width - 10, answerItem.Height);
+            answerItem.Size = new Size(tbListAnswerItem.Width, answerItem.Height);
             answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswerItem.Controls.Add(answerItem);
             tbListAnswerItem.ResumeLayout();
+            ResumeLayout();
         }
 
         public QuestionDataItem DataItem

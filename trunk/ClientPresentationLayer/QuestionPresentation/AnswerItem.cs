@@ -13,6 +13,17 @@ namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class AnswerItem : UserControl
     {
+        public bool isChosen =false;
+
+        public bool IsChose
+        {
+            set
+            {
+                isChosen = value;
+                
+            }
+            get { return isChosen; }
+        }
         private AnswerDataItem _dataItem;
         public AnswerDataItem DataItem
         {
@@ -52,24 +63,41 @@ namespace ClientPresentationLayer.QuestionPresentation
             DataBEItem = dataItem;
             InitializeComponent();
             InitGui(dataItem);
+            InitEvent();
+        }
+
+        public void InitEvent() 
+        {
+            cbAnswerItem.CheckedChanged += ComboBoxCheckChagedEvent;
+        }
+
+        private void ComboBoxCheckChagedEvent(object sender, EventArgs e)
+        {
+            if (cbAnswerItem.Checked == true)
+                isChosen = true;
         }
 
         public void InitGui() 
         {
-            orderAnswer.Text = DataItem.OrderAnswer.ToString();
+            orderAnswer.Text = (DataItem.OrderAnswer +1).ToString();
             lbAnswerContent.Text = DataItem.ContentAnswer;
             btTrueFail.Visible = false;
         }
         public void InitGui(AnswerBE dataItem)
         {
-            orderAnswer.Text = DataBEItem.AnswerID.ToString();
+            orderAnswer.Text = (Int32.Parse(dataItem.AnswerID) +1).ToString();
             lbAnswerContent.Text = DataBEItem.Content;
             btTrueFail.Visible = false;
         }
 
-        private void AnswerItem_Load(object sender, EventArgs e)
+        private void cbTrue_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (cbAnswerItem.Checked)
+            {
+                _dataItem.isTrue = true;
+                return;
+            }
+            _dataItem.isTrue = false;
         }
     }
 }

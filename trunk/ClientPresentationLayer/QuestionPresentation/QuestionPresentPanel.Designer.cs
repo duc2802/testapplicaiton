@@ -37,10 +37,11 @@
             this.goToQuesNumcomboBox = new System.Windows.Forms.ComboBox();
             this.goToQuesNumLabel = new System.Windows.Forms.Label();
             this.sendFeedBackLabel = new System.Windows.Forms.Label();
-            this.lbQuestion = new System.Windows.Forms.Label();
+            this.lbQuestionLB = new System.Windows.Forms.Label();
             this.timeTest = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
+            this.lbQuestionOrder = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // contentQuestionPanel
@@ -128,15 +129,15 @@
             this.sendFeedBackLabel.TabIndex = 7;
             this.sendFeedBackLabel.Text = "Send Feedback";
             // 
-            // lbQuestion
+            // lbQuestionLB
             // 
-            this.lbQuestion.AutoSize = true;
-            this.lbQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbQuestion.Location = new System.Drawing.Point(14, 38);
-            this.lbQuestion.Name = "lbQuestion";
-            this.lbQuestion.Size = new System.Drawing.Size(85, 13);
-            this.lbQuestion.TabIndex = 10;
-            this.lbQuestion.Text = "Question XXX";
+            this.lbQuestionLB.AutoSize = true;
+            this.lbQuestionLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuestionLB.Location = new System.Drawing.Point(14, 38);
+            this.lbQuestionLB.Name = "lbQuestionLB";
+            this.lbQuestionLB.Size = new System.Drawing.Size(65, 13);
+            this.lbQuestionLB.TabIndex = 10;
+            this.lbQuestionLB.Text = "Question :";
             // 
             // label1
             // 
@@ -157,13 +158,23 @@
             this.lbTime.TabIndex = 12;
             this.lbTime.Text = " 24:25:30";
             // 
+            // lbQuestionOrder
+            // 
+            this.lbQuestionOrder.AutoSize = true;
+            this.lbQuestionOrder.Location = new System.Drawing.Point(86, 38);
+            this.lbQuestionOrder.Name = "lbQuestionOrder";
+            this.lbQuestionOrder.Size = new System.Drawing.Size(13, 13);
+            this.lbQuestionOrder.TabIndex = 13;
+            this.lbQuestionOrder.Text = "1";
+            // 
             // QuestionPresentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbQuestionOrder);
             this.Controls.Add(this.lbTime);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbQuestion);
+            this.Controls.Add(this.lbQuestionLB);
             this.Controls.Add(this.sendFeedBackLabel);
             this.Controls.Add(this.goToQuesNumLabel);
             this.Controls.Add(this.goToQuesNumcomboBox);
@@ -189,9 +200,10 @@
         private System.Windows.Forms.ComboBox goToQuesNumcomboBox;
         private System.Windows.Forms.Label goToQuesNumLabel;
         private System.Windows.Forms.Label sendFeedBackLabel;
-        private System.Windows.Forms.Label lbQuestion;
+        private System.Windows.Forms.Label lbQuestionLB;
         private System.Windows.Forms.Timer timeTest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.Label lbQuestionOrder;
     }
 }

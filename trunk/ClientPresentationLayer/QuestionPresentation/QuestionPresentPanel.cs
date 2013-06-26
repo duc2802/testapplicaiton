@@ -12,6 +12,7 @@ using ClientPresentationLayer.QuestionPresentation.Data;
 using Commons.BusinessObjects;
 using PresentationLayer.QuestionEditor;
 using SingleInstanceObject;
+using System.Collections;
 
 
 namespace ClientPresentationLayer.QuestionPresentation
@@ -20,6 +21,8 @@ namespace ClientPresentationLayer.QuestionPresentation
     {
         int timetestInSeconds =60;
         private TestBE _dataItem;
+        int indexQuestion =0;
+        int maxIndexQuestion;
 
         public TestBE DataItem
         {
@@ -48,31 +51,83 @@ namespace ClientPresentationLayer.QuestionPresentation
             timeTest.Start();
             LoadContentPanel();
         }
-        public void LoadContentPanel()
+
+
+        public void FillQuestionDataWithQuestionIndex(int indexQuestionData)
         {
             SuspendLayout();
             if (DataItem.TestID != null)
             {
-                DataItem = Singleton<TestBE>.Instance;
-                timeTest.Interval = 1000;
-                timeTest.Start();
-                var questionItem = new QuestionItem(Singleton<TestBE>.Instance.ListQuestion[0]);
+                // Clear panel
+                ArrayList list = new ArrayList(contentQuestionPanel.Controls);
+                foreach (Control c in list)
+                {
+                    contentQuestionPanel.Controls.Remove(c);
+                }
+
+                // Load data into answer and panel
+                lbQuestionOrder.Text = (indexQuestionData +1).ToString();
+                var questionItem = new QuestionItem(DataItem.ListQuestion[indexQuestion]);
                 questionItem.Dock = DockStyle.Fill;
-                contentQuestionPanel.Controls.Add(questionItem);            
+                contentQuestionPanel.Controls.Add(questionItem);
+                indexQuestion = indexQuestionData;
             }
             ResumeLayout();
+        }
+
+
+        public void LoadContentPanel()
+        {
+            //Load combobox
+            if (DataItem.TestID != null)
+            {
+                maxIndexQuestion = DataItem.ListQuestion.Count;
+
+                for (int i = 1; i <= maxIndexQuestion; i++)
+                {
+                    goToQuesNumcomboBox.Items.Add(i);
+                }
+            }
+            FillQuestionDataWithQuestionIndex(0);
         }
 
         private void InitEvent()
         {
             endExamButton.Click += EndExamButtonClick;
             timeTest.Tick += new EventHandler(Timer_Tick);
-            lbTime.Text = getTime(); 
+            lbTime.Text = getTime();
+
+            previousButton.Click += PreviousButtonClick;
+            nextButton.Click += NextButtonClick;
+            goToQuesNumcomboBox.SelectedIndexChanged += SelectQuestionInCombobox;
+            
+        }
+
+
+        private void SelectQuestionInCombobox(object sender, EventArgs e)
+        {
+            indexQuestion =(int)goToQuesNumcomboBox.SelectedItem -1;
+            FillQuestionDataWithQuestionIndex(indexQuestion);
+        }
+
+        private void PreviousButtonClick(object sender, EventArgs e)
+        {
+           if(indexQuestion > 0)
+                indexQuestion -= 1;
+            FillQuestionDataWithQuestionIndex(indexQuestion);
+        }
+
+        private void NextButtonClick(object sender, EventArgs e)
+        {
+            if(indexQuestion < maxIndexQuestion-1)
+            indexQuestion += 1;
+
+            FillQuestionDataWithQuestionIndex(indexQuestion);
         }
 
         private void EndExamButtonClick(object sender, EventArgs e)
         {
-            OnEndExam();
+           
         }
 
         public string getTime()
