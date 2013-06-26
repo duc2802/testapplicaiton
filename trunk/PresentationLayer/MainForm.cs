@@ -271,20 +271,16 @@ namespace PresentationLayer
 
         private void NewQuestionButtonClick(object sender, EventArgs e)
         {
-            if (MessageBox.Show(this, "Do you want to add more question.", "Add question", MessageBoxButtons.OK) ==
-                DialogResult.OK)
+            var form = new MultipleChoiceEditor();
+            if (DialogResult.OK == form.ShowDialog())
             {
-                var form = new MultipleChoiceEditor();
-                if(DialogResult.OK == form.ShowDialog())
-                {
-                    Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
+                Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
 
-                    var question = form.DataItem.getQuestionBE();
-                    Singleton<TestBE>.Instance.ListQuestion.Add(question);
+                var question = form.DataItem.getQuestionBE();
+                Singleton<TestBE>.Instance.ListQuestion.Add(question);
 
-                    ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
-                    Singleton<DataQueueThreadController>.Instance.PutCmd(command);
-                }
+                ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
+                Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             }
         }
 

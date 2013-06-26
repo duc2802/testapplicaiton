@@ -89,7 +89,6 @@ namespace PresentationLayer.QuestionEditor.Data
         private void Initialize()
         {
             this._questionData = new List<QuestionDataItem>();
-            //FillDataItem();
         }
 
         private void Initialize(TestBE testBe)
@@ -149,10 +148,10 @@ namespace PresentationLayer.QuestionEditor.Data
                 dataItem.OrderQuestion = i;
                 dataItem.imageName = null;
                 var answerController = new AnswerDataController(i);
-                for (int j = 0; j <= questionBE.ListAnswers.Count; j++)
+                for (int j = 0; j < questionBE.ListAnswers.Count; j++)
                 {
                     var answer = new AnswerDataItem();
-                    answer.ContentAnswer = questionBE.ListAnswers[i].Content;
+                    answer.ContentAnswer = questionBE.ListAnswers[j].Content;
                     answer.OrderAnswer = j;
                     answerController.Add(answer);
                 }

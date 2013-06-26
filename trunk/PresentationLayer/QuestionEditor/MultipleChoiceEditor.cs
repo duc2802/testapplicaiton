@@ -99,7 +99,6 @@ namespace PresentationLayer.QuestionEditor
             int orderAnswer = 1;
             if (DataItem != null)
             {
-                //oderNumber = DataItem.AnswerData.AnswerData.Count + 1;
                 orderAnswer = tbListAnswer.Controls.Count + 1;
             }
             newItem = new AnswerDataItem(orderAnswer, "", false);
@@ -112,10 +111,6 @@ namespace PresentationLayer.QuestionEditor
             tbListAnswer.RowStyles.Add(style);
             tbListAnswer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             tbListAnswer.Controls.Add(itemLayout, 0, orderAnswer - 1);
-            //itemLayout.Location = new Point(0, itemLayout.Height);
-            //itemLayout.Size = new Size(tbListAnswer.Width - 10, itemLayout.Height);
-            //itemLayout.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
-            //tbListAnswer.Controls.Add(itemLayout);
             tbListAnswer.ResumeLayout();
         }
 
@@ -241,12 +236,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void tbQuestionContent_TextChanged(object sender, EventArgs e)
         {
-            //DataItem.ContentQuestion = tbQuestionContent.Text;
+           
         }
 
         private void tbQuestionExplain_TextChanged(object sender, EventArgs e)
         {
-            //DataItem.ExplainContent = tbQuestionExplain.Text;
+            
         }
         private void MultipleChoiceEditor_Load(object sender, EventArgs e)
         {
@@ -294,7 +289,7 @@ namespace PresentationLayer.QuestionEditor
                 // Create a question Action
                 DataItem.IdQuestion = string.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
                 DataItem.ContentQuestion = tbQuestionContent.Text;
-                DataItem.ExplainContent = tbQuestionContent.Text;
+                DataItem.ExplainContent = tbQuestionExplain.Text;
                 // Update Answer.
                 DataItem.AnswerData.AnswerData.Clear();
                 for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)

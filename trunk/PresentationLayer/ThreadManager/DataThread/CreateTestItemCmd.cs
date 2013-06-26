@@ -10,14 +10,14 @@ using ThreadQueueManager;
 
 namespace PresentationLayer.ThreadManager.DataThread
 {
-    public class SaveTestCmd : ICommand
+    public class CreateTestItemCmd : ICommand
     {
         private readonly string _name;
         private readonly ExecuteMethod synch_ = ExecuteMethod.Async;
 
         private TestBE _testBE;
 
-        public SaveTestCmd(ExecuteMethod synch, TestBE testBE)
+        public CreateTestItemCmd(ExecuteMethod synch, TestBE testBE)
         {
             synch_ = synch;
             _name = "SaveTestCmd";
@@ -51,7 +51,7 @@ namespace PresentationLayer.ThreadManager.DataThread
                     MessageBox.Show(string.Format("Can't save {0}", _testBE.TestID), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                //Singleton<List<TestBE>>.Instance.Add(_testBE);
+                Singleton<List<TestBE>>.Instance.Add(_testBE);
             }
             catch (Exception ex)
             {

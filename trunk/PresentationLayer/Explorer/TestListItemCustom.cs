@@ -66,6 +66,7 @@ namespace PresentationLayer.Explorer
             lbNameExam.Click += ListTestItemCustomClick;
             dateTextValue.Click += ListTestItemCustomClick;
             lbNumberQuestion.Click += ListTestItemCustomClick;
+            lbTimeExam.Click += ListTestItemCustomClick;
         }
 
         #region Register Event
