@@ -51,6 +51,21 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
             get { return this._answers; }
         }
 
+        public void Translate(QuestionBE questionBe)
+        {
+            IdQuestion = int.Parse(questionBe.QuestionID);
+            ContentQuestion = questionBe.QuestionContent;
+            _answers = new AnswerDataController();
+            foreach(var choice in questionBe.ListAnswers)
+            {
+                var answer = new AnswerDataItem();
+                answer.ContentAnswer = choice.Content;
+                answer.OrderAnswer = int.Parse(choice.AnswerID);
+                answer.orderAnswer = int.Parse(choice.AnswerID);
+                _answers.Add(answer);
+            }
+        }
+
         #region Trigger Event
         public event PropertyChangedEventHandler PropertyChanged
         {

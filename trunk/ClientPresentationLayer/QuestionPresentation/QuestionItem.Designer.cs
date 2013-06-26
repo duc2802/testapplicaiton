@@ -36,7 +36,8 @@
             // 
             // tbQuestionContent
             // 
-            this.tbQuestionContent.BackColor = System.Drawing.SystemColors.Control;
+            this.tbQuestionContent.BackColor = System.Drawing.Color.White;
+            this.tbQuestionContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbQuestionContent.Location = new System.Drawing.Point(12, 13);
             this.tbQuestionContent.Multiline = true;
             this.tbQuestionContent.Name = "tbQuestionContent";
@@ -55,11 +56,14 @@
             // 
             // tbListAnswerItem
             // 
+            this.tbListAnswerItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbListAnswerItem.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tbListAnswerItem.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
             this.tbListAnswerItem.Location = new System.Drawing.Point(12, 147);
             this.tbListAnswerItem.Name = "tbListAnswerItem";
-            this.tbListAnswerItem.Size = new System.Drawing.Size(394, 89);
+            this.tbListAnswerItem.Size = new System.Drawing.Size(394, 96);
             this.tbListAnswerItem.TabIndex = 2;
             // 
             // QuestionItem
@@ -71,7 +75,7 @@
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.tbQuestionContent);
             this.Name = "QuestionItem";
-            this.Size = new System.Drawing.Size(503, 254);
+            this.Size = new System.Drawing.Size(515, 254);
             this.Load += new System.EventHandler(this.QuestionItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);

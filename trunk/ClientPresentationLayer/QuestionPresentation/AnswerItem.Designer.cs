@@ -38,7 +38,7 @@
             // 
             this.orderAnswer.AutoSize = true;
             this.orderAnswer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.orderAnswer.Location = new System.Drawing.Point(21, 17);
+            this.orderAnswer.Location = new System.Drawing.Point(52, 9);
             this.orderAnswer.Name = "orderAnswer";
             this.orderAnswer.Size = new System.Drawing.Size(15, 15);
             this.orderAnswer.TabIndex = 4;
@@ -47,7 +47,7 @@
             // cbAnswerItem
             // 
             this.cbAnswerItem.AutoSize = true;
-            this.cbAnswerItem.Location = new System.Drawing.Point(58, 17);
+            this.cbAnswerItem.Location = new System.Drawing.Point(89, 10);
             this.cbAnswerItem.Name = "cbAnswerItem";
             this.cbAnswerItem.Size = new System.Drawing.Size(15, 14);
             this.cbAnswerItem.TabIndex = 5;
@@ -56,7 +56,7 @@
             // lbAnswerContent
             // 
             this.lbAnswerContent.AutoSize = true;
-            this.lbAnswerContent.Location = new System.Drawing.Point(80, 17);
+            this.lbAnswerContent.Location = new System.Drawing.Point(110, 10);
             this.lbAnswerContent.Name = "lbAnswerContent";
             this.lbAnswerContent.Size = new System.Drawing.Size(177, 13);
             this.lbAnswerContent.TabIndex = 6;
@@ -64,12 +64,10 @@
             // 
             // btTrueFail
             // 
-            this.btTrueFail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btTrueFail.FlatAppearance.BorderSize = 0;
             this.btTrueFail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btTrueFail.Image = global::ClientPresentationLayer.Properties.Resources._true;
-            this.btTrueFail.Location = new System.Drawing.Point(480, 12);
+            this.btTrueFail.Location = new System.Drawing.Point(14, 0);
             this.btTrueFail.Name = "btTrueFail";
             this.btTrueFail.Size = new System.Drawing.Size(32, 23);
             this.btTrueFail.TabIndex = 7;
@@ -84,7 +82,7 @@
             this.Controls.Add(this.cbAnswerItem);
             this.Controls.Add(this.orderAnswer);
             this.Name = "AnswerItem";
-            this.Size = new System.Drawing.Size(515, 48);
+            this.Size = new System.Drawing.Size(515, 32);
             this.Load += new System.EventHandler(this.AnswerItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

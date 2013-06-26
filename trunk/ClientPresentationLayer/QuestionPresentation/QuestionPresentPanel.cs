@@ -10,6 +10,7 @@ using BusinessEntities;
 using ClientPresentationLayer.Common;
 using ClientPresentationLayer.QuestionPresentation.Data;
 using Commons.BusinessObjects;
+using PresentationLayer.QuestionEditor;
 using SingleInstanceObject;
 
 
@@ -55,7 +56,8 @@ namespace ClientPresentationLayer.QuestionPresentation
                 DataItem = Singleton<TestBE>.Instance;
                 timeTest.Interval = 1000;
                 timeTest.Start();
-                var questionItem = new QuestionItem(DataItem.ListQuestion[1]);
+                var questionItem = new QuestionItem(Singleton<TestBE>.Instance.ListQuestion[0]);
+                questionItem.Dock = DockStyle.Fill;
                 contentQuestionPanel.Controls.Add(questionItem);            
             }
             ResumeLayout();
