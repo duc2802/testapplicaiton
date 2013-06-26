@@ -108,7 +108,7 @@ namespace PresentationLayer.ExamEditor
                                };
             Singleton<GuiActionEventController>.Instance.OnAddTestItem(dataItem);
 
-            ICommand command = new SaveTestCmd(ExecuteMethod.Async, (TestBE) dataItem.TranslateToBE());
+            ICommand command = new CreateTestItemCmd(ExecuteMethod.Async, (TestBE)dataItem.TranslateToBE());
             Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             Close();
         }

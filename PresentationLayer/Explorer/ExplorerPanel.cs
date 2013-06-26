@@ -111,7 +111,11 @@ namespace PresentationLayer.Explorer
                 {
                     if (!string.IsNullOrEmpty(nodeText.Trim()))
                     {
+                        var folder = new Folder(selectedNode.Text);
                         selectedNode.Text = nodeText;
+
+                        ICommand command = new RenameNodeExplorerCmd(ExecuteMethod.Async, folder, nodeText);
+                        Singleton<DataQueueThreadController>.Instance.PutCmd(command);
                     }
                 }
             }

@@ -198,9 +198,11 @@
     <Compile Include="Splash\WelcomeScreen.designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThreadManager\DataThread\CreateTestItemCmd.cs" />
     <Compile Include="ThreadManager\DataThread\DataQueueThreadController.cs" />
     <Compile Include="ThreadManager\DataThread\DeleteNodeExplorerCmd.cs" />
     <Compile Include="ThreadManager\DataThread\DeleteTestCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\RenameNodeExplorerCmd.cs" />
     <Compile Include="ThreadManager\DataThread\SaveTestCmd.cs" />
     <Compile Include="ThreadManager\GuiThread\CreateTestCmd.cs" />
     <Compile Include="ThreadManager\GuiThread\GuiQueueThreadController.cs" />

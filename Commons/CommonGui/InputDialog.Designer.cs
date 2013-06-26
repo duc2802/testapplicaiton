@@ -64,10 +64,9 @@
             // txtInput
             // 
             this.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtInput.Location = new System.Drawing.Point(50, 3);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(169, 21);
+            this.txtInput.Size = new System.Drawing.Size(141, 21);
             this.txtInput.TabIndex = 0;
             this.txtInput.TextChanged += new System.EventHandler(this.TxtInputTextChanged);
             // 
@@ -104,7 +103,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(243, 85);
+            this.ClientSize = new System.Drawing.Size(244, 85);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
