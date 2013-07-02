@@ -11,6 +11,7 @@ using ClientPresentationLayer.QuestionPresentation;
 using Commons;
 using SingleInstanceObject;
 using BusinessEntities;
+using System.Collections;
 namespace ClientPresentationLayer
 {
     public partial class QuestionItem : UserControl
@@ -34,6 +35,14 @@ namespace ClientPresentationLayer
             InitializeComponent();
             InitData(Item);
             InitGui(Item);
+            InitEvent();
+        }
+
+        public QuestionItem(QuestionBE Item, Hashtable studenAnswerPrev)
+        {
+            InitializeComponent();
+            InitData(Item);
+            InitGui(Item,studenAnswerPrev);
             InitEvent();
         }
         public void InitEvent() 
@@ -71,6 +80,20 @@ namespace ClientPresentationLayer
             ResumeLayout();
         }
 
+        public void InitGui(QuestionBE Item,Hashtable studentAnswer)
+        {
+            //DataItem = Item;
+            tbQuestionContent.Text = DataBEItem.QuestionContent;
+            if (DataBEItem.NameImage != null && DataBEItem.NameImage != "")
+            {
+                string newPath = PATH_FORDER_IMAGE + DataBEItem.NameImage;
+                pictureBox.Image = new Bitmap(newPath);
+                pictureBox.Show();
+            }
+            AddAnswerOptionsFromBE();
+            ResumeLayout();
+        }
+
         private void QuestionItem_Load(object sender, EventArgs e)
         {
 
@@ -83,6 +106,14 @@ namespace ClientPresentationLayer
             }
         }
         private void AddAnswerOptionsFromBE()
+        {
+            foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
+            {
+                AddNewLine(answerItem);
+            }
+        }
+
+        private void AddAnswerOptionsFromBE( Hashtable studentAnswer)
         {
             foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
             {

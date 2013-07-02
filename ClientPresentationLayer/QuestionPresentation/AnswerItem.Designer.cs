@@ -83,7 +83,6 @@
             this.Controls.Add(this.orderAnswer);
             this.Name = "AnswerItem";
             this.Size = new System.Drawing.Size(515, 32);
-            this.Load += new System.EventHandler(this.AnswerItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

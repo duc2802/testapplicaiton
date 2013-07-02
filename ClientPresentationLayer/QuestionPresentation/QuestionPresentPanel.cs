@@ -23,6 +23,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         private TestBE _dataItem;
         int indexQuestion =0;
         int maxIndexQuestion;
+        Hashtable studentAnswerData;
 
         public TestBE DataItem
         {
@@ -55,24 +56,24 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         public void FillQuestionDataWithQuestionIndex(int indexQuestionData)
         {
-            SuspendLayout();
-            if (DataItem.TestID != null)
-            {
-                // Clear panel
-                ArrayList list = new ArrayList(contentQuestionPanel.Controls);
-                foreach (Control c in list)
-                {
-                    contentQuestionPanel.Controls.Remove(c);
-                }
+                    SuspendLayout();
+                    if (DataItem.TestID != null)
+                    {
+                        // Clear panel
+                        ArrayList list = new ArrayList(contentQuestionPanel.Controls);
+                        foreach (Control c in list)
+                        {
+                            contentQuestionPanel.Controls.Remove(c);
+                        }
 
-                // Load data into answer and panel
-                lbQuestionOrder.Text = (indexQuestionData +1).ToString();
-                var questionItem = new QuestionItem(DataItem.ListQuestion[indexQuestion]);
-                questionItem.Dock = DockStyle.Fill;
-                contentQuestionPanel.Controls.Add(questionItem);
-                indexQuestion = indexQuestionData;
-            }
-            ResumeLayout();
+                        // Load data into answer and panel
+                        lbQuestionOrder.Text = (indexQuestionData + 1).ToString();
+                        var questionItem = new QuestionItem(DataItem.ListQuestion[indexQuestion]);
+                        questionItem.Dock = DockStyle.Fill;
+                        contentQuestionPanel.Controls.Add(questionItem);
+                        indexQuestion = indexQuestionData;
+                    }
+                    ResumeLayout();  
         }
 
 
@@ -119,10 +120,29 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void NextButtonClick(object sender, EventArgs e)
         {
+            // Save data that student answer
+
+
             if(indexQuestion < maxIndexQuestion-1)
             indexQuestion += 1;
 
             FillQuestionDataWithQuestionIndex(indexQuestion);
+        }
+
+        public void SaveAnswerDataOfStudent(int indexQuestion)
+        { 
+            // neu cau hoi do chua lam
+            if (!studentAnswerData.ContainsKey(indexQuestion))
+            {
+                Hashtable test = null;
+                studentAnswerData.Add(indexQuestion, test);
+            }
+            else
+            {
+                // Cau hoi da lam:
+
+            }
+            //
         }
 
         private void EndExamButtonClick(object sender, EventArgs e)
