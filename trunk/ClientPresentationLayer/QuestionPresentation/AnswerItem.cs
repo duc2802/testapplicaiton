@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ClientPresentationLayer.QuestionPresentation.Data;
 using BusinessEntities;
+using Commons.BusinessObjects;
 
 namespace ClientPresentationLayer.QuestionPresentation
 {
@@ -73,8 +74,7 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void ComboBoxCheckChagedEvent(object sender, EventArgs e)
         {
-            if (cbAnswerItem.Checked == true)
-                isChosen = true;
+            OnCheckChange(true);
         }
 
         public void InitGui() 
@@ -98,6 +98,43 @@ namespace ClientPresentationLayer.QuestionPresentation
                 return;
             }
             _dataItem.isTrue = false;
+        }
+
+        public event ActionEventHandler<bool> CheckChange
+        {
+            add
+            {
+                lock (_checboxChangetLocker)
+                {
+                    _checboxChangeEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_checboxChangetLocker)
+                {
+                    _checboxChangeEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<bool> _checboxChangeEvent;
+        private readonly object _checboxChangetLocker = new object();
+
+        private void OnCheckChange(bool status)
+        {
+            ActionEventHandler<bool> handler = _checboxChangeEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, status);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
         }
     }
 }
