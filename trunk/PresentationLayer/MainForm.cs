@@ -68,7 +68,7 @@ namespace PresentationLayer
         {
             btNewExam.Click += NewExamButtonClick;
             btNewQuestion.Click += NewQuestionButtonClick;
-            btExportExam.Click += ButtonExportTestToXML;
+            btExportExam.Click += ExportTest;
             openFileButton.Click += ButtonOpenFileButtonClick;
             exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
             btEditQuestion.Click += EditQuestionButtonClick;
@@ -224,49 +224,64 @@ namespace PresentationLayer
             }
         }
 
-        private void ButtonExportTestToXML(object sender, EventArgs e)
+        public void ExportTest(object sender, EventArgs e)
         {
-            var la = new List<AnswerBE>();
-            var lq = new List<QuestionBE>();
-
-            var ans = new AnswerBE();
-            ans.AnswerID = "2";
-            ans.Content = "content ans";
-            ans.Result = "true";
-            la.Add(ans);
-            var qs = new QuestionBE();
-            qs.ListAnswers = la;
-            qs.LevelQuestion = "c";
-            qs.QuestionContent = "content question";
-            qs.QuestionID = "5";
-            lq.Add(qs);
-            var t = new TestBE();
-            t.ListQuestion = lq;
-            t.TestID = "4";
-
-            // Export to XML
-            var testContent = new TestBE();
-
-            saveTestToXmlFileDialog.Filter = "XML|*.xml";
+            string folder = Singleton<GuiActionEventController>.Instance.FolderId;
+            string test = Singleton<GuiActionEventController>.Instance.TestId;
+            saveTestToXmlFileDialog.Filter = "Exam File|*.exb";
             saveTestToXmlFileDialog.Title = "Export an Test File";
-            saveTestToXmlFileDialog.ShowDialog();
-            bool result = false;
+            if(DialogResult.OK == saveTestToXmlFileDialog.ShowDialog())
+            {
+                String directory = Path.GetDirectoryName(saveTestToXmlFileDialog.FileName);
+                string nameFile = Path.GetFileNameWithoutExtension(saveTestToXmlFileDialog.FileName);
+                string path = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folder + "\\" + test + ".exam";
 
-            if (saveTestToXmlFileDialog.FileName != "")
-            {
-                String url = Path.GetDirectoryName(saveTestToXmlFileDialog.FileName);
-                var testMakeFile = new TestBLL();
-                result = testMakeFile.ExportTestExamFile(t, saveTestToXmlFileDialog.FileName, url);
+                ICommand command = new ExportTestCmd(ExecuteMethod.Async, path, directory, nameFile);
+                Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             }
 
-            if (result == false)
-            {
-                MessageBox.Show(this, "Export Test error", "Error", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show(this, "Export Test OK", "Ok", MessageBoxButtons.OK);
-            }
+
+            //var la = new List<AnswerBE>();
+            //var lq = new List<QuestionBE>();
+
+            //var ans = new AnswerBE();
+            //ans.AnswerID = "2";
+            //ans.Content = "content ans";
+            //ans.Result = "true";
+            //la.Add(ans);
+            //var qs = new QuestionBE();
+            //qs.ListAnswers = la;
+            //qs.LevelQuestion = "c";
+            //qs.QuestionContent = "content question";
+            //qs.QuestionID = "5";
+            //lq.Add(qs);
+            //var t = new TestBE();
+            //t.ListQuestion = lq;
+            //t.TestID = "4";
+
+            //// Export to XML
+            //var testContent = new TestBE();
+
+            //saveTestToXmlFileDialog.Filter = "XML|*.xml";
+            //saveTestToXmlFileDialog.Title = "Export an Test File";
+            //saveTestToXmlFileDialog.ShowDialog();
+            //bool result = false;
+
+            //if (saveTestToXmlFileDialog.FileName != "")
+            //{
+            //    String url = Path.GetDirectoryName(saveTestToXmlFileDialog.FileName);
+            //    var testMakeFile = new TestBLL();
+            //    result = testMakeFile.ExportTestExamFile(t, saveTestToXmlFileDialog.FileName, url);
+            //}
+
+            //if (result == false)
+            //{
+            //    MessageBox.Show(this, "Export Test error", "Error", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    MessageBox.Show(this, "Export Test OK", "Ok", MessageBoxButtons.OK);
+            //}
         }
 
         private void NewQuestionButtonClick(object sender, EventArgs e)

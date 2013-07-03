@@ -648,7 +648,5 @@ namespace PresentationLayer
         private OpenFileDialog openFileForderDialog;
         private FolderBrowserDialog openFolderBrowserDialog;
         private DevComponents.DotNetBar.ButtonItem exportDocsExamButton;
-
-
     }
 }
