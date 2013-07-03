@@ -139,11 +139,18 @@ namespace ClientPresentationLayer
             tbListAnswerItem.SuspendLayout();
             var answerItem = new AnswerItem(item);
             answerItem.Location = new Point(0, answerItem.Height);
+            answerItem.CheckChange += CheckChangeOfAnswerItem;
             answerItem.Size = new Size(tbListAnswerItem.Width, answerItem.Height);
             answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
             tbListAnswerItem.Controls.Add(answerItem);
             tbListAnswerItem.ResumeLayout();
             ResumeLayout();
+        }
+
+        private void CheckChangeOfAnswerItem(object sender, bool parameter)
+        {
+            MessageBox.Show("Hello");
+            
         }
 
         public QuestionDataItem DataItem
