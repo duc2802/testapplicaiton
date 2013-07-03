@@ -26,7 +26,18 @@ namespace DataAccessLayer
             var directory = new DirectoryInfo(pathFolder);
             var fileList = directory.GetFiles("*.exam");
             var testBeList = fileList.Select(fileInfo => XmlHelper.ReadExamFile(fileInfo.FullName)).ToList();
-            return testBeList;
+            var resultList = new List<TestBE>();
+            foreach (var testBe in testBeList)
+            {
+                var test = new TestBE();
+                test.TestID = testBe.TestID;
+                test.Time = testBe.Time;
+                test.Information = testBe.Information;
+                test.DateCreate = testBe.DateCreate;
+                test.NumberOfQuestion = testBe.ListQuestion.Count;
+                resultList.Add(test);
+            }
+            return resultList;
         }
 
         public static bool DeleteTestExamFile(string fileName, string folder)
@@ -48,6 +59,14 @@ namespace DataAccessLayer
         public static TestBE LoadTestBE(string testId, string folder)
         {
             string path = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folder + "\\" + testId
+                              + ".exam";
+            var testBE = XmlHelper.ReadExamFile(path);
+            return testBE;
+        }
+
+        public static TestBE LoadTestBEClient(string testId)
+        {
+            string path = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + testId
                               + ".exam";
             var testBE = XmlHelper.ReadExamFile(path);
             return testBE;

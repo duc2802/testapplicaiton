@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using BusinessEntities;
 using ClientPresentationLayer.Common;
 using ClientPresentationLayer.QuestionPresentation.Data;
 using Commons.BusinessObjects;
+using DataAccessLayer;
 using SingleInstanceObject;
 
 namespace ClientPresentationLayer.QuestionPresentation
@@ -17,6 +21,7 @@ namespace ClientPresentationLayer.QuestionPresentation
     public partial class TestManager : UserControl
     {
         private TestDataListViewItemController _dataController;
+
         private TestDataListViewItemController DataController
         {
             set
@@ -49,9 +54,43 @@ namespace ClientPresentationLayer.QuestionPresentation
         {
             testlistView.SelectedIndexChanged += TestlistViewSelectedIndexChanged;
             startExamButton.Click += StartExamButtonClick;
+            importButton.Click += ImportButtonClick;
         }
 
+        private void RefreshGui()
+        {
+            testlistView.Items.Clear();
+            testlistView.Items.AddRange(DataController.DisplayItems.ToArray());
+        }
+        
         #region implement Event
+
+        private void ImportButtonClick(object sender, EventArgs e)
+        {
+            using(var openDialog = new OpenFileDialog())
+            {
+                openDialog.Filter = "Exam File|*.exb";
+                openDialog.Title = "Import an Test File";
+                if(DialogResult.OK == openDialog.ShowDialog())
+                {
+                    string file = openDialog.FileName;
+                    using (var fs = new FileStream(file, FileMode.Open))
+                    {
+                        using (var cfs = new GZipStream(fs, CompressionMode.Decompress))
+                        {
+                            var serializerObject = new XmlSerializer(typeof(TestBE));
+                            var testBe = (TestBE)serializerObject.Deserialize(cfs);
+
+                            //Add to data controller.
+                            DataController.DataItems.Add(new TestDataListViewItem(testBe));
+                            //writer to client data folder.
+                            XmlHelper.WriteExamClientFile(testBe, testBe.TestID);
+                            RefreshGui();
+                        }
+                    }
+                }
+            }
+        }
 
         private void TestlistViewSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,10 +111,22 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void StartExamButtonClick(object sender, EventArgs e)
         {
-            var testBe = Singleton<List<TestBE>>.Instance.FirstOrDefault(
-                test => test.TestID.Equals(Singleton<DataItemCollection>.Instance.TestItemDataSelected.Id));
-            Singleton<TestBE>.Instance = testBe;
-            OnStartExam();
+            var testBe = TryLoadTestBE(Singleton<DataItemCollection>.Instance.TestItemDataSelected.Id);
+            if(testBe != null)
+            {
+                Singleton<TestBE>.Instance = testBe;
+                OnStartExam();
+            }
+            else
+            {
+                MessageBox.Show(this, "This exam maybe delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private TestBE TryLoadTestBE(string id)
+        {
+            var test = TestDAL.LoadTestBEClient(id);
+            return test;
         }
 
         #endregion

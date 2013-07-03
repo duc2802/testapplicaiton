@@ -30,6 +30,24 @@ namespace DataAccessLayer
             }
         }
 
+        public static bool WriteExamClientFile(TestBE testObject, String nameOfFile)
+        {
+            try
+            {
+                string path = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + nameOfFile
+                              + ".exam";
+                var serializerObject = new XmlSerializer(typeof(TestBE));
+                var file = new StreamWriter(path);
+                serializerObject.Serialize(file, testObject);
+                file.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public static TestBE ReadExamFile(string filePath)
         {
             try
@@ -46,6 +64,7 @@ namespace DataAccessLayer
             }
         }
 
+        #region XML
         public static XElement buildQuestionTree(TestBE test)
         {
             if (test.ListQuestion != null)
@@ -194,5 +213,6 @@ namespace DataAccessLayer
             return DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() +
                    DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
         }
+        #endregion
     }
 }
