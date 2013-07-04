@@ -19,11 +19,10 @@ namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class QuestionPresentPanel : UserControl
     {
-        int timetestInSeconds =60;
+        int timetestInSeconds = 60;
         private TestBE _dataItem;
-        int indexQuestion =0;
+        int indexQuestion = 0;
         int maxIndexQuestion;
-        Hashtable studentAnswerData;
 
         public TestBE DataItem
         {
@@ -53,29 +52,58 @@ namespace ClientPresentationLayer.QuestionPresentation
             LoadContentPanel();
         }
 
-
         public void FillQuestionDataWithQuestionIndex(int indexQuestionData)
         {
-                    SuspendLayout();
-                    if (DataItem.TestID != null)
-                    {
-                        // Clear panel
-                        ArrayList list = new ArrayList(contentQuestionPanel.Controls);
-                        foreach (Control c in list)
-                        {
-                            contentQuestionPanel.Controls.Remove(c);
-                        }
-
-                        // Load data into answer and panel
-                        lbQuestionOrder.Text = (indexQuestionData + 1).ToString();
-                        var questionItem = new QuestionItem(DataItem.ListQuestion[indexQuestion]);
-                        questionItem.Dock = DockStyle.Fill;
-                        contentQuestionPanel.Controls.Add(questionItem);
-                        indexQuestion = indexQuestionData;
-                    }
-                    ResumeLayout();  
+            SuspendLayout();
+            if (DataItem.TestID != null)
+            {
+                // Clear panel
+                var list = new ArrayList(contentQuestionPanel.Controls);
+                foreach (Control c in list)
+                {
+                    contentQuestionPanel.Controls.Remove(c);
+                }
+                // Load data into answer and panel
+                lbQuestionOrder.Text = (indexQuestionData + 1).ToString();
+                var questionItem = new QuestionItem(DataItem.ListQuestion[indexQuestion]);
+                questionItem.ChoiseAnswer += QuestionItemChoiseAnswer;
+                questionItem.UnChoiseAnswer += QuestionItemUnChoiseAnswer;
+                questionItem.Dock = DockStyle.Fill;
+                contentQuestionPanel.Controls.Add(questionItem);
+                indexQuestion = indexQuestionData;
+            }
+            ResumeLayout();  
         }
 
+        private void QuestionItemChoiseAnswer(object sender, string questionId, int indexAnswer)
+        {
+            if (!Singleton<AnswerSheetDataController>.Instance.AnswerSheet.ContainsKey(questionId))
+            {
+                var answerList = new List<int>();
+                answerList.Add(indexAnswer);
+                Singleton<AnswerSheetDataController>.Instance.AnswerSheet.Add(questionId, answerList);
+            }
+            else
+            {
+                List<int> answerList;
+                if(Singleton<AnswerSheetDataController>.Instance.AnswerSheet.TryGetValue(questionId, out answerList))
+                {
+                    answerList.Add(indexAnswer);
+                }
+            }
+        }
+
+        private void QuestionItemUnChoiseAnswer(object sender, string questionId, int indexAnswer)
+        {
+            if (Singleton<AnswerSheetDataController>.Instance.AnswerSheet.ContainsKey(questionId))
+            {
+                List<int> answerList;
+                if (Singleton<AnswerSheetDataController>.Instance.AnswerSheet.TryGetValue(questionId, out answerList))
+                {
+                    answerList.Remove(indexAnswer);
+                }
+            }
+        }
 
         public void LoadContentPanel()
         {
@@ -95,15 +123,13 @@ namespace ClientPresentationLayer.QuestionPresentation
         private void InitEvent()
         {
             endExamButton.Click += EndExamButtonClick;
-            timeTest.Tick += new EventHandler(Timer_Tick);
+            timeTest.Tick += TimerTick;
             lbTime.Text = getTime();
 
             previousButton.Click += PreviousButtonClick;
             nextButton.Click += NextButtonClick;
             goToQuesNumcomboBox.SelectedIndexChanged += SelectQuestionInCombobox;
-            
         }
-
 
         private void SelectQuestionInCombobox(object sender, EventArgs e)
         {
@@ -120,34 +146,38 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void NextButtonClick(object sender, EventArgs e)
         {
-            // Save data that student answer
-
-
-            if(indexQuestion < maxIndexQuestion-1)
-            indexQuestion += 1;
-
-            FillQuestionDataWithQuestionIndex(indexQuestion);
-        }
-
-        public void SaveAnswerDataOfStudent(int indexQuestion)
-        { 
-            // neu cau hoi do chua lam
-            if (!studentAnswerData.ContainsKey(indexQuestion))
+            if (indexQuestion < maxIndexQuestion - 1)
             {
-                Hashtable test = null;
-                studentAnswerData.Add(indexQuestion, test);
+                indexQuestion += 1;
+                FillQuestionDataWithQuestionIndex(indexQuestion);
             }
             else
             {
-                // Cau hoi da lam:
-
+                OnEndExam();
             }
-            //
+        }
+
+        public void SaveAnswerDataOfStudent(int indexQuestion)
+        {
+            string questionId = DataItem.ListQuestion[indexQuestion].QuestionID;
+            //Singleton<AnswerSheetDataController>.Instance.AnswerSheet.Add();
+            //// neu cau hoi do chua lam
+            //if (!studentAnswerData.ContainsKey(indexQuestion))
+            //{
+            //    Hashtable test = null;
+            //    studentAnswerData.Add(indexQuestion, test);
+            //}
+            //else
+            //{
+            //    // Cau hoi da lam:
+
+            //}
+            ////
         }
 
         private void EndExamButtonClick(object sender, EventArgs e)
         {
-           
+           OnEndExam();
         }
 
         public string getTime()
@@ -172,7 +202,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             // Do some thing with exam
         }
 
-        public void Timer_Tick(object sender, EventArgs eArgs)
+        public void TimerTick(object sender, EventArgs eArgs)
         {
                 lbTime.Text = getTime();
         }  

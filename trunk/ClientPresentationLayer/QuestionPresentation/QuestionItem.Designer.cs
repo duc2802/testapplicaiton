@@ -53,7 +53,7 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            //this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // tbListAnswerItem
             // 
@@ -78,7 +78,7 @@
             this.Controls.Add(this.tbQuestionContent);
             this.Name = "QuestionItem";
             this.Size = new System.Drawing.Size(553, 203);
-            this.Load += new System.EventHandler(this.QuestionItem_Load);
+            this.Load += new System.EventHandler(this.QuestionItemLoad);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

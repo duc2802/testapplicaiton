@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ClientPresentationLayer.QuestionPresentation.Data;
 using ClientPresentationLayer.QuestionPresentation;
 using Commons;
+using Commons.BusinessObjects;
 using SingleInstanceObject;
 using BusinessEntities;
 using System.Collections;
@@ -16,20 +17,17 @@ namespace ClientPresentationLayer
 {
     public partial class QuestionItem : UserControl
     {
-        private QuestionDataItem _dataItem;
         private QuestionBE _dataBEItem;
+
         private string PATH_FORDER_IMAGE = Singleton<SettingManager>.Instance.GetImageFolder();
+
         public bool isExplainStatus;
+
         public QuestionItem()
         {
             InitializeComponent();
         }
-        public QuestionItem(QuestionDataItem Item)
-        {
-            InitializeComponent();
-            InitGui(Item);
-            InitEvent();
-        }
+
         public QuestionItem(QuestionBE Item)
         {
             InitializeComponent();
@@ -38,15 +36,10 @@ namespace ClientPresentationLayer
             InitEvent();
         }
 
-        public QuestionItem(QuestionBE Item, Hashtable studenAnswerPrev)
-        {
-            InitializeComponent();
-            InitData(Item);
-            InitGui(Item,studenAnswerPrev);
-            InitEvent();
-        }
+
         public void InitEvent() 
         {
+
         }
 
         private void InitData(QuestionBE Item)
@@ -54,114 +47,89 @@ namespace ClientPresentationLayer
             DataBEItem = Item;
         }
         
-        public void InitGui(QuestionDataItem Item)
-        {
-            DataItem = Item;
-            tbQuestionContent.Text = DataItem.ContentQuestion;
-            if (DataItem.ImageName != null && DataItem.ImageName != "")
-            {
-                string newPath = PATH_FORDER_IMAGE + DataItem.ImageName;
-                pictureBox.Image = new Bitmap(newPath);
-                pictureBox.Show();
-            }
-            AddAnswerOptions();
-        }
         public void InitGui(QuestionBE Item)
         {
             //DataItem = Item;
             tbQuestionContent.Text = DataBEItem.QuestionContent;
-            if (DataBEItem.NameImage != null && DataBEItem.NameImage != "")
+            if (!string.IsNullOrEmpty(DataBEItem.NameImage))
             {
                 string newPath = PATH_FORDER_IMAGE + DataBEItem.NameImage;
                 pictureBox.Image = new Bitmap(newPath);
                 pictureBox.Show();
             }
-            AddAnswerOptionsFromBE();
+            AddAnswerOptionsFromBe();
             ResumeLayout();
         }
-
-        public void InitGui(QuestionBE Item,Hashtable studentAnswer)
-        {
-            //DataItem = Item;
-            tbQuestionContent.Text = DataBEItem.QuestionContent;
-            if (DataBEItem.NameImage != null && DataBEItem.NameImage != "")
-            {
-                string newPath = PATH_FORDER_IMAGE + DataBEItem.NameImage;
-                pictureBox.Image = new Bitmap(newPath);
-                pictureBox.Show();
-            }
-            AddAnswerOptionsFromBE();
-            ResumeLayout();
-        }
-
-        private void QuestionItem_Load(object sender, EventArgs e)
+        
+        private void QuestionItemLoad(object sender, EventArgs e)
         {
 
         }
-        private void AddAnswerOptions()
+
+        private void AddAnswerOptionsFromBe()
         {
-            foreach (AnswerDataItem answerItem in DataItem.AnswerData.AnswerData)
-            {
-                AddNewLine(answerItem);
-            }
-        }
-        private void AddAnswerOptionsFromBE()
-        {
+            int dix = 0;
             foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
             {
                 AddNewLine(answerItem);
             }
         }
 
-        private void AddAnswerOptionsFromBE( Hashtable studentAnswer)
-        {
-            foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
-            {
-                AddNewLine(answerItem);
-            }
-        }
-
-
-        private void AddNewLine(AnswerDataItem item)
-        {
-            tbListAnswerItem.SuspendLayout();
-            var answerItem = new AnswerItem();
-            answerItem.Location = new Point(0, answerItem.Height);
-            answerItem.Size = new Size(tbListAnswerItem.Width - 10, answerItem.Height);
-            answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
-            tbListAnswerItem.Controls.Add(answerItem);
-            tbListAnswerItem.ResumeLayout();
-        }
-
-        private void AddNewLine(AnswerBE item)
+        private void AddNewLine(AnswerBE dataItem)
         {
             SuspendLayout();
             tbListAnswerItem.SuspendLayout();
-            var answerItem = new AnswerItem(item);
+            var answerItem = CreateAnswerItem(dataItem);
+            tbListAnswerItem.Controls.Add(answerItem);
+            tbListAnswerItem.ResumeLayout();
+            ResumeLayout();
+        }
+
+        private AnswerItem CreateAnswerItem(AnswerBE dataItem)
+        {
+            AnswerItem answerItem;
+            if (Singleton<AnswerSheetDataController>.Instance.AnswerSheet.ContainsKey(_dataBEItem.QuestionID))
+            {
+                List<int> answerList;
+                if (Singleton<AnswerSheetDataController>.Instance.AnswerSheet.TryGetValue(_dataBEItem.QuestionID, out answerList))
+                {
+                    if (answerList.Contains(int.Parse(dataItem.AnswerID)))
+                    {
+                        answerItem = new AnswerItem(dataItem, true);
+                    }
+                    else
+                    {
+                        answerItem = new AnswerItem(dataItem, false);
+                    }
+                }
+                else
+                {
+                    answerItem = new AnswerItem(dataItem, false);
+                }
+            }
+            else
+            {
+                answerItem = new AnswerItem(dataItem, false);
+            }
             answerItem.Location = new Point(0, answerItem.Height);
             answerItem.CheckChange += CheckChangeOfAnswerItem;
             answerItem.Size = new Size(tbListAnswerItem.Width, answerItem.Height);
             answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
-            tbListAnswerItem.Controls.Add(answerItem);
-            tbListAnswerItem.ResumeLayout();
-            ResumeLayout();
+            return answerItem;
         }
 
-        private void CheckChangeOfAnswerItem(object sender, bool parameter)
+        private void CheckChangeOfAnswerItem(object sender, int index, bool ischecked)
         {
-            MessageBox.Show("Hello");
-            
-        }
-
-        public QuestionDataItem DataItem
-        {
-            set
+            if(ischecked)
             {
-                _dataItem = value;
-                Name = _dataItem.IdQuestion.ToString();
+                OnChoiseAnswer(_dataBEItem.QuestionID, index);
             }
-            get { return _dataItem; }
+            else
+            {
+                OnUnChoiseAnswer(_dataBEItem.QuestionID, index);
+            }
         }
+
         public QuestionBE DataBEItem
         {
             set
@@ -171,16 +139,92 @@ namespace ClientPresentationLayer
             }
             get { return _dataBEItem; }
         }
+
         private void ShowImageofQuestion(string pathImage)
         {
             //Load image in new form
-            DislayImageForm picture = new DislayImageForm(PATH_FORDER_IMAGE + pathImage);
+            var picture = new DislayImageForm(PATH_FORDER_IMAGE + pathImage);
             picture.ShowDialog();
         }
-
-        private void pictureBox_Click(object sender, EventArgs e)
+        
+        /// <summary>
+        /// Choise a answer event
+        /// </summary>
+        public event ActionEventHandler<string, int> ChoiseAnswer
         {
-            ShowImageofQuestion(DataItem.ImageName);
+            add
+            {
+                lock (__choiseAnswerEventLocker)
+                {
+                    _choiseAnswerEvent += value;
+                }
+            }
+            remove
+            {
+                lock (__choiseAnswerEventLocker)
+                {
+                    _choiseAnswerEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<string, int> _choiseAnswerEvent;
+        private readonly object __choiseAnswerEventLocker = new object();
+
+        private void OnChoiseAnswer(string questionId, int idx)
+        {
+            ActionEventHandler<string, int> handler = _choiseAnswerEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, questionId, idx);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        /// <summary>
+        /// Unchoise event
+        /// </summary>
+        public event ActionEventHandler<string, int> UnChoiseAnswer
+        {
+            add
+            {
+                lock (__unchoiseAnswerEventLocker)
+                {
+                    _unchoiseAnswerEvent += value;
+                }
+            }
+            remove
+            {
+                lock (__unchoiseAnswerEventLocker)
+                {
+                    _unchoiseAnswerEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<string, int> _unchoiseAnswerEvent;
+        private readonly object __unchoiseAnswerEventLocker = new object();
+
+        private void OnUnChoiseAnswer(string questionId, int idx)
+        {
+            ActionEventHandler<string, int> handler = _unchoiseAnswerEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, questionId, idx);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
         }
     }
 }
