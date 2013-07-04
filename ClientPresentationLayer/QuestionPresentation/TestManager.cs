@@ -115,6 +115,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             if(testBe != null)
             {
                 Singleton<TestBE>.Instance = testBe;
+                Singleton<AnswerSheetDataController>.Instance.TestId = testBe.TestID;
                 OnStartExam();
             }
             else

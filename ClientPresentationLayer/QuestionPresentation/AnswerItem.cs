@@ -14,35 +14,17 @@ namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class AnswerItem : UserControl
     {
-        public bool isChosen =false;
+        public bool IsChoise { set; get; }
 
-        public bool IsChose
-        {
-            set
-            {
-                isChosen = value;
-                
-            }
-            get { return isChosen; }
-        }
-        private AnswerDataItem _dataItem;
-        public AnswerDataItem DataItem
-        {
-            set
-            {
-                _dataItem = value;
-                Name = _dataItem.orderAnswer.ToString();
-            }
-            get { return _dataItem; }
-        }
-
+        public int OrderAnswer { get { return int.Parse(DataBEItem.AnswerID); } }
+        
         private AnswerBE _dataBEItem;
         public AnswerBE DataBEItem
         {
             set
             {
                 _dataBEItem = value;
-                Name = _dataBEItem.AnswerID.ToString();
+                Name = _dataBEItem.AnswerID;
             }
             get { return _dataBEItem; }
         }
@@ -52,83 +34,65 @@ namespace ClientPresentationLayer.QuestionPresentation
             InitializeComponent();
         }
 
-        public AnswerItem(AnswerDataItem dataItem)
-        {
-            DataItem = dataItem;
-            InitializeComponent();
-            InitGui();
-        }
-
-        public AnswerItem(AnswerBE dataItem)
+        public AnswerItem(AnswerBE dataItem, bool isChoise)
         {
             DataBEItem = dataItem;
             InitializeComponent();
-            InitGui(dataItem);
+            InitGui(dataItem, isChoise);
             InitEvent();
         }
 
         public void InitEvent() 
         {
-            cbAnswerItem.CheckedChanged += ComboBoxCheckChagedEvent;
+            answerItemCheckBox.CheckedChanged += CheckChangedEvent;
         }
 
-        private void ComboBoxCheckChagedEvent(object sender, EventArgs e)
+        private void CheckChangedEvent(object sender, EventArgs e)
         {
-            OnCheckChange(true);
+            IsChoise = answerItemCheckBox.Checked;
+            OnCheckChange(OrderAnswer, IsChoise);
         }
 
-        public void InitGui() 
+        public void InitGui(AnswerBE dataItem, bool isChoise)
         {
-            orderAnswer.Text = (DataItem.OrderAnswer +1).ToString();
-            lbAnswerContent.Text = DataItem.ContentAnswer;
-            btTrueFail.Visible = false;
-        }
-        public void InitGui(AnswerBE dataItem)
-        {
-            orderAnswer.Text = (Int32.Parse(dataItem.AnswerID) +1).ToString();
+            orderAnswer.Text = (int.Parse(dataItem.AnswerID) +1).ToString();
             lbAnswerContent.Text = DataBEItem.Content;
             btTrueFail.Visible = false;
-        }
-
-        private void cbTrue_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAnswerItem.Checked)
+            if(isChoise)
             {
-                _dataItem.isTrue = true;
-                return;
+                answerItemCheckBox.Checked = isChoise;
             }
-            _dataItem.isTrue = false;
         }
-
-        public event ActionEventHandler<bool> CheckChange
+        
+        public event ActionEventHandler<int, bool> CheckChange
         {
             add
             {
-                lock (_checboxChangetLocker)
+                lock (_checkboxChangetLocker)
                 {
-                    _checboxChangeEvent += value;
+                    _checkboxChangeEvent += value;
                 }
             }
             remove
             {
-                lock (_checboxChangetLocker)
+                lock (_checkboxChangetLocker)
                 {
-                    _checboxChangeEvent -= value;
+                    _checkboxChangeEvent -= value;
                 }
             }
         }
 
-        private ActionEventHandler<bool> _checboxChangeEvent;
-        private readonly object _checboxChangetLocker = new object();
+        private ActionEventHandler<int, bool> _checkboxChangeEvent;
+        private readonly object _checkboxChangetLocker = new object();
 
-        private void OnCheckChange(bool status)
+        private void OnCheckChange(int idx, bool status)
         {
-            ActionEventHandler<bool> handler = _checboxChangeEvent;
+            ActionEventHandler<int, bool> handler = _checkboxChangeEvent;
             if (handler != null)
             {
                 try
                 {
-                    handler(this, status);
+                    handler(this, idx, status);
                 }
                 catch (Exception ex)
                 {

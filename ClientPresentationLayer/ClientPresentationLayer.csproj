@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionPresentation\Data\AnswerSheetDataController.cs" />
     <Compile Include="QuestionPresentation\DislayImageForm.cs">
       <SubType>Form</SubType>
     </Compile>
