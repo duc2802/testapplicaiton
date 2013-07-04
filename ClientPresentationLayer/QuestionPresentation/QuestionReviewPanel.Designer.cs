@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.questionlistView = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,24 +56,24 @@
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // questionlistView
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.questionlistView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.questionlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(11, 44);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(611, 419);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.questionlistView.GridLines = true;
+            this.questionlistView.Location = new System.Drawing.Point(11, 44);
+            this.questionlistView.Name = "questionlistView";
+            this.questionlistView.Size = new System.Drawing.Size(611, 419);
+            this.questionlistView.TabIndex = 1;
+            this.questionlistView.UseCompatibleStateImageBehavior = false;
+            this.questionlistView.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -188,7 +188,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.questionlistView);
             this.Controls.Add(this.button1);
             this.Name = "QuestionReviewPanel";
             this.Size = new System.Drawing.Size(634, 504);
@@ -200,7 +200,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView questionlistView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

@@ -24,9 +24,6 @@ namespace ClientPresentationLayer
         
         private void InitCommonGui()
         {
-            _questionReview = new QuestionReviewPanel();
-            _questionReview.Dock = DockStyle.Fill;
-
             _questionPresent = new QuestionPresentPanel();
             _questionPresent.Dock = DockStyle.Fill;
 
@@ -51,6 +48,8 @@ namespace ClientPresentationLayer
         {
             SuspendLayout();
             Controls.Clear();
+            _questionReview = new QuestionReviewPanel();
+            _questionReview.Dock = DockStyle.Fill;
             Controls.Add(_questionReview);
             ResumeLayout();
         }
