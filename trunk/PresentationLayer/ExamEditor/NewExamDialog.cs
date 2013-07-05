@@ -25,7 +25,7 @@ namespace PresentationLayer.ExamEditor
         public void InitGui()
         {
             Text = string.Format("Create new exam in \"{0}\" folder.", FolderId);
-            numQuestionTextBox.Focus();
+            //numQuestionTextBox.Focus();
             createExamButton.Enabled = false;
         }
 
@@ -35,7 +35,7 @@ namespace PresentationLayer.ExamEditor
             createExamButton.Click += CreateNewExamButtonClick;
 
             nameExamTextBox.Validating += TextBoxValidating;
-            numQuestionTextBox.Validating += NumberValidating;
+           // numQuestionTextBox.Validating += NumberValidating;
             timeTestTextBox.Validating += NumberValidating;
         }
 
@@ -88,19 +88,19 @@ namespace PresentationLayer.ExamEditor
             int num;
             if (string.IsNullOrWhiteSpace(timeTestTextBox.Text) || !int.TryParse(timeTestTextBox.Text, out num))
             {
-                MessageBox.Show(string.Format("{0} must type number", "Text box"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0} must type number", "Time"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(numQuestionTextBox.Text) || !int.TryParse(numQuestionTextBox.Text, out num))
-            {
-                MessageBox.Show(string.Format("{0} must type number", "Text box"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+          //  if (string.IsNullOrWhiteSpace(numQuestionTextBox.Text) || !int.TryParse(numQuestionTextBox.Text, out num))
+          //  {
+          //      MessageBox.Show(string.Format("{0} must type number", "Text box"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          //      return;
+          //  }
             var dataItem = new TestDataItem
                                {
                                    IdTest = String.Format("{0:ddmmyyyyHHmmss}", DateTime.Now),
-                                   NumberQuestion = Int32.Parse(numQuestionTextBox.Text),
+                                  // NumberQuestion = Int32.Parse(numQuestionTextBox.Text),
                                    Name = nameExamTextBox.Text,
                                    Time = Int32.Parse(timeTestTextBox.Text),
                                    FolderId = FolderId,
