@@ -130,6 +130,7 @@
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            this.btCancel.CausesValidation = false;
             // 
             // lbQuestion
             // 
