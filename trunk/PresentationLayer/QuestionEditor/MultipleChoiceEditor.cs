@@ -222,8 +222,9 @@ namespace PresentationLayer.QuestionEditor
 
         private void CheckChangeAnswerItem(int idAnswer, bool status)
         {
-            _dataItem.AnswerData.AnswerData[idAnswer].isTrue = status;
             DataItem.AnswerData.AnswerData[idAnswer].isTrue = status;
+
+            //Update singleton
         }
         private void ItemLayoutUpdate(object sender, int parameter)
         {
@@ -310,6 +311,7 @@ namespace PresentationLayer.QuestionEditor
                         var answer = new AnswerDataItem();
                         answer.ContentAnswer = item.DataItem.ContentAnswer;
                         answer.OrderAnswer = idx;
+                        answer.isTrue = item.DataItem.isTrue;
                         DataItem.AnswerData.AnswerData.Add(answer);
                     }
                 }
@@ -329,6 +331,7 @@ namespace PresentationLayer.QuestionEditor
                         var answer = new AnswerDataItem();
                         answer.ContentAnswer = item.DataItem.ContentAnswer;
                         answer.OrderAnswer = idx;
+                        answer.isTrue = item.DataItem.isTrue;
                         DataItem.AnswerData.AnswerData.Add(answer);
                     }
                 }
