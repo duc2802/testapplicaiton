@@ -130,7 +130,6 @@ namespace PresentationLayer.QuestionEditor
 
         private void OnDataItemChanged()
         {
-
             tbAnswerContent.Text = DataItem.ContentAnswer;
             orderAnswer.Text = DataItem.orderAnswer.ToString();
         }
@@ -174,17 +173,8 @@ namespace PresentationLayer.QuestionEditor
 
         private void cbTrue_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbTrue.Checked)
-            {
-                DataItem.isTrue = true;
-                _dataItem.isTrue = true;
-            }
-            else {
-                DataItem.isTrue = false;
-                _dataItem.isTrue = false;
-            }
-
-            OnCheckChange(DataItem.orderAnswer, DataItem.isTrue);  
+            DataItem.isTrue = cbTrue.Checked;
+            OnCheckChange(DataItem.orderAnswer - 1, DataItem.isTrue);  
         }
 
         private void tbAnswerContent_TextChanged(object sender, EventArgs e)

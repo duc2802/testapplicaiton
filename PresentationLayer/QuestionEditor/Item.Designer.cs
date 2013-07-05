@@ -54,7 +54,6 @@
             this.cbTrue.TabIndex = 4;
             this.cbTrue.Text = "True";
             this.cbTrue.UseVisualStyleBackColor = true;
-            this.cbTrue.CheckedChanged += new System.EventHandler(this.cbTrue_CheckedChanged);
             // 
             // tbAnswerContent
             // 

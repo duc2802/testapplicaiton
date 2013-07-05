@@ -200,12 +200,27 @@ namespace PresentationLayer.QuestionEditor
         /// </summary>
         private void AddAnswerOptions()
         {
+            answerChoiseContainer.SuspendLayout();
             int i = 1;
             foreach (AnswerDataItem answerItem in DataItem.AnswerData.AnswerData)
             {
-                AddNewLine(answerItem.ContentAnswer, i);
-                i++;
+                var item =
+                    answerChoiseContainer.Controls.Find(answerItem.orderAnswer.ToString(), true).FirstOrDefault() as
+                    CheckBox;
+                if (item != null)
+                {
+                    item.Name = answerItem.orderAnswer.ToString();
+                    item.AutoSize = true;
+                    item.Checked = answerItem.isTrue;
+                    item.Text = answerItem.ContentAnswer;
+                }
+                else
+                {
+                    AddNewLine(answerItem, i);
+                    i++;
+                }
             }
+            answerChoiseContainer.ResumeLayout();
         }
 
         /// <summary>
@@ -213,16 +228,17 @@ namespace PresentationLayer.QuestionEditor
         /// </summary>
         /// <param name="answerString"></param>
         /// <param name="orderNumber"></param>
-        private void AddNewLine(string answerString, int orderNumber)
+        private void AddNewLine(AnswerDataItem answerItem, int orderNumber)
         {
             var point = new Point();
             point.Y = contentQuestionTextBox.Location.Y + contentQuestionTextBox.Height + 10 + ((orderNumber - 1)*20);
             point.X = contentQuestionTextBox.Location.X;
             var answerCheckBox = new CheckBox();
+            answerCheckBox.Name = answerItem.orderAnswer.ToString();
             answerCheckBox.AutoSize = true;
             answerCheckBox.Location = point;
-            answerCheckBox.Name = "answerCheckBox";
-            answerCheckBox.Text = answerString;
+            answerCheckBox.Checked = answerItem.isTrue;
+            answerCheckBox.Text = answerItem.ContentAnswer;
             answerChoiseContainer.Controls.Add(answerCheckBox);
         }
 
