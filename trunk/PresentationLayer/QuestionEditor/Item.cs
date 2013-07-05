@@ -52,6 +52,16 @@ namespace PresentationLayer.QuestionEditor
             _dataItem.ContentAnswer = tbAnswerContent.Text;
         }
 
+        private void TextBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(textbox.Text))
+            {
+                e.Cancel = true;
+                MessageBox.Show(string.Format("{0} cannot be empty", "Answer {1} content", DataItem.orderAnswer), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void InitData(int index)
         {
             _dataItem = new AnswerDataItem();

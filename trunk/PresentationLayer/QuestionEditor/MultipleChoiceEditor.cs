@@ -61,6 +61,8 @@ namespace PresentationLayer.QuestionEditor
             // Add answer Events.
             btMoreAnswer.Click += MoreAnswerButtonClick;
             btAddImage.Click += AddImageButtonClick;
+            tbQuestionContent.Validating += TextBoxValidating;
+          
         }
 
         private void AddImageButtonClick(object sender, EventArgs e) 
@@ -174,6 +176,16 @@ namespace PresentationLayer.QuestionEditor
                 lbDislayImage.Visible = true;
             }
             AddAnswerOptions();
+        }
+
+        private void TextBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(textbox.Text))
+            {
+                e.Cancel = true;
+                MessageBox.Show(string.Format("{0} cannot be empty", "Question content"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ShowImageofQuestion( string pathImage)
@@ -295,6 +307,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void btCreate_Click(object sender, EventArgs e)
         {
+            //Valiate Question Content.
+            if (string.IsNullOrWhiteSpace(tbQuestionContent.Text))
+            {
+                MessageBox.Show(string.Format("{0} cannot be empty", "Question content"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (_action == "create")
             {
                 // Create a question Action
@@ -306,6 +324,7 @@ namespace PresentationLayer.QuestionEditor
                 for (int idx = 0; idx < tbListAnswer.Controls.Count; idx++)
                 {
                     var item = tbListAnswer.Controls[idx] as Item;
+
                     if (item != null && item.DataItem.ContentAnswer != "")
                     {
                         var answer = new AnswerDataItem();
@@ -315,7 +334,6 @@ namespace PresentationLayer.QuestionEditor
                         DataItem.AnswerData.AnswerData.Add(answer);
                     }
                 }
-                // Update for test
             }
             else
             {
@@ -336,6 +354,7 @@ namespace PresentationLayer.QuestionEditor
                     }
                 }
             }
+            
         }
 
         #region Trigger Event
