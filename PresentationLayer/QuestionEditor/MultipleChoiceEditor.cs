@@ -198,6 +198,7 @@ namespace PresentationLayer.QuestionEditor
             tbListAnswer.SuspendLayout();
             var itemLayout = new Item(item, orderNumber);
             itemLayout.Delete += ItemLayoutDelete;
+            itemLayout.CheckChange += ItemCheckChange;
             itemLayout.DataItem.OrderAnswer = orderNumber;
             itemLayout.DataItem.orderAnswer = orderNumber;
             //itemLayout.Update += ItemLayoutUpdate;
@@ -214,7 +215,16 @@ namespace PresentationLayer.QuestionEditor
         {
             DeleteAnswerItem(parameter);
         }
+        private void ItemCheckChange(object sender,int idAnswer, bool status)
+        {
+            CheckChangeAnswerItem(idAnswer, status);
+        }
 
+        private void CheckChangeAnswerItem(int idAnswer, bool status)
+        {
+            _dataItem.AnswerData.AnswerData[idAnswer].isTrue = status;
+            DataItem.AnswerData.AnswerData[idAnswer].isTrue = status;
+        }
         private void ItemLayoutUpdate(object sender, int parameter)
         {
             UpdateAnswerItem(parameter);
