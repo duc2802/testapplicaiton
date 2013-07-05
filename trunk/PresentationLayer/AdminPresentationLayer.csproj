@@ -114,12 +114,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuestionEditor\AnswerItem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuestionEditor\AnswerItem.Designer.cs">
-      <DependentUpon>AnswerItem.cs</DependentUpon>
-    </Compile>
     <Compile Include="QuestionEditor\Data\AnswerDataController.cs" />
     <Compile Include="QuestionEditor\Data\AnswerDataItem.cs" />
     <Compile Include="QuestionEditor\Data\QuestionDataController.cs" />
@@ -148,7 +142,6 @@
     <Compile Include="QuestionEditor\MultipleChoiceEditor.Designer.cs">
       <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuestionEditor\NodeAnswerItem.cs" />
     <Compile Include="QuestionEditor\OptionItemCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,18 +165,6 @@
     </Compile>
     <Compile Include="QuestionEditor\QuestionListPanel.Designer.cs">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuestionEditor\SingleChoiceEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuestionEditor\SingleChoiceEditor.Designer.cs">
-      <DependentUpon>SingleChoiceEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuestionEditor\TrueFalseEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuestionEditor\TrueFalseEditor.Designer.cs">
-      <DependentUpon>TrueFalseEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Splash\WelcomeSrceenTimer.cs" />
     <Compile Include="Program.cs" />
@@ -233,9 +214,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuestionEditor\AnswerItem.resx">
-      <DependentUpon>AnswerItem.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\DislayImageForm.resx">
       <DependentUpon>DislayImageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,9 +234,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\QuestionListPanel.resx">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuestionEditor\SingleChoiceEditor.resx">
-      <DependentUpon>SingleChoiceEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>

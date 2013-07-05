@@ -44,6 +44,7 @@ namespace PresentationLayer.QuestionEditor
         {
             btDelete.Click += DeleteAnswerButtonClick;
             Leave += ItemLeave;
+            cbTrue.CheckedChanged += cbTrue_CheckedChanged;
         }
 
         private void ItemLeave(object sender, EventArgs e)
@@ -173,17 +174,59 @@ namespace PresentationLayer.QuestionEditor
 
         private void cbTrue_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbTrue.Checked)
+            if (cbTrue.Checked)
             {
+                DataItem.isTrue = true;
                 _dataItem.isTrue = true;
-                return;
             }
-            _dataItem.isTrue = false;
+            else {
+                DataItem.isTrue = false;
+                _dataItem.isTrue = false;
+            }
+
+            OnCheckChange(DataItem.orderAnswer, DataItem.isTrue);  
         }
 
         private void tbAnswerContent_TextChanged(object sender, EventArgs e)
         {
             //_dataItem.ContentAnswer = tbAnswerContent.Text;
+        }
+
+        public event ActionEventHandler<int, bool> CheckChange
+        {
+            add
+            {
+                lock (_checkboxChangetLocker)
+                {
+                    _checkboxChangeEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_checkboxChangetLocker)
+                {
+                    _checkboxChangeEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<int, bool> _checkboxChangeEvent;
+        private readonly object _checkboxChangetLocker = new object();
+
+        private void OnCheckChange(int idx, bool status)
+        {
+            ActionEventHandler<int, bool> handler = _checkboxChangeEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, idx, status);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
         }
     }
 }
