@@ -84,7 +84,7 @@
             this.splitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer.Size = new System.Drawing.Size(588, 331);
-            this.splitContainer.SplitterDistance = 201;
+            this.splitContainer.SplitterDistance = 250;
             this.splitContainer.TabIndex = 1;
             // 
             // tbExplain

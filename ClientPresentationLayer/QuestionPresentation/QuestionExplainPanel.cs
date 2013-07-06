@@ -85,7 +85,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             _questionPresent.FillQuestionDataWithQuestionIndex(idx);
             tbExplain.Text = Singleton<TestBE>.Instance.ListQuestion[idx].Explain;
             orderQuestionTextBox.Text = (idx + 1).ToString();
-
+            goToQuesNumcomboBox.Text = (idx + 1).ToString();
             ResumeLayout();
         }
 
