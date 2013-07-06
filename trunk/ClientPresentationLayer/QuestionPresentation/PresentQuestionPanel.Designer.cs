@@ -53,19 +53,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
             this.panel2.AutoSize = true;
-            this.panel2.Location = new System.Drawing.Point(3, 140);
+            this.panel2.Location = new System.Drawing.Point(3, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(368, 144);
+            this.panel2.Size = new System.Drawing.Size(368, 188);
             this.panel2.TabIndex = 1;
             // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(368, 131);
+            this.textBox1.Size = new System.Drawing.Size(368, 87);
             this.textBox1.TabIndex = 0;
             // 
             // PresentQuestionPanel
