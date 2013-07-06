@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using BusinessEntities;
 using ClientPresentationLayer.QuestionPresentation;
+using ClientPresentationLayer.QuestionPresentation.Data;
 using Commons;
 using SingleInstanceObject;
 using TestApplication;
@@ -52,6 +53,16 @@ namespace ClientPresentationLayer
 
             _questionExplain.EndExam += EndExam;
             _questionReview.ReviewQuestion += QuestionReview;
+            _questionReview.BackTestManager += QuestionReviewBackTestManager;
+        }
+
+        private void QuestionReviewBackTestManager(object sender)
+        {
+            SuspendLayout();
+            Singleton<AnswerSheetDataController>.Instance.AnswerSheet.Clear();
+            Controls.Clear();
+            Controls.Add(_managerTest);
+            ResumeLayout();
         }
 
         private void QuestionReview(object sender, int idx)
