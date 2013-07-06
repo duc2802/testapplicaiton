@@ -9,14 +9,14 @@ using TestApplication;
 
 namespace ClientPresentationLayer
 {
-    public partial class MainFormView : Form
+    public partial class TestEasyClient : Form
     {
         private TestManager _managerTest;
         private QuestionPresentPanel _questionPresent;
         private QuestionReviewPanel _questionReview;
         private QuestionExplainPanel _questionExplain;
 
-        public MainFormView()
+        public TestEasyClient()
         {
             InitializeComponent();
             InitData();
