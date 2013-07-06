@@ -26,8 +26,8 @@ namespace ClientPresentationLayer.QuestionPresentation
         void InitGui() 
         {
             _questionPresent = new PresentQuestionPanel();
-            _questionPresent.Dock = DockStyle.Fill;
-            _questionPresent.AutoScroll = true;
+            //_questionPresent.Dock = DockStyle.Fill;
+            //_questionPresent.AutoScroll = true;
             _questionPresent.DataItem = Singleton<TestBE>.Instance;
             splitContainer.Panel1.Controls.Add(_questionPresent);
         }

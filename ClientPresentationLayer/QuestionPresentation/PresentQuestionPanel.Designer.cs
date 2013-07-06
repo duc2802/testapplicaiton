@@ -29,21 +29,34 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.ScrollableControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(503, 418);
+            this.panel1.Size = new System.Drawing.Size(493, 351);
             this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.AutoSize = true;
+            this.panel2.Location = new System.Drawing.Point(3, 140);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(368, 144);
+            this.panel2.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -52,20 +65,8 @@
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(378, 131);
+            this.textBox1.Size = new System.Drawing.Size(368, 131);
             this.textBox1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoScroll = true;
-            this.panel2.AutoSize = true;
-            this.panel2.Location = new System.Drawing.Point(3, 140);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(378, 275);
-            this.panel2.TabIndex = 1;
             // 
             // PresentQuestionPanel
             // 
@@ -75,7 +76,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.panel1);
             this.Name = "PresentQuestionPanel";
-            this.Size = new System.Drawing.Size(503, 418);
+            this.Size = new System.Drawing.Size(502, 352);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
