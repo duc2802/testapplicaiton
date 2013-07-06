@@ -46,6 +46,12 @@ namespace ClientPresentationLayer.QuestionPresentation
         public void InitEvent()
         {
             questionlistView.DoubleClick += QuestionlistViewClick;
+            backButton.Click += BackButtonClick;
+        }
+
+        private void BackButtonClick(object sender, EventArgs e)
+        {
+            OnBackTestManager();
         }
 
         private void QuestionlistViewClick(object sender, EventArgs e)
@@ -57,6 +63,8 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         public void RefreshGui()
         {
+            DataController.DataItems.Clear();
+            questionlistView.Items.Clear();
             DataController.FillQuestioinDataListViewItem();
             totalTextBox.Text = DataController.DataItems.Count.ToString();
             attemptedTextBox.Text = DataController.NumOfAttempted.ToString();
@@ -100,5 +108,46 @@ namespace ClientPresentationLayer.QuestionPresentation
                 }
             }
         }
+
+        #region Register new event
+
+        public event ActionEventHandler BackTestManager
+        {
+            add
+            {
+                lock (_backTestManagerEventLocker)
+                {
+                    _backTestManagerEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_backTestManagerEventLocker)
+                {
+                    _backTestManagerEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler _backTestManagerEvent;
+        private readonly object _backTestManagerEventLocker = new object();
+
+        private void OnBackTestManager()
+        {
+            ActionEventHandler handler = _backTestManagerEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+        #endregion End register new event
     }
 }

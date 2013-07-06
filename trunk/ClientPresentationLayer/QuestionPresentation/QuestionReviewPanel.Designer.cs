@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.questionlistView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,16 +45,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // backButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(11, 469);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.Location = new System.Drawing.Point(11, 469);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 0;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // questionlistView
             // 
@@ -195,7 +195,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.questionlistView);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.backButton);
             this.Name = "QuestionReviewPanel";
             this.Size = new System.Drawing.Size(634, 504);
             this.ResumeLayout(false);
@@ -205,7 +205,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.ListView questionlistView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
