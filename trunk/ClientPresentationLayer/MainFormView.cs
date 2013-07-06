@@ -13,6 +13,7 @@ namespace ClientPresentationLayer
         private TestManager _managerTest;
         private QuestionPresentPanel _questionPresent;
         private QuestionReviewPanel _questionReview;
+        private QuestionExplainPanel _questionExplain;
 
         public MainFormView()
         {
@@ -24,11 +25,17 @@ namespace ClientPresentationLayer
         
         private void InitCommonGui()
         {
+            _questionReview = new QuestionReviewPanel();
+            _questionReview.Dock = DockStyle.Fill;
+
             _questionPresent = new QuestionPresentPanel();
             _questionPresent.Dock = DockStyle.Fill;
 
             _managerTest = new TestManager();
             _managerTest.Dock = DockStyle.Fill;
+
+            _questionExplain = new QuestionExplainPanel();
+            _questionExplain.Dock = DockStyle.Fill;
 
             Controls.Add(_managerTest);
         }
@@ -42,14 +49,23 @@ namespace ClientPresentationLayer
         {
             _managerTest.StartExam += StartExam;
             _questionPresent.EndExam += EndExam;
+            _questionReview.ReviewQuestion += QuestionReview;
+        }
+
+        private void QuestionReview(object sender, int idx)
+        {
+            SuspendLayout();
+            Controls.Clear();
+            _questionExplain.RefreshGui();
+            Controls.Add(_questionExplain);
+            ResumeLayout();
         }
 
         private void EndExam(object sender)
         {
             SuspendLayout();
             Controls.Clear();
-            _questionReview = new QuestionReviewPanel();
-            _questionReview.Dock = DockStyle.Fill;
+            _questionReview.RefreshGui();
             Controls.Add(_questionReview);
             ResumeLayout();
         }

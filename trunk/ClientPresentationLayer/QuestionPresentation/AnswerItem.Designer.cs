@@ -30,7 +30,7 @@
         {
             this.orderAnswer = new System.Windows.Forms.Label();
             this.answerItemCheckBox = new System.Windows.Forms.CheckBox();
-            this.lbAnswerContent = new System.Windows.Forms.Label();
+            this.answerContentLabel = new System.Windows.Forms.Label();
             this.btTrueFail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,14 +53,14 @@
             this.answerItemCheckBox.TabIndex = 5;
             this.answerItemCheckBox.UseVisualStyleBackColor = true;
             // 
-            // lbAnswerContent
+            // answerContentLabel
             // 
-            this.lbAnswerContent.AutoSize = true;
-            this.lbAnswerContent.Location = new System.Drawing.Point(110, 10);
-            this.lbAnswerContent.Name = "lbAnswerContent";
-            this.lbAnswerContent.Size = new System.Drawing.Size(177, 13);
-            this.lbAnswerContent.TabIndex = 6;
-            this.lbAnswerContent.Text = "This is Answer Content abcd eghigk";
+            this.answerContentLabel.AutoSize = true;
+            this.answerContentLabel.Location = new System.Drawing.Point(110, 10);
+            this.answerContentLabel.Name = "answerContentLabel";
+            this.answerContentLabel.Size = new System.Drawing.Size(177, 13);
+            this.answerContentLabel.TabIndex = 6;
+            this.answerContentLabel.Text = "This is Answer Content abcd eghigk";
             // 
             // btTrueFail
             // 
@@ -78,7 +78,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btTrueFail);
-            this.Controls.Add(this.lbAnswerContent);
+            this.Controls.Add(this.answerContentLabel);
             this.Controls.Add(this.answerItemCheckBox);
             this.Controls.Add(this.orderAnswer);
             this.Name = "AnswerItem";
@@ -92,7 +92,7 @@
 
         private System.Windows.Forms.Label orderAnswer;
         private System.Windows.Forms.CheckBox answerItemCheckBox;
-        private System.Windows.Forms.Label lbAnswerContent;
+        private System.Windows.Forms.Label answerContentLabel;
         private System.Windows.Forms.Button btTrueFail;
     }
 }

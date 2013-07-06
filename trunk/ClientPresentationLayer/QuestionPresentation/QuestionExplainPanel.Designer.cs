@@ -30,6 +30,8 @@
         {
             this.contentQuestionPanel = new System.Windows.Forms.Panel();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.tbExplain = new System.Windows.Forms.TextBox();
+            this.lbExplain = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@
             this.sendFeedBackLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbQuestion = new System.Windows.Forms.Label();
-            this.lbExplain = new System.Windows.Forms.Label();
-            this.tbExplain = new System.Windows.Forms.TextBox();
             this.contentQuestionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel2.SuspendLayout();
@@ -63,6 +63,7 @@
             // 
             // splitContainer
             // 
+            this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.Location = new System.Drawing.Point(3, 0);
             this.splitContainer.Name = "splitContainer";
@@ -70,6 +71,7 @@
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer.Panel2
@@ -81,6 +83,28 @@
             this.splitContainer.Size = new System.Drawing.Size(588, 331);
             this.splitContainer.SplitterDistance = 201;
             this.splitContainer.TabIndex = 1;
+            // 
+            // tbExplain
+            // 
+            this.tbExplain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbExplain.Location = new System.Drawing.Point(4, 17);
+            this.tbExplain.Multiline = true;
+            this.tbExplain.Name = "tbExplain";
+            this.tbExplain.Size = new System.Drawing.Size(577, 102);
+            this.tbExplain.TabIndex = 1;
+            this.tbExplain.Text = "This is explain of question";
+            // 
+            // lbExplain
+            // 
+            this.lbExplain.AutoSize = true;
+            this.lbExplain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbExplain.Location = new System.Drawing.Point(4, 0);
+            this.lbExplain.Name = "lbExplain";
+            this.lbExplain.Size = new System.Drawing.Size(48, 13);
+            this.lbExplain.TabIndex = 0;
+            this.lbExplain.Text = "Explain";
             // 
             // splitter1
             // 
@@ -155,11 +179,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Location = new System.Drawing.Point(15, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 15);
+            this.label1.Size = new System.Drawing.Size(59, 16);
             this.label1.TabIndex = 8;
             this.label1.Text = "Explain";
             // 
@@ -172,25 +196,6 @@
             this.lbQuestion.Size = new System.Drawing.Size(85, 13);
             this.lbQuestion.TabIndex = 9;
             this.lbQuestion.Text = "Question XXX";
-            // 
-            // lbExplain
-            // 
-            this.lbExplain.AutoSize = true;
-            this.lbExplain.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExplain.Location = new System.Drawing.Point(17, 14);
-            this.lbExplain.Name = "lbExplain";
-            this.lbExplain.Size = new System.Drawing.Size(50, 14);
-            this.lbExplain.TabIndex = 0;
-            this.lbExplain.Text = "Explain";
-            // 
-            // tbExplain
-            // 
-            this.tbExplain.Location = new System.Drawing.Point(20, 32);
-            this.tbExplain.Multiline = true;
-            this.tbExplain.Name = "tbExplain";
-            this.tbExplain.Size = new System.Drawing.Size(554, 76);
-            this.tbExplain.TabIndex = 1;
-            this.tbExplain.Text = "This is explain of question";
             // 
             // QuestionExplainPanel
             // 

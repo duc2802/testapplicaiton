@@ -20,10 +20,12 @@ namespace ClientPresentationLayer.QuestionPresentation
     public partial class QuestionPresentPanel : UserControl
     {
         int timetestInSeconds = 60;
-        private TestBE _dataItem;
         int indexQuestion = 0;
         int maxIndexQuestion;
+        
+        public string CurrentQuestionID { set; get; }
 
+        private TestBE _dataItem;
         public TestBE DataItem
         {
             set
@@ -63,9 +65,12 @@ namespace ClientPresentationLayer.QuestionPresentation
                 {
                     contentQuestionPanel.Controls.Remove(c);
                 }
-                // Load data into answer and panel
-                lbQuestionOrder.Text = (indexQuestionData + 1).ToString();
-                var questionItem = new QuestionItem(DataItem.ListQuestion[indexQuestion]);
+
+                var questionData = DataItem.ListQuestion[indexQuestion];
+                CurrentQuestionID = questionData.QuestionID;
+
+                orderQuestionLabel.Text = (indexQuestionData + 1).ToString();
+                var questionItem = new QuestionItem(questionData);
                 questionItem.ChoiseAnswer += QuestionItemChoiseAnswer;
                 questionItem.UnChoiseAnswer += QuestionItemUnChoiseAnswer;
                 questionItem.Dock = DockStyle.Fill;
@@ -74,7 +79,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             }
             ResumeLayout();  
         }
-
+        
         private void QuestionItemChoiseAnswer(object sender, string questionId, int indexAnswer)
         {
             if (!Singleton<AnswerSheetDataController>.Instance.AnswerSheet.ContainsKey(questionId))
@@ -160,19 +165,6 @@ namespace ClientPresentationLayer.QuestionPresentation
         public void SaveAnswerDataOfStudent(int indexQuestion)
         {
             string questionId = DataItem.ListQuestion[indexQuestion].QuestionID;
-            //Singleton<AnswerSheetDataController>.Instance.AnswerSheet.Add();
-            //// neu cau hoi do chua lam
-            //if (!studentAnswerData.ContainsKey(indexQuestion))
-            //{
-            //    Hashtable test = null;
-            //    studentAnswerData.Add(indexQuestion, test);
-            //}
-            //else
-            //{
-            //    // Cau hoi da lam:
-
-            //}
-            ////
         }
 
         private void EndExamButtonClick(object sender, EventArgs e)

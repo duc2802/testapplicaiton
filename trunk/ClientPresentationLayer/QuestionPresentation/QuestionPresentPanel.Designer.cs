@@ -41,7 +41,7 @@
             this.timeTest = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
-            this.lbQuestionOrder = new System.Windows.Forms.Label();
+            this.orderQuestionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // contentQuestionPanel
@@ -158,20 +158,20 @@
             this.lbTime.TabIndex = 12;
             this.lbTime.Text = " 24:25:30";
             // 
-            // lbQuestionOrder
+            // orderQuestionLabel
             // 
-            this.lbQuestionOrder.AutoSize = true;
-            this.lbQuestionOrder.Location = new System.Drawing.Point(86, 38);
-            this.lbQuestionOrder.Name = "lbQuestionOrder";
-            this.lbQuestionOrder.Size = new System.Drawing.Size(13, 13);
-            this.lbQuestionOrder.TabIndex = 13;
-            this.lbQuestionOrder.Text = "1";
+            this.orderQuestionLabel.AutoSize = true;
+            this.orderQuestionLabel.Location = new System.Drawing.Point(86, 38);
+            this.orderQuestionLabel.Name = "orderQuestionLabel";
+            this.orderQuestionLabel.Size = new System.Drawing.Size(13, 13);
+            this.orderQuestionLabel.TabIndex = 13;
+            this.orderQuestionLabel.Text = "1";
             // 
             // QuestionPresentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lbQuestionOrder);
+            this.Controls.Add(this.orderQuestionLabel);
             this.Controls.Add(this.lbTime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbQuestionLB);
@@ -192,7 +192,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel contentQuestionPanel;
+        public System.Windows.Forms.Panel contentQuestionPanel;
         private System.Windows.Forms.Button previousButton;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button endExamButton;
@@ -204,6 +204,6 @@
         private System.Windows.Forms.Timer timeTest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTime;
-        private System.Windows.Forms.Label lbQuestionOrder;
+        private System.Windows.Forms.Label orderQuestionLabel;
     }
 }
