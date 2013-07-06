@@ -70,6 +70,7 @@ namespace ClientPresentationLayer.QuestionPresentation
                 CurrentQuestionID = questionData.QuestionID;
 
                 orderQuestionLabel.Text = (indexQuestionData + 1).ToString();
+                goToQuesNumcomboBox.Text = (indexQuestionData + 1).ToString();
                 var questionItem = new QuestionItem(questionData);
                 questionItem.ChoiseAnswer += QuestionItemChoiseAnswer;
                 questionItem.UnChoiseAnswer += QuestionItemUnChoiseAnswer;
