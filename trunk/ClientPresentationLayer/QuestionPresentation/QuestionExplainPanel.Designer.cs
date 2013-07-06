@@ -52,6 +52,8 @@
             this.contentQuestionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentQuestionPanel.AutoScroll = true;
+            this.contentQuestionPanel.AutoSize = true;
             this.contentQuestionPanel.BackColor = System.Drawing.Color.White;
             this.contentQuestionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.contentQuestionPanel.Controls.Add(this.splitContainer);
