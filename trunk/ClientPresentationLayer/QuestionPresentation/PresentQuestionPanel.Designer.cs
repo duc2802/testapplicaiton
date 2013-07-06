@@ -39,12 +39,11 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(493, 351);
+            this.panel1.Size = new System.Drawing.Size(500, 324);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -53,9 +52,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
             this.panel2.AutoSize = true;
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.Location = new System.Drawing.Point(3, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(368, 188);
+            this.panel2.Size = new System.Drawing.Size(0, 0);
             this.panel2.TabIndex = 1;
             // 
             // textBox1
@@ -66,7 +66,7 @@
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(368, 87);
+            this.textBox1.Size = new System.Drawing.Size(494, 87);
             this.textBox1.TabIndex = 0;
             // 
             // PresentQuestionPanel
@@ -77,7 +77,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.panel1);
             this.Name = "PresentQuestionPanel";
-            this.Size = new System.Drawing.Size(502, 352);
+            this.Size = new System.Drawing.Size(502, 325);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
