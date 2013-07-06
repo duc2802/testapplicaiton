@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BusinessEntities;
+using Commons;
 using Commons.BusinessObjects;
 
 namespace PresentationLayer.QuestionEditor.Data
@@ -153,6 +154,7 @@ namespace PresentationLayer.QuestionEditor.Data
                     var answer = new AnswerDataItem();
                     answer.ContentAnswer = questionBE.ListAnswers[j].Content;
                     answer.OrderAnswer = j;
+                    answer.isTrue = FormatHelper.StringToBoolean(questionBE.ListAnswers[j].Result);
                     answerController.Add(answer);
                 }
                 dataItem.AnswerData = answerController;
