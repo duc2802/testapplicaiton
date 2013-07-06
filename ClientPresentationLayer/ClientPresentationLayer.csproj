@@ -78,6 +78,12 @@
     <Compile Include="QuestionPresentation\DislayImageForm.Designer.cs">
       <DependentUpon>DislayImageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionPresentation\PresentQuestionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\PresentQuestionPanel.Designer.cs">
+      <DependentUpon>PresentQuestionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionPresentation\QuestionItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="QuestionPresentation\DislayImageForm.resx">
       <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\PresentQuestionPanel.resx">
+      <DependentUpon>PresentQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\QuestionItem.resx">
       <DependentUpon>QuestionItem.cs</DependentUpon>

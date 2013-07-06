@@ -54,6 +54,7 @@
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ConstantGUI.cs" />
+    <Compile Include="FormatHelper.cs" />
     <Compile Include="IDataBE.cs" />
     <Compile Include="IDataItem.cs" />
     <Compile Include="ITranslateBE.cs" />

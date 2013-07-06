@@ -45,8 +45,20 @@ namespace ClientPresentationLayer.QuestionPresentation
         public void InitEvent() 
         {
             answerItemCheckBox.CheckedChanged += CheckChangedEvent;
+            answerContentLabel.Click += AnswerContentLabelClick;
+            orderAnswer.Click += OrderAnswerClick;
         }
 
+        private void OrderAnswerClick(object sender, EventArgs e)
+        {
+            answerItemCheckBox.Checked = !answerItemCheckBox.Checked;
+        }
+
+        private void AnswerContentLabelClick(object sender, EventArgs e)
+        {
+            answerItemCheckBox.Checked = !answerItemCheckBox.Checked;
+        }
+        
         private void CheckChangedEvent(object sender, EventArgs e)
         {
             IsChoise = answerItemCheckBox.Checked;
@@ -56,7 +68,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         public void InitGui(AnswerBE dataItem, bool isChoise)
         {
             orderAnswer.Text = (int.Parse(dataItem.AnswerID) +1).ToString();
-            lbAnswerContent.Text = DataBEItem.Content;
+            answerContentLabel.Text = DataBEItem.Content;
             btTrueFail.Visible = false;
             if(isChoise)
             {

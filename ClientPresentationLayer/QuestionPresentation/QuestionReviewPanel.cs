@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClientPresentationLayer.QuestionPresentation.Data;
+using Commons.BusinessObjects;
 
 namespace ClientPresentationLayer.QuestionPresentation
 {
@@ -39,20 +40,65 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         public void InitGui()
         {
-            questionlistView.Clear();
             questionlistView.Items.AddRange(DataController.DisplayItems.ToArray());
         }
 
         public void InitEvent()
         {
-            
+            questionlistView.DoubleClick += QuestionlistViewClick;
+        }
+
+        private void QuestionlistViewClick(object sender, EventArgs e)
+        {
+            var itemSelected = questionlistView.SelectedIndices;
+            var idQuestion = itemSelected[0];
+            OnReviewQuestion(idQuestion);
         }
 
         public void RefreshGui()
         {
             DataController.FillQuestioinDataListViewItem();
-            questionlistView.Clear();
+            totalTextBox.Text = DataController.DataItems.Count.ToString();
+            attemptedTextBox.Text = DataController.NumOfAttempted.ToString();
+            markedTextBox.Text = DataController.NumOfMarked.ToString();
             questionlistView.Items.AddRange(DataController.DisplayItems.ToArray());
+        }
+
+        public event ActionEventHandler<int> ReviewQuestion
+        {
+            add
+            {
+                lock (__reviewQuestionEventLocker)
+                {
+                    _reviewQuestionEvent += value;
+                }
+            }
+            remove
+            {
+                lock (__reviewQuestionEventLocker)
+                {
+                    _reviewQuestionEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<int> _reviewQuestionEvent;
+        private readonly object __reviewQuestionEventLocker = new object();
+
+        private void OnReviewQuestion(int idx)
+        {
+            ActionEventHandler<int> handler = _reviewQuestionEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, idx);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
         }
     }
 }
