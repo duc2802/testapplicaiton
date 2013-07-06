@@ -49,6 +49,11 @@ namespace ClientPresentationLayer.QuestionPresentation
             orderAnswer.Click += OrderAnswerClick;
         }
 
+        public void TurnOnAnswer(bool on)
+        {
+            btTrueFail.Visible = on;
+        }
+
         private void OrderAnswerClick(object sender, EventArgs e)
         {
             answerItemCheckBox.Checked = !answerItemCheckBox.Checked;

@@ -49,6 +49,8 @@ namespace ClientPresentationLayer
         {
             _managerTest.StartExam += StartExam;
             _questionPresent.EndExam += EndExam;
+
+            _questionExplain.EndExam += EndExam;
             _questionReview.ReviewQuestion += QuestionReview;
         }
 
@@ -56,7 +58,8 @@ namespace ClientPresentationLayer
         {
             SuspendLayout();
             Controls.Clear();
-            _questionExplain.RefreshGui();
+            _questionExplain.ReloadData();
+            _questionExplain.OrderNumber = idx;
             Controls.Add(_questionExplain);
             ResumeLayout();
         }

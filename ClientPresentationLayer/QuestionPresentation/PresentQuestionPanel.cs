@@ -51,22 +51,19 @@ namespace ClientPresentationLayer.QuestionPresentation
                     panel2.Controls.Remove(c);
                 }
 
-                //AddScroll();
-
-                var questionData = DataItem.ListQuestion[0];
-                //CurrentQuestionID = questionData.QuestionID;
-
-                //orderQuestionLabel.Text = (indexQuestionData + 1).ToString();
+                var questionData = DataItem.ListQuestion[indexQuestionData];
                 textBox1.Text = questionData.QuestionContent;
-                var questionItem = new QuestionItem(questionData);
+                var questionItem = new QuestionItem(questionData, true);
                 questionItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Top)));
                 questionItem.Location = new Point(0, 0);
-                //questionItem.BackColor = Color.Red;
-                //AutoScroll = true;
                 panel2.Controls.Add(questionItem);
-                //indexQuestion = indexQuestionData;
             }
             ResumeLayout();
+        }
+
+        public void TurnOnAnswer(QuestionItem question)
+        {
+            
         }
 
         private void MyScrollButton_Click(object sender, EventArgs e)

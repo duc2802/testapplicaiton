@@ -41,6 +41,7 @@
             this.sendFeedBackLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbQuestion = new System.Windows.Forms.Label();
+            this.orderQuestionTextBox = new System.Windows.Forms.TextBox();
             this.contentQuestionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel2.SuspendLayout();
@@ -193,16 +194,24 @@
             // 
             this.lbQuestion.AutoSize = true;
             this.lbQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbQuestion.Location = new System.Drawing.Point(18, 40);
+            this.lbQuestion.Location = new System.Drawing.Point(18, 37);
             this.lbQuestion.Name = "lbQuestion";
-            this.lbQuestion.Size = new System.Drawing.Size(85, 13);
+            this.lbQuestion.Size = new System.Drawing.Size(65, 13);
             this.lbQuestion.TabIndex = 9;
-            this.lbQuestion.Text = "Question XXX";
+            this.lbQuestion.Text = "Question: ";
+            // 
+            // orderQuestionTextBox
+            // 
+            this.orderQuestionTextBox.Location = new System.Drawing.Point(80, 34);
+            this.orderQuestionTextBox.Name = "orderQuestionTextBox";
+            this.orderQuestionTextBox.Size = new System.Drawing.Size(61, 20);
+            this.orderQuestionTextBox.TabIndex = 10;
             // 
             // QuestionExplainPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.orderQuestionTextBox);
             this.Controls.Add(this.lbQuestion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sendFeedBackLabel);
@@ -239,5 +248,6 @@
         private System.Windows.Forms.Label lbQuestion;
         private System.Windows.Forms.TextBox tbExplain;
         private System.Windows.Forms.Label lbExplain;
+        private System.Windows.Forms.TextBox orderQuestionTextBox;
     }
 }

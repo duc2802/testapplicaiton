@@ -36,6 +36,13 @@ namespace ClientPresentationLayer
             InitEvent();
         }
 
+        public QuestionItem(QuestionBE Item, bool isExplain)
+        {
+            InitializeComponent();
+            InitData(Item);
+            InitGui(Item, isExplain);
+            InitEvent();
+        }
 
         public void InitEvent() 
         {
@@ -49,7 +56,6 @@ namespace ClientPresentationLayer
         
         public void InitGui(QuestionBE Item)
         {
-            //DataItem = Item;
             tbQuestionContent.Text = DataBEItem.QuestionContent;
             if (!string.IsNullOrEmpty(DataBEItem.NameImage))
             {
@@ -60,10 +66,32 @@ namespace ClientPresentationLayer
             AddAnswerOptionsFromBe();
             ResumeLayout();
         }
+
+        public void InitGui(QuestionBE Item, bool isExplain)
+        {
+            tbQuestionContent.Text = DataBEItem.QuestionContent;
+            if (!string.IsNullOrEmpty(DataBEItem.NameImage))
+            {
+                string newPath = PATH_FORDER_IMAGE + DataBEItem.NameImage;
+                pictureBox.Image = new Bitmap(newPath);
+                pictureBox.Show();
+            }
+            AddAnswerOptionsFromBe(isExplain);
+            ResumeLayout();
+        }
         
         private void QuestionItemLoad(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddAnswerOptionsFromBe(bool isExplain)
+        {
+            int dix = 0;
+            foreach (AnswerBE answerItem in DataBEItem.ListAnswers)
+            {
+                AddNewLine(answerItem, isExplain);
+            }
         }
 
         private void AddAnswerOptionsFromBe()
@@ -73,6 +101,16 @@ namespace ClientPresentationLayer
             {
                 AddNewLine(answerItem);
             }
+        }
+
+        private void AddNewLine(AnswerBE dataItem, bool isExplain)
+        {
+            SuspendLayout();
+            tbListAnswerItem.SuspendLayout();
+            var answerItem = CreateAnswerItem(dataItem, isExplain);
+            tbListAnswerItem.Controls.Add(answerItem);
+            tbListAnswerItem.ResumeLayout();
+            ResumeLayout();
         }
 
         private void AddNewLine(AnswerBE dataItem)
@@ -111,6 +149,49 @@ namespace ClientPresentationLayer
             {
                 answerItem = new AnswerItem(dataItem, false);
             }
+            answerItem.Location = new Point(0, answerItem.Height);
+            answerItem.CheckChange += CheckChangeOfAnswerItem;
+            answerItem.Size = new Size(tbListAnswerItem.Width, answerItem.Height);
+            answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
+            return answerItem;
+        }
+
+        private AnswerItem CreateAnswerItem(AnswerBE dataItem, bool isExplain)
+        {
+            AnswerItem answerItem;
+            if (Singleton<AnswerSheetDataController>.Instance.AnswerSheet.ContainsKey(_dataBEItem.QuestionID))
+            {
+                List<int> answerList;
+                if (Singleton<AnswerSheetDataController>.Instance.AnswerSheet.TryGetValue(_dataBEItem.QuestionID, out answerList))
+                {
+                    if (answerList.Contains(int.Parse(dataItem.AnswerID)))
+                    {
+                        answerItem = new AnswerItem(dataItem, true);
+                    }
+                    else
+                    {
+                        answerItem = new AnswerItem(dataItem, false);
+                    }
+                }
+                else
+                {
+                    answerItem = new AnswerItem(dataItem, false);
+                }
+            }
+            else
+            {
+                answerItem = new AnswerItem(dataItem, false);
+            }
+
+            if (isExplain && FormatHelper.StringToBoolean((dataItem.Result)))
+            {
+                answerItem.TurnOnAnswer(true);
+            }
+            else
+            {
+                answerItem.TurnOnAnswer(false);
+            }
+
             answerItem.Location = new Point(0, answerItem.Height);
             answerItem.CheckChange += CheckChangeOfAnswerItem;
             answerItem.Size = new Size(tbListAnswerItem.Width, answerItem.Height);
