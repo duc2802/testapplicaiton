@@ -1,6 +1,6 @@
 ﻿namespace ClientPresentationLayer
 {
-    partial class MainFormView
+    partial class TestEasyClient
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestEasyClient));
             this.SuspendLayout();
             // 
-            // MainFormView
+            // TestEasyClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 474);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "MainFormView";
+            this.Name = "TestEasyClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainFormView";
+            this.Text = "Test Easy Client";
             this.ResumeLayout(false);
 
         }
