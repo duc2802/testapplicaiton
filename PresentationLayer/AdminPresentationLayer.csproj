@@ -57,6 +57,9 @@
     <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="Ribbon">
       <HintPath>C:\Users\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll</HintPath>
     </Reference>
@@ -64,7 +67,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionController\GuiActionEventController.cs" />
@@ -241,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\DevComponents.DotNetBar2.dll" />
+    <Content Include="Lib\MimeTeX.dll" />
     <Content Include="Lib\Ribbon.dll" />
     <None Include="app.config" />
     <Content Include="Resources\AddNew.png" />
@@ -277,6 +283,10 @@
       <Project>{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}</Project>
       <Name>BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestEquationEditor\EquationEditor\Editor.csproj">
+      <Project>{B19FF7B5-8771-4222-A539-496B58ECCC12}</Project>
+      <Name>Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ThreadQueueManager\ThreadQueueManager.csproj">
       <Project>{134E9CBB-0EB0-4D3F-B526-0447BC0AD3DC}</Project>
       <Name>ThreadQueueManager</Name>
@@ -308,7 +318,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
