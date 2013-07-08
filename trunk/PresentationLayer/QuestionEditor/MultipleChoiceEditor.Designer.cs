@@ -41,6 +41,7 @@
             this.btAddImage = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.btAddEquation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbListAnswer.AutoScroll = true;
             this.tbListAnswer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 403F));
+            this.tbListAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 405F));
             this.tbListAnswer.Location = new System.Drawing.Point(515, 20);
             this.tbListAnswer.Name = "tbListAnswer";
             this.tbListAnswer.Size = new System.Drawing.Size(405, 334);
@@ -109,7 +110,7 @@
             this.btCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCreate.Location = new System.Drawing.Point(753, 360);
+            this.btCreate.Location = new System.Drawing.Point(763, 360);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(75, 23);
             this.btCreate.TabIndex = 6;
@@ -122,15 +123,16 @@
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCancel.CausesValidation = false;
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancel.Location = new System.Drawing.Point(834, 360);
+            this.btCancel.Location = new System.Drawing.Point(843, 360);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(82, 23);
+            this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 7;
             this.btCancel.Text = "Cancel";
+            this.btCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
-            this.btCancel.CausesValidation = false;
             // 
             // lbQuestion
             // 
@@ -148,9 +150,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btMoreAnswer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btMoreAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMoreAnswer.Location = new System.Drawing.Point(652, 360);
+            this.btMoreAnswer.Location = new System.Drawing.Point(682, 360);
             this.btMoreAnswer.Name = "btMoreAnswer";
-            this.btMoreAnswer.Size = new System.Drawing.Size(95, 23);
+            this.btMoreAnswer.Size = new System.Drawing.Size(75, 23);
             this.btMoreAnswer.TabIndex = 9;
             this.btMoreAnswer.Text = "Add Choice";
             this.btMoreAnswer.UseVisualStyleBackColor = true;
@@ -161,9 +163,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btAddImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAddImage.Location = new System.Drawing.Point(551, 360);
+            this.btAddImage.Location = new System.Drawing.Point(601, 360);
             this.btAddImage.Name = "btAddImage";
-            this.btAddImage.Size = new System.Drawing.Size(95, 23);
+            this.btAddImage.Size = new System.Drawing.Size(75, 23);
             this.btAddImage.TabIndex = 11;
             this.btAddImage.Text = "Add Image";
             this.btAddImage.UseVisualStyleBackColor = true;
@@ -189,6 +191,19 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
+            // btAddEquation
+            // 
+            this.btAddEquation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAddEquation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btAddEquation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAddEquation.Location = new System.Drawing.Point(515, 360);
+            this.btAddEquation.Name = "btAddEquation";
+            this.btAddEquation.Size = new System.Drawing.Size(75, 23);
+            this.btAddEquation.TabIndex = 14;
+            this.btAddEquation.Text = "Equation";
+            this.btAddEquation.UseVisualStyleBackColor = true;
+            // 
             // MultipleChoiceEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +211,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 395);
+            this.Controls.Add(this.btAddEquation);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btAddImage);
@@ -233,6 +249,7 @@
         public System.Windows.Forms.Button btAddImage;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox;
+        public System.Windows.Forms.Button btAddEquation;
 
     }
 }

@@ -10,6 +10,7 @@ using TestApplication;
 using System.IO;
 using SingleInstanceObject;
 using Commons;
+using Editor;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -62,7 +63,16 @@ namespace PresentationLayer.QuestionEditor
             btMoreAnswer.Click += MoreAnswerButtonClick;
             btAddImage.Click += AddImageButtonClick;
             tbQuestionContent.Validating += TextBoxValidating;
+            btAddEquation.Click += AddEquationClick;
           
+        }
+
+        private void AddEquationClick(object sender, EventArgs e)
+        {
+            MainWindow test = new MainWindow();
+            test.ShowDialog();
+            
+            
         }
 
         private void AddImageButtonClick(object sender, EventArgs e) 
