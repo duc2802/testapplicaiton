@@ -27,17 +27,7 @@
 
     <DockPanel x:Name="mainDock" LastChildFill="True">
         <Grid DockPanel.Dock="Top">            
-            <Menu DockPanel.Dock="Top">
-                <MenuItem x:Name="fileMenuItem" Header="_File">
-                    <MenuItem x:Name="exportMenuItem" Header="_Export">
-                        <MenuItem Header="_PNG" Click="exportMenuItem_Click"  Tag="png" />
-                        <MenuItem Header="_JPG" Click="exportMenuItem_Click"  Tag="jpg"/>
-                        <MenuItem Header="_BMP" Click="exportMenuItem_Click"  Tag="bmp"/>
-                    </MenuItem>
-                    <!--<MenuItem x:Name="printMenuItem" Header="_Print"    Command="Print"/>-->
-                    <MenuItem x:Name="exitMenuItem" Header="E_xit"  Command="Close"/>
-                </MenuItem>
-            </Menu>
+            <Menu DockPanel.Dock="Top"></Menu>
         </Grid>
         <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch" Margin="0,2,0,4">
             <ToolBarTray  IsLocked="True">
@@ -49,12 +39,10 @@
                         <local:AutoGreyableImage Source="images\gui\zoomin.png" />
                     </Button>
                     <Separator />
-                    <ToggleButton x:Name="underbarToggle" ToolTip="Show/Hide Underbar" Unchecked="underbarToggleCheckChanged" Checked="underbarToggleCheckChanged">
-                        <Image Source="images\gui\underbar.png" />
-                    </ToggleButton>                    
                     <Separator />
                 </ToolBar>
             </ToolBarTray>
+            <Button Content="OK" Height="23" HorizontalAlignment="Left" Margin="606,5,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="ExportFilePNG" ContextMenuClosing="button1_ContextMenuClosing" />
         </Grid>
         <local:MathToolBar x:Name="mathToolBar" DockPanel.Dock="Top" DockPanel.ZIndex="99"></local:MathToolBar>
         <Grid Background="#FFEEDDCC" DockPanel.Dock="Bottom" Visibility="Collapsed">

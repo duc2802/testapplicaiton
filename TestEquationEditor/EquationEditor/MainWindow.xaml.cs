@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Commons;
+using SingleInstanceObject;
+using ThreadQueueManager;
 
 namespace Editor
 {
@@ -31,7 +34,7 @@ namespace Editor
             mathToolBar.CommandCompleted += (x, y) => { editor.Focus(); };
             SetTitle();
             AddHandler(UIElement.MouseDownEvent, new MouseButtonEventHandler(MainWindow_MouseDown), true);
-            underbarToggle.IsChecked = true;
+           // underbarToggle.IsChecked = true;
         }
 
         public void HandleToolBarCommand(CommandDetails commandDetails)
@@ -92,17 +95,28 @@ namespace Editor
             }
         }
         
-        private void exportMenuItem_Click(object sender, RoutedEventArgs e)
+        private void ExportFilePNG(object sender, RoutedEventArgs e)
         {
-            string imageType = (string)((Control)sender).Tag ?? "png";
-            string fileName = ShowSaveFileDialog(imageType, string.Format("Image File (*.{0})|*.{0}", imageType));
+            //string imageType = (string)((Control)sender).Tag ?? "png";
+
+            string newName = Guid.NewGuid().ToString()+".png";
+            string fileName = Singleton<SettingManager>.Instance.GetImageFolder() +"\\"+ newName;
+           
+            // Set file Name for Image 
+            /**
+             * 
+             * add code here
+             * 
+             * 
+             */
+
+
             if (!string.IsNullOrEmpty(fileName))
             {
                 string ext = Path.GetExtension(fileName);
-                if (ext != "." + imageType)
-                    fileName += "." + imageType;
                 editor.ExportImage(fileName);
-            }
+            }      
+
         }               
 
         private void ToolBar_Loaded(object sender, RoutedEventArgs e)
@@ -117,7 +131,7 @@ namespace Editor
 
         private void underbarToggleCheckChanged(object sender, RoutedEventArgs e)
         {
-            editor.ShowOverbar(underbarToggle.IsChecked == true);
+          //  editor.ShowOverbar(underbarToggle.IsChecked == true);
         }
 
         private void IncreaseZoomCommandHandler(object sender, ExecutedRoutedEventArgs e)
@@ -163,6 +177,11 @@ namespace Editor
         private void meLinkClick(object sender, RoutedEventArgs e)
         {
             Process.Start("http://mathiversity.com/MathEditor");
+        }
+
+        private void button1_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            ExportFilePNG(sender,e);
         }
     }
 }
