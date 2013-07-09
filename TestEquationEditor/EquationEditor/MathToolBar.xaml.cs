@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -78,8 +79,7 @@ namespace Editor
             CreateGreekSmallPanel();
             CreateArrowsPanel();
 
-            CreateBracketsPanel();
-            MessageBox.Show("INIT PANEL ");
+            CreateBracketsPanel();            
             CreateSumsProductsPanel();
             CreateIntegralsPanel();
             CreateSubAndSuperPanel();
@@ -193,8 +193,7 @@ namespace Editor
 
         Uri CreateImageUri(string subFolder, string imageFileName)
         {
-            
-            return new Uri("C:/Users/Admin/Documents/Visual Studio 2010/Projects/Project/TestEquationEditor/EquationEditor/images/commands/" + subFolder + "/" + imageFileName);
+            return new Uri("images/commands/" + subFolder + "/" + imageFileName, UriKind.Relative);
         }
 
         void CreateBracketsPanel()
