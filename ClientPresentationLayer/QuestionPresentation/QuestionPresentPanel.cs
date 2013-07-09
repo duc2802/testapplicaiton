@@ -117,6 +117,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             //Load combobox
             if (DataItem.TestID != null)
             {
+                timetestInSeconds = 60 * int.Parse(DataItem.Time);
                 lbNameExam.Text = DataItem.Information;
                 maxIndexQuestion = DataItem.ListQuestion.Count;
 
@@ -194,7 +195,8 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void startStop()
         {
-            // Do some thing with exam
+            MessageBox.Show(this, "Time has expired", "Warring", MessageBoxButtons.OK);
+            OnEndExam();
         }
 
         public void TimerTick(object sender, EventArgs eArgs)
