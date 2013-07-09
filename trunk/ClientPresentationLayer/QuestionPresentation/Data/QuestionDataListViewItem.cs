@@ -22,6 +22,8 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
         public bool Attempted { set; get; }
         
         public bool Marked { set; get; }
+        public string Status { set; get; }
+        public string Result { set; get; }
 
         public QuestionDataListViewItem(int index, QuestionBE questionBe)
         {
@@ -35,6 +37,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
 
         private void CheckAttempted()
         {
+            Result = "Incorrect";
             Attempted = false;
             var question = Singleton<TestBE>.Instance.ListQuestion.FirstOrDefault(quest => quest.QuestionID == IdQuestion);
             List<int> answerSheet;
@@ -44,6 +47,11 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
                 foreach (var idx in answerSheet)
                 {
                     Attempted = FormatHelper.StringToBoolean(question.ListAnswers[idx].Result);
+                    if (Attempted == true)
+                    {
+                        Result = "Correct";
+                    }
+
                 }   
             }
         }
@@ -51,14 +59,20 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
         private void CheckMarked()
         {
             Marked = Singleton<AnswerSheetDataController>.Instance.AnswerSheet.ContainsKey(IdQuestion);
+            if (Marked == false)
+            {
+                Status = "Incompleted";
+            }
+            else
+                Status = "Completed";
         }
 
         public ListViewItem ConvertToListItem()
         {
-            var item = new ListViewItem(Marked.ToString());
+            var item = new ListViewItem(Status);
             item.SubItems.Add(NumberOrder);
             item.SubItems.Add(Content);
-            item.SubItems.Add(Attempted.ToString());
+            item.SubItems.Add(Result);
             item.SubItems.Add(TypeQuestion);
             item.Tag = IdQuestion;
             return item;

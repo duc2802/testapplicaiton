@@ -80,7 +80,8 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Marked";
+            this.columnHeader1.Text = "Status";
+            this.columnHeader1.Width = 103;
             // 
             // columnHeader2
             // 
