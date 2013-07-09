@@ -64,6 +64,22 @@ namespace DataAccessLayer
             }
         }
 
+        public static TestBE DeleteExamFile(string filePath)
+        {
+            try
+            {
+                var readFileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                var serializerObject = new XmlSerializer(typeof(TestBE));
+                var testBe = (TestBE)serializerObject.Deserialize(readFileStream);
+                readFileStream.Close();
+                return testBe;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         #region XML
         public static XElement buildQuestionTree(TestBE test)
         {

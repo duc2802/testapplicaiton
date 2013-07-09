@@ -40,13 +40,13 @@ namespace DataAccessLayer
             return resultList;
         }
 
-        public static bool DeleteTestExamFile(string fileName, string folder)
+        public static bool DeleteTestExamFile(string testId, string forder)
         {
             try
             {
-                string pathFile = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + folder + "\\" + fileName +
-                                  ".exam";
-                var fileInfo = new FileInfo(pathFile);
+                string path = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + testId
+                             + ".exam";
+                var fileInfo = new FileInfo(path);
                 fileInfo.Delete();
                 return true;
             }

@@ -55,6 +55,31 @@ namespace ClientPresentationLayer.QuestionPresentation
             testlistView.SelectedIndexChanged += TestlistViewSelectedIndexChanged;
             startExamButton.Click += StartExamButtonClick;
             importButton.Click += ImportButtonClick;
+            deleteButton.Click += DeleteExamClick;
+        }
+
+        private void DeleteExamClick(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(this, "Do you want to delete this question?", "Delete question.",
+                                        MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                var testBe = TryLoadTestBE(Singleton<DataItemCollection>.Instance.TestItemDataSelected.Id);
+                if (testBe != null)
+                {
+                    DeleteTest(testBe.TestID);
+                    DataController.DataItems.RemoveAt(testlistView.FocusedItem.Index);
+                    RefreshGui();
+                }
+                else
+                {
+
+                    MessageBox.Show(this, "Delete Error", "Error", MessageBoxButtons.OK);
+ 
+                }
+                
+            }
+            return;
         }
 
         private void RefreshGui()
@@ -122,6 +147,11 @@ namespace ClientPresentationLayer.QuestionPresentation
             {
                 MessageBox.Show(this, "This exam maybe delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool DeleteTest(string id)
+        {
+            return TestDAL.DeleteTestExamFile(id,"");
         }
 
         private TestBE TryLoadTestBE(string id)
