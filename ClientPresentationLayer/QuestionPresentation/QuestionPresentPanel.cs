@@ -113,9 +113,11 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         public void LoadContentPanel()
         {
+            
             //Load combobox
             if (DataItem.TestID != null)
             {
+                lbNameExam.Text = DataItem.Information;
                 maxIndexQuestion = DataItem.ListQuestion.Count;
 
                 for (int i = 1; i <= maxIndexQuestion; i++)

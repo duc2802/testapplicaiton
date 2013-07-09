@@ -42,6 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
             this.orderQuestionLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbNameExam = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // contentQuestionPanel
@@ -167,10 +169,31 @@
             this.orderQuestionLabel.TabIndex = 13;
             this.orderQuestionLabel.Text = "1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 15);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Exam :";
+            // 
+            // lbNameExam
+            // 
+            this.lbNameExam.AutoSize = true;
+            this.lbNameExam.Location = new System.Drawing.Point(71, 16);
+            this.lbNameExam.Name = "lbNameExam";
+            this.lbNameExam.Size = new System.Drawing.Size(75, 13);
+            this.lbNameExam.TabIndex = 15;
+            this.lbNameExam.Text = "Name of exam";
+            // 
             // QuestionPresentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbNameExam);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.orderQuestionLabel);
             this.Controls.Add(this.lbTime);
             this.Controls.Add(this.label1);
@@ -205,5 +228,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTime;
         private System.Windows.Forms.Label orderQuestionLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbNameExam;
     }
 }
