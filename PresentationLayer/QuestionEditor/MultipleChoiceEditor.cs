@@ -11,6 +11,8 @@ using System.IO;
 using SingleInstanceObject;
 using Commons;
 using Editor;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -69,9 +71,9 @@ namespace PresentationLayer.QuestionEditor
 
         private void AddEquationClick(object sender, EventArgs e)
         {
-            App test = new App();
-            test.InitializeComponent();
-            test.Run();
+            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            string editor =path + "\\" + "Editor.exe";
+            Process.Start(editor);
         }
 
         private void AddImageButtonClick(object sender, EventArgs e) 

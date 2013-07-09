@@ -115,6 +115,7 @@ namespace Editor
             {
                 string ext = Path.GetExtension(fileName);
                 editor.ExportImage(fileName);
+                this.Close();
             }      
 
         }               
