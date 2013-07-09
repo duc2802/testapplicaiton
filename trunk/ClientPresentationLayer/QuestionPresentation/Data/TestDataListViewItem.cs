@@ -12,6 +12,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
         public string Id { set; get; }
         public string Title { set; get; }
         public int NumOfQuestion { set; get; }
+        public string TimeOfTest { set; get; }
         public string Date { set; get; }
 
         public TestDataListViewItem(TestBE test)
@@ -20,6 +21,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
             NumOfQuestion = test.NumberOfQuestion;
             Date = test.DateCreate;
             Id = test.TestID;
+            TimeOfTest = test.Time;
         }
 
         public ListViewItem ConvertToListItem()
@@ -28,6 +30,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
             item.Tag = Id;
             item.SubItems.Add(NumOfQuestion.ToString());
             item.SubItems.Add(Date);
+            item.SubItems.Add(TimeOfTest);
             return item;
         }
     }
