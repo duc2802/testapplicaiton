@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1FD872DBB13146F5B75E12FAD60DFA4E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_249F8B3368FD193BF8E7A106273D641B"
         "OwnerKey" = "8:_C5F6EB8FCB49461F80164B3CF45D10D7"
         "MsmSig" = "8:_UNDEFINED"
@@ -51,14 +57,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_50136C3A5C8F461A9826F5B95384D5F7"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_60F01C3BEABF3A39DC56F16C47CB07EC"
+        "OwnerKey" = "8:_C5F6EB8FCB49461F80164B3CF45D10D7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_60F01C3BEABF3A39DC56F16C47CB07EC"
-        "OwnerKey" = "8:_C5F6EB8FCB49461F80164B3CF45D10D7"
+        "MsmKey" = "8:_8C9ED6BA772B44CFAF625C2570219EF8"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,12 +112,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E4C13B5572BCB0D1EE38413D7C009F6D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C5F6EB8FCB49461F80164B3CF45D10D7"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -151,6 +151,12 @@
         "OwnerKey" = "8:_249F8B3368FD193BF8E7A106273D641B"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E4C13B5572BCB0D1EE38413D7C009F6D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -176,6 +182,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -200,6 +219,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -259,6 +291,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1FD872DBB13146F5B75E12FAD60DFA4E"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\..\\AppData\\Roaming\\TestEasy\\ClientData\\26192013041920.exam"
+            "TargetName" = "8:26192013041920.exam"
+            "Tag" = "8:"
+            "Folder" = "8:_6CE40D59F7D945A19AEFA32986846EDB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_249F8B3368FD193BF8E7A106273D641B"
@@ -323,26 +375,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50136C3A5C8F461A9826F5B95384D5F7"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\Desktop\\Custom-Icon-Design-Pretty-Office-10-Test-paper.ico"
-            "TargetName" = "8:Custom-Icon-Design-Pretty-Office-10-Test-paper.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_C495614CBF8B46C9B79BB09ED068BC19"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_60F01C3BEABF3A39DC56F16C47CB07EC"
             {
             "AssemblyRegister" = "3:1"
@@ -372,6 +404,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8C9ED6BA772B44CFAF625C2570219EF8"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\..\\Downloads\\Custom-Icon-Design-Pretty-Office-10-Test-paper.ico"
+            "TargetName" = "8:Custom-Icon-Design-Pretty-Office-10-Test-paper.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C495614CBF8B46C9B79BB09ED068BC19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D17EF184EDD0F30E3D0AC8469F7F6411"
@@ -557,7 +609,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ClientSetup"
         "ProductCode" = "8:{3A1C4883-353E-42E4-AD9D-5C9D59F8565D}"
-        "PackageCode" = "8:{39B0C61A-F5A3-4B9A-BF6A-B152F2D18793}"
+        "PackageCode" = "8:{00EBE3FC-0079-4EBC-8FDE-73FA3A41CC96}"
         "UpgradeCode" = "8:{6F00891F-B39F-429E-8CBB-C92E27B381DF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -688,7 +740,7 @@
             "Target" = "8:_C5F6EB8FCB49461F80164B3CF45D10D7"
             "Folder" = "8:_B748933111BC43749C058B9CEABE23CC"
             "WorkingFolder" = "8:_C495614CBF8B46C9B79BB09ED068BC19"
-            "Icon" = "8:_50136C3A5C8F461A9826F5B95384D5F7"
+            "Icon" = "8:_8C9ED6BA772B44CFAF625C2570219EF8"
             "Feature" = "8:"
             }
         }
