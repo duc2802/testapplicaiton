@@ -69,10 +69,9 @@ namespace PresentationLayer.QuestionEditor
 
         private void AddEquationClick(object sender, EventArgs e)
         {
-            MainWindow test = new MainWindow();
-            test.ShowDialog();
-            
-            
+            App test = new App();
+            test.InitializeComponent();
+            test.Run();
         }
 
         private void AddImageButtonClick(object sender, EventArgs e) 
