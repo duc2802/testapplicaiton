@@ -25,7 +25,7 @@ namespace Editor
 
         public MathToolBar()
         {
-            InitializeComponent();
+            InitializeComponent();       
         }
 
         private void toolBarButton_Click(object sender, RoutedEventArgs e)
@@ -72,16 +72,19 @@ namespace Editor
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
+        {            
             CreateSymbolsPanel();
             CreateGreekCapitalPanel();
             CreateGreekSmallPanel();
             CreateArrowsPanel();
+
             CreateBracketsPanel();
+            MessageBox.Show("INIT PANEL ");
             CreateSumsProductsPanel();
             CreateIntegralsPanel();
             CreateSubAndSuperPanel();
             CreateDivAndRootsPanel();
+
         }
 
         void CreatePanel(List<CommandDetails> list, Button toolBarButton, int columns, int margin)
@@ -93,6 +96,7 @@ namespace Editor
             Vector offset = VisualTreeHelper.GetOffset(toolBarButton);
             Canvas.SetLeft(bp, offset.X + 2);
             bp.Visibility = System.Windows.Visibility.Collapsed;
+            //MessageBox.Show("INIT PANEL :" + toolBarButton.Name);
             buttonPanelMapping.Add(toolBarButton, bp);
         }
 
@@ -127,7 +131,9 @@ namespace Editor
                 CreatePanel(list, toolBarButton, columns, 4);
             }
             catch
-            { }
+            {
+                throw;
+            }
         }
 
 
@@ -187,11 +193,12 @@ namespace Editor
 
         Uri CreateImageUri(string subFolder, string imageFileName)
         {
-            return new Uri("pack://application:,,,/images/commands/" + subFolder + "/" + imageFileName);
+            
+            return new Uri("C:/Users/Admin/Documents/Visual Studio 2010/Projects/Project/TestEquationEditor/EquationEditor/images/commands/" + subFolder + "/" + imageFileName);
         }
 
         void CreateBracketsPanel()
-        {
+        {            
             Uri[] imageUris = { CreateImageUri("brackets", "SingleBar.png"),
                                 CreateImageUri("brackets", "DoubleBar.png"),
                                 CreateImageUri("brackets", "Floor.png"),
