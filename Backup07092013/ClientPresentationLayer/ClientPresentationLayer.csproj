@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C4B98FA5-293A-4D06-8431-E2909278D0B6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientPresentationLayer</RootNamespace>
+    <AssemblyName>ClientPresentationLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=6.6.0.5, Culture=neutral, PublicKeyToken=7c5c3e3e32ebc94e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ribbon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\DataItemCollection.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormView.Designer.cs">
+      <DependentUpon>MainFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionPresentation\Data\AnswerSheetDataController.cs" />
+    <Compile Include="QuestionPresentation\Data\QuestionDataListViewItem.cs" />
+    <Compile Include="QuestionPresentation\Data\QuestionDataListViewItemController.cs" />
+    <Compile Include="QuestionPresentation\DislayImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\DislayImageForm.Designer.cs">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\PresentQuestionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\PresentQuestionPanel.Designer.cs">
+      <DependentUpon>PresentQuestionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionItem.Designer.cs">
+      <DependentUpon>QuestionItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\AnswerItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\AnswerItem.Designer.cs">
+      <DependentUpon>AnswerItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\Data\AnswerDataController.cs" />
+    <Compile Include="QuestionPresentation\Data\AnswerDataItem.cs" />
+    <Compile Include="QuestionPresentation\Data\QuestionDataController.cs" />
+    <Compile Include="QuestionPresentation\Data\QuestionDataItem.cs" />
+    <Compile Include="QuestionPresentation\QuestionExplainPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionExplainPanel.Designer.cs">
+      <DependentUpon>QuestionExplainPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\Data\TestDataListViewItem.cs" />
+    <Compile Include="QuestionPresentation\Data\TestDataListViewItemController.cs" />
+    <Compile Include="QuestionPresentation\QuestionListItemCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionListItemCustom.Designer.cs">
+      <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionPresentPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionPresentPanel.Designer.cs">
+      <DependentUpon>QuestionPresentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionReviewPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\QuestionReviewPanel.Designer.cs">
+      <DependentUpon>QuestionReviewPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionPresentation\TestManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\TestManager.Designer.cs">
+      <DependentUpon>TestManager.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormView.resx">
+      <DependentUpon>MainFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="QuestionPresentation\DislayImageForm.resx">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\PresentQuestionPanel.resx">
+      <DependentUpon>PresentQuestionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionItem.resx">
+      <DependentUpon>QuestionItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\AnswerItem.resx">
+      <DependentUpon>AnswerItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionExplainPanel.resx">
+      <DependentUpon>QuestionExplainPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionListItemCustom.resx">
+      <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionPresentPanel.resx">
+      <DependentUpon>QuestionPresentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\QuestionReviewPanel.resx">
+      <DependentUpon>QuestionReviewPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPresentation\TestManager.resx">
+      <DependentUpon>TestManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\DevComponents.DotNetBar2.dll" />
+    <Content Include="Lib\Ribbon.dll" />
+    <None Include="Resources\true.png" />
+    <None Include="Resources\Results.png" />
+    <None Include="Resources\Alarm.png" />
+    <None Include="Resources\Clock.png" />
+    <None Include="Resources\Program.png" />
+    <None Include="Resources\NewQuestion.png" />
+    <None Include="Resources\AddNew.png" />
+    <None Include="Resources\test.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{EAE0FA35-5202-4F99-915D-B48FE68976D8}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commons\Commons.csproj">
+      <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SingleInstanceObject\SingleInstanceObject.csproj">
+      <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
+      <Name>SingleInstanceObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestApplication\BusinessLogicLayer.csproj">
+      <Project>{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

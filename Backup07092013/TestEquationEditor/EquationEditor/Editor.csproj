@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B19FF7B5-8771-4222-A539-496B58ECCC12}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Editor</RootNamespace>
+    <AssemblyName>Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="common\AutoGrayableImage.cs" />
+    <Compile Include="common\Caret.cs" />
+    <Compile Include="equations\Common\DrawingContextHelper.cs" />
+    <Compile Include="equations\Common\MathEditorData.cs" />
+    <Compile Include="equations\Common\FormattedTextHelper.cs" />
+    <Compile Include="equations\Common\PenManager.cs" />
+    <Compile Include="equations\SignComposite\SignCompositeFactory.cs" />
+    <Compile Include="equations\SignComposite\SignSubSuper.cs" />
+    <Compile Include="equations\SignComposite\SignSimple.cs" />
+    <Compile Include="equations\SignComposite\SignBottom.cs" />
+    <Compile Include="equations\SignComposite\SignBottomTop.cs" />
+    <Compile Include="equations\SignComposite\StaticSign.cs" />
+    <Compile Include="equations\SignComposite\SignSub.cs" />
+    <Compile Include="equations\SubSuper\SubSuperBase.cs" />
+    <Compile Include="equations\SubSuper\Super.cs" />
+    <Page Include="ButtonPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ButtonPanel.xaml.cs">
+      <DependentUpon>ButtonPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="common\MouseWheelGesture.cs" />
+    <Compile Include="EditorControl.xaml.cs">
+      <DependentUpon>EditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="common\CommandDetails.cs" />
+    <Compile Include="equations\Bracket\Bracket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="equations\Bracket\BracketSign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="equations\Bracket\LeftBracket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="equations\Bracket\LeftRightBracket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="equations\Bracket\RightBracket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="equations\Common\StaticText.cs" />
+    <Compile Include="equations\Division\DivBase.cs" />
+    <Compile Include="equations\Division\DivHorizontal.cs" />
+    <Compile Include="equations\Division\DivRegular.cs" />
+    <Compile Include="equations\Division\DivSlanted.cs" />
+    <Compile Include="common\Enums.cs" />
+    <Compile Include="equations\EquationRow.cs" />
+    <Compile Include="equations\EquationBase.cs" />
+    <Compile Include="equations\EquationContainer.cs" />
+    <Compile Include="equations\EquationRoot.cs" />
+    <Compile Include="equations\Root\nRoot.cs" />
+    <Compile Include="equations\Root\RadicalSign.cs" />
+    <Compile Include="equations\Root\SquareRoot.cs" />
+    <Compile Include="equations\RowContainer.cs" />
+    <Compile Include="equations\SubSuper\SubAndSuper.cs" />
+    <Compile Include="equations\SubSuper\Sub.cs" />
+    <Compile Include="equations\TextEquation.cs" />
+    <Compile Include="common\FontFactory.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MathToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MathToolBar.xaml.cs">
+      <DependentUpon>MathToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Resource Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="images\commands\integrals\DIntegral.png" />
+    <Resource Include="images\commands\integrals\DIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\DIntegralSub.png" />
+    <Resource Include="images\commands\integrals\Integral.png" />
+    <Resource Include="images\commands\integrals\IntegralBottom.png" />
+    <Resource Include="images\commands\integrals\IntegralBottomTop.png" />
+    <Resource Include="images\commands\integrals\IntegralSub.png" />
+    <Resource Include="images\commands\integrals\TIntegral.png" />
+    <Resource Include="images\commands\integrals\TIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\TIntegralSub.png" />
+    <Resource Include="STIX\STIXGeneral-Bold.otf" />
+    <Resource Include="STIX\STIXGeneral-BoldItalic.otf" />
+    <Resource Include="STIX\STIXGeneral-Italic.otf" />
+    <Resource Include="STIX\STIXGeneral-Regular.otf" />
+    <Resource Include="STIX\STIXIntegralsD-Bold.otf" />
+    <Resource Include="STIX\STIXIntegralsD-Regular.otf" />
+    <Resource Include="STIX\STIXIntegralsSm-Bold.otf" />
+    <Resource Include="STIX\STIXIntegralsSm-Regular.otf" />
+    <Resource Include="STIX\STIXIntegralsUp-Bold.otf" />
+    <Resource Include="STIX\STIXIntegralsUp-Regular.otf" />
+    <Resource Include="STIX\STIXIntegralsUpD-Bold.otf" />
+    <Resource Include="STIX\STIXIntegralsUpD-Regular.otf" />
+    <Resource Include="STIX\STIXIntegralsUpSm-Bold.otf" />
+    <Resource Include="STIX\STIXIntegralsUpSm-Regular.otf" />
+    <Resource Include="STIX\STIXNonUnicode-Bold.otf" />
+    <Resource Include="STIX\STIXNonUnicode-BoldItalic.otf" />
+    <Resource Include="STIX\STIXNonUnicode-Italic.otf" />
+    <Resource Include="STIX\STIXNonUnicode-Regular.otf" />
+    <Resource Include="STIX\STIXSizeFiveSym-Regular.otf" />
+    <Resource Include="STIX\STIXSizeFourSym-Bold.otf" />
+    <Resource Include="STIX\STIXSizeFourSym-Regular.otf" />
+    <Resource Include="STIX\STIXSizeOneSym-Bold.otf" />
+    <Resource Include="STIX\STIXSizeOneSym-Regular.otf" />
+    <Resource Include="STIX\STIXSizeThreeSym-Bold.otf" />
+    <Resource Include="STIX\STIXSizeThreeSym-Regular.otf" />
+    <Resource Include="STIX\STIXSizeTwoSym-Bold.otf" />
+    <Resource Include="STIX\STIXSizeTwoSym-Regular.otf" />
+    <Resource Include="STIX\STIXVariants-Bold.otf" />
+    <Resource Include="STIX\STIXVariants-Regular.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\AngleBar.png" />
+    <Resource Include="images\commands\brackets\BarAngle.png" />
+    <Resource Include="images\commands\brackets\Ceiling.png" />
+    <Resource Include="images\commands\brackets\CurlyBracket.png" />
+    <Resource Include="images\commands\divAndRoots\Div.png" />
+    <Resource Include="images\commands\divAndRoots\DivHoriz.png" />
+    <Resource Include="images\commands\divAndRoots\DivSlant.png" />
+    <Resource Include="images\commands\brackets\DoubleBar.png" />
+    <Resource Include="images\commands\brackets\Floor.png" />
+    <Resource Include="images\commands\brackets\LeftBar.png" />
+    <Resource Include="images\commands\divAndRoots\nRoot.png" />
+    <Resource Include="images\commands\brackets\Parentheses.png" />
+    <Resource Include="images\commands\brackets\PointingAngles.png" />
+    <Resource Include="images\commands\brackets\RightBar.png" />
+    <Resource Include="images\commands\brackets\SingleBar.png" />
+    <Resource Include="images\commands\divAndRoots\SqRoot.png" />
+    <Resource Include="images\commands\brackets\SquareBar.png" />
+    <Resource Include="images\commands\brackets\SquareBracket.png" />
+    <Resource Include="images\commands\subSuper\SubLeft.png" />
+    <Resource Include="images\commands\subSuper\SubSuper.png" />
+    <Resource Include="images\commands\sumsProducts\Sum.png" />
+    <Resource Include="images\commands\sumsProducts\SumBottom.png" />
+    <Resource Include="images\commands\sumsProducts\SumBottomTop.png" />
+    <Resource Include="images\commands\sumsProducts\SumSub.png" />
+    <Resource Include="images\commands\subSuper\Super.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\sumsProducts\product.png" />
+    <Resource Include="images\commands\sumsProducts\ProductBottom.png" />
+    <Resource Include="images\commands\sumsProducts\ProductBottomTop.png" />
+    <Resource Include="images\commands\sumsProducts\ProductSub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gui\zoomin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gui\zoomout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="app_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mathbuttons\arrows.png" />
+    <Resource Include="images\mathbuttons\brackets.png" />
+    <Resource Include="images\mathbuttons\greekcapital.png" />
+    <Resource Include="images\mathbuttons\greeksmall.png" />
+    <Resource Include="images\mathbuttons\integrals.png" />
+    <Resource Include="images\mathbuttons\sumproduct.png" />
+    <Resource Include="images\mathbuttons\symbols.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mathbuttons\divroot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mathbuttons\subsuper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\RightAngle.png" />
+    <Resource Include="images\commands\brackets\RightCurlyBracket.png" />
+    <Resource Include="images\commands\brackets\RightDoubleBar.png" />
+    <Resource Include="images\commands\brackets\RightParenthesis.png" />
+    <Resource Include="images\commands\brackets\RightRightSquareBracket.png" />
+    <Resource Include="images\commands\brackets\RightSquareBracket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\SquareParenthesis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\LeftAngle.png" />
+    <Resource Include="images\commands\brackets\LeftCurlyBracket.png" />
+    <Resource Include="images\commands\brackets\LeftDoubleBar.png" />
+    <Resource Include="images\commands\brackets\LeftLeftSquareBracket.png" />
+    <Resource Include="images\commands\brackets\LeftParenthesis.png" />
+    <Resource Include="images\commands\brackets\LeftSquareBracket.png" />
+    <Resource Include="images\commands\brackets\ParenthesisSquare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\RightLeftSquareBracket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\RightSquareBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\brackets\LeftSquareBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\sumsProducts\coProduct.png" />
+    <Resource Include="images\commands\sumsProducts\coProductBottom.png" />
+    <Resource Include="images\commands\sumsProducts\coProductBottomTop.png" />
+    <Resource Include="images\commands\sumsProducts\coProductSub.png" />
+    <Resource Include="images\commands\sumsProducts\coProductSubSuper.png" />
+    <Resource Include="images\commands\sumsProducts\intersection.png" />
+    <Resource Include="images\commands\sumsProducts\intersectionBottom.png" />
+    <Resource Include="images\commands\sumsProducts\intersectionBottomTop.png" />
+    <Resource Include="images\commands\sumsProducts\intersectionSub.png" />
+    <Resource Include="images\commands\sumsProducts\intersectionSubSuper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\sumsProducts\productSubSuper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\sumsProducts\sumSubSuper.png" />
+    <Resource Include="images\commands\sumsProducts\union.png" />
+    <Resource Include="images\commands\sumsProducts\unionBottom.png" />
+    <Resource Include="images\commands\sumsProducts\unionBottomTop.png" />
+    <Resource Include="images\commands\sumsProducts\unionSub.png" />
+    <Resource Include="images\commands\sumsProducts\unionSubSuper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\integrals\anticlockContourIntegral.png" />
+    <Resource Include="images\commands\integrals\anticlockContourIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\anticlockContourIntegralSub.png" />
+    <Resource Include="images\commands\integrals\clockContourIntegral.png" />
+    <Resource Include="images\commands\integrals\clockContourIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\clockContourIntegralSub.png" />
+    <Resource Include="images\commands\integrals\contourIntegral.png" />
+    <Resource Include="images\commands\integrals\contourIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\contourIntegralSub.png" />
+    <Resource Include="images\commands\integrals\integralSubSuper.png" />
+    <Resource Include="images\commands\integrals\surfaceIntegral.png" />
+    <Resource Include="images\commands\integrals\surfaceIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\surfaceIntegralSub.png" />
+    <Resource Include="images\commands\integrals\volumeIntegral.png" />
+    <Resource Include="images\commands\integrals\volumeIntegralBottom.png" />
+    <Resource Include="images\commands\integrals\volumeIntegralSub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\commands\subSuper\Sub.png" />
+    <Resource Include="images\commands\subSuper\SubSuperLeft.png" />
+    <Resource Include="images\commands\subSuper\SuperLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gui\underbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Commons.csproj">
+      <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SingleInstanceObject\SingleInstanceObject.csproj">
+      <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
+      <Name>SingleInstanceObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ThreadQueueManager\ThreadQueueManager.csproj">
+      <Project>{134E9CBB-0EB0-4D3F-B526-0447BC0AD3DC}</Project>
+      <Name>ThreadQueueManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

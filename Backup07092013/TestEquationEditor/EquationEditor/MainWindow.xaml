@@ -1,0 +1,60 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Editor"
+        x:Class="Editor.MainWindow"
+        Title="MainWindow" 
+        Height="550" Width="720"  
+        WindowStartupLocation="CenterScreen" 
+        Background="White"
+        TextInput="Window_TextInput"
+        KeyDown="Window_KeyDown"      
+    >
+    <Window.Resources>
+        <Style TargetType="{x:Type Image}" x:Key="DisabledImageStyle">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled"  Value="False">
+                    <Setter Property="Opacity" Value="0.4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"	        Executed="CloseCommandHandler"/>
+        <CommandBinding Command="DecreaseZoom"  Executed="DecreaseZoomCommandHandler"/>
+        <CommandBinding Command="IncreaseZoom"  Executed="IncreaseZoomCommandHandler"/>
+    </Window.CommandBindings>
+
+    <DockPanel x:Name="mainDock" LastChildFill="True">
+        <Grid DockPanel.Dock="Top">            
+            <Menu DockPanel.Dock="Top"></Menu>
+        </Grid>
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch" Margin="0,2,0,4">
+            <ToolBarTray  IsLocked="True">
+                <ToolBar Band="1" BandIndex="1"  Height="30" Loaded="ToolBar_Loaded">
+                    <Button x:Name="zoomoutButton" Command="DecreaseZoom" ToolTip="Zoom out" ToolTipService.ShowOnDisabled="True">
+                        <local:AutoGreyableImage Source="images\gui\zoomout.png"/>
+                    </Button>
+                    <Button x:Name="zoominButton" Command="IncreaseZoom" ToolTip="Zoom in" ToolTipService.ShowOnDisabled="True">
+                        <local:AutoGreyableImage Source="images\gui\zoomin.png" />
+                    </Button>
+                    <Separator />
+                    <Separator />
+                </ToolBar>
+            </ToolBarTray>
+            <Button Content="OK" Height="23" HorizontalAlignment="Left" Margin="606,5,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="ExportFilePNG" ContextMenuClosing="button1_ContextMenuClosing" />
+        </Grid>
+        <local:MathToolBar x:Name="mathToolBar" DockPanel.Dock="Top" DockPanel.ZIndex="99"></local:MathToolBar>
+        <Grid Background="#FFEEDDCC" DockPanel.Dock="Bottom" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Name="statusBarLeftLabel" Height="25"></Label>
+            <Label Grid.Column="1" Name="statusBarRightLabel" Height="25" HorizontalAlignment="Right"></Label>
+        </Grid>
+        <ScrollViewer x:Name="scrollViwer" FocusVisualStyle="{x:Null}" Focusable="True" ScrollChanged="scrollViwer_ScrollChanged" HorizontalScrollBarVisibility="Auto">
+            <local:EditorControl Background="Transparent" x:Name="editor" Focusable="True"  FocusVisualStyle="{x:Null}"></local:EditorControl>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

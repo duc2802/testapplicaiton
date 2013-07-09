@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B2561A6D-B512-449A-A03F-9E49F61FEBA9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PresentationLayer</RootNamespace>
+    <AssemblyName>PresentationLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=6.6.0.5, Culture=neutral, PublicKeyToken=7c5c3e3e32ebc94e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="Ribbon">
+      <HintPath>C:\Users\tiendv\Documents\Downloads\Compressed\Ribbon\bin\Debug\Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionController\GuiActionEventController.cs" />
+    <Compile Include="Category\CategoryExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\CategoryExplorer.Designer.cs">
+      <DependentUpon>CategoryExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExamEditor\NewExamDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExamEditor\NewExamDialog.Designer.cs">
+      <DependentUpon>NewExamDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Explorer\ExplorerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Explorer\ExplorerPanel.Designer.cs">
+      <DependentUpon>ExplorerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Explorer\Data\NodeDateItem.cs" />
+    <Compile Include="Explorer\NodeExplorer.cs" />
+    <Compile Include="Explorer\TestListItemCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Explorer\TestListItemCustom.Designer.cs">
+      <DependentUpon>TestListItemCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Explorer\Data\TestDataItem.cs" />
+    <Compile Include="Explorer\Data\TestListDataItemController.cs" />
+    <Compile Include="Explorer\TestListPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Explorer\TestListPanel.Designer.cs">
+      <DependentUpon>TestListPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\ExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ExportForm.Designer.cs">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\Data\AnswerDataController.cs" />
+    <Compile Include="QuestionEditor\Data\AnswerDataItem.cs" />
+    <Compile Include="QuestionEditor\Data\QuestionDataController.cs" />
+    <Compile Include="QuestionEditor\Data\QuestionDataItem.cs" />
+    <Compile Include="QuestionEditor\DislayImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\DislayImageForm.Designer.cs">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\FillInBlankEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\FillInBlankEditor.Designer.cs">
+      <DependentUpon>FillInBlankEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\Item.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\Item.Designer.cs">
+      <DependentUpon>Item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\MultipleChoiceEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\MultipleChoiceEditor.Designer.cs">
+      <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\OptionItemCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\OptionItemCustom.Designer.cs">
+      <DependentUpon>OptionItemCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionEditor.Designer.cs">
+      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionListItemCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionListItemCustom.Designer.cs">
+      <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionListPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor\QuestionListPanel.Designer.cs">
+      <DependentUpon>QuestionListPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash\WelcomeSrceenTimer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Splash\WelcomeScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash\WelcomeScreen.designer.cs">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreadManager\DataThread\CreateTestItemCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\DataQueueThreadController.cs" />
+    <Compile Include="ThreadManager\DataThread\DeleteNodeExplorerCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\DeleteTestCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\ExportTestCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\RenameNodeExplorerCmd.cs" />
+    <Compile Include="ThreadManager\DataThread\SaveTestCmd.cs" />
+    <Compile Include="ThreadManager\GuiThread\CreateTestCmd.cs" />
+    <Compile Include="ThreadManager\GuiThread\GuiQueueThreadController.cs" />
+    <Compile Include="ThreadManager\GuiThread\LoadQuestionCmd.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExamEditor\NewExamDialog.resx">
+      <DependentUpon>NewExamDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Explorer\ExplorerPanel.resx">
+      <DependentUpon>ExplorerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Explorer\TestListItemCustom.resx">
+      <DependentUpon>TestListItemCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Explorer\TestListPanel.resx">
+      <DependentUpon>TestListPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ExportForm.resx">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\DislayImageForm.resx">
+      <DependentUpon>DislayImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\Item.resx">
+      <DependentUpon>Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\MultipleChoiceEditor.resx">
+      <DependentUpon>MultipleChoiceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\OptionItemCustom.resx">
+      <DependentUpon>OptionItemCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\QuestionEditor.resx">
+      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\QuestionListItemCustom.resx">
+      <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEditor\QuestionListPanel.resx">
+      <DependentUpon>QuestionListPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash\WelcomeScreen.resx">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\DevComponents.DotNetBar2.dll" />
+    <Content Include="Lib\MimeTeX.dll" />
+    <Content Include="Lib\Ribbon.dll" />
+    <None Include="app.config" />
+    <Content Include="Resources\AddNew.png" />
+    <None Include="Resources\Clock.png" />
+    <None Include="Resources\Export.png" />
+    <None Include="Resources\editquestion.png" />
+    <Content Include="Resources\docs.png" />
+    <Content Include="Resources\NewQuestion.png" />
+    <Content Include="Resources\Program.png" />
+    <None Include="Resources\test.png" />
+    <None Include="Resources\Results.png" />
+    <None Include="Resources\Splash.png" />
+    <None Include="Resources\Tatice-Cristal-Intense-Ok.ico" />
+    <Content Include="Resources\Welcome.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{EAE0FA35-5202-4F99-915D-B48FE68976D8}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commons\Commons.csproj">
+      <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{9E9C3272-1DD1-4DA4-B07C-E14CC9FC41D4}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SingleInstanceObject\SingleInstanceObject.csproj">
+      <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
+      <Name>SingleInstanceObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestApplication\BusinessLogicLayer.csproj">
+      <Project>{38ED14A1-21E8-4CC7-84AF-18D8AC47D2F6}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestEquationEditor\EquationEditor\Editor.csproj">
+      <Project>{B19FF7B5-8771-4222-A539-496B58ECCC12}</Project>
+      <Name>Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThreadQueueManager\ThreadQueueManager.csproj">
+      <Project>{134E9CBB-0EB0-4D3F-B526-0447BC0AD3DC}</Project>
+      <Name>ThreadQueueManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeiFenLuoDockingMaster\WinFormsUI\WeifenLuo.WinFormsUI.Docking.csproj">
+      <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>
+      <Name>WeifenLuo.WinFormsUI.Docking</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
