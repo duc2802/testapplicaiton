@@ -60,7 +60,7 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void DeleteExamClick(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(this, "Do you want to delete this question?", "Delete question.",
+            var result = MessageBox.Show(this, "Do you want to delete this exam?", "Delete exam.",
                                         MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
