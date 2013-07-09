@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -390,6 +391,20 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Commons.csproj">
+      <Project>{87456E8E-2CB5-43D4-943E-FCB03CF2CA13}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SingleInstanceObject\SingleInstanceObject.csproj">
+      <Project>{45701DE8-D225-4300-9657-286C1B98166D}</Project>
+      <Name>SingleInstanceObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ThreadQueueManager\ThreadQueueManager.csproj">
+      <Project>{134E9CBB-0EB0-4D3F-B526-0447BC0AD3DC}</Project>
+      <Name>ThreadQueueManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
