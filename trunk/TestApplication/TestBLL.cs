@@ -23,9 +23,9 @@ namespace TestApplication
             return testBEList;
         }
 
-        public bool DeleteTestExamFile(string name, string place)
+        public bool DeleteTestExamFile(string name, string foder)
         {
-            return TestDAL.DeleteTestExamFile(name, place);
+            return TestDAL.DeleteTestExamFile(name, foder);
         }
     }
 }
