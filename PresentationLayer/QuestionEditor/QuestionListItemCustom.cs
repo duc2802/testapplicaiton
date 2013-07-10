@@ -7,11 +7,13 @@ using System.Windows.Forms;
 using BusinessEntities;
 using Commons;
 using Commons.BusinessObjects;
+using LiveSwitch.TextControl;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer;
 using PresentationLayer.ActionController;
 using SingleInstanceObject;
 using ThreadQueueManager;
+using TextEditor = LiveSwitch.TextControl.Editor;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -134,6 +136,8 @@ namespace PresentationLayer.QuestionEditor
 
         private QuestionDataItem _dataItem;
 
+        private TextEditor _contentQuestionTextEditor;
+        
         public QuestionListItemCustom()
         {
             InitializeComponent();
@@ -143,8 +147,31 @@ namespace PresentationLayer.QuestionEditor
         public QuestionListItemCustom(QuestionDataItem question)
         {
             InitializeComponent();
+            InitCustomComponent();
             InitEvent();
             InitCommonGui(question);
+        }
+
+        public void InitCustomComponent()
+        {
+            SuspendLayout();
+            //Init contentQuestionTextEditor
+            contentQuestionPanel.BorderStyle = BorderStyle.FixedSingle;
+            _contentQuestionTextEditor = new TextEditor(false);
+            _contentQuestionTextEditor.BackColor = SystemColors.Control;
+            _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
+            _contentQuestionTextEditor.BodyHtml = null;
+            _contentQuestionTextEditor.BodyText = null;
+            _contentQuestionTextEditor.Dock = DockStyle.Fill;
+            _contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
+            _contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
+            _contentQuestionTextEditor.FontSize = FontSize.Three;
+            _contentQuestionTextEditor.Html = null;
+            _contentQuestionTextEditor.Name = "_contentQuestionTextEditor";
+            _contentQuestionTextEditor.Size = new Size(632, 124);
+            _contentQuestionTextEditor.TabIndex = 1;
+            contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
+            ResumeLayout(false);
         }
 
         public QuestionDataItem DataItem
@@ -161,7 +188,7 @@ namespace PresentationLayer.QuestionEditor
         private void InitEvent()
         {
             //Component Events.
-            contentQuestionTextBox.TextChanged += ContentQuestionTextBoxChanged;
+            //contentQuestionPanel.TextChanged += ContentQuestionPanelChanged;
             answerChoiseContainer.Click += AnswerChoiseContainerClick;
             deleteButton.Click += DeleteButtonClick;
 
@@ -183,7 +210,7 @@ namespace PresentationLayer.QuestionEditor
 
         private void OnDataItemChanged()
         {
-            contentQuestionTextBox.Text = DataItem.ContentQuestion;
+            _contentQuestionTextEditor.Html = DataItem.ContentQuestion;
             orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             AddAnswerOptions();
             CalculatePanelSize();
@@ -191,7 +218,7 @@ namespace PresentationLayer.QuestionEditor
 
         public void CalculatePanelSize()
         {
-            answerChoiseContainer.Height = contentQuestionTextBox.Location.Y + contentQuestionTextBox.Height + 10 +
+            answerChoiseContainer.Height = contentQuestionPanel.Location.Y + contentQuestionPanel.Height + 10 +
                                            (DataItem.AnswerData.AnswerData.Count*20);
         }
         
@@ -206,13 +233,11 @@ namespace PresentationLayer.QuestionEditor
             {
                 var item =
                     answerChoiseContainer.Controls.Find(answerItem.orderAnswer.ToString(), true).FirstOrDefault() as
-                    CheckBox;
+                    HTMLAnswerItem;
                 if (item != null)
                 {
-                    item.Name = answerItem.orderAnswer.ToString();
-                    item.AutoSize = true;
-                    item.Checked = answerItem.isTrue;
-                    item.Text = answerItem.ContentAnswer;
+                    //item.Name = answerItem.orderAnswer.ToString();
+                    //item.AutoSize = true;
                 }
                 else
                 {
@@ -231,14 +256,15 @@ namespace PresentationLayer.QuestionEditor
         private void AddNewLine(AnswerDataItem answerItem, int orderNumber)
         {
             var point = new Point();
-            point.Y = contentQuestionTextBox.Location.Y + contentQuestionTextBox.Height + 10 + ((orderNumber - 1)*20);
-            point.X = contentQuestionTextBox.Location.X;
-            var answerCheckBox = new CheckBox();
+            point.Y = contentQuestionPanel.Location.Y + contentQuestionPanel.Height + 10 + ((orderNumber - 1) * 74);
+            point.X = contentQuestionPanel.Location.X;
+            var answerCheckBox = new HTMLAnswerItem(answerItem, false);
+            answerCheckBox.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
             answerCheckBox.Name = answerItem.orderAnswer.ToString();
             answerCheckBox.AutoSize = true;
             answerCheckBox.Location = point;
-            answerCheckBox.Checked = answerItem.isTrue;
-            answerCheckBox.Text = answerItem.ContentAnswer;
+            //answerCheckBox.Checked = answerItem.isTrue;
+            //answerCheckBox.Text = answerItem.ContentAnswer;
             answerChoiseContainer.Controls.Add(answerCheckBox);
         }
 
@@ -248,10 +274,10 @@ namespace PresentationLayer.QuestionEditor
         public void RefreshContentQuestionTexBox()
         {
             SuspendLayout();
-            string contentWrap = WrapText(contentQuestionTextBox.Text, contentQuestionTextBox.Width,
-                                          contentQuestionTextBox.Font);
+            string contentWrap = WrapText(contentQuestionPanel.Text, contentQuestionPanel.Width,
+                                          contentQuestionPanel.Font);
             int countNewLine = contentWrap.Split('\n').Count();
-            contentQuestionTextBox.Height = (countNewLine)*contentQuestionTextBox.Font.Height + (3);
+            contentQuestionPanel.Height = (countNewLine)*contentQuestionPanel.Font.Height + (3);
             ResumeLayout(true);
             PerformLayout();
         }
@@ -291,7 +317,7 @@ namespace PresentationLayer.QuestionEditor
 
         #region Implement all of events
 
-        private void ContentQuestionTextBoxChanged(object sender, EventArgs e)
+        private void ContentQuestionPanelChanged(object sender, EventArgs e)
         {
             RefreshContentQuestionTexBox();
         }

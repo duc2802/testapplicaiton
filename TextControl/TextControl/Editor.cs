@@ -1,48 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using mshtml;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
 using System.IO;
-using System.Web;
-using System.Threading;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Windows.Forms;
+using mshtml;
 
 namespace LiveSwitch.TextControl
 {
     public partial class Editor : UserControl, SearchableBrowser
     {
-        private IHTMLDocument2 doc;
-        private bool updatingFontName = false;
-        private bool updatingFontSize = false;
-        private bool setup = false;
-        private bool init_timer = false;
+        #region Delegates
 
         public delegate void TickDelegate();
 
-        public class EnterKeyEventArgs : EventArgs
-        {
-            private bool _cancel = false;
+        #endregion
 
-            public bool Cancel
-            {
-                get { return _cancel; }
-                set { _cancel = value; }
-            }
-
-        }
-
-        public event TickDelegate Tick;
-        
-        public event WebBrowserNavigatedEventHandler Navigated;
-
-        public event EventHandler<EnterKeyEventArgs> EnterKeyEvent;
+        private IHTMLDocument2 doc;
+        private bool init_timer;
+        private DateTime lastSplash = DateTime.Now;
+        private bool setup;
+        private bool updatingFontName;
+        private bool updatingFontSize;
 
         public Editor()
         {
@@ -50,11 +33,76 @@ namespace LiveSwitch.TextControl
             var form = new SplashForm();
             form.ShowDialog();
 #endif
-            Load += new EventHandler(Editor_Load);
+            Load += Editor_Load;
             InitializeComponent();
             SetupEvents();
             SetupTimer();
-            SetupBrowser();
+            SetupBrowser(true);
+            SetupFontComboBox();
+            SetupFontSizeComboBox();
+            boldButton.CheckedChanged += delegate
+                                             {
+                                                 if (BoldChanged != null)
+                                                     BoldChanged();
+                                             };
+            italicButton.CheckedChanged += delegate
+                                               {
+                                                   if (ItalicChanged != null)
+                                                       ItalicChanged();
+                                               };
+            underlineButton.CheckedChanged += delegate
+                                                  {
+                                                      if (UnderlineChanged != null)
+                                                          UnderlineChanged();
+                                                  };
+            orderedListButton.CheckedChanged += delegate
+                                                    {
+                                                        if (OrderedListChanged != null)
+                                                            OrderedListChanged();
+                                                    };
+            unorderedListButton.CheckedChanged += delegate
+                                                      {
+                                                          if (UnorderedListChanged != null)
+                                                              UnorderedListChanged();
+                                                      };
+            justifyLeftButton.CheckedChanged += delegate
+                                                    {
+                                                        if (JustifyLeftChanged != null)
+                                                            JustifyLeftChanged();
+                                                    };
+            justifyCenterButton.CheckedChanged += delegate
+                                                      {
+                                                          if (JustifyCenterChanged != null)
+                                                              JustifyCenterChanged();
+                                                      };
+            justifyRightButton.CheckedChanged += delegate
+                                                     {
+                                                         if (JustifyRightChanged != null)
+                                                             JustifyRightChanged();
+                                                     };
+            justifyFullButton.CheckedChanged += delegate
+                                                    {
+                                                        if (JustifyFullChanged != null)
+                                                            JustifyFullChanged();
+                                                    };
+            linkButton.CheckedChanged += delegate
+                                             {
+                                                 if (IsLinkChanged != null)
+                                                     IsLinkChanged();
+                                             };
+        }
+
+        public Editor(bool isEditMode)
+        {
+#if TRIAL
+            var form = new SplashForm();
+            form.ShowDialog();
+#endif
+            Load += Editor_Load;
+            InitializeComponent();
+            SetupEvents();
+            SetupTimer();
+            SetupBrowser(isEditMode);
             SetupFontComboBox();
             SetupFontSizeComboBox();
             boldButton.CheckedChanged += delegate
@@ -107,95 +155,11 @@ namespace LiveSwitch.TextControl
                 if (IsLinkChanged != null)
                     IsLinkChanged();
             };
-        }
 
-        private void Editor_Load(object sender, EventArgs e)
-        {
-            timer.Start();
-        }
-
-        private void ParentForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            timer.Stop();
-            ParentForm.FormClosed -= new FormClosedEventHandler(ParentForm_FormClosed);
-        }
-
-        /// <summary>
-        /// Setup navigation and focus event handlers.
-        /// </summary>
-        private void SetupEvents()
-        {
-            webBrowser1.Navigated += new WebBrowserNavigatedEventHandler(webBrowser1_Navigated);
-            webBrowser1.GotFocus += new EventHandler(webBrowser1_GotFocus);
-            if (webBrowser1.Version.Major >= 9)
-                webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser1_DocumentCompleted);
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            webBrowser1.Document.Write(webBrowser1.DocumentText);
-            doc.designMode = "On";
-            webBrowser1.Document.Body.SetAttribute("contentEditable", "true");
-        }
-
-        /// <summary>
-        /// When this control receives focus, it transfers focus to the 
-        /// document body.
-        /// </summary>
-        /// <param name="sender">the sender</param>
-        /// <param name="e">EventArgs</param>
-        private void webBrowser1_GotFocus(object sender, EventArgs e)
-        {
-            SuperFocus();
-        }
-
-        /// <summary>
-        /// This is called when the initial html/body framework is set up, 
-        /// or when document.DocumentText is set.  At this point, the 
-        /// document is editable.
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">navigation args</param>
-        void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
-        {
-            SetBackgroundColor(BackColor);
-            if (Navigated != null)
+            if(!isEditMode)
             {
-                Navigated(this, e);
+                toolStrip1.Visible = false;
             }
-        }
-
-        /// <summary>
-        /// Setup timer with 200ms interval
-        /// </summary>
-        private void SetupTimer()
-        {
-            timer.Interval = 200;
-            timer.Tick += new EventHandler(timer_Tick);
-        }
-
-        /// <summary>
-        /// Add document body, turn on design mode on the whole document, 
-        /// and overred the context menu
-        /// </summary>
-        private void SetupBrowser()
-        {
-            webBrowser1.DocumentText = "<html><body></body></html>";
-            doc =
-                webBrowser1.Document.DomDocument as IHTMLDocument2;
-            doc.designMode = "On";
-            webBrowser1.Document.ContextMenuShowing += 
-                new HtmlElementEventHandler(Document_ContextMenuShowing);
-        }
-
-        /// <summary>
-        /// Set the focus on the document body.  
-        /// </summary>
-        private void SuperFocus()
-        {
-            if (webBrowser1.Document != null &&
-                webBrowser1.Document.Body != null)
-                webBrowser1.Document.Body.Focus();
         }
 
         /// <summary>
@@ -207,10 +171,7 @@ namespace LiveSwitch.TextControl
         [Browsable(true)]
         public override Color BackColor
         {
-            get
-            {
-                return base.BackColor;
-            }
+            get { return base.BackColor; }
             set
             {
                 base.BackColor = value;
@@ -219,27 +180,6 @@ namespace LiveSwitch.TextControl
                     SetBackgroundColor(value);
                 }
             }
-        }
-
-        /// <summary>
-        /// Set the background color of the body by setting it's CSS style
-        /// </summary>
-        /// <param name="value">the color to use for the background</param>
-        private void SetBackgroundColor(Color value)
-        {
-            if (webBrowser1.Document != null &&
-                webBrowser1.Document.Body != null)
-                webBrowser1.Document.Body.Style =
-                    string.Format("background-color: {0}", value.Name);
-        }
-
-        /// <summary>
-        /// Clear the contents of the document, leaving the body intact.
-        /// </summary>
-        public void Clear()
-        {
-            if (webBrowser1.Document.Body != null)
-                webBrowser1.Document.Body.InnerHtml = "";
         }
 
         /// <summary>
@@ -266,10 +206,7 @@ namespace LiveSwitch.TextControl
                 }
                 return html;
             }
-            set
-            {
-                webBrowser1.DocumentText = value;
-            }
+            set { webBrowser1.DocumentText = value; }
         }
 
         /// <summary>
@@ -278,10 +215,7 @@ namespace LiveSwitch.TextControl
         [Browsable(false)]
         public string DocumentTitle
         {
-            get
-            {
-                return webBrowser1.DocumentTitle;
-            }
+            get { return webBrowser1.DocumentTitle; }
         }
 
         /// <summary>
@@ -310,87 +244,6 @@ namespace LiveSwitch.TextControl
                 if (webBrowser1.Document.Body != null)
                     webBrowser1.Document.Body.InnerHtml = value;
             }
-        }
-
-        public MailMessage ToMailMessage()
-        {
-            if (webBrowser1.Document != null &&
-                webBrowser1.Document.Body != null)
-            {
-                string html = webBrowser1.Document.Body.InnerHtml;
-                if (html != null)
-                {
-                    return LinkImages(html);
-                }
-                var msg = new MailMessage();
-                msg.IsBodyHtml = true;
-                return msg;
-            }
-            else
-            {
-                var msg = new MailMessage();
-                msg.IsBodyHtml = true;
-                msg.Body = string.Empty;
-                return msg;
-            }
-        }
-
-        private MailMessage LinkImages(string html)
-        {
-            var msg = new MailMessage();
-            msg.IsBodyHtml = true;
-            var matches = Regex.Matches(html, @"<img[^>]*?src\s*=\s*([""']?[^'"">]+?['""])[^>]*?>", RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
-            var img_list = new List<LinkedResource>();
-            var cid = 1;
-            foreach (Match match in matches)
-            {
-                string src = match.Groups[1].Value;
-                src = src.Trim('\"');
-                if (File.Exists(src))
-                {
-                    var ext = Path.GetExtension(src);
-                    if (ext.Length > 0)
-                    {
-                        ext = ext.Substring(1);
-                        var res = new LinkedResource(src);
-                        res.ContentId = string.Format("img{0}.{1}", cid++, ext);
-                        res.TransferEncoding = System.Net.Mime.TransferEncoding.Base64;
-                        res.ContentType.MediaType = string.Format("image/{0}", ext);
-                        res.ContentType.Name = res.ContentId;
-                        img_list.Add(res);
-                        src = string.Format("'cid:{0}'", res.ContentId);
-                        html = html.Replace(match.Groups[1].Value, src);
-                    }
-                }
-            }
-            var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
-            foreach (var img in img_list)
-            {
-                view.LinkedResources.Add(img);
-            }
-            msg.AlternateViews.Add(view);
-            return msg;
-        }
-
-        private string ReplaceFileSystemImages(string html)
-        {
-            var matches = Regex.Matches(html, @"<img[^>]*?src\s*=\s*([""']?[^'"">]+?['""])[^>]*?>", RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
-            foreach (Match match in matches)
-            {
-                string src = match.Groups[1].Value;
-                src = src.Trim('\"');
-                if (File.Exists(src))
-                {
-                    var ext = Path.GetExtension(src);
-                    if (ext.Length > 0)
-                    {
-                        ext = ext.Substring(1);
-                        src = string.Format("'data:image/{0};base64,{1}'", ext, Convert.ToBase64String(File.ReadAllBytes(src)));
-                        html = html.Replace(match.Groups[1].Value, src);
-                    }
-                }
-            }
-            return html;
         }
 
         /// <summary>
@@ -433,7 +286,7 @@ namespace LiveSwitch.TextControl
             set
             {
                 Document.OpenNew(true);
-                IHTMLDocument2 dom = Document.DomDocument as IHTMLDocument2;
+                var dom = Document.DomDocument as IHTMLDocument2;
                 try
                 {
                     if (value == null)
@@ -446,6 +299,469 @@ namespace LiveSwitch.TextControl
                     dom.close();
                 }
             }
+        }
+
+        public Color BodyBackgroundColor
+        {
+            get
+            {
+                if (doc.body != null && doc.body.style != null && doc.body.style.backgroundColor != null)
+                    return ConvertToColor(doc.body.style.backgroundColor.ToString());
+                return Color.White;
+            }
+            set
+            {
+                if (ReadyState == ReadyState.Complete)
+                {
+                    if (doc.body != null && doc.body.style != null)
+                    {
+                        string colorstr =
+                            string.Format("#{0:X2}{1:X2}{2:X2}", value.R, value.G, value.B);
+                        doc.body.style.backgroundColor = colorstr;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get the ready state of the internal browser component.
+        /// </summary>
+        public ReadyState ReadyState
+        {
+            get
+            {
+                switch (doc.readyState.ToLower())
+                {
+                    case "uninitialized":
+                        return ReadyState.Uninitialized;
+                    case "loading":
+                        return ReadyState.Loading;
+                    case "loaded":
+                        return ReadyState.Loaded;
+                    case "interactive":
+                        return ReadyState.Interactive;
+                    case "complete":
+                        return ReadyState.Complete;
+                    default:
+                        return ReadyState.Uninitialized;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get the current selection type.
+        /// </summary>
+        public SelectionType SelectionType
+        {
+            get
+            {
+                string type = doc.selection.type.ToLower();
+                switch (type)
+                {
+                    case "text":
+                        return SelectionType.Text;
+                    case "control":
+                        return SelectionType.Control;
+                    case "none":
+                        return SelectionType.None;
+                    default:
+                        return SelectionType.None;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get/Set the current font size.
+        /// </summary>
+        [Browsable(false)]
+        public FontSize FontSize
+        {
+            get
+            {
+                if (ReadyState != ReadyState.Complete)
+                    return FontSize.NA;
+                switch (doc.queryCommandValue("FontSize").ToString())
+                {
+                    case "1":
+                        return FontSize.One;
+                    case "2":
+                        return FontSize.Two;
+                    case "3":
+                        return FontSize.Three;
+                    case "4":
+                        return FontSize.Four;
+                    case "5":
+                        return FontSize.Five;
+                    case "6":
+                        return FontSize.Six;
+                    case "7":
+                        return FontSize.Seven;
+                    default:
+                        return FontSize.NA;
+                }
+            }
+            set
+            {
+                int sz;
+                switch (value)
+                {
+                    case FontSize.One:
+                        sz = 1;
+                        break;
+                    case FontSize.Two:
+                        sz = 2;
+                        break;
+                    case FontSize.Three:
+                        sz = 3;
+                        break;
+                    case FontSize.Four:
+                        sz = 4;
+                        break;
+                    case FontSize.Five:
+                        sz = 5;
+                        break;
+                    case FontSize.Six:
+                        sz = 6;
+                        break;
+                    case FontSize.Seven:
+                        sz = 7;
+                        break;
+                    default:
+                        sz = 7;
+                        break;
+                }
+                webBrowser1.Document.ExecCommand("FontSize", false, sz.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Get/Set the current font name.
+        /// </summary>
+        [Browsable(false)]
+        public FontFamily FontName
+        {
+            get
+            {
+                if (ReadyState != ReadyState.Complete)
+                    return null;
+                var name = doc.queryCommandValue("FontName") as string;
+                if (name == null) return null;
+                return new FontFamily(name);
+            }
+            set
+            {
+                if (value != null)
+                    webBrowser1.Document.ExecCommand("FontName", false, value.Name);
+            }
+        }
+
+        /// <summary>
+        /// Get/Set the editor's foreground (text) color for the current selection.
+        /// </summary>
+        [Browsable(false)]
+        public Color EditorForeColor
+        {
+            get
+            {
+                if (ReadyState != ReadyState.Complete)
+                    return Color.Black;
+                return ConvertToColor(doc.queryCommandValue("ForeColor").ToString());
+            }
+            set
+            {
+                string colorstr =
+                    string.Format("#{0:X2}{1:X2}{2:X2}", value.R, value.G, value.B);
+                webBrowser1.Document.ExecCommand("ForeColor", false, colorstr);
+            }
+        }
+
+        /// <summary>
+        /// Get/Set the editor's background color for the current selection.
+        /// </summary>
+        [Browsable(false)]
+        public Color EditorBackColor
+        {
+            get
+            {
+                if (ReadyState != ReadyState.Complete)
+                    return Color.White;
+                return ConvertToColor(doc.queryCommandValue("BackColor").ToString());
+            }
+            set
+            {
+                string colorstr =
+                    string.Format("#{0:X2}{1:X2}{2:X2}", value.R, value.G, value.B);
+                webBrowser1.Document.ExecCommand("BackColor", false, colorstr);
+            }
+        }
+
+        #region SearchableBrowser Members
+
+        /// <summary>
+        /// Search the document from the current selection, and reset the 
+        /// the selection to the text found, if successful.
+        /// </summary>
+        /// <param name="text">the text for which to search</param>
+        /// <param name="forward">true for forward search, false for backward</param>
+        /// <param name="matchWholeWord">true to match whole word, false otherwise</param>
+        /// <param name="matchCase">true to match case, false otherwise</param>
+        /// <returns></returns>
+        public bool Search(string text, bool forward, bool matchWholeWord, bool matchCase)
+        {
+            bool success = false;
+            if (webBrowser1.Document != null)
+            {
+                var doc =
+                    webBrowser1.Document.DomDocument as IHTMLDocument2;
+                var body = doc.body as IHTMLBodyElement;
+                if (body != null)
+                {
+                    IHTMLTxtRange range;
+                    if (doc.selection != null)
+                    {
+                        range = doc.selection.createRange() as IHTMLTxtRange;
+                        IHTMLTxtRange dup = range.duplicate();
+                        dup.collapse(true);
+                        // if selection is degenerate, then search whole body
+                        if (range.isEqual(dup))
+                        {
+                            range = body.createTextRange();
+                        }
+                        else
+                        {
+                            if (forward)
+                                range.moveStart("character", 1);
+                            else
+                                range.moveEnd("character", -1);
+                        }
+                    }
+                    else
+                        range = body.createTextRange();
+                    int flags = 0;
+                    if (matchWholeWord) flags += 2;
+                    if (matchCase) flags += 4;
+                    success =
+                        range.findText(text, forward ? 999999 : -999999, flags);
+                    if (success)
+                    {
+                        range.select();
+                        range.scrollIntoView(!forward);
+                    }
+                }
+            }
+            return success;
+        }
+
+        #endregion
+
+        public event TickDelegate Tick;
+
+        public event WebBrowserNavigatedEventHandler Navigated;
+
+        public event EventHandler<EnterKeyEventArgs> EnterKeyEvent;
+
+        private void Editor_Load(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
+
+        private void ParentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer.Stop();
+            ParentForm.FormClosed -= ParentForm_FormClosed;
+        }
+
+        /// <summary>
+        /// Setup navigation and focus event handlers.
+        /// </summary>
+        private void SetupEvents()
+        {
+            webBrowser1.Navigated += webBrowser1_Navigated;
+            webBrowser1.GotFocus += webBrowser1_GotFocus;
+            if (webBrowser1.Version.Major >= 9)
+                webBrowser1.DocumentCompleted += webBrowser1_DocumentCompleted;
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser1.Document.Write(webBrowser1.DocumentText);
+            doc.designMode = "On";
+            webBrowser1.Document.Body.SetAttribute("contentEditable", "true");
+        }
+
+        /// <summary>
+        /// When this control receives focus, it transfers focus to the 
+        /// document body.
+        /// </summary>
+        /// <param name="sender">the sender</param>
+        /// <param name="e">EventArgs</param>
+        private void webBrowser1_GotFocus(object sender, EventArgs e)
+        {
+            SuperFocus();
+        }
+
+        /// <summary>
+        /// This is called when the initial html/body framework is set up, 
+        /// or when document.DocumentText is set.  At this point, the 
+        /// document is editable.
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">navigation args</param>
+        private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            SetBackgroundColor(BackColor);
+            if (Navigated != null)
+            {
+                Navigated(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Setup timer with 200ms interval
+        /// </summary>
+        private void SetupTimer()
+        {
+            timer.Interval = 200;
+            timer.Tick += timer_Tick;
+        }
+
+        /// <summary>
+        /// Add document body, turn on design mode on the whole document, 
+        /// and overred the context menu
+        /// </summary>
+        private void SetupBrowser(bool isEditMode)
+        {
+            webBrowser1.DocumentText = "<html><body></body></html>";
+            doc =
+                webBrowser1.Document.DomDocument as IHTMLDocument2;
+            if (isEditMode)
+            {
+                doc.designMode = "On";
+            }
+            else
+            {
+                webBrowser1.ScrollBarsEnabled = false;
+            }
+            webBrowser1.Document.ContextMenuShowing +=
+                Document_ContextMenuShowing;
+        }
+
+        /// <summary>
+        /// Set the focus on the document body.  
+        /// </summary>
+        private void SuperFocus()
+        {
+            if (webBrowser1.Document != null &&
+                webBrowser1.Document.Body != null)
+                webBrowser1.Document.Body.Style = "word-wrap:break-word;width:100%;left:0;";
+                webBrowser1.Document.Body.Focus();
+        }
+
+        /// <summary>
+        /// Set the background color of the body by setting it's CSS style
+        /// </summary>
+        /// <param name="value">the color to use for the background</param>
+        private void SetBackgroundColor(Color value)
+        {
+            if (webBrowser1.Document != null &&
+                webBrowser1.Document.Body != null)
+                webBrowser1.Document.Body.Style =
+                    string.Format("background-color: {0}", value.Name);
+        }
+
+        /// <summary>
+        /// Clear the contents of the document, leaving the body intact.
+        /// </summary>
+        public void Clear()
+        {
+            if (webBrowser1.Document.Body != null)
+                webBrowser1.Document.Body.InnerHtml = "";
+        }
+
+        public MailMessage ToMailMessage()
+        {
+            if (webBrowser1.Document != null &&
+                webBrowser1.Document.Body != null)
+            {
+                string html = webBrowser1.Document.Body.InnerHtml;
+                if (html != null)
+                {
+                    return LinkImages(html);
+                }
+                var msg = new MailMessage();
+                msg.IsBodyHtml = true;
+                return msg;
+            }
+            else
+            {
+                var msg = new MailMessage();
+                msg.IsBodyHtml = true;
+                msg.Body = string.Empty;
+                return msg;
+            }
+        }
+
+        private MailMessage LinkImages(string html)
+        {
+            var msg = new MailMessage();
+            msg.IsBodyHtml = true;
+            MatchCollection matches = Regex.Matches(html, @"<img[^>]*?src\s*=\s*([""']?[^'"">]+?['""])[^>]*?>",
+                                                    RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace |
+                                                    RegexOptions.Multiline);
+            var img_list = new List<LinkedResource>();
+            int cid = 1;
+            foreach (Match match in matches)
+            {
+                string src = match.Groups[1].Value;
+                src = src.Trim('\"');
+                if (File.Exists(src))
+                {
+                    string ext = Path.GetExtension(src);
+                    if (ext.Length > 0)
+                    {
+                        ext = ext.Substring(1);
+                        var res = new LinkedResource(src);
+                        res.ContentId = string.Format("img{0}.{1}", cid++, ext);
+                        res.TransferEncoding = TransferEncoding.Base64;
+                        res.ContentType.MediaType = string.Format("image/{0}", ext);
+                        res.ContentType.Name = res.ContentId;
+                        img_list.Add(res);
+                        src = string.Format("'cid:{0}'", res.ContentId);
+                        html = html.Replace(match.Groups[1].Value, src);
+                    }
+                }
+            }
+            AlternateView view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
+            foreach (LinkedResource img in img_list)
+            {
+                view.LinkedResources.Add(img);
+            }
+            msg.AlternateViews.Add(view);
+            return msg;
+        }
+
+        private string ReplaceFileSystemImages(string html)
+        {
+            MatchCollection matches = Regex.Matches(html, @"<img[^>]*?src\s*=\s*([""']?[^'"">]+?['""])[^>]*?>",
+                                                    RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace |
+                                                    RegexOptions.Multiline);
+            foreach (Match match in matches)
+            {
+                string src = match.Groups[1].Value;
+                src = src.Trim('\"');
+                if (File.Exists(src))
+                {
+                    string ext = Path.GetExtension(src);
+                    if (ext.Length > 0)
+                    {
+                        ext = ext.Substring(1);
+                        src = string.Format("'data:image/{0};base64,{1}'", ext,
+                                            Convert.ToBase64String(File.ReadAllBytes(src)));
+                        html = html.Replace(match.Groups[1].Value, src);
+                    }
+                }
+            }
+            return html;
         }
 
         /// <summary>
@@ -598,7 +914,7 @@ namespace LiveSwitch.TextControl
             copyToolStripMenuItem2.Enabled = CanCopy();
             pasteToolStripMenuItem3.Enabled = CanPaste();
             deleteToolStripMenuItem.Enabled = CanDelete();
-            cSSToolStripMenuItem.Enabled = SelectionType != TextControl.SelectionType.None;
+            cSSToolStripMenuItem.Enabled = SelectionType != SelectionType.None;
             contextMenuStrip1.Show(this, e.ClientMousePosition);
         }
 
@@ -613,8 +929,8 @@ namespace LiveSwitch.TextControl
             {
                 fontSizeComboBox.Items.Add(x.ToString());
             }
-            fontSizeComboBox.TextChanged += new EventHandler(fontSizeComboBox_TextChanged);
-            fontSizeComboBox.KeyPress += new KeyPressEventHandler(fontSizeComboBox_KeyPress);
+            fontSizeComboBox.TextChanged += fontSizeComboBox_TextChanged;
+            fontSizeComboBox.KeyPress += fontSizeComboBox_KeyPress;
         }
 
         /// <summary>
@@ -682,13 +998,13 @@ namespace LiveSwitch.TextControl
         /// </summary>
         private void SetupFontComboBox()
         {
-            AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
+            var ac = new AutoCompleteStringCollection();
             foreach (FontFamily fam in FontFamily.Families)
             {
                 fontComboBox.Items.Add(fam.Name);
                 ac.Add(fam.Name);
             }
-            fontComboBox.Leave += new EventHandler(fontComboBox_TextChanged);
+            fontComboBox.Leave += fontComboBox_TextChanged;
             fontComboBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             fontComboBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             fontComboBox.AutoCompleteCustomSource = ac;
@@ -746,8 +1062,6 @@ namespace LiveSwitch.TextControl
         public event MethodInvoker HtmlFontChanged;
         public event MethodInvoker HtmlFontSizeChanged;
 
-        private DateTime lastSplash = DateTime.Now;
-
         /// <summary>
         /// Called when the timer fires to synchronize the format buttons 
         /// with the text editor current selection.
@@ -763,7 +1077,7 @@ namespace LiveSwitch.TextControl
         {
             if (!init_timer)
             {
-                ParentForm.FormClosed += new FormClosedEventHandler(ParentForm_FormClosed);
+                //ParentForm.FormClosed += ParentForm_FormClosed;
                 init_timer = true;
                 lastSplash = DateTime.Now;
             }
@@ -878,28 +1192,6 @@ namespace LiveSwitch.TextControl
             }
         }
 
-        public Color BodyBackgroundColor
-        {
-            get
-            {
-                if (doc.body != null && doc.body.style != null && doc.body.style.backgroundColor != null)
-                    return ConvertToColor(doc.body.style.backgroundColor.ToString());
-                return Color.White;
-            }
-            set
-            {
-                if (ReadyState == ReadyState.Complete)
-                {
-                    if (doc.body != null && doc.body.style != null)
-                    {
-                        string colorstr =
-                            string.Format("#{0:X2}{1:X2}{2:X2}", value.R, value.G, value.B);
-                        doc.body.style.backgroundColor = colorstr;
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// Set up a key listener on the body once.
         /// The key listener checks for specific key strokes and takes 
@@ -909,7 +1201,7 @@ namespace LiveSwitch.TextControl
         {
             if (!setup)
             {
-                webBrowser1.Document.Body.KeyDown += new HtmlElementEventHandler(Body_KeyDown);
+                webBrowser1.Document.Body.KeyDown += Body_KeyDown;
                 setup = true;
             }
         }
@@ -931,7 +1223,7 @@ namespace LiveSwitch.TextControl
                 bool cancel = false;
                 if (EnterKeyEvent != null)
                 {
-                    EnterKeyEventArgs args = new EnterKeyEventArgs();
+                    var args = new EnterKeyEventArgs();
                     EnterKeyEvent(this, args);
                     cancel = args.Cancel;
                 }
@@ -945,7 +1237,7 @@ namespace LiveSwitch.TextControl
         /// </summary>
         public void EmbedBr()
         {
-            IHTMLTxtRange range =
+            var range =
                 doc.selection.createRange() as IHTMLTxtRange;
             range.pasteHTML("<br/>");
             range.collapse(false);
@@ -960,7 +1252,7 @@ namespace LiveSwitch.TextControl
         {
             if (Clipboard.ContainsText())
             {
-                IHTMLTxtRange range =
+                var range =
                     doc.selection.createRange() as IHTMLTxtRange;
                 range.pasteHTML(Clipboard.GetText(TextDataFormat.Text));
                 range.collapse(false);
@@ -1153,178 +1445,6 @@ namespace LiveSwitch.TextControl
             webBrowser1.Document.ExecCommand("CreateLink", false, url);
         }
 
-        /// <summary>
-        /// Get the ready state of the internal browser component.
-        /// </summary>
-        public ReadyState ReadyState
-        {
-            get
-            {
-                switch (doc.readyState.ToLower())
-                {
-                    case "uninitialized":
-                        return ReadyState.Uninitialized;
-                    case "loading":
-                        return ReadyState.Loading;
-                    case "loaded":
-                        return ReadyState.Loaded;
-                    case "interactive":
-                        return ReadyState.Interactive;
-                    case "complete":
-                        return ReadyState.Complete;
-                    default:
-                        return ReadyState.Uninitialized;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Get the current selection type.
-        /// </summary>
-        public SelectionType SelectionType
-        {
-            get
-            {
-                var type = doc.selection.type.ToLower();
-                switch (type)
-                {
-                    case "text":
-                        return SelectionType.Text;
-                    case "control":
-                        return SelectionType.Control;
-                    case "none":
-                        return SelectionType.None;
-                    default:
-                        return SelectionType.None;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Get/Set the current font size.
-        /// </summary>
-        [Browsable(false)]
-        public FontSize FontSize
-        {
-            get
-            {
-                if (ReadyState != ReadyState.Complete)
-                    return FontSize.NA;
-                switch (doc.queryCommandValue("FontSize").ToString())
-                {
-                    case "1":
-                        return FontSize.One;
-                    case "2":
-                        return FontSize.Two;
-                    case "3":
-                        return FontSize.Three;
-                    case "4":
-                        return FontSize.Four;
-                    case "5":
-                        return FontSize.Five;
-                    case "6":
-                        return FontSize.Six;
-                    case "7":
-                        return FontSize.Seven;
-                    default:
-                        return FontSize.NA;
-                }
-            }
-            set
-            {
-                int sz;
-                switch (value)
-                {
-                    case FontSize.One:
-                        sz = 1;
-                        break;
-                    case FontSize.Two:
-                        sz = 2;
-                        break;
-                    case FontSize.Three:
-                        sz = 3;
-                        break;
-                    case FontSize.Four:
-                        sz = 4;
-                        break;
-                    case FontSize.Five:
-                        sz = 5;
-                        break;
-                    case FontSize.Six:
-                        sz = 6;
-                        break;
-                    case FontSize.Seven:
-                        sz = 7;
-                        break;
-                    default:
-                        sz = 7;
-                        break;
-                }
-                webBrowser1.Document.ExecCommand("FontSize", false, sz.ToString());
-            }
-        }
-
-        /// <summary>
-        /// Get/Set the current font name.
-        /// </summary>
-        [Browsable(false)]
-        public FontFamily FontName
-        {
-            get
-            {
-                if (ReadyState != ReadyState.Complete)
-                    return null;
-                string name = doc.queryCommandValue("FontName") as string;
-                if (name == null) return null;
-                return new FontFamily(name);
-            }
-            set
-            {
-                if (value != null)
-                    webBrowser1.Document.ExecCommand("FontName", false, value.Name);
-            }
-        }
-
-        /// <summary>
-        /// Get/Set the editor's foreground (text) color for the current selection.
-        /// </summary>
-        [Browsable(false)]
-        public Color EditorForeColor
-        {
-            get
-            {
-                if (ReadyState != ReadyState.Complete)
-                    return Color.Black;
-                return ConvertToColor(doc.queryCommandValue("ForeColor").ToString());
-            }
-            set
-            {
-                string colorstr = 
-                    string.Format("#{0:X2}{1:X2}{2:X2}", value.R, value.G, value.B);
-                webBrowser1.Document.ExecCommand("ForeColor", false, colorstr);
-            }
-        }
-
-        /// <summary>
-        /// Get/Set the editor's background color for the current selection.
-        /// </summary>
-        [Browsable(false)]
-        public Color EditorBackColor
-        {
-            get
-            {
-                if (ReadyState != ReadyState.Complete)
-                    return Color.White;
-                return ConvertToColor(doc.queryCommandValue("BackColor").ToString());
-            }
-            set
-            {
-                string colorstr =
-                    string.Format("#{0:X2}{1:X2}{2:X2}", value.R, value.G, value.B);
-                webBrowser1.Document.ExecCommand("BackColor", false, colorstr);
-            }
-        }
-
         public void SelectBodyColor()
         {
             Color color = BodyBackgroundColor;
@@ -1470,7 +1590,7 @@ namespace LiveSwitch.TextControl
         private bool ShowColorDialog(ref Color color)
         {
             bool selected;
-            using (ColorDialog dlg = new ColorDialog())
+            using (var dlg = new ColorDialog())
             {
                 dlg.SolidColorOnly = true;
                 dlg.AllowFullOpen = false;
@@ -1508,7 +1628,7 @@ namespace LiveSwitch.TextControl
         public bool CanInsertLink()
         {
             //return (SelectionType == SelectionType.Text && !LinksInSelection());
-            return (!LinksInSelection());        
+            return (!LinksInSelection());
         }
 
         /// <summary>
@@ -1517,13 +1637,14 @@ namespace LiveSwitch.TextControl
         /// <returns>true if two links or more links are currently selected, false otherwise</returns>
         private bool LinksInSelection()
         {
-            if (SelectionType != TextControl.SelectionType.Text) return false;
+            if (SelectionType != SelectionType.Text) return false;
             bool twoOrMoreLinksInSelection = false;
-            IHTMLTxtRange txtRange = (IHTMLTxtRange)doc.selection.createRange();
+            var txtRange = (IHTMLTxtRange) doc.selection.createRange();
 
             if (txtRange != null && !string.IsNullOrEmpty(txtRange.htmlText))
             {
-                Regex regex = new Regex("<a href=\"[^\"]+\">[^<]+</a>", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+                var regex = new Regex("<a href=\"[^\"]+\">[^<]+</a>",
+                                      RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
                 MatchCollection matchCollection = regex.Matches(txtRange.htmlText);
 
                 twoOrMoreLinksInSelection = (matchCollection.Count > 1); // true if more than one link is selected
@@ -1543,12 +1664,12 @@ namespace LiveSwitch.TextControl
             string url = string.Empty;
             switch (SelectionType)
             {
-                case TextControl.SelectionType.Control:
+                case SelectionType.Control:
                     {
-                        IHTMLControlRange range = doc.selection.createRange() as IHTMLControlRange;
+                        var range = doc.selection.createRange() as IHTMLControlRange;
                         if (range != null && range.length > 0)
                         {
-                            var elem = range.item(0);
+                            IHTMLElement elem = range.item(0);
                             if (elem != null && string.Compare(elem.tagName, "img", true) == 0)
                             {
                                 elem = elem.parentElement;
@@ -1560,12 +1681,13 @@ namespace LiveSwitch.TextControl
                         }
                     }
                     break;
-                case TextControl.SelectionType.Text:
+                case SelectionType.Text:
                     {
-                        IHTMLTxtRange txtRange = (IHTMLTxtRange)doc.selection.createRange();
+                        var txtRange = (IHTMLTxtRange) doc.selection.createRange();
                         if (txtRange != null && !string.IsNullOrEmpty(txtRange.htmlText))
                         {
-                            Regex regex = new Regex("^\\s*<a href=\"([^\"]+)\">[^<]+</a>\\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+                            var regex = new Regex("^\\s*<a href=\"([^\"]+)\">[^<]+</a>\\s*$",
+                                                  RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
                             Match match = regex.Match(txtRange.htmlText);
 
                             if (match.Success)
@@ -1574,20 +1696,21 @@ namespace LiveSwitch.TextControl
                     }
                     break;
             }
-            using (LinkDialog dlg = new LinkDialog())
+            using (var dlg = new LinkDialog())
             {
                 Uri uri;
                 if (Uri.TryCreate(url, UriKind.Absolute, out uri))
                 {
-                    dlg.URL = string.Format("{0}{1}", uri.Host, uri.PathAndQuery == null ? null : uri.PathAndQuery.TrimEnd('/'));
+                    dlg.URL = string.Format("{0}{1}", uri.Host,
+                                            uri.PathAndQuery == null ? null : uri.PathAndQuery.TrimEnd('/'));
                     dlg.Scheme = string.Format("{0}://", uri.Scheme);
                 }
-                dlg.ShowDialog(this.ParentForm);
+                dlg.ShowDialog(ParentForm);
                 if (!dlg.Accepted) return;
                 string link = string.Format("{0}{1}", dlg.Scheme, dlg.URL);
                 if (link == null || link.Length == 0)
                 {
-                    MessageBox.Show(this.ParentForm, "Invalid URL");
+                    MessageBox.Show(ParentForm, "Invalid URL");
                     return;
                 }
                 InsertLink(link);
@@ -1665,61 +1788,6 @@ namespace LiveSwitch.TextControl
         }
 
         /// <summary>
-        /// Search the document from the current selection, and reset the 
-        /// the selection to the text found, if successful.
-        /// </summary>
-        /// <param name="text">the text for which to search</param>
-        /// <param name="forward">true for forward search, false for backward</param>
-        /// <param name="matchWholeWord">true to match whole word, false otherwise</param>
-        /// <param name="matchCase">true to match case, false otherwise</param>
-        /// <returns></returns>
-        public bool Search(string text, bool forward, bool matchWholeWord, bool matchCase)
-        {
-            bool success = false;
-            if (webBrowser1.Document != null)
-            {
-                IHTMLDocument2 doc =
-                    webBrowser1.Document.DomDocument as IHTMLDocument2;
-                IHTMLBodyElement body = doc.body as IHTMLBodyElement;
-                if (body != null)
-                {
-                    IHTMLTxtRange range;
-                    if (doc.selection != null)
-                    {
-                        range = doc.selection.createRange() as IHTMLTxtRange;
-                        IHTMLTxtRange dup = range.duplicate();
-                        dup.collapse(true);
-                        // if selection is degenerate, then search whole body
-                        if (range.isEqual(dup))
-                        {
-                            range = body.createTextRange();
-                        }
-                        else
-                        {
-                            if (forward)
-                                range.moveStart("character", 1);
-                            else
-                                range.moveEnd("character", -1);
-                        }
-                    }
-                    else
-                        range = body.createTextRange();
-                    int flags = 0;
-                    if (matchWholeWord) flags += 2;
-                    if (matchCase) flags += 4;
-                    success =
-                        range.findText(text, forward ? 999999 : -999999, flags);
-                    if (success)
-                    {
-                        range.select();
-                        range.scrollIntoView(!forward);
-                    }
-                }
-            }
-            return success;
-        }
-
-        /// <summary>
         /// Event handler for the ordered list toolbar button
         /// </summary>
         /// <param name="sender">the sender</param>
@@ -1784,6 +1852,14 @@ namespace LiveSwitch.TextControl
             SelectBodyColor();
         }
 
+        #region Nested type: EnterKeyEventArgs
+
+        public class EnterKeyEventArgs : EventArgs
+        {
+            public bool Cancel { get; set; }
+        }
+
+        #endregion
     }
 
     /// <summary>
@@ -1794,7 +1870,7 @@ namespace LiveSwitch.TextControl
         One,
         Two,
         Three,
-        Four, 
+        Four,
         Five,
         Six,
         Seven,
@@ -1816,5 +1892,4 @@ namespace LiveSwitch.TextControl
         Interactive,
         Complete
     }
-
 }

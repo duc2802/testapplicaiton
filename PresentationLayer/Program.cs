@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using PresentationLayer;
+using PresentationLayer.QuestionEditor;
+
 
 namespace TestApplication
 {
@@ -16,7 +19,7 @@ namespace TestApplication
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PresentationLayer.MainForm());
+            Application.Run(new MainForm());
            
             /*
              * 

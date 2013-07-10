@@ -238,6 +238,7 @@ namespace PresentationLayer.QuestionEditor
         {
             DeleteAnswerItem(parameter);
         }
+
         private void ItemCheckChange(object sender,int idAnswer, bool status)
         {
             CheckChangeAnswerItem(idAnswer, status);

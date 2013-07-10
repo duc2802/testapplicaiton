@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 using BusinessEntities;
 using Commons;
 using DevComponents.DotNetBar;
+using Editor;
 using PresentationLayer.ActionController;
 using PresentationLayer.ExamEditor;
 using PresentationLayer.Explorer;
@@ -78,6 +80,8 @@ namespace PresentationLayer
         {
             InitButtonEvent();
 
+            Singleton<SettingManager>.Instance.ChangeEquationInsert += ChangeEquation;
+
             Singleton<GuiActionEventController>.Instance.ChangeTestId += ChangeTestId;
             Singleton<GuiActionEventController>.Instance.ChangeLeaveTest += LeaveTest;
             Singleton<GuiActionEventController>.Instance.ChangeQuestionId += ChangeQuestionId;
@@ -140,6 +144,11 @@ namespace PresentationLayer
             btExportExam.Enabled = true;
             btNewQuestion.Enabled = true;
             exportDocsExamButton.Enabled = true;
+        }
+
+        private void ChangeEquation(object sender, string parameter)
+        {
+            MessageBox.Show(Singleton<SettingManager>.Instance.EquationName, "Name", MessageBoxButtons.OK);
         }
 
         private void ChangeQuestionId(object sender, int parameter)
@@ -239,64 +248,31 @@ namespace PresentationLayer
                 ICommand command = new ExportTestCmd(ExecuteMethod.Async, path, directory, nameFile);
                 Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             }
-
-
-            //var la = new List<AnswerBE>();
-            //var lq = new List<QuestionBE>();
-
-            //var ans = new AnswerBE();
-            //ans.AnswerID = "2";
-            //ans.Content = "content ans";
-            //ans.Result = "true";
-            //la.Add(ans);
-            //var qs = new QuestionBE();
-            //qs.ListAnswers = la;
-            //qs.LevelQuestion = "c";
-            //qs.QuestionContent = "content question";
-            //qs.QuestionID = "5";
-            //lq.Add(qs);
-            //var t = new TestBE();
-            //t.ListQuestion = lq;
-            //t.TestID = "4";
-
-            //// Export to XML
-            //var testContent = new TestBE();
-
-            //saveTestToXmlFileDialog.Filter = "XML|*.xml";
-            //saveTestToXmlFileDialog.Title = "Export an Test File";
-            //saveTestToXmlFileDialog.ShowDialog();
-            //bool result = false;
-
-            //if (saveTestToXmlFileDialog.FileName != "")
-            //{
-            //    String url = Path.GetDirectoryName(saveTestToXmlFileDialog.FileName);
-            //    var testMakeFile = new TestBLL();
-            //    result = testMakeFile.ExportTestExamFile(t, saveTestToXmlFileDialog.FileName, url);
-            //}
-
-            //if (result == false)
-            //{
-            //    MessageBox.Show(this, "Export Test error", "Error", MessageBoxButtons.OK);
-            //}
-            //else
-            //{
-            //    MessageBox.Show(this, "Export Test OK", "Ok", MessageBoxButtons.OK);
-            //}
         }
 
         private void NewQuestionButtonClick(object sender, EventArgs e)
         {
-            var form = new MultipleChoiceEditor();
-            if (DialogResult.OK == form.ShowDialog())
-            {
-                Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
+            App w = new App();
+            //ElementHost.EnableModelessKeyboardInterop(w);
+            w.InitializeComponent();
+            w.Run();
 
-                var question = form.DataItem.getQuestionBE();
-                Singleton<TestBE>.Instance.ListQuestion.Add(question);
+            //var form = new HTMLQuestionEditor();
+            //if (DialogResult.OK == form.ShowDialog())
+            //{
+            //    Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
 
-                ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
-                Singleton<DataQueueThreadController>.Instance.PutCmd(command);
-            }
+            //    var question = form.DataItem.getQuestionBE();
+            //    Singleton<TestBE>.Instance.ListQuestion.Add(question);
+
+            //    ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
+            //    Singleton<DataQueueThreadController>.Instance.PutCmd(command);
+            //}
+        }
+
+        private void ShowEqualEditor()
+        {
+            
         }
 
         private void NewExamButtonClick(object sender, EventArgs e)
