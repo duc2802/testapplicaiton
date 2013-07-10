@@ -101,7 +101,7 @@ namespace Editor
 
             string newName = Guid.NewGuid().ToString()+".png";
             string fileName = Singleton<SettingManager>.Instance.GetImageFolder() +"\\"+ newName;
-           
+            //"C:\Users\ducnm\Desktop\hinh anh";
             // Set file Name for Image 
             /**
              * 
@@ -109,15 +109,12 @@ namespace Editor
              * 
              * 
              */
-
-
             if (!string.IsNullOrEmpty(fileName))
             {
                 string ext = Path.GetExtension(fileName);
                 editor.ExportImage(fileName);
                 this.Close();
             }      
-
         }               
 
         private void ToolBar_Loaded(object sender, RoutedEventArgs e)

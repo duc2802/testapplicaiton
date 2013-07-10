@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Commons.BusinessObjects;
 
 namespace Commons
 {
@@ -15,6 +16,56 @@ namespace Commons
         protected const string DataImageFolder = "Images";
         protected const string Commands = "commands";
 
+        private string _equationName;
+        public string EquationName
+        {
+            set
+            {
+                _equationName = value;
+                OnChangeEquationInsert(_equationName);
+            }
+            get { return _equationName; }
+        }
+
+        private readonly object _changeEquationInsertLocker = new object();
+        private ActionEventHandler<string> _changeEquationInsertEvent;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ActionEventHandler<string> ChangeEquationInsert
+        {
+            add
+            {
+                lock (_changeEquationInsertLocker)
+                {
+                    _changeEquationInsertEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_changeEquationInsertLocker)
+                {
+                    _changeEquationInsertEvent -= value;
+                }
+            }
+        }
+
+        public void OnChangeEquationInsert(string equationName)
+        {
+            ActionEventHandler<string> handler = _changeEquationInsertEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, equationName);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
 
         public SettingManager()
         {

@@ -12,6 +12,8 @@ using System.Xml.Linq;
 using System.Threading;
 using System.Diagnostics;
 using System.Reflection;
+using Commons;
+using SingleInstanceObject;
 
 namespace Editor
 {
@@ -116,6 +118,8 @@ namespace Editor
                 using (Stream s = File.Create(path))
                 {
                     encoder.Save(s);
+                    Singleton<SettingManager>.Instance.EquationName = path;
+                    Application.Current.Shutdown();
                 }
             }
             catch

@@ -13,8 +13,8 @@ namespace PresentationLayer.ActionController
         private string _folderId;
         private string _testId;
         private string _leaveTest;
-
         private int _questionID;
+        
 
         public string FolderId
         {
@@ -69,6 +69,8 @@ namespace PresentationLayer.ActionController
         #endregion
 
         #region Events
+
+        
 
         #region Event change forder id
 

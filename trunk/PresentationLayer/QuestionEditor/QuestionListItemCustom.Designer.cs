@@ -30,7 +30,7 @@ namespace PresentationLayer.QuestionEditor
         /// </summary>
         private void InitializeComponent()
         {
-            this.contentQuestionTextBox = new System.Windows.Forms.TextBox();
+            this.contentQuestionPanel = new System.Windows.Forms.Panel();
             this.answerChoiseContainer = new System.Windows.Forms.Panel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
@@ -38,27 +38,28 @@ namespace PresentationLayer.QuestionEditor
             this.answerChoiseContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // contentQuestionTextBox
+            // contentQuestionPanel
             // 
-            this.contentQuestionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.contentQuestionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentQuestionTextBox.BackColor = System.Drawing.Color.White;
-            this.contentQuestionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.contentQuestionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contentQuestionTextBox.Location = new System.Drawing.Point(26, 39);
-            this.contentQuestionTextBox.Multiline = true;
-            this.contentQuestionTextBox.Name = "contentQuestionTextBox";
-            this.contentQuestionTextBox.ReadOnly = true;
-            this.contentQuestionTextBox.Size = new System.Drawing.Size(502, 81);
-            this.contentQuestionTextBox.TabIndex = 1;
+            this.contentQuestionPanel.BackColor = System.Drawing.Color.White;
+            this.contentQuestionPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.contentQuestionPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contentQuestionPanel.Location = new System.Drawing.Point(26, 39);
+            //this.contentQuestionPanel.Multiline = true;
+            this.contentQuestionPanel.Name = "contentQuestionPanel";
+            //this.contentQuestionPanel.ReadOnly = true;
+            this.contentQuestionPanel.Size = new System.Drawing.Size(502, 81);
+            this.contentQuestionPanel.TabIndex = 1;
             // 
             // answerChoiseContainer
             // 
+            this.answerChoiseContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.answerChoiseContainer.AutoSize = true;
             this.answerChoiseContainer.Controls.Add(this.deleteButton);
             this.answerChoiseContainer.Controls.Add(this.editButton);
             this.answerChoiseContainer.Controls.Add(this.orderNumQuest);
-            this.answerChoiseContainer.Controls.Add(this.contentQuestionTextBox);
+            this.answerChoiseContainer.Controls.Add(this.contentQuestionPanel);
             this.answerChoiseContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answerChoiseContainer.Location = new System.Drawing.Point(0, 0);
             this.answerChoiseContainer.Name = "answerChoiseContainer";
@@ -118,7 +119,7 @@ namespace PresentationLayer.QuestionEditor
 
         #endregion
 
-        private System.Windows.Forms.TextBox contentQuestionTextBox;
+        private System.Windows.Forms.Panel contentQuestionPanel;
         private System.Windows.Forms.Panel answerChoiseContainer;
         private System.Windows.Forms.Label orderNumQuest;
         private System.Windows.Forms.Button editButton;
