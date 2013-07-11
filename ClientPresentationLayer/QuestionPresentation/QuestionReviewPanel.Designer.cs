@@ -91,7 +91,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Question";
-            this.columnHeader3.Width = 300;
+            this.columnHeader3.Width = 500;
             // 
             // columnHeader4
             // 
