@@ -154,6 +154,7 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void NextButtonClick(object sender, EventArgs e)
         {
+            SuspendLayout();
             if (indexQuestion < maxIndexQuestion - 1)
             {
                 indexQuestion += 1;
@@ -163,6 +164,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             {
                 OnEndExam();
             }
+            ResumeLayout();
         }
 
         public void SaveAnswerDataOfStudent(int indexQuestion)

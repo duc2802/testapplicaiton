@@ -38,10 +38,10 @@
             this.titleColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numberQuesColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.importButton = new System.Windows.Forms.Button();
             this.startExamButton = new System.Windows.Forms.Button();
             this.aboutTabPage = new System.Windows.Forms.TabPage();
-            this.timeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.managerTabControl.SuspendLayout();
             this.learningModeTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.managerTabControl.Multiline = true;
             this.managerTabControl.Name = "managerTabControl";
             this.managerTabControl.SelectedIndex = 0;
-            this.managerTabControl.Size = new System.Drawing.Size(611, 505);
+            this.managerTabControl.Size = new System.Drawing.Size(928, 573);
             this.managerTabControl.TabIndex = 0;
             // 
             // learningModeTabPage
@@ -73,7 +73,7 @@
             this.learningModeTabPage.Location = new System.Drawing.Point(4, 25);
             this.learningModeTabPage.Name = "learningModeTabPage";
             this.learningModeTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.learningModeTabPage.Size = new System.Drawing.Size(603, 476);
+            this.learningModeTabPage.Size = new System.Drawing.Size(920, 544);
             this.learningModeTabPage.TabIndex = 0;
             this.learningModeTabPage.Text = "Learning Mode";
             // 
@@ -82,7 +82,7 @@
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteButton.Enabled = false;
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(522, 86);
+            this.deleteButton.Location = new System.Drawing.Point(839, 86);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 7;
@@ -94,7 +94,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(546, 6);
+            this.label1.Location = new System.Drawing.Point(863, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             this.numOfExamTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numOfExamTextBox.Enabled = false;
-            this.numOfExamTextBox.Location = new System.Drawing.Point(428, 30);
+            this.numOfExamTextBox.Location = new System.Drawing.Point(745, 30);
             this.numOfExamTextBox.Name = "numOfExamTextBox";
             this.numOfExamTextBox.Size = new System.Drawing.Size(88, 20);
             this.numOfExamTextBox.TabIndex = 5;
@@ -115,7 +115,7 @@
             this.totalExamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.totalExamLabel.AutoSize = true;
             this.totalExamLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalExamLabel.Location = new System.Drawing.Point(351, 33);
+            this.totalExamLabel.Location = new System.Drawing.Point(668, 33);
             this.totalExamLabel.Name = "totalExamLabel";
             this.totalExamLabel.Size = new System.Drawing.Size(74, 13);
             this.totalExamLabel.TabIndex = 4;
@@ -139,7 +139,7 @@
             this.testlistView.Location = new System.Drawing.Point(20, 57);
             this.testlistView.MultiSelect = false;
             this.testlistView.Name = "testlistView";
-            this.testlistView.Size = new System.Drawing.Size(496, 398);
+            this.testlistView.Size = new System.Drawing.Size(813, 466);
             this.testlistView.TabIndex = 3;
             this.testlistView.UseCompatibleStateImageBehavior = false;
             this.testlistView.View = System.Windows.Forms.View.Details;
@@ -147,19 +147,25 @@
             // titleColumn
             // 
             this.titleColumn.Text = "Title";
-            this.titleColumn.Width = 230;
+            this.titleColumn.Width = 375;
             // 
             // numberQuesColumn
             // 
             this.numberQuesColumn.Text = "Questions";
             this.numberQuesColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numberQuesColumn.Width = 100;
+            this.numberQuesColumn.Width = 143;
             // 
             // dateColumn
             // 
             this.dateColumn.Text = "Date";
             this.dateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dateColumn.Width = 100;
+            this.dateColumn.Width = 117;
+            // 
+            // timeColumn
+            // 
+            this.timeColumn.Text = "Time";
+            this.timeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeColumn.Width = 137;
             // 
             // importButton
             // 
@@ -176,7 +182,7 @@
             this.startExamButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.startExamButton.Enabled = false;
             this.startExamButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startExamButton.Location = new System.Drawing.Point(522, 57);
+            this.startExamButton.Location = new System.Drawing.Point(839, 57);
             this.startExamButton.Name = "startExamButton";
             this.startExamButton.Size = new System.Drawing.Size(75, 23);
             this.startExamButton.TabIndex = 1;
@@ -189,15 +195,9 @@
             this.aboutTabPage.Location = new System.Drawing.Point(4, 25);
             this.aboutTabPage.Name = "aboutTabPage";
             this.aboutTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.aboutTabPage.Size = new System.Drawing.Size(603, 476);
+            this.aboutTabPage.Size = new System.Drawing.Size(920, 544);
             this.aboutTabPage.TabIndex = 1;
             this.aboutTabPage.Text = "About TestEasy";
-            // 
-            // timeColumn
-            // 
-            this.timeColumn.Text = "Time";
-            this.timeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeColumn.Width = 92;
             // 
             // TestManager
             // 
@@ -205,7 +205,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.managerTabControl);
             this.Name = "TestManager";
-            this.Size = new System.Drawing.Size(611, 505);
+            this.Size = new System.Drawing.Size(928, 573);
             this.managerTabControl.ResumeLayout(false);
             this.learningModeTabPage.ResumeLayout(false);
             this.learningModeTabPage.PerformLayout();
