@@ -379,11 +379,18 @@ namespace PresentationLayer.QuestionEditor
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            MultipleChoiceEditor test = new MultipleChoiceEditor(_dataItem);
-            if(DialogResult.OK == test.ShowDialog())
+            HTMLQuestionEditor test = new HTMLQuestionEditor(_dataItem);
+
+            if (DialogResult.OK == test.ShowDialog())
             {
                 OnEdit(test.DataItem);
             }
+
+            //MultipleChoiceEditor test = new MultipleChoiceEditor(_dataItem);
+            //if(DialogResult.OK == test.ShowDialog())
+            //{
+            //    OnEdit(test.DataItem);
+            //}
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
