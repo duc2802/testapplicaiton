@@ -43,6 +43,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         {
             _questionPresent = new HTMLPresentQuestionPanel();
             _questionPresent.DataItem = Singleton<TestBE>.Instance;
+            _questionPresent.Dock = DockStyle.Fill;
             splitContainer.Panel1.Controls.Add(_questionPresent);
         }
 
@@ -78,7 +79,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             contentExplainTextEditor.Name = "editor";
             contentExplainTextEditor.Size = new Size(632, 124);
             contentExplainTextEditor.TabIndex = 1;
-            splitContainer.Panel1.Controls.Add(contentExplainTextEditor);
+            splitContainer.Panel2.Controls.Add(contentExplainTextEditor);
             ResumeLayout(false);
         }
 

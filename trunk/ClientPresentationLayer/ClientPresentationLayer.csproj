@@ -69,6 +69,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionPresentation\HTMLPresentQuestionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionPresentation\HTMLPresentQuestionPanel.Designer.cs">
+      <DependentUpon>HTMLPresentQuestionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionPresentation\HTMLQuestionPresentPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,12 +86,6 @@
     </Compile>
     <Compile Include="QuestionPresentation\HTMLQuestionExplainPanel.Designer.cs">
       <DependentUpon>HTMLQuestionExplainPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuestionPresentation\HTMLPresentQuestionPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuestionPresentation\HTMLPresentQuestionPanel.Designer.cs">
-      <DependentUpon>HTMLPresentQuestionPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="QuestionPresentation\Data\AnswerSheetDataController.cs" />
     <Compile Include="QuestionPresentation\Data\QuestionDataListViewItem.cs" />
@@ -130,12 +130,6 @@
     <Compile Include="QuestionPresentation\Data\AnswerDataItem.cs" />
     <Compile Include="QuestionPresentation\Data\QuestionDataController.cs" />
     <Compile Include="QuestionPresentation\Data\QuestionDataItem.cs" />
-    <Compile Include="QuestionPresentation\QuestionExplainPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuestionPresentation\QuestionExplainPanel.Designer.cs">
-      <DependentUpon>QuestionExplainPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="QuestionPresentation\Data\TestDataListViewItem.cs" />
     <Compile Include="QuestionPresentation\Data\TestDataListViewItemController.cs" />
     <Compile Include="QuestionPresentation\QuestionListItemCustom.cs">
@@ -178,14 +172,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuestionPresentation\HTMLPresentQuestionPanel.resx">
+      <DependentUpon>HTMLPresentQuestionPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\HTMLQuestionPresentPanel.resx">
       <DependentUpon>HTMLQuestionPresentPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\HTMLQuestionExplainPanel.resx">
       <DependentUpon>HTMLQuestionExplainPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuestionPresentation\HTMLPresentQuestionPanel.resx">
-      <DependentUpon>HTMLPresentQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\DislayImageForm.resx">
       <DependentUpon>DislayImageForm.cs</DependentUpon>
@@ -204,9 +198,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\AnswerItem.resx">
       <DependentUpon>AnswerItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuestionPresentation\QuestionExplainPanel.resx">
-      <DependentUpon>QuestionExplainPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionPresentation\QuestionListItemCustom.resx">
       <DependentUpon>QuestionListItemCustom.cs</DependentUpon>
