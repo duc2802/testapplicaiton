@@ -184,6 +184,12 @@
     <Compile Include="QuestionEditor\QuestionListPanel.Designer.cs">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Splash\Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash\Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Splash\WelcomeSrceenTimer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -207,6 +213,7 @@
     <Compile Include="ThreadManager\GuiThread\CreateTestCmd.cs" />
     <Compile Include="ThreadManager\GuiThread\GuiQueueThreadController.cs" />
     <Compile Include="ThreadManager\GuiThread\LoadQuestionCmd.cs" />
+    <Compile Include="ThreadManager\GuiThread\OpenMathEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ExamEditor\NewExamDialog.resx">
@@ -259,6 +266,9 @@
     <EmbeddedResource Include="QuestionEditor\QuestionListPanel.resx">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Splash\Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Splash\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +283,7 @@
     <None Include="Resources\Export.png" />
     <None Include="Resources\editquestion.png" />
     <Content Include="Resources\docs.png" />
+    <None Include="Resources\loading.gif" />
     <Content Include="Resources\NewQuestion.png" />
     <Content Include="Resources\Program.png" />
     <None Include="Resources\test.png" />

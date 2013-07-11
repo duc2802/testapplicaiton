@@ -154,10 +154,11 @@ namespace PresentationLayer.QuestionEditor
 
         public void InitCustomComponent()
         {
-            SuspendLayout();
+            //SuspendLayout();
             //Init contentQuestionTextEditor
             contentQuestionPanel.BorderStyle = BorderStyle.FixedSingle;
             _contentQuestionTextEditor = new TextEditor(false);
+            _contentQuestionTextEditor.Parent = this;
             _contentQuestionTextEditor.BackColor = SystemColors.Control;
             _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
             _contentQuestionTextEditor.BodyHtml = null;
@@ -171,7 +172,7 @@ namespace PresentationLayer.QuestionEditor
             _contentQuestionTextEditor.Size = new Size(632, 124);
             _contentQuestionTextEditor.TabIndex = 1;
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
-            ResumeLayout(false);
+            //ResumeLayout(false);
         }
 
         public QuestionDataItem DataItem
@@ -179,7 +180,10 @@ namespace PresentationLayer.QuestionEditor
             set
             {
                 _dataItem = value;
-                Name = _dataItem.IdQuestion.ToString();
+                if (_dataItem.IdQuestion != null)
+                {
+                    Name = _dataItem.IdQuestion.ToString();
+                }
                 OnDataItemChanged();
             }
             get { return _dataItem; }

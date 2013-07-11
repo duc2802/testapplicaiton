@@ -12,9 +12,9 @@ namespace ClientPresentationLayer
     public partial class TestEasyClient : Form
     {
         private TestManager _managerTest;
-        private QuestionPresentPanel _questionPresent;
+        private HTMLQuestionPresentPanel _questionPresent;
         private QuestionReviewPanel _questionReview;
-        private QuestionExplainPanel _questionExplain;
+        private HTMLQuestionExplainPanel _questionExplain;
 
         public TestEasyClient()
         {
@@ -29,13 +29,13 @@ namespace ClientPresentationLayer
             _questionReview = new QuestionReviewPanel();
             _questionReview.Dock = DockStyle.Fill;
 
-            _questionPresent = new QuestionPresentPanel();
+            _questionPresent = new HTMLQuestionPresentPanel();
             _questionPresent.Dock = DockStyle.Fill;
 
             _managerTest = new TestManager();
             _managerTest.Dock = DockStyle.Fill;
 
-            _questionExplain = new QuestionExplainPanel();
+            _questionExplain = new HTMLQuestionExplainPanel();
             _questionExplain.Dock = DockStyle.Fill;
 
             Controls.Add(_managerTest);

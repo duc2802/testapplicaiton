@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using BusinessEntities;
 using PropertyChangedEventHandler = Commons.BusinessObjects.PropertyChangedEventHandler;
 
@@ -10,12 +8,14 @@ namespace PresentationLayer.QuestionEditor.Data
 {
     public class QuestionDataItem
     {
+        private AnswerDataController _answers = new AnswerDataController();
+        private string _contentQuestion;
+        private int _orderQuestion;
         public int Height { set; get; }
         public string IdQuestion { set; get; }
         public string ExplainContent { set; get; }
         public string imageName { set; get; }
 
-        private int _orderQuestion;
         public int OrderQuestion
         {
             set
@@ -23,46 +23,38 @@ namespace PresentationLayer.QuestionEditor.Data
                 _orderQuestion = value;
                 OnPropertyChanged("OrderQuestion");
             }
-            get
-            {
-                return _orderQuestion;
-            } 
+            get { return _orderQuestion; }
         }
 
-        private string _contentQuestion;
         public string ContentQuestion
         {
-            set 
+            set
             {
                 _contentQuestion = value;
                 OnPropertyChanged("ContentQuestion");
-            } 
-            get
-            {
-                return _contentQuestion;
             }
+            get { return _contentQuestion; }
         }
 
-        private AnswerDataController _answers = new AnswerDataController();
-        public AnswerDataController  AnswerData
+        public AnswerDataController AnswerData
         {
-            set { this._answers = value; }
-            get { return this._answers; }
+            set { _answers = value; }
+            get { return _answers; }
         }
 
         public QuestionBE getQuestionBE()
         {
-            QuestionBE qBe = new QuestionBE();
-            qBe.QuestionID = this.IdQuestion.ToString();
-            qBe.QuestionContent = this.ContentQuestion;
-            qBe.Explain = this.ExplainContent;
+            var qBe = new QuestionBE();
+            qBe.QuestionID = IdQuestion;
+            qBe.QuestionContent = ContentQuestion;
+            qBe.Explain = ExplainContent;
             qBe.ListAnswers = new List<AnswerBE>();
-            foreach (var answer in this.AnswerData.AnswerData)
+            foreach (AnswerDataItem answer in AnswerData.AnswerData)
             {
-                AnswerBE answerBe = new AnswerBE();
+                var answerBe = new AnswerBE();
                 answerBe.AnswerID = answer.orderAnswer.ToString();
                 answerBe.Content = answer.ContentAnswer;
-                if(answer.isTrue)
+                if (answer.isTrue)
                 {
                     answerBe.Result = "1";
                 }
@@ -77,6 +69,10 @@ namespace PresentationLayer.QuestionEditor.Data
         }
 
         #region Trigger Event
+
+        private readonly object _propertyChangedEventLocker = new object();
+        private PropertyChangedEventHandler _propertyChangedEvent;
+
         public event PropertyChangedEventHandler PropertyChanged
         {
             add
@@ -95,14 +91,11 @@ namespace PresentationLayer.QuestionEditor.Data
             }
         }
 
-        private PropertyChangedEventHandler _propertyChangedEvent;
-        private readonly object _propertyChangedEventLocker = new object();
-
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler;
-            lock (this._propertyChangedEventLocker)
-                handler = this._propertyChangedEvent;
+            lock (_propertyChangedEventLocker)
+                handler = _propertyChangedEvent;
 
             if (handler == null)
             {
@@ -118,6 +111,6 @@ namespace PresentationLayer.QuestionEditor.Data
             }
         }
 
-        #endregion 
+        #endregion
     }
 }

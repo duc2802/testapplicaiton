@@ -57,11 +57,13 @@ namespace PresentationLayer.QuestionEditor
         {
             InitializeComponent();
             InitCustomComponent(true);
+            InitData(index);
             InitEvent();
         }
 
         private void InitGui(AnswerDataItem itemData)
         {
+            orderAnswerLabel.Text = (itemData.OrderAnswer + 1).ToString();
             contentAnswerTextEditor.Html = itemData.ContentAnswer;
         }
 
@@ -79,9 +81,8 @@ namespace PresentationLayer.QuestionEditor
 
         private void InitData(int index)
         {
-            _dataItem = new AnswerDataItem();
+            DataItem = new AnswerDataItem();
             orderAnswerLabel.Text = index.ToString();
-            DataItem = _dataItem;
             //DataItem.PropertyChanged += DataItemPropertyChanged;
             Refresh();
         }
@@ -94,6 +95,8 @@ namespace PresentationLayer.QuestionEditor
             contentAnswerTextEditor.BackColor = SystemColors.Control;
             contentAnswerTextEditor.BodyBackgroundColor = Color.White;
             contentAnswerTextEditor.BodyHtml = null;
+            contentAnswerTextEditor.Parent = this;
+            contentAnswerTextEditor.Parent = this;
             contentAnswerTextEditor.BodyText = null;
             contentAnswerTextEditor.Dock = DockStyle.Fill;
             contentAnswerTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
@@ -115,7 +118,7 @@ namespace PresentationLayer.QuestionEditor
 
                 contentPanel.Size = new Size(369, 30);
             }
-            ResumeLayout(false);
+            ResumeLayout();
         }
 
         private void TrueCheckBoxCheckedChanged(object sender, EventArgs e)

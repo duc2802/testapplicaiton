@@ -37,13 +37,19 @@ namespace ClientPresentationLayer.QuestionPresentation
             InitializeComponent();
             InitCustomComponent(true);
             InitEvent();
+            InitData();
+        }
+
+        private void InitData()
+        {
+            _dataBEItem = new AnswerBE();
         }
 
         public HTMLAnswerItem(AnswerBE itemData, bool isEditMode)
         {
             InitializeComponent();
             InitCustomComponent(isEditMode);
-            InitGui(itemData);
+            InitGui(itemData, isEditMode);
             InitEvent();
             //InitData(index);
         }
@@ -63,9 +69,16 @@ namespace ClientPresentationLayer.QuestionPresentation
             InitEvent();
         }
 
-        private void InitGui(AnswerBE itemData)
+        private void InitGui(AnswerBE itemData, bool isChoise)
         {
             contentAnswerTextEditor.Html = itemData.Content;
+            orderAnswerLabel.Text = (int.Parse(itemData.AnswerID) + 1).ToString();
+            btTrueFail.Visible = false;
+            trueCheckBox.Visible = true;
+            if (isChoise)
+            {
+                trueCheckBox.Checked = isChoise;
+            }
         }
 
         public void TurnOnAnswer(bool on)

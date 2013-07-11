@@ -30,6 +30,8 @@ namespace LiveSwitch.TextControl
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.fontComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.fontSizeComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.boldButton = new System.Windows.Forms.ToolStripButton();
             this.italicButton = new System.Windows.Forms.ToolStripButton();
@@ -50,8 +52,6 @@ namespace LiveSwitch.TextControl
             this.unorderedListButton = new System.Windows.Forms.ToolStripButton();
             this.outdentButton = new System.Windows.Forms.ToolStripButton();
             this.indentButton = new System.Windows.Forms.ToolStripButton();
-            this.fontComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.fontSizeComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -66,9 +66,9 @@ namespace LiveSwitch.TextControl
             this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,8 @@ namespace LiveSwitch.TextControl
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fontComboBox,
+            this.fontSizeComboBox,
             this.toolStripSeparator1,
             this.boldButton,
             this.italicButton,
@@ -102,6 +104,18 @@ namespace LiveSwitch.TextControl
             this.toolStrip1.Size = new System.Drawing.Size(627, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // fontComboBox
+            // 
+            this.fontComboBox.Name = "fontComboBox";
+            this.fontComboBox.Size = new System.Drawing.Size(140, 25);
+            this.fontComboBox.ToolTipText = "Font";
+            // 
+            // fontSizeComboBox
+            // 
+            this.fontSizeComboBox.Name = "fontSizeComboBox";
+            this.fontSizeComboBox.Size = new System.Drawing.Size(75, 25);
+            this.fontSizeComboBox.ToolTipText = "Font Size";
             // 
             // toolStripSeparator1
             // 
@@ -293,18 +307,6 @@ namespace LiveSwitch.TextControl
             this.indentButton.ToolTipText = "Indent";
             this.indentButton.Click += new System.EventHandler(this.indentButton_Click);
             // 
-            // fontComboBox
-            // 
-            this.fontComboBox.Name = "fontComboBox";
-            this.fontComboBox.Size = new System.Drawing.Size(140, 23);
-            this.fontComboBox.ToolTipText = "Font";
-            // 
-            // fontSizeComboBox
-            // 
-            this.fontSizeComboBox.Name = "fontSizeComboBox";
-            this.fontSizeComboBox.Size = new System.Drawing.Size(75, 23);
-            this.fontSizeComboBox.ToolTipText = "Font Size";
-            // 
             // toolStripButton2
             // 
             this.toolStripButton2.Name = "toolStripButton2";
@@ -365,33 +367,33 @@ namespace LiveSwitch.TextControl
             this.backgroundColorToolStripMenuItem,
             this.cSSToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 158);
             // 
             // cutToolStripMenuItem1
             // 
             this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.cutToolStripMenuItem1.Text = "Cut";
             this.cutToolStripMenuItem1.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
             // 
             // copyToolStripMenuItem2
             // 
             this.copyToolStripMenuItem2.Name = "copyToolStripMenuItem2";
-            this.copyToolStripMenuItem2.Size = new System.Drawing.Size(170, 22);
+            this.copyToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
             // pasteToolStripMenuItem3
             // 
             this.pasteToolStripMenuItem3.Name = "pasteToolStripMenuItem3";
-            this.pasteToolStripMenuItem3.Size = new System.Drawing.Size(170, 22);
+            this.pasteToolStripMenuItem3.Size = new System.Drawing.Size(107, 22);
             this.pasteToolStripMenuItem3.Text = "Paste";
             this.pasteToolStripMenuItem3.Click += new System.EventHandler(this.pasteToolStripMenuItem3_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -401,11 +403,6 @@ namespace LiveSwitch.TextControl
             this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.backgroundColorToolStripMenuItem.Text = "Background Color";
             this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
-            // 
-            // cSSToolStripMenuItem
-            // 
-            this.cSSToolStripMenuItem.Name = "cSSToolStripMenuItem";
-            this.cSSToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             // 
             // Editor
             // 

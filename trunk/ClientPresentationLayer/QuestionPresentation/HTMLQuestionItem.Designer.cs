@@ -34,9 +34,11 @@
             // 
             // panelQuestionContent
             // 
+            this.panelQuestionContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelQuestionContent.Location = new System.Drawing.Point(14, 12);
             this.panelQuestionContent.Name = "panelQuestionContent";
-            this.panelQuestionContent.Size = new System.Drawing.Size(549, 171);
+            this.panelQuestionContent.Size = new System.Drawing.Size(552, 122);
             this.panelQuestionContent.TabIndex = 0;
             // 
             // listAnswer
@@ -45,10 +47,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listAnswer.AutoScroll = true;
-            this.listAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.listAnswer.Location = new System.Drawing.Point(14, 189);
+            this.listAnswer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 552F));
+            this.listAnswer.Location = new System.Drawing.Point(14, 140);
             this.listAnswer.Name = "listAnswer";
-            this.listAnswer.Size = new System.Drawing.Size(552, 123);
+            this.listAnswer.Size = new System.Drawing.Size(552, 172);
             this.listAnswer.TabIndex = 1;
             // 
             // HTMLQuestionItem

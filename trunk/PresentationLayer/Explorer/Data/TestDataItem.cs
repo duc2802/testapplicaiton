@@ -40,7 +40,14 @@ namespace PresentationLayer.Explorer.Data
             FolderId = testBe.FolderId;
             DateCreate = DateTime.Parse(testBe.DateCreate);
             Time = int.Parse(testBe.Time);
-            NumberQuestion = testBe.ListQuestion.Count;
+            if (testBe.ListQuestion != null)
+            {
+                NumberQuestion = testBe.ListQuestion.Count;
+            }
+            else
+            {
+                NumberQuestion = testBe.NumberOfQuestion;
+            }
         }
 
         private QuestionDataController _questions;
