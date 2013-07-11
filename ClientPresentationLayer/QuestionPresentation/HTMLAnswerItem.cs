@@ -37,12 +37,11 @@ namespace ClientPresentationLayer.QuestionPresentation
             InitializeComponent();
             InitCustomComponent(true);
             InitEvent();
-            InitData();
         }
 
-        private void InitData()
+        private void InitData(AnswerBE itemData)
         {
-            _dataBEItem = new AnswerBE();
+            _dataBEItem = itemData;
         }
 
         public HTMLAnswerItem(AnswerBE itemData, bool isEditMode)
@@ -51,6 +50,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             InitCustomComponent(isEditMode);
             InitGui(itemData, isEditMode);
             InitEvent();
+            InitData(itemData);
             //InitData(index);
         }
 
@@ -110,7 +110,7 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void InitData(int index)
         {
-                  Refresh();
+            Refresh();
         }
 
         private void InitCustomComponent(bool isEditMode)
