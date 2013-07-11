@@ -1,10 +1,19 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
+using System.Windows;
 using System.Windows.Forms;
 using Commons;
+using Editor;
 using LiveSwitch.TextControl;
 using PresentationLayer.QuestionEditor.Data;
+using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
+using ThreadQueueManager;
+using MessageBox = System.Windows.Forms.MessageBox;
+using Point = System.Drawing.Point;
+using Size = System.Drawing.Size;
+using SystemColors = System.Drawing.SystemColors;
 using TextEditor = LiveSwitch.TextControl.Editor;
 
 namespace PresentationLayer.QuestionEditor
@@ -13,7 +22,6 @@ namespace PresentationLayer.QuestionEditor
     {
         private TextEditor _contentQuestionTextEditor;
         private TextEditor _explainQuestionTextEditor;
-
         private readonly String _action = "";
         private int _maxShowItem = 6;
 
@@ -50,17 +58,25 @@ namespace PresentationLayer.QuestionEditor
         {
             moreAnswerButton.Click += MoreAnswerButtonClick;
             createButton.Click += CreateButtonClick;
+            insertEquaButton.Click += new EventHandler(InsertEquaButtonClick);
         }
-        
+
+        private void InsertEquaButtonClick(object sender, EventArgs e)
+        {
+            var openEquaForm = new OpenMathEditor(ExecuteMethod.Async);
+            Singleton<GuiQueueThreadController>.Instance.PutCmd(openEquaForm);
+        }
+
         private void InitCustomComponent()
         {
             createButton.Text = @"Create";
 
             SuspendLayout();
             //Init contentQuestionTextEditor
-            _contentQuestionTextEditor = new TextEditor(true);
+            _contentQuestionTextEditor = new TextEditor();
             _contentQuestionTextEditor.BackColor = SystemColors.Control;
             _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
+            _contentQuestionTextEditor.Parent = this;
             _contentQuestionTextEditor.BodyHtml = null;
             _contentQuestionTextEditor.BodyText = null;
             _contentQuestionTextEditor.Dock = DockStyle.Fill;
@@ -74,8 +90,9 @@ namespace PresentationLayer.QuestionEditor
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
 
             //Init explainQuestionTextEditor
-            _explainQuestionTextEditor = new TextEditor(true);
+            _explainQuestionTextEditor = new TextEditor();
             _explainQuestionTextEditor.Dock = DockStyle.Fill;
+            _explainQuestionTextEditor.Parent = this;
             _explainQuestionTextEditor.BackColor = SystemColors.Control;
             _explainQuestionTextEditor.BodyBackgroundColor = Color.White;
             _explainQuestionTextEditor.BodyHtml = null;
@@ -145,22 +162,16 @@ namespace PresentationLayer.QuestionEditor
                 return;
             }
             answerListTableLayoutPanel.SuspendLayout();
-            int orderAnswer = 1;
-            if (DataItem != null)
-            {
-                orderAnswer = answerListTableLayoutPanel.Controls.Count + 1;
-            }
-            var newItem = new AnswerDataItem(orderAnswer, "", false);
+            var newItem = new AnswerDataItem(5, "", false);
             DataItem.AnswerData.AnswerData.Add(newItem);
-            //itemLayout = new HTMLAnswerItem(newItem, orderAnswer);
-            var itemLayout = new HTMLAnswerItem();
-            //itemLayout.DataItem.orderAnswer = orderAnswer;
-            //itemLayout.Delete += ItemLayoutDelete;
+            var itemLayout = new HTMLAnswerItem(5);
+            itemLayout.DataItem.orderAnswer = 5;
+            itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
-            var style = new RowStyle(SizeType.AutoSize);
+            var style = new RowStyle(SizeType.Percent);
             answerListTableLayoutPanel.RowStyles.Add(style);
             answerListTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-            answerListTableLayoutPanel.Controls.Add(itemLayout, 0, orderAnswer - 1);
+            answerListTableLayoutPanel.Controls.Add(itemLayout, 0, 4);
             answerListTableLayoutPanel.ResumeLayout();
         }
 

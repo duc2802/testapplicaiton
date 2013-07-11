@@ -113,7 +113,6 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         public void LoadContentPanel()
         {
-            
             //Load combobox
             if (DataItem.TestID != null)
             {

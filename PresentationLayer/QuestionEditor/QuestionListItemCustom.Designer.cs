@@ -43,18 +43,14 @@ namespace PresentationLayer.QuestionEditor
             this.contentQuestionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.contentQuestionPanel.BackColor = System.Drawing.Color.White;
-            this.contentQuestionPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.contentQuestionPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contentQuestionPanel.Location = new System.Drawing.Point(26, 39);
-            //this.contentQuestionPanel.Multiline = true;
             this.contentQuestionPanel.Name = "contentQuestionPanel";
-            //this.contentQuestionPanel.ReadOnly = true;
-            this.contentQuestionPanel.Size = new System.Drawing.Size(502, 81);
+            this.contentQuestionPanel.Size = new System.Drawing.Size(502, 153);
             this.contentQuestionPanel.TabIndex = 1;
             // 
             // answerChoiseContainer
             // 
-            this.answerChoiseContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.answerChoiseContainer.AutoSize = true;
             this.answerChoiseContainer.Controls.Add(this.deleteButton);
             this.answerChoiseContainer.Controls.Add(this.editButton);
@@ -63,7 +59,7 @@ namespace PresentationLayer.QuestionEditor
             this.answerChoiseContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answerChoiseContainer.Location = new System.Drawing.Point(0, 0);
             this.answerChoiseContainer.Name = "answerChoiseContainer";
-            this.answerChoiseContainer.Size = new System.Drawing.Size(620, 123);
+            this.answerChoiseContainer.Size = new System.Drawing.Size(620, 195);
             this.answerChoiseContainer.TabIndex = 1;
             this.answerChoiseContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.answerChoiseContainer_Paint);
             this.answerChoiseContainer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.answerChoiseContainer_MouseClick);
@@ -109,7 +105,7 @@ namespace PresentationLayer.QuestionEditor
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.answerChoiseContainer);
             this.Name = "QuestionListItemCustom";
-            this.Size = new System.Drawing.Size(620, 123);
+            this.Size = new System.Drawing.Size(620, 195);
             this.answerChoiseContainer.ResumeLayout(false);
             this.answerChoiseContainer.PerformLayout();
             this.ResumeLayout(false);

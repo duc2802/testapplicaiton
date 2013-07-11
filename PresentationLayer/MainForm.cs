@@ -252,22 +252,17 @@ namespace PresentationLayer
 
         private void NewQuestionButtonClick(object sender, EventArgs e)
         {
-            App w = new App();
-            //ElementHost.EnableModelessKeyboardInterop(w);
-            w.InitializeComponent();
-            w.Run();
+            var form = new HTMLQuestionEditor();
+            if (DialogResult.OK == form.ShowDialog())
+            {
+                Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
 
-            //var form = new HTMLQuestionEditor();
-            //if (DialogResult.OK == form.ShowDialog())
-            //{
-            //    Singleton<GuiActionEventController>.Instance.OnAddQuestionItem(form.DataItem);
+                var question = form.DataItem.getQuestionBE();
+                Singleton<TestBE>.Instance.ListQuestion.Add(question);
 
-            //    var question = form.DataItem.getQuestionBE();
-            //    Singleton<TestBE>.Instance.ListQuestion.Add(question);
-
-            //    ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
-            //    Singleton<DataQueueThreadController>.Instance.PutCmd(command);
-            //}
+                ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
+                Singleton<DataQueueThreadController>.Instance.PutCmd(command);
+            }
         }
 
         private void ShowEqualEditor()

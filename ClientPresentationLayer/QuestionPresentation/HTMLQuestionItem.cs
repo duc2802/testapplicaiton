@@ -33,6 +33,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         public HTMLQuestionItem(QuestionBE Item)
         {
             InitializeComponent();
+            InitCustomComponent();
             InitData(Item);
             InitGui(Item);
             InitEvent();
@@ -41,6 +42,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         public HTMLQuestionItem(QuestionBE Item, bool isExplain)
         {
             InitializeComponent();
+            InitCustomComponent();
             InitData(Item);
             InitGui(Item, isExplain);
             InitEvent();
@@ -98,6 +100,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             SuspendLayout();
             listAnswer.SuspendLayout();
             var answerItem = CreateAnswerItem(dataItem, isExplain);
+            answerItem.DataBEItem = dataItem;
             listAnswer.Controls.Add(answerItem);
             listAnswer.ResumeLayout();
             ResumeLayout();
@@ -221,7 +224,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         {
             SuspendLayout();
             //Init contentQuestionTextEditor
-            _contentQuestionTextEditor = new TextEditor(true);
+            _contentQuestionTextEditor = new TextEditor(false);
             _contentQuestionTextEditor.BackColor = SystemColors.Control;
             _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
             _contentQuestionTextEditor.BodyHtml = null;
@@ -317,6 +320,5 @@ namespace ClientPresentationLayer.QuestionPresentation
                 }
             }
         }
-    }
     }
 }

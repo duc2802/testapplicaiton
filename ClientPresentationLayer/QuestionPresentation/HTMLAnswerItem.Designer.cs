@@ -56,9 +56,12 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.contentPanel.Location = new System.Drawing.Point(87, 3);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(392, 69);
+            this.contentPanel.Size = new System.Drawing.Size(392, 57);
             this.contentPanel.TabIndex = 11;
             // 
             // btTrueFail
@@ -82,7 +85,7 @@
             this.Controls.Add(this.trueCheckBox);
             this.Controls.Add(this.orderAnswerLabel);
             this.Name = "HTMLAnswerItem";
-            this.Size = new System.Drawing.Size(482, 74);
+            this.Size = new System.Drawing.Size(482, 63);
             this.ResumeLayout(false);
             this.PerformLayout();
 

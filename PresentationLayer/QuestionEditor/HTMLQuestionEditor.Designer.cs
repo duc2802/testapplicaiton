@@ -36,6 +36,7 @@
             this.btCancel = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
             this.moreAnswerButton = new System.Windows.Forms.Button();
+            this.insertEquaButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // contentQuestionPanel
@@ -127,12 +128,26 @@
             this.moreAnswerButton.Text = "More Answer ...";
             this.moreAnswerButton.UseVisualStyleBackColor = true;
             // 
+            // insertEquaButton
+            // 
+            this.insertEquaButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.insertEquaButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.insertEquaButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.insertEquaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.insertEquaButton.Location = new System.Drawing.Point(547, 498);
+            this.insertEquaButton.Name = "insertEquaButton";
+            this.insertEquaButton.Size = new System.Drawing.Size(120, 23);
+            this.insertEquaButton.TabIndex = 16;
+            this.insertEquaButton.Text = "Insert Equation";
+            this.insertEquaButton.UseVisualStyleBackColor = true;
+            // 
             // HTMLQuestionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1020, 528);
+            this.Controls.Add(this.insertEquaButton);
             this.Controls.Add(this.moreAnswerButton);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.createButton);
@@ -160,5 +175,6 @@
         private System.Windows.Forms.Button btCancel;
         public System.Windows.Forms.Button createButton;
         public System.Windows.Forms.Button moreAnswerButton;
+        public System.Windows.Forms.Button insertEquaButton;
     }
 }
