@@ -100,7 +100,9 @@ namespace Editor
             //string imageType = (string)((Control)sender).Tag ?? "png";
 
             string newName = Guid.NewGuid().ToString()+".png";
-            string fileName = Singleton<SettingManager>.Instance.GetImageFolder() +"\\"+ newName;
+            string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + newName;
+
+            //string fileName = Singleton<SettingManager>.Instance.GetImageFolder() +"\\"+ newName;
             //"C:\Users\ducnm\Desktop\hinh anh";
             // Set file Name for Image 
             /**
