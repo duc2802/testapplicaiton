@@ -34,6 +34,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         public HTMLQuestionExplainPanel()
         {
             InitializeComponent();
+            InitCustomComponent();
             InitEvent();
             InitGui();
         }
@@ -86,6 +87,13 @@ namespace ClientPresentationLayer.QuestionPresentation
             nextButton.Click += NextButtonClick;
             previousButton.Click += PreviousButtonClick;
             btCloseViewExplain.Click += EndExamButtonClick;
+            goToQuesNumcomboBox.SelectedIndexChanged += SelectQuestionInCombobox;
+        }
+
+        private void SelectQuestionInCombobox(object sender, EventArgs e)
+        {
+            int indexQuestion = (int)goToQuesNumcomboBox.SelectedItem - 1;
+            RefreshGui(indexQuestion);
         }
 
         private void PreviousButtonClick(object sender, EventArgs e)

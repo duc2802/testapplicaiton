@@ -145,7 +145,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             answerItem.Location = new Point(0, answerItem.Height);
             answerItem.CheckChange += CheckChangeOfAnswerItem;
             answerItem.Size = new Size(listAnswer.Width, answerItem.Height);
-            answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right)));
+            answerItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top)));
             return answerItem;
         }
 
