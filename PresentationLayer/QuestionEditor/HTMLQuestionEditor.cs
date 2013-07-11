@@ -292,7 +292,7 @@ namespace PresentationLayer.QuestionEditor
                     if (item != null && item.DataItem.ContentAnswer != "")
                     {
                         var answer = new AnswerDataItem();
-                        answer.ContentAnswer = item.DataItem.ContentAnswer;
+                        answer.ContentAnswer = item.contentAnswerTextEditor.DocumentText;
                         answer.OrderAnswer = idx;
                         answer.isTrue = item.DataItem.isTrue;
                         DataItem.AnswerData.AnswerData.Add(answer);

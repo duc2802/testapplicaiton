@@ -82,14 +82,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void AddQuestionItem(QuestionDataItem questionData, int idx)
         {
-            questionPanel.SuspendLayout();
             QuestionListItemCustom questionItem = CreateQuestionItem(questionData);
             questionItem.DataItem.OrderQuestion = idx;
             var style = new RowStyle(SizeType.AutoSize);
             questionPanel.RowStyles.Add(style);
             questionPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             questionPanel.Controls.Add(questionItem, 0, idx);
-            questionPanel.ResumeLayout(false);
         }
 
         private void DeleteQuestionItem(string idQuestion)

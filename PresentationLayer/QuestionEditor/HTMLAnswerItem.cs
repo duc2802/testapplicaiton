@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Commons.BusinessObjects;
+using Commons.CommonGui;
 using LiveSwitch.TextControl;
 using PresentationLayer.QuestionEditor.Data;
 using TextEditor = LiveSwitch.TextControl.Editor;
@@ -15,7 +16,8 @@ namespace PresentationLayer.QuestionEditor
 {
     public partial class HTMLAnswerItem : UserControl
     {
-        private TextEditor contentAnswerTextEditor;
+        public TextEditor contentAnswerTextEditor;
+        private HtmlRichTextBox htmlRichTextBox;
 
         private AnswerDataItem _dataItem;
         public AnswerDataItem DataItem
@@ -40,7 +42,7 @@ namespace PresentationLayer.QuestionEditor
         {
             InitializeComponent();
             InitCustomComponent(isEditMode);
-            InitGui(itemData);
+            InitGui(itemData, isEditMode);
             //InitEvent();
             InitData(itemData);
         }
@@ -61,10 +63,18 @@ namespace PresentationLayer.QuestionEditor
             InitEvent();
         }
 
-        private void InitGui(AnswerDataItem itemData)
+        private void InitGui(AnswerDataItem itemData, bool isEditMode)
         {
             orderAnswerLabel.Text = (itemData.OrderAnswer + 1).ToString();
-            contentAnswerTextEditor.Html = itemData.ContentAnswer;
+            if (isEditMode)
+            {
+                contentAnswerTextEditor.Html = itemData.ContentAnswer;
+            }
+            else
+            {
+                htmlRichTextBox.AddHTML(itemData.ContentAnswer);
+                htmlRichTextBox.Text = htmlRichTextBox.Text.Trim();
+            }
         }
 
         private void InitEvent()
@@ -96,23 +106,37 @@ namespace PresentationLayer.QuestionEditor
         {
             SuspendLayout();
             //Init contentQuestionTextEditor
-            contentAnswerTextEditor = new TextEditor(isEditMode);
-            contentAnswerTextEditor.BackColor = SystemColors.Control;
-            contentAnswerTextEditor.BodyBackgroundColor = Color.White;
-            contentAnswerTextEditor.BodyHtml = null;
-            contentAnswerTextEditor.Parent = this;
-            contentAnswerTextEditor.Parent = this;
-            contentAnswerTextEditor.BodyText = null;
-            contentAnswerTextEditor.Dock = DockStyle.Fill;
-            contentAnswerTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
-            contentAnswerTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
-            contentAnswerTextEditor.FontSize = FontSize.Three;
-            contentAnswerTextEditor.Html = null;
-            contentAnswerTextEditor.Location = new Point(0, 24);
-            contentAnswerTextEditor.Name = "editor";
-            contentAnswerTextEditor.Size = new Size(632, 124);
-            contentAnswerTextEditor.TabIndex = 1;
-            contentPanel.Controls.Add(contentAnswerTextEditor);
+            contentPanel.BorderStyle = BorderStyle.None;
+            if(isEditMode)
+            {
+                contentAnswerTextEditor = new TextEditor(isEditMode);
+                contentAnswerTextEditor.BackColor = SystemColors.Control;
+                contentAnswerTextEditor.BodyBackgroundColor = Color.White;
+                contentAnswerTextEditor.BodyHtml = null;
+                contentAnswerTextEditor.Parent = this;
+                contentAnswerTextEditor.Parent = this;
+                contentAnswerTextEditor.BodyText = null;
+                contentAnswerTextEditor.Dock = DockStyle.Fill;
+                contentAnswerTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
+                contentAnswerTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
+                contentAnswerTextEditor.FontSize = FontSize.Three;
+                contentAnswerTextEditor.Html = null;
+                contentAnswerTextEditor.Location = new Point(0, 24);
+                contentAnswerTextEditor.Name = "editor";
+                contentAnswerTextEditor.Size = new Size(632, 124);
+                contentAnswerTextEditor.TabIndex = 1;
+                contentPanel.Controls.Add(contentAnswerTextEditor);
+            }
+            else
+            {
+                htmlRichTextBox = new HtmlRichTextBox();
+                htmlRichTextBox.Dock = DockStyle.Fill;
+                htmlRichTextBox.BorderStyle = BorderStyle.None;
+                htmlRichTextBox.Name = "htmlRichTextBox";
+                htmlRichTextBox.Size = new Size(369, 30);
+                htmlRichTextBox.TabIndex = 1;
+                contentPanel.Controls.Add(htmlRichTextBox);
+            }
 
             if (!isEditMode)
             {

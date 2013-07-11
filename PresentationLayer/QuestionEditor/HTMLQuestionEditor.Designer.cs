@@ -120,6 +120,7 @@
             this.moreAnswerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.moreAnswerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.moreAnswerButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.moreAnswerButton.Enabled = false;
             this.moreAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moreAnswerButton.Location = new System.Drawing.Point(673, 498);
             this.moreAnswerButton.Name = "moreAnswerButton";
