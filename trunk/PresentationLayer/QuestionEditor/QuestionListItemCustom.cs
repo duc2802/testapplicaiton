@@ -1,18 +1,22 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BusinessEntities;
 using Commons;
 using Commons.BusinessObjects;
+using Commons.CommonGui;
 using LiveSwitch.TextControl;
 using PresentationLayer.QuestionEditor.Data;
 using PresentationLayer;
 using PresentationLayer.ActionController;
+using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using ThreadQueueManager;
+using BF.SL;
 using TextEditor = LiveSwitch.TextControl.Editor;
 
 namespace PresentationLayer.QuestionEditor
@@ -136,7 +140,8 @@ namespace PresentationLayer.QuestionEditor
 
         private QuestionDataItem _dataItem;
 
-        private TextEditor _contentQuestionTextEditor;
+        //private TextEditor _contentQuestionTextEditor;
+        private HtmlRichTextBox _contentQuestionTextEditor;
         
         public QuestionListItemCustom()
         {
@@ -154,25 +159,27 @@ namespace PresentationLayer.QuestionEditor
 
         public void InitCustomComponent()
         {
-            //SuspendLayout();
+            SuspendLayout();
             //Init contentQuestionTextEditor
             contentQuestionPanel.BorderStyle = BorderStyle.FixedSingle;
-            _contentQuestionTextEditor = new TextEditor(false);
-            _contentQuestionTextEditor.Parent = this;
-            _contentQuestionTextEditor.BackColor = SystemColors.Control;
-            _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
-            _contentQuestionTextEditor.BodyHtml = null;
-            _contentQuestionTextEditor.BodyText = null;
+            _contentQuestionTextEditor = new HtmlRichTextBox();
             _contentQuestionTextEditor.Dock = DockStyle.Fill;
-            _contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
-            _contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
-            _contentQuestionTextEditor.FontSize = FontSize.Three;
-            _contentQuestionTextEditor.Html = null;
+            _contentQuestionTextEditor.BorderStyle = BorderStyle.None;
+            //_contentQuestionTextEditor.Parent = this;
+            //_contentQuestionTextEditor.BackColor = SystemColors.Control;
+            //_contentQuestionTextEditor.BodyBackgroundColor = Color.White;
+            //_contentQuestionTextEditor.BodyHtml = null;
+            //_contentQuestionTextEditor.BodyText = null;
+            //_contentQuestionTextEditor.Dock = DockStyle.Fill;
+            //_contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
+            //_contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
+            //_contentQuestionTextEditor.FontSize = FontSize.Three;
+            //_contentQuestionTextEditor.Html = null;
             _contentQuestionTextEditor.Name = "_contentQuestionTextEditor";
-            _contentQuestionTextEditor.Size = new Size(632, 124);
+            //_contentQuestionTextEditor.Size = new Size(632, 124);
             _contentQuestionTextEditor.TabIndex = 1;
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
-            //ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         public QuestionDataItem DataItem
@@ -214,7 +221,9 @@ namespace PresentationLayer.QuestionEditor
 
         private void OnDataItemChanged()
         {
-            _contentQuestionTextEditor.Html = DataItem.ContentQuestion;
+            _contentQuestionTextEditor.Text = "";
+            _contentQuestionTextEditor.AddHTML(DataItem.ContentQuestion);
+            _contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
             orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             AddAnswerOptions();
             CalculatePanelSize();
@@ -328,10 +337,10 @@ namespace PresentationLayer.QuestionEditor
 
         private void QuestionListItemCustomClick(object sender, EventArgs e)
         {
-            //Focus();
-            //int testId = 1; //get from item click.
-            //ICommand command = new LoadQuestionCmd(ExecuteMethod.Async, testId);
-            //Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
+            Focus();
+            string testId = _dataItem.IdQuestion; //get from item click.
+            ICommand command = new LoadQuestionCmd(ExecuteMethod.Async, testId);
+            Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
         }
 
         private void AnswerChoiseContainerClick(object sender, EventArgs e)

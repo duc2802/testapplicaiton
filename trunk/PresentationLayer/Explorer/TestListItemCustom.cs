@@ -98,25 +98,6 @@ namespace PresentationLayer.Explorer
         private Loading loadWindow;
         private void ListTestItemCustomClick(object sender, EventArgs e)
         {
-            loadWindow = new Loading();
-            loadWindow.TopMost = true; // make sure it doesn't get created behind other form
-            loadWindow.Show();
-
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            worker.RunWorkerAsync();
-
-            
-        }
-        void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new DoWorkEventHandler(worker_DoWork), sender, e);
-                return;
-            }
-
             SuspendLayout();
             Focus();
             BackColor = ConstantGUI.FocusColor;
@@ -126,6 +107,16 @@ namespace PresentationLayer.Explorer
             string testId = DataItem.IdTest;
             ICommand command = new LoadQuestionCmd(ExecuteMethod.Sync, testId);
             Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
+        }
+
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new DoWorkEventHandler(worker_DoWork), sender, e);
+                return;
+            }
+            
         }
 
         void worker_RunWorkerCompleted (object sender, RunWorkerCompletedEventArgs e)

@@ -53,9 +53,15 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BF.SL.HtmlToRichTextBox">
+      <HintPath>..\..\..\..\..\Downloads\Compressed\BF.SL.HtmlToRichTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=6.6.0.5, Culture=neutral, PublicKeyToken=7c5c3e3e32ebc94e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ModelEditControl">
+      <HintPath>..\..\..\..\..\Downloads\Compressed\modeltext-html-20110202\ModelTextHtml\ModelEditControl.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

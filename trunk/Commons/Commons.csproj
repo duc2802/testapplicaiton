@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\Delegates.cs" />
+    <Compile Include="CommonGui\HtmlRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CommonGui\InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>

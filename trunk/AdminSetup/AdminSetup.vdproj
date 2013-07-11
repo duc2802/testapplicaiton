@@ -22,6 +22,12 @@
         "Entry"
         {
         "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
+        "OwnerKey" = "8:_C429058704D35A48E5C26056C804FC30"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
         "OwnerKey" = "8:_E5D0977A95EDF86FC0F00DE22EBAFCB5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -29,12 +35,6 @@
         {
         "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
         "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_18E4250077774B0EA41A0BC321C378A1"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_5F0AD78C8EF77761275D1AE05CA71FB7"
-        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
+        "OwnerKey" = "8:_C429058704D35A48E5C26056C804FC30"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_63BA3DC4D48F4078AF6A998ADEC9C23C"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_5F0AD78C8EF77761275D1AE05CA71FB7"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -75,8 +75,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_76EB51C73D835D28F9F00BA845767BFF"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_93BBD89075F4D15875DBBB7ECFFA022D"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_93BBD89075F4D15875DBBB7ECFFA022D"
+        "OwnerKey" = "8:_76EB51C73D835D28F9F00BA845767BFF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,6 +118,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B1A9800E8B407D5523C3BC46460E6BAC"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C429058704D35A48E5C26056C804FC30"
         "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -148,6 +172,18 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_76EB51C73D835D28F9F00BA845767BFF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C429058704D35A48E5C26056C804FC30"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E3FB9EBD3728A32681E87066863011E4"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -185,6 +221,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_93BBD89075F4D15875DBBB7ECFFA022D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -323,26 +365,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18E4250077774B0EA41A0BC321C378A1"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\AppData\\Roaming\\TestEasy\\Data\\TestColection\\26192013041920.exam"
-            "TargetName" = "8:26192013041920.exam"
-            "Tag" = "8:"
-            "Folder" = "8:_B2C4473472EB460280D7F8277E1C81EA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F147B56B88AAE10BBEC4DD7C92E1438"
             {
             "AssemblyRegister" = "3:1"
@@ -436,26 +458,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63BA3DC4D48F4078AF6A998ADEC9C23C"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\AppData\\Roaming\\TestEasy\\Data\\TestColection\\26252013092527.exam"
-            "TargetName" = "8:26252013092527.exam"
-            "Tag" = "8:"
-            "Folder" = "8:_B2C4473472EB460280D7F8277E1C81EA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_64D4EFEE8C84A5B00F1AE89529D7111E"
             {
             "AssemblyRegister" = "3:1"
@@ -470,6 +472,68 @@
                     }
                 }
             "SourcePath" = "8:Ribbon.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_76EB51C73D835D28F9F00BA845767BFF"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:LiveSwitch.TextControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_76EB51C73D835D28F9F00BA845767BFF"
+                    {
+                    "Name" = "8:LiveSwitch.TextControl.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:LiveSwitch.TextControl.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_93BBD89075F4D15875DBBB7ECFFA022D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_93BBD89075F4D15875DBBB7ECFFA022D"
+                    {
+                    "Name" = "8:Microsoft.mshtml.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.mshtml.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
@@ -532,6 +596,37 @@
                     }
                 }
             "SourcePath" = "8:ThreadQueueManager.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C429058704D35A48E5C26056C804FC30"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Editor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_C429058704D35A48E5C26056C804FC30"
+                    {
+                    "Name" = "8:Editor.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
