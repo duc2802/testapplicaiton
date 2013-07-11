@@ -52,10 +52,8 @@ namespace ClientPresentationLayer.QuestionPresentation
                 }
 
                 var questionData = DataItem.ListQuestion[indexQuestionData];
-                textBox1.Text = questionData.QuestionContent;
                 var questionItem = new HTMLQuestionItem(questionData, true);
-                questionItem.Anchor = (((AnchorStyles.Left | AnchorStyles.Top)));
-                questionItem.Location = new Point(0, 0);
+                questionItem.Dock = DockStyle.Fill;
                 panel2.Controls.Add(questionItem);
             }
             ResumeLayout();
