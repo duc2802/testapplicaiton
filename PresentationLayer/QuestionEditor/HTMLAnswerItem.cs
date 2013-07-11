@@ -42,7 +42,7 @@ namespace PresentationLayer.QuestionEditor
             InitCustomComponent(isEditMode);
             InitGui(itemData);
             //InitEvent();
-            //InitData(index);
+            InitData(itemData);
         }
 
         public HTMLAnswerItem(int index)
@@ -85,6 +85,11 @@ namespace PresentationLayer.QuestionEditor
             orderAnswerLabel.Text = index.ToString();
             //DataItem.PropertyChanged += DataItemPropertyChanged;
             Refresh();
+        }
+
+        private void InitData(AnswerDataItem data)
+        {
+            _dataItem = data;
         }
 
         private void InitCustomComponent(bool isEditMode)
