@@ -37,7 +37,7 @@
             // trueCheckBox
             // 
             this.trueCheckBox.AutoSize = true;
-            this.trueCheckBox.Location = new System.Drawing.Point(66, 23);
+            this.trueCheckBox.Location = new System.Drawing.Point(66, 19);
             this.trueCheckBox.Name = "trueCheckBox";
             this.trueCheckBox.Size = new System.Drawing.Size(15, 14);
             this.trueCheckBox.TabIndex = 8;
@@ -48,7 +48,7 @@
             // 
             this.orderAnswerLabel.AutoSize = true;
             this.orderAnswerLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.orderAnswerLabel.Location = new System.Drawing.Point(33, 23);
+            this.orderAnswerLabel.Location = new System.Drawing.Point(33, 19);
             this.orderAnswerLabel.Name = "orderAnswerLabel";
             this.orderAnswerLabel.Size = new System.Drawing.Size(15, 15);
             this.orderAnswerLabel.TabIndex = 7;
@@ -59,9 +59,9 @@
             this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentPanel.Location = new System.Drawing.Point(87, 3);
+            this.contentPanel.Location = new System.Drawing.Point(87, 15);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(392, 57);
+            this.contentPanel.Size = new System.Drawing.Size(392, 23);
             this.contentPanel.TabIndex = 11;
             // 
             // btTrueFail
@@ -69,7 +69,7 @@
             this.btTrueFail.FlatAppearance.BorderSize = 0;
             this.btTrueFail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btTrueFail.Image = global::ClientPresentationLayer.Properties.Resources._true;
-            this.btTrueFail.Location = new System.Drawing.Point(-1, 15);
+            this.btTrueFail.Location = new System.Drawing.Point(-1, 11);
             this.btTrueFail.Name = "btTrueFail";
             this.btTrueFail.Size = new System.Drawing.Size(32, 23);
             this.btTrueFail.TabIndex = 12;
@@ -85,7 +85,7 @@
             this.Controls.Add(this.trueCheckBox);
             this.Controls.Add(this.orderAnswerLabel);
             this.Name = "HTMLAnswerItem";
-            this.Size = new System.Drawing.Size(482, 63);
+            this.Size = new System.Drawing.Size(482, 52);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Commons;
+using Commons.CommonGui;
 using LiveSwitch.TextControl;
 using SingleInstanceObject;
 using TextEditor = LiveSwitch.TextControl.Editor;
@@ -18,7 +19,7 @@ namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class HTMLQuestionItem : UserControl
     {
-        private TextEditor _contentQuestionTextEditor;
+        private HtmlRichTextBox _contentQuestionTextEditor;
         private QuestionBE _dataBEItem;
 
         private string PATH_FORDER_IMAGE = Singleton<SettingManager>.Instance.GetImageFolder();
@@ -60,14 +61,20 @@ namespace ClientPresentationLayer.QuestionPresentation
         
         public void InitGui(QuestionBE Item)
         {
-            _contentQuestionTextEditor.Html = DataBEItem.QuestionContent;
+            //_contentQuestionTextEditor.Html = DataBEItem.QuestionContent;
+            _contentQuestionTextEditor.Text = "";
+            _contentQuestionTextEditor.AddHTML(DataBEItem.QuestionContent);
+            _contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
             AddAnswerOptionsFromBe();
             ResumeLayout();
         }
 
         public void InitGui(QuestionBE Item, bool isExplain)
         {
-            _contentQuestionTextEditor.Html = DataBEItem.QuestionContent;
+            //_contentQuestionTextEditor.Html = DataBEItem.QuestionContent;
+            _contentQuestionTextEditor.Text = "";
+            _contentQuestionTextEditor.AddHTML(DataBEItem.QuestionContent);
+            _contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
             AddAnswerOptionsFromBe(isExplain);
             ResumeLayout();
         }
@@ -223,17 +230,19 @@ namespace ClientPresentationLayer.QuestionPresentation
         private void InitCustomComponent()
         {
             SuspendLayout();
+            panelQuestionContent.BorderStyle = BorderStyle.FixedSingle;
             //Init contentQuestionTextEditor
-            _contentQuestionTextEditor = new TextEditor(false);
-            _contentQuestionTextEditor.BackColor = SystemColors.Control;
-            _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
-            _contentQuestionTextEditor.BodyHtml = null;
-            _contentQuestionTextEditor.BodyText = null;
+            _contentQuestionTextEditor = new HtmlRichTextBox();
+            _contentQuestionTextEditor.BorderStyle = BorderStyle.None;
+            //_contentQuestionTextEditor.BackColor = SystemColors.Control;
+            //_contentQuestionTextEditor.BodyBackgroundColor = Color.White;
+            //_contentQuestionTextEditor.BodyHtml = null;
+            //_contentQuestionTextEditor.BodyText = null;
             _contentQuestionTextEditor.Dock = DockStyle.Fill;
-            _contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
-            _contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
-            _contentQuestionTextEditor.FontSize = FontSize.Three;
-            _contentQuestionTextEditor.Html = null;
+            //_contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
+            //_contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
+            //_contentQuestionTextEditor.FontSize = FontSize.Three;
+            //_contentQuestionTextEditor.Html = null;
             _contentQuestionTextEditor.Name = "_contentQuestionTextEditor";
             _contentQuestionTextEditor.Size = new Size(632, 124);
             _contentQuestionTextEditor.TabIndex = 1;
