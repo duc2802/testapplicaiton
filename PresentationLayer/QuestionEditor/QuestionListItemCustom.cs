@@ -16,7 +16,6 @@ using PresentationLayer.ActionController;
 using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using ThreadQueueManager;
-using BF.SL;
 using TextEditor = LiveSwitch.TextControl.Editor;
 
 namespace PresentationLayer.QuestionEditor
@@ -141,7 +140,7 @@ namespace PresentationLayer.QuestionEditor
         private QuestionDataItem _dataItem;
 
         //private TextEditor _contentQuestionTextEditor;
-        private HtmlRichTextBox _contentQuestionTextEditor;
+        private TextEditor _contentQuestionTextEditor;
         
         public QuestionListItemCustom()
         {
@@ -162,21 +161,21 @@ namespace PresentationLayer.QuestionEditor
             SuspendLayout();
             //Init contentQuestionTextEditor
             contentQuestionPanel.BorderStyle = BorderStyle.FixedSingle;
-            _contentQuestionTextEditor = new HtmlRichTextBox();
+            _contentQuestionTextEditor = new TextEditor(false);
             _contentQuestionTextEditor.Dock = DockStyle.Fill;
             _contentQuestionTextEditor.BorderStyle = BorderStyle.None;
-            //_contentQuestionTextEditor.Parent = this;
-            //_contentQuestionTextEditor.BackColor = SystemColors.Control;
-            //_contentQuestionTextEditor.BodyBackgroundColor = Color.White;
-            //_contentQuestionTextEditor.BodyHtml = null;
-            //_contentQuestionTextEditor.BodyText = null;
-            //_contentQuestionTextEditor.Dock = DockStyle.Fill;
-            //_contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
-            //_contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
-            //_contentQuestionTextEditor.FontSize = FontSize.Three;
-            //_contentQuestionTextEditor.Html = null;
+            _contentQuestionTextEditor.Parent = this;
+            _contentQuestionTextEditor.BackColor = SystemColors.Control;
+            _contentQuestionTextEditor.BodyBackgroundColor = Color.White;
+            _contentQuestionTextEditor.BodyHtml = null;
+            _contentQuestionTextEditor.BodyText = null;
+            _contentQuestionTextEditor.Dock = DockStyle.Fill;
+            _contentQuestionTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
+            _contentQuestionTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
+            _contentQuestionTextEditor.FontSize = FontSize.Three;
+            _contentQuestionTextEditor.Html = null;
             _contentQuestionTextEditor.Name = "_contentQuestionTextEditor";
-            //_contentQuestionTextEditor.Size = new Size(632, 124);
+            _contentQuestionTextEditor.Size = new Size(632, 124);
             _contentQuestionTextEditor.TabIndex = 1;
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
             ResumeLayout(false);
@@ -221,9 +220,10 @@ namespace PresentationLayer.QuestionEditor
 
         private void OnDataItemChanged()
         {
-            _contentQuestionTextEditor.Text = "";
-            _contentQuestionTextEditor.AddHTML(DataItem.ContentQuestion);
-            _contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
+            _contentQuestionTextEditor.Html = DataItem.ContentQuestion;
+            //_contentQuestionTextEditor.Text = "";
+            //_contentQuestionTextEditor.AddHTML(DataItem.ContentQuestion);
+            //_contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
             orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             AddAnswerOptions();
             CalculatePanelSize();
