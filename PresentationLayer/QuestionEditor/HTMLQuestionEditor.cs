@@ -15,6 +15,7 @@ using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 using SystemColors = System.Drawing.SystemColors;
 using TextEditor = LiveSwitch.TextControl.Editor;
+using System.Diagnostics;
 
 namespace PresentationLayer.QuestionEditor
 {
@@ -74,14 +75,29 @@ namespace PresentationLayer.QuestionEditor
         {
             moreAnswerButton.Click += MoreAnswerButtonClick;
             createButton.Click += CreateButtonClick;
-            insertEquaButton.Click += new EventHandler(InsertEquaButtonClick);
+            insertEquaButton.Click += InsertEquaButtonClick;
         }
 
         private void InsertEquaButtonClick(object sender, EventArgs e)
         {
-            var openEquaForm = new OpenMathEditor(ExecuteMethod.Async);
-            Singleton<GuiQueueThreadController>.Instance.PutCmd(openEquaForm);
+            //var openEquaForm = new OpenMathEditor(ExecuteMethod.Async);
+            //Singleton<GuiQueueThreadController>.Instance.PutCmd(openEquaForm);
+
+            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+           // _contentQuestionTextEditor.InsertImage();
+            string editor = path + "\\" + "Editor.exe";
+            
+            Process p =  Process.Start(editor);
+          //  p.StartInfo.FileName=editor;
+          //  p.Start();
+            p.WaitForExit();
+
+           // Thread.Sleep(5000); // Allow the process to open it's window
+           // p.WaitForInputIdle();
+           // SetParent(p.MainWindowHandle, this.contentQuestionPanel.Handle);
         }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")] static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
         private void InitCustomComponent(bool isEditMode)
         {
