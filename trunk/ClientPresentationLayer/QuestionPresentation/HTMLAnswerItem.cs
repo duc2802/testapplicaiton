@@ -17,7 +17,7 @@ namespace ClientPresentationLayer.QuestionPresentation
 {
     public partial class HTMLAnswerItem : UserControl
     {
-        private HtmlRichTextBox _contentAnswerTextEditor;
+        private TextEditor _contentAnswerTextEditor;
         public bool IsChoise { set; get; }
 
         public int OrderAnswer { get { return int.Parse(DataBEItem.AnswerID); } }
@@ -72,11 +72,11 @@ namespace ClientPresentationLayer.QuestionPresentation
 
         private void InitGui(AnswerBE itemData, bool isChoise)
         {
-            //contentAnswerTextEditor.Html = itemData.Content;
-            _contentAnswerTextEditor.Text = "";
-            _contentAnswerTextEditor.AddHTML(itemData.Content);
-            _contentAnswerTextEditor.Text = _contentAnswerTextEditor.Text.Trim();
-            orderAnswerLabel.Text = (int.Parse(itemData.AnswerID) + 1).ToString();
+            _contentAnswerTextEditor.Html = itemData.Content;
+           // _contentAnswerTextEditor.Text = "";
+            //_contentAnswerTextEditor.AddHTML(itemData.Content);
+            //_contentAnswerTextEditor.Text = _contentAnswerTextEditor.Text.Trim();
+            //orderAnswerLabel.Text = (int.Parse(itemData.AnswerID) + 1).ToString();
             btTrueFail.Visible = false;
             trueCheckBox.Visible = true;
             if (isChoise)
@@ -123,18 +123,18 @@ namespace ClientPresentationLayer.QuestionPresentation
             SuspendLayout();
             //Init contentQuestionTextEditor
             contentPanel.BorderStyle = BorderStyle.None;
-            _contentAnswerTextEditor = new HtmlRichTextBox();
+            _contentAnswerTextEditor = new TextEditor();
             _contentAnswerTextEditor.BorderStyle = BorderStyle.None;
-            //contentAnswerTextEditor.BackColor = SystemColors.Control;
-            //contentAnswerTextEditor.BodyBackgroundColor = Color.White;
-            //contentAnswerTextEditor.BodyHtml = null;
-            //contentAnswerTextEditor.BodyText = null;
-            //contentAnswerTextEditor.Dock = DockStyle.Fill;
-            //contentAnswerTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
-            //contentAnswerTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
-            //contentAnswerTextEditor.Html = null;
-            //contentAnswerTextEditor.Location = new Point(0, 24);
-            //contentAnswerTextEditor.Name = "editor";
+            _contentAnswerTextEditor.BackColor = SystemColors.Control;
+            _contentAnswerTextEditor.BodyBackgroundColor = Color.White;
+            _contentAnswerTextEditor.BodyHtml = null;
+            _contentAnswerTextEditor.BodyText = null;
+            _contentAnswerTextEditor.Dock = DockStyle.Fill;
+            _contentAnswerTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));
+            _contentAnswerTextEditor.EditorForeColor = Color.FromArgb(((((0)))), ((((0)))), ((((0)))));
+            _contentAnswerTextEditor.Html = null;
+            _contentAnswerTextEditor.Location = new Point(0, 24);
+            _contentAnswerTextEditor.Name = "editor";
             _contentAnswerTextEditor.Size = new Size(632, 124);
             _contentAnswerTextEditor.TabIndex = 1;
             contentPanel.Controls.Add(_contentAnswerTextEditor);
