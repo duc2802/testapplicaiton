@@ -71,7 +71,7 @@ namespace Editor
 
         private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Close();
+          //  this.Close();
         }
         
         void SetTitle()

@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Commons;
 using SingleInstanceObject;
+using Microsoft.Win32;
 
 namespace Editor
 {
@@ -119,7 +120,15 @@ namespace Editor
                 {
                     encoder.Save(s);
                     Singleton<SettingManager>.Instance.EquationName = path;
-                    Application.Current.Shutdown();
+                    var processes = Process.GetProcessesByName("Editor");
+                    foreach (Process proc in processes)
+                    {
+                        MessageBox.Show("Khong tim thay", "Error");
+
+                        proc.CloseMainWindow();
+                     //   proc.Close();
+                    }
+                 //   closeEditorWindow();
                 }
             }
             catch
@@ -169,6 +178,25 @@ namespace Editor
             {
                 base.FontSize = value;
                 AdjustCarets();
+            }
+        }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int FindWindow(string lpClassName, string lpWindowName);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(int hWnd, uint Msg, int wParam, int lParam);
+
+        public const int WM_SYSCOMMAND = 0x0112;
+        public const int SC_CLOSE = 0xF060;
+
+        private void closeEditorWindow()
+        {
+            // retrieve the handler of the window  
+            int iHandle = FindWindow("Editor", "Editor.exe");
+            if (iHandle > 0)
+            {
+                // close the window using API        
+                SendMessage(iHandle, WM_SYSCOMMAND, SC_CLOSE, 0);
             }
         }
     }
