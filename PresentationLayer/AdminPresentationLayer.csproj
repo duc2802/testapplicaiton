@@ -290,6 +290,8 @@
     <None Include="Resources\editquestion.png" />
     <Content Include="Resources\docs.png" />
     <None Include="Resources\loading.gif" />
+    <None Include="Resources\equation.png" />
+    <None Include="Resources\math.png" />
     <Content Include="Resources\NewQuestion.png" />
     <Content Include="Resources\Program.png" />
     <None Include="Resources\test.png" />
