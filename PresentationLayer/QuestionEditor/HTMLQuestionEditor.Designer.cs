@@ -141,6 +141,7 @@
             this.insertEquaButton.TabIndex = 16;
             this.insertEquaButton.Text = "Insert Equation";
             this.insertEquaButton.UseVisualStyleBackColor = true;
+            this.insertEquaButton.Visible = false;
             // 
             // HTMLQuestionEditor
             // 

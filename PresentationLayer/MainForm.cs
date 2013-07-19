@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using BusinessEntities;
@@ -72,7 +74,7 @@ namespace PresentationLayer
             btNewQuestion.Click += NewQuestionButtonClick;
             btExportExam.Click += ExportTest;
             btOpenFile.Click += ButtonOpenFileButtonClick;
-            //exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
+            btEquation.Click += EquationButtonClick;
             btEditQuestion.Click += EditQuestionButtonClick;
         }
 
@@ -156,11 +158,19 @@ namespace PresentationLayer
             btEditQuestion.Enabled = true;
         }
 
-        private void ExportDocsExamButtonButtonClick(object sender, EventArgs eventArgs)
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        static extern int SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
+        private void EquationButtonClick(object sender, EventArgs eventArgs)
         {
-            //int testId = Singleton<GuiActionEventController>.Instance.FolderId;
-            //ExportForm exportForm = new ExportForm(testId + 1);
-            //exportForm.ShowDialog();
+            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            string editor = path + "\\" + "Editor.exe";
+            Process p = Process.Start(editor);
+            p.WaitForInputIdle();
+            SetParent(p.MainWindowHandle, Handle);
+            //p.WaitForExit();
         }
         private void EditQuestionButtonClick(object sender, EventArgs eventArgs)
         {
