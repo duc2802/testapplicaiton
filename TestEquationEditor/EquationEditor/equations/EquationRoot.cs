@@ -123,9 +123,8 @@ namespace Editor
                     var processes = Process.GetProcessesByName("Editor");
                     foreach (Process proc in processes)
                     {
-                        MessageBox.Show("Khong tim thay", "Error");
-
-                        proc.CloseMainWindow();
+                        //MessageBox.Show("Khong tim thay", "Error");
+                        //proc.CloseMainWindow();
                      //   proc.Close();
                     }
                  //   closeEditorWindow();
