@@ -76,46 +76,52 @@ namespace Editor
         
         void SetTitle()
         {
-           Title = "Math Editor Mini v." + version;
+           Title = "Equation Editor ";
         }
 
-        string ShowSaveFileDialog(string extension, string filter)
+        private void  ShowSaveFileDialog(string extension)
         {
             Microsoft.Win32.SaveFileDialog sfd = new Microsoft.Win32.SaveFileDialog();
+            sfd.Filter = "Image | *.png";
             sfd.DefaultExt = "." + extension;
-            sfd.Filter = filter;
             bool? result = sfd.ShowDialog();
             if (result == true)
             {
-                return Path.GetExtension(sfd.FileName) == "." + extension ? sfd.FileName : sfd.FileName + "." + extension;
+                editor.ExportImage(Path.GetExtension(sfd.FileName) == "." + extension ? sfd.FileName : sfd.FileName + "." + extension);
+                this.Close();
             }
             else
             {
-                return null;
+                return;
             }
+            this.Close();
         }
         
         private void ExportFilePNG(object sender, RoutedEventArgs e)
         {
             //string imageType = (string)((Control)sender).Tag ?? "png";
 
-            string newName = Guid.NewGuid().ToString()+".png";
-            string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + newName;
+         ShowSaveFileDialog("png");
 
-            //string fileName = Singleton<SettingManager>.Instance.GetImageFolder() +"\\"+ newName;
-            //"C:\Users\ducnm\Desktop\hinh anh";
-            // Set file Name for Image 
-            /**
-             * 
-             * add code here
-             * 
-             * 
-             */
-            if (!string.IsNullOrEmpty(fileName))
-            {
-                string ext = Path.GetExtension(fileName);
-                editor.ExportImage(fileName);
-            }      
+
+
+            //string newName = Guid.NewGuid().ToString()+".png";
+            //string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + newName;
+
+            ////string fileName = Singleton<SettingManager>.Instance.GetImageFolder() +"\\"+ newName;
+            ////"C:\Users\ducnm\Desktop\hinh anh";
+            //// Set file Name for Image 
+            ///**
+            // * 
+            // * add code here
+            // * 
+            // * 
+            // */
+            //if (!string.IsNullOrEmpty(fileName))
+            //{
+            //    string ext = Path.GetExtension(fileName);
+            //    editor.ExportImage(fileName);
+            //}      
         }               
 
         private void ToolBar_Loaded(object sender, RoutedEventArgs e)
@@ -180,6 +186,7 @@ namespace Editor
 
         private void button1_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
+            
             ExportFilePNG(sender,e);
         }
     }

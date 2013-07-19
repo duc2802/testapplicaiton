@@ -125,9 +125,9 @@ namespace Editor
                     {
                         //MessageBox.Show("Khong tim thay", "Error");
                         //proc.CloseMainWindow();
-                     //   proc.Close();
+                           proc.Close();
                     }
-                 //   closeEditorWindow();
+                    //closeEditorWindow();
                 }
             }
             catch
