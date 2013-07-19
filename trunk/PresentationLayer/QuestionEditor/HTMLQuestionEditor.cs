@@ -81,18 +81,19 @@ namespace PresentationLayer.QuestionEditor
         
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        static extern int SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
         private void InsertEquaButtonClick(object sender, EventArgs e)
         {
             string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             string editor = path + "\\" + "Editor.exe";
             Process p =  Process.Start(editor);
-            p.WaitForInputIdle();
+            //p.WaitForInputIdle();
             SetParent(p.MainWindowHandle, Handle);
-            //p.WaitForExit();
+            p.WaitForExit();
+            //p.WaitForInputIdle();
         }
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")] static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
         private void InitCustomComponent(bool isEditMode)
         {
