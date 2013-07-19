@@ -19,15 +19,9 @@ namespace TestCallEditor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            // _contentQuestionTextEditor.InsertImage();
-            string editor = path + "\\" + "Editor.exe";
+            HTMLQuestionEditor test = new HTMLQuestionEditor();
 
-            Process p = new Process();
-            p.StartInfo.FileName = editor;
-            p.Start();
-            string test = p.ProcessName;
-            p.WaitForExit();
+            test.Show();
         }
     }
 }
