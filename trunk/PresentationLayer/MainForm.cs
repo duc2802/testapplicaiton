@@ -50,7 +50,7 @@ namespace PresentationLayer
         private void InitCommonGui()
         {
             btExportExam.Enabled = false;
-            exportDocsExamButton.Enabled = false;
+            //btExportDocsExam.Enabled = false;
             btNewQuestion.Enabled = false;
             btEditQuestion.Enabled = false;
 
@@ -71,8 +71,8 @@ namespace PresentationLayer
             btNewExam.Click += NewExamButtonClick;
             btNewQuestion.Click += NewQuestionButtonClick;
             btExportExam.Click += ExportTest;
-            openFileButton.Click += ButtonOpenFileButtonClick;
-            exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
+            btOpenFile.Click += ButtonOpenFileButtonClick;
+            //exportDocsExamButton.Click += ExportDocsExamButtonButtonClick;
             btEditQuestion.Click += EditQuestionButtonClick;
         }
 
