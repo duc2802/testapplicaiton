@@ -172,6 +172,7 @@ namespace PresentationLayer
             SetParent(p.MainWindowHandle, Handle);
             //p.WaitForExit();
         }
+
         private void EditQuestionButtonClick(object sender, EventArgs eventArgs)
         {
             // Load test Item that 
