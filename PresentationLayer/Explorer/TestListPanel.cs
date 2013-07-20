@@ -49,7 +49,7 @@ namespace PresentationLayer.Explorer
         private void AddTestItem(TestDataItem testData, int idx)
         {
             testListBox.SuspendLayout();
-            TestListItemCustom testItem = CreateTestItem(testData);
+            var testItem = CreateTestItem(testData);
             testItem.DataItem.IdTest = testData.IdTest;
             var style = new RowStyle(SizeType.AutoSize);
             testListBox.RowStyles.Add(style);
@@ -126,7 +126,6 @@ namespace PresentationLayer.Explorer
 
         private void InitCommonGui()
         {
-            //Init list from dataItemController.
             FillTestItem("Data");
         }
 

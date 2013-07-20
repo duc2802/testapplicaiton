@@ -216,6 +216,7 @@
     <Compile Include="ThreadManager\DataThread\ExportTestCmd.cs" />
     <Compile Include="ThreadManager\DataThread\RenameNodeExplorerCmd.cs" />
     <Compile Include="ThreadManager\DataThread\SaveTestCmd.cs" />
+    <Compile Include="ThreadManager\GuiThread\CreateQuestionItemCmd.cs" />
     <Compile Include="ThreadManager\GuiThread\CreateTestCmd.cs" />
     <Compile Include="ThreadManager\GuiThread\GuiQueueThreadController.cs" />
     <Compile Include="ThreadManager\GuiThread\LoadQuestionCmd.cs" />

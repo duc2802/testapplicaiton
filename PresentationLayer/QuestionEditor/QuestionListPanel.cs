@@ -61,12 +61,10 @@ namespace PresentationLayer.QuestionEditor
 
         private void UpdateEditor(string idTest)
         {
-            questionPanel.SuspendLayout();
             _dataController.DataItems.Clear();
             _dataController.IdTest = idTest;
             questionPanel.Controls.Clear();
             FillQuestionItem();
-            questionPanel.ResumeLayout(true);
         }
 
         private QuestionListItemCustom CreateQuestionItem(QuestionDataItem questionData)
