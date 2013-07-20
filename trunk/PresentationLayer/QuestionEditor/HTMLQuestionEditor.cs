@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows;
 using System.Windows.Forms;
 using Commons;
-using Editor;
 using LiveSwitch.TextControl;
 using PresentationLayer.QuestionEditor.Data;
-using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
-using ThreadQueueManager;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
@@ -76,29 +71,10 @@ namespace PresentationLayer.QuestionEditor
         {
             moreAnswerButton.Click += MoreAnswerButtonClick;
             createButton.Click += CreateButtonClick;
-            insertEquaButton.Click += InsertEquaButtonClick;
-        }
-        
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImport("user32.dll")]
-        static extern int SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-
-        private void InsertEquaButtonClick(object sender, EventArgs e)
-        {
-            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            string editor = path + "\\" + "Editor.exe";
-            Process p =  Process.Start(editor);
-            //p.WaitForInputIdle();
-            SetParent(p.MainWindowHandle, Handle);
-            p.WaitForExit();
-            //p.WaitForInputIdle();
         }
 
         private void InitCustomComponent(bool isEditMode)
         {
-           
-
             SuspendLayout();
             //Init contentQuestionTextEditor
             _contentQuestionTextEditor = new TextEditor();
@@ -192,8 +168,6 @@ namespace PresentationLayer.QuestionEditor
             }
             else
             {
-                //Neu la Edit thi load du lieu ra
-
                 for (int idx = 0; idx<_dataItem.AnswerData.AnswerData.Count ; idx++)
                 {
                     var itemLayout = new HTMLAnswerItem(_dataItem.AnswerData.AnswerData[idx],true);
@@ -226,7 +200,7 @@ namespace PresentationLayer.QuestionEditor
                 MessageBox.Show(this, @"Can not add more than 6 answers", @"Error", MessageBoxButtons.OK);
                 return;
             }
-            answerListTableLayoutPanel.SuspendLayout();
+            //answerListTableLayoutPanel.SuspendLayout();
             var newItem = new AnswerDataItem(5, "", false);
             DataItem.AnswerData.AnswerData.Add(newItem);
             var itemLayout = new HTMLAnswerItem(5);
@@ -237,7 +211,7 @@ namespace PresentationLayer.QuestionEditor
             answerListTableLayoutPanel.RowStyles.Add(style);
             answerListTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             answerListTableLayoutPanel.Controls.Add(itemLayout, 0, 4);
-            answerListTableLayoutPanel.ResumeLayout();
+            //answerListTableLayoutPanel.ResumeLayout();
         }
 
         private void DeleteAnswerItem(int orderAnswer)

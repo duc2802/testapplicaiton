@@ -26,7 +26,7 @@ namespace PresentationLayer.QuestionEditor
             {
                 _dataItem = value;
                 Name = _dataItem.orderAnswer.ToString();
-                //OnDataItemChanged();
+                OnDataItemChanged();
             }
             get { return _dataItem; }
         }
@@ -43,7 +43,6 @@ namespace PresentationLayer.QuestionEditor
             InitializeComponent();
             InitCustomComponent(isEditMode);
             InitGui(itemData, isEditMode);
-            //InitEvent();
             InitData(itemData);
         }
 
@@ -66,15 +65,7 @@ namespace PresentationLayer.QuestionEditor
         private void InitGui(AnswerDataItem itemData, bool isEditMode)
         {
             orderAnswerLabel.Text = (itemData.OrderAnswer + 1).ToString();
-            if (isEditMode)
-            {
-                contentAnswerTextEditor.Html = itemData.ContentAnswer;
-            }
-            else
-            {
-                htmlRichTextBox.AddHTML(itemData.ContentAnswer);
-                htmlRichTextBox.Text = htmlRichTextBox.Text.Trim();
-            }
+            contentAnswerTextEditor.Html = itemData.ContentAnswer;
         }
 
         private void InitEvent()
@@ -97,6 +88,13 @@ namespace PresentationLayer.QuestionEditor
             Refresh();
         }
 
+        private void OnDataItemChanged()
+        {
+            orderAnswerLabel.Text = (DataItem.OrderAnswer + 1).ToString();
+            contentAnswerTextEditor.Html = DataItem.ContentAnswer;
+            Refresh();
+        }
+
         private void InitData(AnswerDataItem data)
         {
             _dataItem = data;
@@ -105,15 +103,14 @@ namespace PresentationLayer.QuestionEditor
         private void InitCustomComponent(bool isEditMode)
         {
             SuspendLayout();
-            //Init contentQuestionTextEditor
             contentPanel.BorderStyle = BorderStyle.None;
-            if(isEditMode)
+            //if(isEditMode)
             {
                 contentAnswerTextEditor = new TextEditor(isEditMode);
+                SuspendLayout();
                 contentAnswerTextEditor.BackColor = SystemColors.Control;
                 contentAnswerTextEditor.BodyBackgroundColor = Color.White;
                 contentAnswerTextEditor.BodyHtml = null;
-                contentAnswerTextEditor.Parent = this;
                 contentAnswerTextEditor.Parent = this;
                 contentAnswerTextEditor.BodyText = null;
                 contentAnswerTextEditor.Dock = DockStyle.Fill;
@@ -122,20 +119,11 @@ namespace PresentationLayer.QuestionEditor
                 contentAnswerTextEditor.FontSize = FontSize.Three;
                 contentAnswerTextEditor.Html = null;
                 contentAnswerTextEditor.Location = new Point(0, 24);
-                contentAnswerTextEditor.Name = "editor";
                 contentAnswerTextEditor.Size = new Size(632, 124);
                 contentAnswerTextEditor.TabIndex = 1;
                 contentPanel.Controls.Add(contentAnswerTextEditor);
-            }
-            else
-            {
-                htmlRichTextBox = new HtmlRichTextBox();
-                htmlRichTextBox.Dock = DockStyle.Fill;
-                htmlRichTextBox.BorderStyle = BorderStyle.None;
-                htmlRichTextBox.Name = "htmlRichTextBox";
-                htmlRichTextBox.Size = new Size(369, 30);
-                htmlRichTextBox.TabIndex = 1;
-                contentPanel.Controls.Add(htmlRichTextBox);
+                ResumeLayout(false);
+                PerformLayout();
             }
 
             if (!isEditMode)
@@ -147,13 +135,12 @@ namespace PresentationLayer.QuestionEditor
 
                 contentPanel.Size = new Size(369, 30);
             }
-            ResumeLayout();
+            
         }
 
         private void TrueCheckBoxCheckedChanged(object sender, EventArgs e)
         {
             DataItem.isTrue = trueCheckBox.Checked;
-            //OnCheckChange(DataItem.orderAnswer - 1, DataItem.isTrue);  
         }
 
         private void DeleteAnswerButtonClick(object sender, EventArgs e)

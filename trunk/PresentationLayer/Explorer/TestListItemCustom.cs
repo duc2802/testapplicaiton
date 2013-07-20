@@ -6,6 +6,7 @@ using Commons;
 using PresentationLayer.ActionController;
 using PresentationLayer.Explorer.Data;
 using PresentationLayer.Splash;
+using PresentationLayer.ThreadManager.DataThread;
 using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using Commons;
@@ -105,8 +106,8 @@ namespace PresentationLayer.Explorer
             ResumeLayout();
 
             string testId = DataItem.IdTest;
-            ICommand command = new LoadQuestionCmd(ExecuteMethod.Sync, testId);
-            Singleton<GuiQueueThreadController>.Instance.PutCmd(command);
+            ICommand command = new LoadQuestionCmd(ExecuteMethod.Async, testId);
+            Singleton<DataQueueThreadController>.Instance.PutCmd(command);
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
