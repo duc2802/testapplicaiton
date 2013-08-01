@@ -140,13 +140,13 @@ namespace PresentationLayer.QuestionEditor.Data
             {
                 return;
             }
-            for (int i = 0; i < testBe.ListQuestion.Count; i++)
+            for (var i = 0; i < testBe.ListQuestion.Count; i++)
             {
                 var questionBE = testBe.ListQuestion[i];
                 var dataItem = new QuestionDataItem();
                 dataItem.ContentQuestion = questionBE.QuestionContent;
                 dataItem.IdQuestion = questionBE.QuestionID;
-                dataItem.OrderQuestion = i;
+                dataItem.OrderQuestion = i + 1;
                 dataItem.imageName = null;
                 var answerController = new AnswerDataController(i);
                 for (int j = 0; j < questionBE.ListAnswers.Count; j++)

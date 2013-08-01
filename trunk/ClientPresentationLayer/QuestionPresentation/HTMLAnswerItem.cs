@@ -73,10 +73,6 @@ namespace ClientPresentationLayer.QuestionPresentation
         private void InitGui(AnswerBE itemData, bool isChoise)
         {
             _contentAnswerTextEditor.Html = itemData.Content;
-           // _contentAnswerTextEditor.Text = "";
-            //_contentAnswerTextEditor.AddHTML(itemData.Content);
-            //_contentAnswerTextEditor.Text = _contentAnswerTextEditor.Text.Trim();
-            //orderAnswerLabel.Text = (int.Parse(itemData.AnswerID) + 1).ToString();
             btTrueFail.Visible = false;
             trueCheckBox.Visible = true;
             if (isChoise)
@@ -123,7 +119,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             SuspendLayout();
             //Init contentQuestionTextEditor
             contentPanel.BorderStyle = BorderStyle.None;
-            _contentAnswerTextEditor = new TextEditor();
+            _contentAnswerTextEditor = new TextEditor(isEditMode);
             _contentAnswerTextEditor.BorderStyle = BorderStyle.None;
             _contentAnswerTextEditor.BackColor = SystemColors.Control;
             _contentAnswerTextEditor.BodyBackgroundColor = Color.White;

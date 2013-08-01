@@ -53,7 +53,7 @@ namespace PresentationLayer.QuestionEditor
             {
                 _dataController = new QuestionDataController(Singleton<TestBE>.Instance);
             }
-            for (int idx = 0; idx < _dataController.Count; idx++)
+            for (var idx = 0; idx < _dataController.Count; idx++)
             {
                 AddQuestionItem(_dataController.DataItems[idx], idx + 1);
             }
@@ -61,10 +61,13 @@ namespace PresentationLayer.QuestionEditor
 
         private void UpdateEditor(string idTest)
         {
-            _dataController.DataItems.Clear();
-            _dataController.IdTest = idTest;
-            questionPanel.Controls.Clear();
-            FillQuestionItem();
+            if (idTest != null)
+            {
+                _dataController.DataItems.Clear();
+                _dataController.IdTest = idTest;
+                questionPanel.Controls.Clear();
+                FillQuestionItem();
+            }
         }
 
         private QuestionListItemCustom CreateQuestionItem(QuestionDataItem questionData)
@@ -102,6 +105,7 @@ namespace PresentationLayer.QuestionEditor
                 var test =
                     Singleton<TestBE>.Instance.ListQuestion.FirstOrDefault(ques => ques.QuestionID.Equals(idQuestion));
                 Singleton<TestBE>.Instance.ListQuestion.Remove(test);
+                Singleton<GuiActionEventController>.Instance.OnDeleteQuestionItem();
                 ICommand command = new SaveTestCmd(ExecuteMethod.Async, Singleton<TestBE>.Instance);
                 Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             }
@@ -136,6 +140,7 @@ namespace PresentationLayer.QuestionEditor
                 if (item != null)
                 {
                     item.DataItem.OrderQuestion = idx + 1;
+                    item.orderNumQuest.Text = item.DataItem.OrderQuestion.ToString();
                 }
             }
             questionPanel.Refresh();
@@ -197,6 +202,7 @@ namespace PresentationLayer.QuestionEditor
             questionPanel.SuspendLayout();
             _dataController.DataItems.Clear();
             questionPanel.Controls.Clear();
+            Singleton<GuiActionEventController>.Instance.TestId = null;
             questionPanel.ResumeLayout(true);
         }
 

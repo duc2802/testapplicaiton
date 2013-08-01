@@ -44,7 +44,7 @@ namespace DataAccessLayer
         {
             try
             {
-                string path = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + testId
+                string path = Singleton<SettingManager>.Instance.GetDataFolder() + "\\" + forder + "\\" + testId
                              + ".exam";
                 var fileInfo = new FileInfo(path);
                 fileInfo.Delete();

@@ -70,6 +70,27 @@ namespace PresentationLayer.Explorer
             dateTextValue.Click += ListTestItemCustomClick;
             lbNumberQuestion.Click += ListTestItemCustomClick;
             lbTimeExam.Click += ListTestItemCustomClick;
+
+            Singleton<GuiActionEventController>.Instance.AddQuestionItem += AddQuestionItem;
+            Singleton<GuiActionEventController>.Instance.DeleteQuestionItem += DeleteQuestionItem;
+        }
+
+        private void DeleteQuestionItem(object sender)
+        {
+            if (Singleton<GuiActionEventController>.Instance.TestId == DataItem.IdTest)
+            {
+                DataItem.NumberQuestion--;
+                lbNumberQuestion.Text = DataItem.NumberQuestion.ToString();
+            }
+        }
+
+        private void AddQuestionItem(object sender, QuestionEditor.Data.QuestionDataItem parameter)
+        {
+            if(Singleton<GuiActionEventController>.Instance.TestId == DataItem.IdTest)
+            {
+                DataItem.NumberQuestion++;
+                lbNumberQuestion.Text = DataItem.NumberQuestion.ToString();
+            }
         }
 
         #region Register Event

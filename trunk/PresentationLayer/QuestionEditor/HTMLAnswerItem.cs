@@ -141,16 +141,20 @@ namespace PresentationLayer.QuestionEditor
         private void TrueCheckBoxCheckedChanged(object sender, EventArgs e)
         {
             DataItem.isTrue = trueCheckBox.Checked;
+            if (DataItem.isTrue)
+            {
+                OnChangeIsTrue(DataItem.OrderAnswer);  
+            }
         }
 
         private void DeleteAnswerButtonClick(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(this, "Do you want to delete this question?", "Delete question.",
+            var result = MessageBox.Show(this, "Sorry! This version can not delete ?", "Delete question.",
                                          MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                OnDelete(this.DataItem.orderAnswer);
-            }
+            //if (result == DialogResult.OK)
+            //{
+            //    OnDelete(this.DataItem.orderAnswer);
+            //}
         }
 
         public event ActionEventHandler<int> Delete
@@ -177,6 +181,44 @@ namespace PresentationLayer.QuestionEditor
         private void OnDelete(int idAnswer)
         {
             ActionEventHandler<int> handler = _deleteEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this, idAnswer);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+
+        public event ActionEventHandler<int> ChangeIsTrue
+        {
+            add
+            {
+                lock (_changeIsTrueEventLocker)
+                {
+                    _changeIsTrueEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_changeIsTrueEventLocker)
+                {
+                    _changeIsTrueEvent -= value;
+                }
+            }
+        }
+
+        private ActionEventHandler<int> _changeIsTrueEvent;
+        private readonly object _changeIsTrueEventLocker = new object();
+
+        private void OnChangeIsTrue(int idAnswer)
+        {
+            ActionEventHandler<int> handler = _changeIsTrueEvent;
             if (handler != null)
             {
                 try

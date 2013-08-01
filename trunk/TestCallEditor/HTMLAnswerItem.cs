@@ -112,8 +112,6 @@ namespace TestCallEditor
                 contentAnswerTextEditor.BackColor = SystemColors.Control;
                 contentAnswerTextEditor.BodyBackgroundColor = Color.White;
                 contentAnswerTextEditor.BodyHtml = null;
-                contentAnswerTextEditor.Parent = this;
-                contentAnswerTextEditor.Parent = this;
                 contentAnswerTextEditor.BodyText = null;
                 contentAnswerTextEditor.Dock = DockStyle.Fill;
                 contentAnswerTextEditor.EditorBackColor = Color.FromArgb(((((255)))), ((((255)))), ((((255)))));

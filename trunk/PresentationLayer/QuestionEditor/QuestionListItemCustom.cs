@@ -152,8 +152,8 @@ namespace PresentationLayer.QuestionEditor
         {
             InitializeComponent();
             InitCustomComponent();
-            InitEvent();
             InitCommonGui(question);
+            InitEvent();
         }
 
         public void InitCustomComponent()
@@ -206,14 +206,28 @@ namespace PresentationLayer.QuestionEditor
             Leave += QuestionListItemCustomLeave;
             Click += QuestionListItemCustomClick;
             GotFocus += QuestionListItemCustomClick;
-
             //Data Event
             
         }
 
+        void DataItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new ActionEventHandler<PropertyChangedEventArgs>(DataItemPropertyChanged), sender, e);
+                return;
+            }
+            if (e.PropertyName.Equals("OrderAnswer"))
+            {
+                orderNumQuest.Text = DataItem.OrderQuestion.ToString();
+            }
+        }
+        
         private void InitCommonGui(QuestionDataItem questionData)
         {
             DataItem = questionData;
+            DataItem.PropertyChanged += new Commons.BusinessObjects.PropertyChangedEventHandler(DataItem_PropertyChanged);
+
             _contentQuestionTextEditor.Html = DataItem.ContentQuestion;
             //_contentQuestionTextEditor.Text = "";
             //_contentQuestionTextEditor.AddHTML(DataItem.ContentQuestion);
