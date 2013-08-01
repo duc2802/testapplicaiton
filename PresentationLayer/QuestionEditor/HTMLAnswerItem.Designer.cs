@@ -94,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.CheckBox trueCheckBox;
+        public System.Windows.Forms.CheckBox trueCheckBox;
         private System.Windows.Forms.Label orderAnswerLabel;
         private System.Windows.Forms.Panel contentPanel;
     }

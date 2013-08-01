@@ -9,12 +9,10 @@ namespace PresentationLayer.ActionController
     public class GuiActionEventController
     {
         #region Properties
-
         private string _folderId;
         private string _testId;
         private string _leaveTest;
         private int _questionID;
-        
 
         public string FolderId
         {
@@ -201,6 +199,47 @@ namespace PresentationLayer.ActionController
 
         #endregion End event add question to test.
 
+        private readonly object _deleteQuestionItemEventLocker = new object();
+        private ActionEventHandler _deleteQuestionItemEvent;
+
+        /// <summary>
+        /// Event add question to test.
+        /// </summary>
+        public event ActionEventHandler DeleteQuestionItem
+        {
+            add
+            {
+                lock (_deleteQuestionItemEventLocker)
+                {
+                    _deleteQuestionItemEvent += value;
+                }
+            }
+            remove
+            {
+                lock (_deleteQuestionItemEventLocker)
+                {
+                    _deleteQuestionItemEvent -= value;
+                }
+            }
+        }
+
+        public void OnDeleteQuestionItem()
+        {
+            ActionEventHandler handler = _deleteQuestionItemEvent;
+            if (handler != null)
+            {
+                try
+                {
+                    handler(this);
+                }
+                catch (Exception ex)
+                {
+                    //Log
+                }
+            }
+        }
+
+
         #region Event clear question item on list panel
 
         private readonly object _clearAllQuestionItemLocker = new object();
@@ -283,6 +322,8 @@ namespace PresentationLayer.ActionController
                 }
             }
         }
+
+
 
         private readonly object _clearAllTestItemLocker = new object();
         private ActionEventHandler _clearAllTestItemEvent;

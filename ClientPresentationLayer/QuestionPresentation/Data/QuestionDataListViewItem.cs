@@ -28,7 +28,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
         public QuestionDataListViewItem(int index, QuestionBE questionBe)
         {
             NumberOrder = index.ToString();
-            Content = questionBe.QuestionContent;
+            Content = HtmlRemove.StripTagsRegex(questionBe.QuestionContent);
             IdQuestion = questionBe.QuestionID;
             TypeQuestion = "Multichoise";
             CheckMarked();

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using BusinessEntities;
 using Commons;
 using LiveSwitch.TextControl;
 using PresentationLayer.QuestionEditor.Data;
@@ -71,6 +72,12 @@ namespace PresentationLayer.QuestionEditor
         {
             moreAnswerButton.Click += MoreAnswerButtonClick;
             createButton.Click += CreateButtonClick;
+            btCancel.Click += btCancel_Click;
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void InitCustomComponent(bool isEditMode)
@@ -124,6 +131,7 @@ namespace PresentationLayer.QuestionEditor
 
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
             explainQuestionPanel.Controls.Add(_explainQuestionTextEditor);
+            moreAnswerButton.Enabled = false;
             ResumeLayout(false);
         }
 
@@ -159,6 +167,7 @@ namespace PresentationLayer.QuestionEditor
                     var itemLayout = new HTMLAnswerItem(idx + 1);
                     itemLayout.DataItem.orderAnswer = idx + 1;
                     itemLayout.Delete += ItemLayoutDelete;
+                    itemLayout.ChangeIsTrue += itemLayout_ChangeIsTrue;
                     itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
                     var style = new RowStyle(SizeType.Percent);
                     answerListTableLayoutPanel.RowStyles.Add(style);
@@ -185,7 +194,20 @@ namespace PresentationLayer.QuestionEditor
             answerListTableLayoutPanel.ResumeLayout();
         }
 
-       
+        private void itemLayout_ChangeIsTrue(object sender, int parameter)
+        {
+            for (int idx = 0; idx < answerListTableLayoutPanel.Controls.Count; idx++)
+            {
+                var item = answerListTableLayoutPanel.Controls[idx] as HTMLAnswerItem;
+                if (item != null && item.DataItem.OrderAnswer != parameter)
+                {
+                    item.SuspendLayout();
+                    item.DataItem.isTrue = false;
+                    item.trueCheckBox.Checked = false;
+                    item.ResumeLayout();
+                }
+            }
+        }
 
         private void ItemLayoutDelete(object sender, int parameter)
         {
@@ -249,6 +271,7 @@ namespace PresentationLayer.QuestionEditor
             }
             if (_action == "create")
             {
+                DataItem.OrderQuestion = Singleton<TestBE>.Instance.ListQuestion.Count;
                 DataItem.IdQuestion = string.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
                 DataItem.ContentQuestion = _contentQuestionTextEditor.DocumentText;
                 DataItem.ExplainContent = _explainQuestionTextEditor.DocumentText;

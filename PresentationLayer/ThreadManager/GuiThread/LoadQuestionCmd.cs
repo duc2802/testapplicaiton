@@ -42,9 +42,12 @@ namespace PresentationLayer.ThreadManager.GuiThread
         {
             try
             {
-                var folder = Singleton<GuiActionEventController>.Instance.FolderId;
-                Singleton<TestBE>.Instance = TestDAL.LoadTestBE(_testId, folder);
-                Singleton<GuiActionEventController>.Instance.TestId = _testId;
+                if (_testId != Singleton<GuiActionEventController>.Instance.TestId)
+                {
+                    var folder = Singleton<GuiActionEventController>.Instance.FolderId;
+                    Singleton<TestBE>.Instance = TestDAL.LoadTestBE(_testId, folder);
+                    Singleton<GuiActionEventController>.Instance.TestId = _testId;
+                }
             }
             catch (Exception ex)
             {

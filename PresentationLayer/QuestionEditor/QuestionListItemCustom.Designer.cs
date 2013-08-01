@@ -117,7 +117,7 @@ namespace PresentationLayer.QuestionEditor
 
         private System.Windows.Forms.Panel contentQuestionPanel;
         private System.Windows.Forms.Panel answerChoiseContainer;
-        private System.Windows.Forms.Label orderNumQuest;
+        public System.Windows.Forms.Label orderNumQuest;
         private System.Windows.Forms.Button editButton;
         private Button deleteButton;
 

@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="ConstantGUI.cs" />
     <Compile Include="FormatHelper.cs" />
+    <Compile Include="HtmlRemove.cs" />
     <Compile Include="IDataBE.cs" />
     <Compile Include="IDataItem.cs" />
     <Compile Include="ITranslateBE.cs" />
