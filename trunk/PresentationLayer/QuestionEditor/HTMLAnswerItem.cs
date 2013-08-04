@@ -66,6 +66,7 @@ namespace PresentationLayer.QuestionEditor
         {
             orderAnswerLabel.Text = (itemData.OrderAnswer + 1).ToString();
             contentAnswerTextEditor.Html = itemData.ContentAnswer;
+            trueCheckBox.Checked = itemData.isTrue;
         }
 
         private void InitEvent()
@@ -132,18 +133,19 @@ namespace PresentationLayer.QuestionEditor
                 deleteButton.Visible = false;
                 orderAnswerLabel.BorderStyle = BorderStyle.None;
                 BorderStyle = BorderStyle.None;
-
                 contentPanel.Size = new Size(369, 30);
             }
-            
         }
 
         private void TrueCheckBoxCheckedChanged(object sender, EventArgs e)
         {
-            DataItem.isTrue = trueCheckBox.Checked;
-            if (DataItem.isTrue)
+            if (DataItem != null)
             {
-                OnChangeIsTrue(DataItem.OrderAnswer);  
+                DataItem.isTrue = trueCheckBox.Checked;
+                if (DataItem.isTrue)
+                {
+                    OnChangeIsTrue(DataItem.OrderAnswer);
+                }
             }
         }
 

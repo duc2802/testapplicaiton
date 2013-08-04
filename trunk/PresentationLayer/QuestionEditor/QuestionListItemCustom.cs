@@ -229,9 +229,6 @@ namespace PresentationLayer.QuestionEditor
             DataItem.PropertyChanged += new Commons.BusinessObjects.PropertyChangedEventHandler(DataItem_PropertyChanged);
 
             _contentQuestionTextEditor.Html = DataItem.ContentQuestion;
-            //_contentQuestionTextEditor.Text = "";
-            //_contentQuestionTextEditor.AddHTML(DataItem.ContentQuestion);
-            //_contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
             orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             AddAnswerOptions();
             CalculatePanelSize();
@@ -241,9 +238,6 @@ namespace PresentationLayer.QuestionEditor
         private void OnDataItemChanged()
         {
             _contentQuestionTextEditor.Html = DataItem.ContentQuestion;
-            //_contentQuestionTextEditor.Text = "";
-            //_contentQuestionTextEditor.AddHTML(DataItem.ContentQuestion);
-            //_contentQuestionTextEditor.Text = _contentQuestionTextEditor.Text.Trim();
             orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             AddAnswerOptions();
             CalculatePanelSize();
