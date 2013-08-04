@@ -271,7 +271,7 @@ namespace PresentationLayer.QuestionEditor
             }
             if (_action == "create")
             {
-                DataItem.OrderQuestion = Singleton<TestBE>.Instance.ListQuestion.Count;
+                DataItem.OrderQuestion = Singleton<TestBE>.Instance.ListQuestion.Count + 1;
                 DataItem.IdQuestion = string.Format("{0:ddmmyyyyHHmmss}", DateTime.Now);
                 DataItem.ContentQuestion = _contentQuestionTextEditor.DocumentText;
                 DataItem.ExplainContent = _explainQuestionTextEditor.DocumentText;
