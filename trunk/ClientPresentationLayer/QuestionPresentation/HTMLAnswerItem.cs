@@ -75,6 +75,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             _contentAnswerTextEditor.Html = itemData.Content;
             btTrueFail.Visible = false;
             trueCheckBox.Visible = true;
+            orderAnswerLabel.Text = (int.Parse(itemData.AnswerID) + 1).ToString();
             if (isChoise)
             {
                 trueCheckBox.Checked = isChoise;

@@ -18,7 +18,7 @@ namespace ClientPresentationLayer.QuestionPresentation.Data
         public TestDataListViewItem(TestBE test)
         {
             Title = test.Information;
-            NumOfQuestion = test.NumberOfQuestion;
+            NumOfQuestion = test.ListQuestion != null ? test.ListQuestion.Count : test.NumberOfQuestion;
             Date = test.DateCreate;
             Id = test.TestID;
             TimeOfTest = test.Time;

@@ -69,6 +69,7 @@ namespace ClientPresentationLayer.QuestionPresentation
         public void InitGui(QuestionBE Item, bool isExplain)
         {
             _contentQuestionTextEditor.Html = DataBEItem.QuestionContent;
+            
             AddAnswerOptionsFromBe(isExplain);
             ResumeLayout();
         }
