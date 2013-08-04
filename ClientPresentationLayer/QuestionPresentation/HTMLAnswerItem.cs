@@ -120,7 +120,7 @@ namespace ClientPresentationLayer.QuestionPresentation
             SuspendLayout();
             //Init contentQuestionTextEditor
             contentPanel.BorderStyle = BorderStyle.None;
-            _contentAnswerTextEditor = new TextEditor(isEditMode);
+            _contentAnswerTextEditor = new TextEditor(false);
             _contentAnswerTextEditor.BorderStyle = BorderStyle.None;
             _contentAnswerTextEditor.BackColor = SystemColors.Control;
             _contentAnswerTextEditor.BodyBackgroundColor = Color.White;
@@ -141,9 +141,8 @@ namespace ClientPresentationLayer.QuestionPresentation
                 trueCheckBox.Visible = false;
                 orderAnswerLabel.BorderStyle = BorderStyle.None;
                 BorderStyle = BorderStyle.None;
-
-                contentPanel.Size = new Size(369, 30);
             }
+            contentPanel.Size = new Size(369, 30);
             ResumeLayout(false);
         }
 
