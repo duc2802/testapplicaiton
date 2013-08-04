@@ -128,7 +128,6 @@ namespace PresentationLayer.QuestionEditor
             {
                 createButton.Text = @"Create";
             }
-
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
             explainQuestionPanel.Controls.Add(_explainQuestionTextEditor);
             moreAnswerButton.Enabled = false;
@@ -157,8 +156,7 @@ namespace PresentationLayer.QuestionEditor
         private void InitDefaultGui()
         {
             answerListTableLayoutPanel.SuspendLayout();
-            // Neu la tao moi
-            if (_dataItem.ContentQuestion == null || _dataItem.ContentQuestion == "")
+            if (string.IsNullOrEmpty(_dataItem.ContentQuestion))
             {
                 for (int idx = 0; idx < 4; idx++)
                 {
@@ -177,19 +175,18 @@ namespace PresentationLayer.QuestionEditor
             }
             else
             {
-                for (int idx = 0; idx<_dataItem.AnswerData.AnswerData.Count ; idx++)
+                for (var idx = 0; idx<_dataItem.AnswerData.AnswerData.Count ; idx++)
                 {
                     var itemLayout = new HTMLAnswerItem(_dataItem.AnswerData.AnswerData[idx],true);
                     itemLayout.DataItem.orderAnswer = idx + 1;
                     itemLayout.Delete += ItemLayoutDelete;
+                    itemLayout.ChangeIsTrue += itemLayout_ChangeIsTrue;
                     itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
                     var style = new RowStyle(SizeType.Percent);
                     answerListTableLayoutPanel.RowStyles.Add(style);
                     answerListTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
                     answerListTableLayoutPanel.Controls.Add(itemLayout, 0, idx);
                 }
-
-
             }
             answerListTableLayoutPanel.ResumeLayout();
         }
