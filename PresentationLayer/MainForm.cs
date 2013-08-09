@@ -22,6 +22,7 @@ using PresentationLayer.ThreadManager.GuiThread;
 using SingleInstanceObject;
 using TestApplication;
 using ThreadQueueManager;
+using System.Threading;
 
 
 namespace PresentationLayer
@@ -54,8 +55,6 @@ namespace PresentationLayer
             btExportExam.Enabled = false;
             //btExportDocsExam.Enabled = false;
             btNewQuestion.Enabled = false;
-            btEditQuestion.Enabled = false;
-
             var catologuePanel = new ExplorerPanel();
             catologuePanel.Dock = DockStyle.Fill;
             explorerSplitContainer.Panel1.Controls.Add(catologuePanel);
@@ -74,8 +73,7 @@ namespace PresentationLayer
             btNewQuestion.Click += NewQuestionButtonClick;
             btExportExam.Click += ExportTest;
             btOpenFile.Click += ButtonOpenFileButtonClick;
-            btEquation.Click += EquationButtonClick;
-            btEditQuestion.Click += EditQuestionButtonClick;
+            btEquation.Click += EquationButtonClick;  
         }
 
         private void InitEvent()
@@ -138,7 +136,6 @@ namespace PresentationLayer
 
         private void LeaveQuestion(object sender, int parameter)
         {
-            btEditQuestion.Enabled = false;
         }
 
         private void ChangeTestId(object sender, string parameter)
@@ -155,7 +152,6 @@ namespace PresentationLayer
 
         private void ChangeQuestionId(object sender, int parameter)
         {
-            btEditQuestion.Enabled = true;
         }
 
         [DllImport("user32.dll")]
@@ -299,5 +295,13 @@ namespace PresentationLayer
         }
 
         #endregion
+
+        private void btHelp_Click(object sender, EventArgs e)
+        {
+            AboutUs showAboutus = new AboutUs();
+            showAboutus.ShowDialog();
+        }
+
+        
     }
 }

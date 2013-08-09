@@ -222,6 +222,23 @@ namespace PresentationLayer.QuestionEditor
                 orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             }
         }
+        private String ConvertLabelQuestion(int number)
+        {
+            string result = null;
+            if (number == 0)
+                result = "a";
+            if (number == 1)
+                result = "b";
+            if (number == 2)
+                result = "c";
+            if (number == 3)
+                result = "d";
+            if (number == 4)
+                result = "e";
+            if (number == 5)
+                result = "f";
+            return result;
+        }
         
         private void InitCommonGui(QuestionDataItem questionData)
         {
@@ -263,7 +280,7 @@ namespace PresentationLayer.QuestionEditor
                     HTMLAnswerItem;
                 if (item != null)
                 {
-                    item.Name = answerItem.orderAnswer.ToString();
+                    item.Name =  answerItem.orderAnswer.ToString();
                     item.DataItem = answerItem;
                 }
                 else
@@ -283,11 +300,11 @@ namespace PresentationLayer.QuestionEditor
         private void AddNewLine(AnswerDataItem answerItem, int orderNumber)
         {
             var point = new Point();
-            point.Y = contentQuestionPanel.Location.Y + contentQuestionPanel.Height + 10 + ((orderNumber - 1) * 74);
+            point.Y = contentQuestionPanel.Location.Y + contentQuestionPanel.Height +10+ ((orderNumber - 1) * 74);
             point.X = contentQuestionPanel.Location.X;
             var answerCheckBox = new HTMLAnswerItem(answerItem, false);
             answerCheckBox.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
-            answerCheckBox.Name = answerItem.orderAnswer.ToString();
+            answerCheckBox.Name = ConvertLabelQuestion(answerItem.orderAnswer);
             answerCheckBox.AutoSize = true;
             answerCheckBox.Location = point;
             //answerCheckBox.Checked = answerItem.isTrue;

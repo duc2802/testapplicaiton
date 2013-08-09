@@ -64,7 +64,7 @@ namespace PresentationLayer.QuestionEditor
 
         private void InitGui(AnswerDataItem itemData, bool isEditMode)
         {
-            orderAnswerLabel.Text = (itemData.OrderAnswer + 1).ToString();
+            orderAnswerLabel.Text = ConvertLabelQuestion(itemData.OrderAnswer);
             contentAnswerTextEditor.Html = itemData.ContentAnswer;
             trueCheckBox.Checked = itemData.isTrue;
         }
@@ -81,10 +81,28 @@ namespace PresentationLayer.QuestionEditor
             _dataItem.ContentAnswer = contentAnswerTextEditor.DocumentText;
         }
 
+        private String ConvertLabelQuestion(int number)
+        {
+            string result=null;
+            if (number == 0)
+                result = "a";
+            if (number == 1)
+                result = "b";
+            if (number == 2)
+                result = "c";
+            if (number == 3)
+                result = "d";
+            if (number == 4)
+                result = "e";
+            if (number == 5)
+                result = "f";
+            return result;
+        }
+
         private void InitData(int index)
         {
             DataItem = new AnswerDataItem();
-            orderAnswerLabel.Text = index.ToString();
+            orderAnswerLabel.Text = ConvertLabelQuestion(index-1);
             //DataItem.PropertyChanged += DataItemPropertyChanged;
             Refresh();
         }
