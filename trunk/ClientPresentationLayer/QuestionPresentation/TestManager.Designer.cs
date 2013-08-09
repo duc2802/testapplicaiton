@@ -31,7 +31,6 @@
             this.managerTabControl = new System.Windows.Forms.TabControl();
             this.learningModeTabPage = new System.Windows.Forms.TabPage();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.numOfExamTextBox = new System.Windows.Forms.TextBox();
             this.totalExamLabel = new System.Windows.Forms.Label();
             this.testlistView = new System.Windows.Forms.ListView();
@@ -42,8 +41,11 @@
             this.importButton = new System.Windows.Forms.Button();
             this.startExamButton = new System.Windows.Forms.Button();
             this.aboutTabPage = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.managerTabControl.SuspendLayout();
             this.learningModeTabPage.SuspendLayout();
+            this.aboutTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // managerTabControl
@@ -63,7 +65,6 @@
             // 
             this.learningModeTabPage.BackColor = System.Drawing.Color.White;
             this.learningModeTabPage.Controls.Add(this.deleteButton);
-            this.learningModeTabPage.Controls.Add(this.label1);
             this.learningModeTabPage.Controls.Add(this.numOfExamTextBox);
             this.learningModeTabPage.Controls.Add(this.totalExamLabel);
             this.learningModeTabPage.Controls.Add(this.testlistView);
@@ -89,17 +90,6 @@
             this.deleteButton.Text = "Delete Exam";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(863, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Help >>";
-            // 
             // numOfExamTextBox
             // 
             this.numOfExamTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -123,9 +113,9 @@
             // 
             // testlistView
             // 
-            this.testlistView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.testlistView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.testlistView.BackColor = System.Drawing.Color.White;
             this.testlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.titleColumn,
@@ -192,12 +182,22 @@
             // aboutTabPage
             // 
             this.aboutTabPage.BackColor = System.Drawing.Color.White;
+            this.aboutTabPage.Controls.Add(this.pictureBox1);
             this.aboutTabPage.Location = new System.Drawing.Point(4, 25);
             this.aboutTabPage.Name = "aboutTabPage";
             this.aboutTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.aboutTabPage.Size = new System.Drawing.Size(920, 544);
             this.aboutTabPage.TabIndex = 1;
             this.aboutTabPage.Text = "About TestEasy";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ClientPresentationLayer.Properties.Resources.AboutUs;
+            this.pictureBox1.Location = new System.Drawing.Point(213, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(489, 433);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // TestManager
             // 
@@ -209,6 +209,8 @@
             this.managerTabControl.ResumeLayout(false);
             this.learningModeTabPage.ResumeLayout(false);
             this.learningModeTabPage.PerformLayout();
+            this.aboutTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,7 +219,6 @@
 
         private System.Windows.Forms.TabControl managerTabControl;
         private System.Windows.Forms.TabPage learningModeTabPage;
-        private System.Windows.Forms.TabPage aboutTabPage;
         private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.Button startExamButton;
         private System.Windows.Forms.ListView testlistView;
@@ -225,9 +226,10 @@
         private System.Windows.Forms.ColumnHeader dateColumn;
         private System.Windows.Forms.TextBox numOfExamTextBox;
         private System.Windows.Forms.Label totalExamLabel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader numberQuesColumn;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.ColumnHeader timeColumn;
+        private System.Windows.Forms.TabPage aboutTabPage;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

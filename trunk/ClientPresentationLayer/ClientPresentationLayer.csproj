@@ -225,6 +225,9 @@
   <ItemGroup>
     <Content Include="Lib\DevComponents.DotNetBar2.dll" />
     <Content Include="Lib\Ribbon.dll" />
+    <None Include="Resources\NewBlash.png" />
+    <None Include="Resources\AboutUs.png" />
+    <None Include="Resources\Splash.png" />
     <None Include="Resources\true.png" />
     <None Include="Resources\Results.png" />
     <None Include="Resources\Alarm.png" />
