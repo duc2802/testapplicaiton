@@ -34,18 +34,6 @@ namespace PresentationLayer
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.insertTabItem = new DevComponents.DotNetBar.RibbonTabItem();
             this.startButton = new DevComponents.DotNetBar.Office2007StartButton();
-            this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
-            this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
-            this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem4 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem5 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem7 = new DevComponents.DotNetBar.ButtonItem();
-            this.itemContainer4 = new DevComponents.DotNetBar.ItemContainer();
-            this.itemContainer5 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem12 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem13 = new DevComponents.DotNetBar.ButtonItem();
             this.btHelp = new DevComponents.DotNetBar.ButtonItem();
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.dockContainerItem1 = new DevComponents.DotNetBar.DockContainerItem();
@@ -70,12 +58,11 @@ namespace PresentationLayer
             this.btNewExam = new DevComponents.DotNetBar.ButtonItem();
             this.btExportExam = new DevComponents.DotNetBar.ButtonItem();
             this.Question = new DevComponents.DotNetBar.RibbonBar();
-            this.btEditQuestion = new DevComponents.DotNetBar.ButtonItem();
             this.btNewQuestion = new DevComponents.DotNetBar.ButtonItem();
+            this.btEquation = new DevComponents.DotNetBar.ButtonItem();
             this.saveTestToXmlFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileForderDialog = new System.Windows.Forms.OpenFileDialog();
             this.openFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.btEquation = new DevComponents.DotNetBar.ButtonItem();
             this.dockSite9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
@@ -110,10 +97,9 @@ namespace PresentationLayer
             // 
             // insertTabItem
             // 
-            this.insertTabItem.Checked = true;
             this.insertTabItem.ImagePaddingHorizontal = 8;
             this.insertTabItem.Name = "insertTabItem";
-            this.insertTabItem.Text = "<b>List Test</b>";
+            this.insertTabItem.Text = "<b>Create Exam</b>";
             // 
             // startButton
             // 
@@ -125,140 +111,15 @@ namespace PresentationLayer
             this.startButton.ImagePaddingVertical = 2;
             this.startButton.Name = "startButton";
             this.startButton.ShowSubItems = false;
-            this.startButton.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer1});
             this.startButton.Text = "&File";
-            // 
-            // itemContainer1
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer1.BackgroundStyle.Class = "RibbonFileMenuContainer";
-            this.itemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer1.MinimumSize = new System.Drawing.Size(0, 0);
-            this.itemContainer1.Name = "itemContainer1";
-            this.itemContainer1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer2,
-            this.itemContainer5});
-            // 
-            // itemContainer2
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer2.BackgroundStyle.Class = "RibbonFileMenuTwoColumnContainer";
-            this.itemContainer2.ItemSpacing = 0;
-            this.itemContainer2.MinimumSize = new System.Drawing.Size(0, 0);
-            this.itemContainer2.Name = "itemContainer2";
-            this.itemContainer2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer3,
-            this.itemContainer4});
-            // 
-            // itemContainer3
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer3.BackgroundStyle.Class = "RibbonFileMenuColumnOneContainer";
-            this.itemContainer3.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer3.MinimumSize = new System.Drawing.Size(120, 0);
-            this.itemContainer3.Name = "itemContainer3";
-            this.itemContainer3.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem2,
-            this.buttonItem3,
-            this.buttonItem4,
-            this.buttonItem5,
-            this.buttonItem7});
-            // 
-            // buttonItem2
-            // 
-            this.buttonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem2.ImagePaddingHorizontal = 8;
-            this.buttonItem2.Name = "buttonItem2";
-            this.buttonItem2.SubItemsExpandWidth = 24;
-            this.buttonItem2.Text = "&New";
-            // 
-            // buttonItem3
-            // 
-            this.buttonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem3.ImagePaddingHorizontal = 8;
-            this.buttonItem3.Name = "buttonItem3";
-            this.buttonItem3.SubItemsExpandWidth = 24;
-            this.buttonItem3.Text = "&Open...";
-            // 
-            // buttonItem4
-            // 
-            this.buttonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem4.ImagePaddingHorizontal = 8;
-            this.buttonItem4.Name = "buttonItem4";
-            this.buttonItem4.SubItemsExpandWidth = 24;
-            this.buttonItem4.Text = "&Save...";
-            // 
-            // buttonItem5
-            // 
-            this.buttonItem5.BeginGroup = true;
-            this.buttonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem5.ImagePaddingHorizontal = 8;
-            this.buttonItem5.Name = "buttonItem5";
-            this.buttonItem5.SubItemsExpandWidth = 24;
-            this.buttonItem5.Text = "S&hare...";
-            // 
-            // buttonItem7
-            // 
-            this.buttonItem7.BeginGroup = true;
-            this.buttonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem7.ImagePaddingHorizontal = 8;
-            this.buttonItem7.Name = "buttonItem7";
-            this.buttonItem7.SubItemsExpandWidth = 24;
-            this.buttonItem7.Text = "&Close";
-            // 
-            // itemContainer4
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer4.BackgroundStyle.Class = "RibbonFileMenuColumnTwoContainer";
-            this.itemContainer4.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer4.MinimumSize = new System.Drawing.Size(180, 0);
-            this.itemContainer4.Name = "itemContainer4";
-            // 
-            // itemContainer5
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer5.BackgroundStyle.Class = "RibbonFileMenuBottomContainer";
-            this.itemContainer5.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Right;
-            this.itemContainer5.MinimumSize = new System.Drawing.Size(0, 0);
-            this.itemContainer5.Name = "itemContainer5";
-            this.itemContainer5.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem12,
-            this.buttonItem13});
-            // 
-            // buttonItem12
-            // 
-            this.buttonItem12.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem12.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonItem12.ImagePaddingHorizontal = 8;
-            this.buttonItem12.Name = "buttonItem12";
-            this.buttonItem12.SubItemsExpandWidth = 24;
-            this.buttonItem12.Text = "Opt&ions";
-            // 
-            // buttonItem13
-            // 
-            this.buttonItem13.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem13.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonItem13.ImagePaddingHorizontal = 8;
-            this.buttonItem13.Name = "buttonItem13";
-            this.buttonItem13.SubItemsExpandWidth = 24;
-            this.buttonItem13.Text = "E&xit";
             // 
             // btHelp
             // 
             this.btHelp.ImagePaddingHorizontal = 8;
             this.btHelp.Name = "btHelp";
-            this.btHelp.Text = "Help";
+            this.btHelp.SplitButton = true;
+            this.btHelp.Text = "About us";
+            this.btHelp.Click += new System.EventHandler(this.btHelp_Click);
             // 
             // qatCustomizeItem1
             // 
@@ -517,6 +378,7 @@ namespace PresentationLayer
             this.btNewExam.ImagePaddingHorizontal = 8;
             this.btNewExam.Name = "btNewExam";
             this.btNewExam.Text = "ButtonNewExam";
+            this.btNewExam.Tooltip = "Add a new Exam";
             // 
             // btExportExam
             // 
@@ -524,28 +386,21 @@ namespace PresentationLayer
             this.btExportExam.ImagePaddingHorizontal = 8;
             this.btExportExam.Name = "btExportExam";
             this.btExportExam.Text = "buttonItem1";
+            this.btExportExam.Tooltip = "Export a exam";
             this.btExportExam.Click += new System.EventHandler(this.btExportExam_Click);
             // 
             // Question
             // 
             this.Question.AutoOverflowEnabled = true;
             this.Question.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btEditQuestion,
             this.btNewQuestion,
             this.btEquation});
             this.Question.Location = new System.Drawing.Point(230, 59);
             this.Question.Name = "Question";
-            this.Question.Size = new System.Drawing.Size(194, 70);
+            this.Question.Size = new System.Drawing.Size(133, 70);
             this.Question.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.Question.TabIndex = 20;
             this.Question.Text = "Question";
-            // 
-            // btEditQuestion
-            // 
-            this.btEditQuestion.Image = global::PresentationLayer.Properties.Resources.editquestion;
-            this.btEditQuestion.ImagePaddingHorizontal = 8;
-            this.btEditQuestion.Name = "btEditQuestion";
-            this.btEditQuestion.Text = "ButtonEditQuestion";
             // 
             // btNewQuestion
             // 
@@ -553,10 +408,7 @@ namespace PresentationLayer
             this.btNewQuestion.ImagePaddingHorizontal = 8;
             this.btNewQuestion.Name = "btNewQuestion";
             this.btNewQuestion.Text = "NewQuestion";
-            // 
-            // openFolderBrowserDialog
-            // 
-            this.openFolderBrowserDialog.ShowNewFolderButton = false;
+            this.btNewQuestion.Tooltip = "Add a question into exam";
             // 
             // btEquation
             // 
@@ -564,6 +416,11 @@ namespace PresentationLayer
             this.btEquation.ImagePaddingHorizontal = 8;
             this.btEquation.Name = "btEquation";
             this.btEquation.Text = "buttonItem1";
+            this.btEquation.Tooltip = "Create Equation import to Exam";
+            // 
+            // openFolderBrowserDialog
+            // 
+            this.openFolderBrowserDialog.ShowNewFolderButton = false;
             // 
             // MainForm
             // 
@@ -605,18 +462,6 @@ namespace PresentationLayer
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
         private DevComponents.DotNetBar.RibbonTabItem insertTabItem;
         private DevComponents.DotNetBar.Office2007StartButton startButton;
-        private DevComponents.DotNetBar.ItemContainer itemContainer1;
-        private DevComponents.DotNetBar.ItemContainer itemContainer2;
-        private DevComponents.DotNetBar.ItemContainer itemContainer3;
-        private DevComponents.DotNetBar.ButtonItem buttonItem2;
-        private DevComponents.DotNetBar.ButtonItem buttonItem3;
-        private DevComponents.DotNetBar.ButtonItem buttonItem4;
-        private DevComponents.DotNetBar.ButtonItem buttonItem5;
-        private DevComponents.DotNetBar.ButtonItem buttonItem7;
-        private DevComponents.DotNetBar.ItemContainer itemContainer4;
-        private DevComponents.DotNetBar.ItemContainer itemContainer5;
-        private DevComponents.DotNetBar.ButtonItem buttonItem12;
-        private DevComponents.DotNetBar.ButtonItem buttonItem13;
         private DevComponents.DotNetBar.ButtonItem btHelp;
         private DevComponents.DotNetBar.QatCustomizeItem qatCustomizeItem1;
         private DevComponents.DotNetBar.DockContainerItem dockContainerItem1;
@@ -642,7 +487,6 @@ namespace PresentationLayer
         private DevComponents.DotNetBar.ButtonItem btNewExam;
         private DevComponents.DotNetBar.ButtonItem btNewQuestion;
         private DevComponents.DotNetBar.ButtonItem btExportExam;
-        private DevComponents.DotNetBar.ButtonItem btEditQuestion;
         private SaveFileDialog saveTestToXmlFileDialog;
         private OpenFileDialog openFileForderDialog;
         private FolderBrowserDialog openFolderBrowserDialog;

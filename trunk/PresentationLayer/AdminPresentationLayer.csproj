@@ -190,6 +190,12 @@
     <Compile Include="QuestionEditor\QuestionListPanel.Designer.cs">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Splash\AboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash\AboutUs.designer.cs">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Splash\Loading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionEditor\QuestionListPanel.resx">
       <DependentUpon>QuestionListPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash\AboutUs.resx">
+      <DependentUpon>AboutUs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
