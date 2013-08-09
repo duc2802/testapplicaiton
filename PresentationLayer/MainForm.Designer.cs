@@ -93,7 +93,7 @@ namespace PresentationLayer
             this.ribbonControl1.TabGroupHeight = 14;
             this.ribbonControl1.TabIndex = 6;
             this.ribbonControl1.Text = "ribbonControl1";
-            this.ribbonControl1.TitleText = "<font color=\"#ED1C24\"><b>TEST EASY</b></font>";
+            this.ribbonControl1.TitleText = "<font color=\"#ED1C24\"><b>IU-EasyTest</b></font>";
             // 
             // insertTabItem
             // 
@@ -358,6 +358,7 @@ namespace PresentationLayer
             this.btOpenFile.ImagePaddingHorizontal = 8;
             this.btOpenFile.Name = "btOpenFile";
             this.btOpenFile.Text = "ButtonOpenFile";
+            this.btOpenFile.Tooltip = "Exam Folder";
             // 
             // Exam
             // 

@@ -294,6 +294,7 @@
     <Content Include="Lib\MimeTeX.dll" />
     <Content Include="Lib\Ribbon.dll" />
     <None Include="app.config" />
+    <None Include="Resources\AboutUs.png" />
     <Content Include="Resources\AddNew.png" />
     <None Include="Resources\Clock.png" />
     <None Include="Resources\Export.png" />
@@ -302,6 +303,7 @@
     <None Include="Resources\loading.gif" />
     <None Include="Resources\equation.png" />
     <None Include="Resources\math.png" />
+    <None Include="Resources\NewBlash.png" />
     <Content Include="Resources\NewQuestion.png" />
     <Content Include="Resources\Program.png" />
     <None Include="Resources\test.png" />
