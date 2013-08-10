@@ -19,7 +19,8 @@ namespace PresentationLayer.QuestionEditor
         public TextEditor contentAnswerTextEditor;
         private HtmlRichTextBox htmlRichTextBox;
 
-        private AnswerDataItem _dataItem;
+        private AnswerDataItem _dataItem = new AnswerDataItem();
+
         public AnswerDataItem DataItem
         {
             set
@@ -64,7 +65,7 @@ namespace PresentationLayer.QuestionEditor
 
         private void InitGui(AnswerDataItem itemData, bool isEditMode)
         {
-            orderAnswerLabel.Text = ConvertLabelQuestion(itemData.OrderAnswer);
+            orderAnswerLabel.Text = ConvertLabelQuestion(itemData.OrderAnswer + 1);
             contentAnswerTextEditor.Html = itemData.ContentAnswer;
             trueCheckBox.Checked = itemData.isTrue;
         }
@@ -81,29 +82,43 @@ namespace PresentationLayer.QuestionEditor
             _dataItem.ContentAnswer = contentAnswerTextEditor.DocumentText;
         }
 
-        private String ConvertLabelQuestion(int number)
+        public String ConvertLabelQuestion(int number)
         {
             string result=null;
-            if (number == 0)
-                result = "a";
-            if (number == 1)
-                result = "b";
-            if (number == 2)
-                result = "c";
-            if (number == 3)
-                result = "d";
-            if (number == 4)
-                result = "e";
-            if (number == 5)
-                result = "f";
+            switch (number)
+            {
+                case 1:
+                    result = "a";
+                    break;
+                case 2:
+                    result = "b";
+                    break;
+                case 3:
+                    result = "c";
+                    break;
+                case 4:
+                    result = "d";
+                    break;
+                case 5:
+                    result = "e";
+                    break;
+                case 6:
+                    result = "f";
+                    break;
+            }
+            
             return result;
+        }
+
+        public void RefreshOrderLabel()
+        {
+            orderAnswerLabel.Text = ConvertLabelQuestion(DataItem.OrderAnswer);
         }
 
         private void InitData(int index)
         {
             DataItem = new AnswerDataItem();
-            orderAnswerLabel.Text = ConvertLabelQuestion(index-1);
-            //DataItem.PropertyChanged += DataItemPropertyChanged;
+            orderAnswerLabel.Text = ConvertLabelQuestion(index);
             Refresh();
         }
 
@@ -169,12 +184,12 @@ namespace PresentationLayer.QuestionEditor
 
         private void DeleteAnswerButtonClick(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(this, "Sorry! This version can not delete ?", "Delete question.",
+            var result = MessageBox.Show(this, "Do you want to delete this answer?", "Delete question.",
                                          MessageBoxButtons.OKCancel);
-            //if (result == DialogResult.OK)
-            //{
-            //    OnDelete(this.DataItem.orderAnswer);
-            //}
+            if (result == DialogResult.OK)
+            {
+                OnDelete(this.DataItem.orderAnswer);
+            }
         }
 
         public event ActionEventHandler<int> Delete

@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:AdminSetup"
+"ProjectName" = "8:IUEasyTestAdmin"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -34,6 +34,12 @@
         "Entry"
         {
         "MsmKey" = "8:_0B4E453AAD189FA50485BF456F2D7243"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0F8AA1B78549ED6CBDEE5640443ACE1C"
         "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -113,6 +119,12 @@
         {
         "MsmKey" = "8:_94B2B478AF4403C8CD9BEC84BAA2B7A5"
         "OwnerKey" = "8:_E5D0977A95EDF86FC0F00DE22EBAFCB5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A6E468207A6F87382C8E798FF5E6F61C"
+        "OwnerKey" = "8:_8E015B539F4544CA8098DE9B5B4DDEA1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,6 +214,18 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0F8AA1B78549ED6CBDEE5640443ACE1C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A6E468207A6F87382C8E798FF5E6F61C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E5D0977A95EDF86FC0F00DE22EBAFCB5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -237,7 +261,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\AdminSetup.msi"
+        "OutputFilename" = "8:Debug\\UIEasyTestAdmin.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -348,6 +372,37 @@
                     }
                 }
             "SourcePath" = "8:Commons.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0F8AA1B78549ED6CBDEE5640443ACE1C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ModelEditControl, Version=1.2.4049.42096, Culture=neutral, PublicKeyToken=445e193243cd750d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0F8AA1B78549ED6CBDEE5640443ACE1C"
+                    {
+                    "Name" = "8:ModelEditControl.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ModelEditControl.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
@@ -582,6 +637,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A6E468207A6F87382C8E798FF5E6F61C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:BF.SL.HtmlToRichTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A6E468207A6F87382C8E798FF5E6F61C"
+                    {
+                    "Name" = "8:BF.SL.HtmlToRichTextBox.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:BF.SL.HtmlToRichTextBox.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_27890206CB2945C4ACEBE464CB269A6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B1A9800E8B407D5523C3BC46460E6BAC"
             {
             "AssemblyRegister" = "3:1"
@@ -767,7 +853,7 @@
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_950510034D9A4EEAB80FE8230556C326"
                     {
                     "Name" = "8:TestEasy"
-                    "AlwaysCreate" = "11:FALSE"
+                    "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_C2B904270BCE4CED9662C21C36647E17"
@@ -776,7 +862,7 @@
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_49502983316245D5A48889417E26061E"
                             {
                             "Name" = "8:Data"
-                            "AlwaysCreate" = "11:FALSE"
+                            "AlwaysCreate" = "11:TRUE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
                             "Property" = "8:_7A1DFE25E96C4CD7887F82C1227AE242"
@@ -836,9 +922,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:AdminSetup"
+        "ProductName" = "8:IUEasyTestAdmin"
         "ProductCode" = "8:{0FCA26F4-E282-4B20-9702-457AA0ECCFE8}"
-        "PackageCode" = "8:{E1B38580-133C-489C-B6A0-68DB6F01C7F4}"
+        "PackageCode" = "8:{F3032D13-C9DE-4928-B879-65646EB6863C}"
         "UpgradeCode" = "8:{6D8AB4F3-CDBF-4536-9D02-BB97E2C09610}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -849,7 +935,7 @@
         "Manufacturer" = "8:HCMIU"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:AdminSetup"
+        "Title" = "8:IU-Easy Test Admin"
         "Subject" = "8:"
         "ARPCONTACT" = "8:HMCIU"
         "Keywords" = "8:"
@@ -960,7 +1046,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F57F72CFA4F34F6A836A8A65C7E8B1FE"
             {
-            "Name" = "8:TestEasy"
+            "Name" = "8:UIEasyTestAdmin"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
