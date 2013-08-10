@@ -75,11 +75,38 @@ namespace ClientPresentationLayer.QuestionPresentation
             _contentAnswerTextEditor.Html = itemData.Content;
             btTrueFail.Visible = false;
             trueCheckBox.Visible = true;
-            orderAnswerLabel.Text = (int.Parse(itemData.AnswerID) + 1).ToString();
+            orderAnswerLabel.Text = ConvertLabelQuestion(int.Parse(itemData.AnswerID) + 1);
             if (isChoise)
             {
                 trueCheckBox.Checked = isChoise;
             }
+        }
+
+        public string ConvertLabelQuestion(int number)
+        {
+            string result = null;
+            switch (number)
+            {
+                case 1:
+                    result = "a";
+                    break;
+                case 2:
+                    result = "b";
+                    break;
+                case 3:
+                    result = "c";
+                    break;
+                case 4:
+                    result = "d";
+                    break;
+                case 5:
+                    result = "e";
+                    break;
+                case 6:
+                    result = "f";
+                    break;
+            }
+            return result;
         }
 
         public void TurnOnAnswer(bool on)
@@ -151,6 +178,7 @@ namespace ClientPresentationLayer.QuestionPresentation
           //  DataItem.isTrue = trueCheckBox.Checked;
             //OnCheckChange(DataItem.orderAnswer - 1, DataItem.isTrue);  
         }
+
         public event ActionEventHandler<int, bool> CheckChange
         {
             add

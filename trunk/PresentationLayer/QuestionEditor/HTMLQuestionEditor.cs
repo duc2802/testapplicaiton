@@ -130,7 +130,6 @@ namespace PresentationLayer.QuestionEditor
             }
             contentQuestionPanel.Controls.Add(_contentQuestionTextEditor);
             explainQuestionPanel.Controls.Add(_explainQuestionTextEditor);
-            moreAnswerButton.Enabled = false;
             ResumeLayout(false);
         }
 
@@ -214,23 +213,25 @@ namespace PresentationLayer.QuestionEditor
         private void MoreAnswerButtonClick(object sender, EventArgs e)
         {
             // set at 6 item, if more than 6, scrollable
-            if (answerListTableLayoutPanel.Controls.Count == _maxShowItem)
+            var countAnswer = answerListTableLayoutPanel.Controls.Count;
+            if (countAnswer == _maxShowItem)
             {
                 MessageBox.Show(this, @"Can not add more than 6 answers", @"Error", MessageBoxButtons.OK);
                 return;
             }
-            //answerListTableLayoutPanel.SuspendLayout();
-            var newItem = new AnswerDataItem(5, "", false);
+
+            answerListTableLayoutPanel.SuspendLayout();
+            var newItem = new AnswerDataItem(countAnswer + 1, "", false);
             DataItem.AnswerData.AnswerData.Add(newItem);
-            var itemLayout = new HTMLAnswerItem(5);
-            itemLayout.DataItem.orderAnswer = 5;
+            var itemLayout = new HTMLAnswerItem(countAnswer + 1);
+            itemLayout.DataItem.orderAnswer = countAnswer + 1;
             itemLayout.Delete += ItemLayoutDelete;
             itemLayout.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
             var style = new RowStyle(SizeType.Percent);
             answerListTableLayoutPanel.RowStyles.Add(style);
             answerListTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             answerListTableLayoutPanel.Controls.Add(itemLayout, 0, 4);
-            //answerListTableLayoutPanel.ResumeLayout();
+            answerListTableLayoutPanel.ResumeLayout();
         }
 
         private void DeleteAnswerItem(int orderAnswer)
@@ -239,7 +240,6 @@ namespace PresentationLayer.QuestionEditor
             answerListTableLayoutPanel.Controls.RemoveAt(orderAnswer - 1);
             _dataItem.AnswerData.AnswerData.RemoveAt(orderAnswer - 1);
             UpdateAllDataItem();
-            //UpdateEditor();
             answerListTableLayoutPanel.ResumeLayout();
             Refresh();
         }
@@ -252,6 +252,7 @@ namespace PresentationLayer.QuestionEditor
                 if (item != null)
                 {
                     item.DataItem.OrderAnswer = idx + 1;
+                    item.RefreshOrderLabel(); 
                     item.Size = new Size(answerListTableLayoutPanel.Width - 10, item.Height);
                 }
             }

@@ -93,6 +93,7 @@
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCancel.CausesValidation = false;
+            this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCancel.Location = new System.Drawing.Point(909, 498);
             this.btCancel.Name = "btCancel";
@@ -119,7 +120,6 @@
             // 
             this.moreAnswerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.moreAnswerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.moreAnswerButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.moreAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moreAnswerButton.Location = new System.Drawing.Point(673, 498);
             this.moreAnswerButton.Name = "moreAnswerButton";
@@ -132,7 +132,6 @@
             // 
             this.insertEquaButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.insertEquaButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.insertEquaButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.insertEquaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.insertEquaButton.Location = new System.Drawing.Point(547, 498);
             this.insertEquaButton.Name = "insertEquaButton";

@@ -41,7 +41,7 @@
             this.MaximizeBox = false;
             this.Name = "TestEasyClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Test Easy Client";
+            this.Text = "UI-TestEasy ";
             this.ResumeLayout(false);
 
         }

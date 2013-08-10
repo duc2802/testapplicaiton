@@ -242,6 +242,12 @@ namespace PresentationLayer
 
         public void ExportTest(object sender, EventArgs e)
         {
+            if (Singleton<GuiActionEventController>.Instance.TestId == null)
+            {
+                var result = MessageBox.Show(this, "Please select or create a test!", "Export test.",
+                                        MessageBoxButtons.OKCancel);
+                return;
+            }
             string folder = Singleton<GuiActionEventController>.Instance.FolderId;
             string test = Singleton<GuiActionEventController>.Instance.TestId;
             saveTestToXmlFileDialog.Filter = "Exam File|*.exb";
@@ -259,6 +265,12 @@ namespace PresentationLayer
 
         private void NewQuestionButtonClick(object sender, EventArgs e)
         {
+            if (Singleton<TestBE>.Instance == null)
+            {
+                var result = MessageBox.Show(this, "Please select or create a test!", "Create question.",
+                                        MessageBoxButtons.OKCancel);
+                return;
+            }
             var form = new HTMLQuestionEditor();
             if (DialogResult.OK == form.ShowDialog())
             {
@@ -271,12 +283,7 @@ namespace PresentationLayer
                 Singleton<DataQueueThreadController>.Instance.PutCmd(command);
             }
         }
-
-        private void ShowEqualEditor()
-        {
-            
-        }
-
+        
         private void NewExamButtonClick(object sender, EventArgs e)
         {
             string idFolder = Singleton<GuiActionEventController>.Instance.FolderId;

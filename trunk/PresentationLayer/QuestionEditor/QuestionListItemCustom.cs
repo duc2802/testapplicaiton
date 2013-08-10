@@ -222,21 +222,31 @@ namespace PresentationLayer.QuestionEditor
                 orderNumQuest.Text = DataItem.OrderQuestion.ToString();
             }
         }
-        private String ConvertLabelQuestion(int number)
+        public string ConvertLabelQuestion(int number)
         {
             string result = null;
-            if (number == 0)
-                result = "a";
-            if (number == 1)
-                result = "b";
-            if (number == 2)
-                result = "c";
-            if (number == 3)
-                result = "d";
-            if (number == 4)
-                result = "e";
-            if (number == 5)
-                result = "f";
+            switch (number)
+            {
+                case 1:
+                    result = "a";
+                    break;
+                case 2:
+                    result = "b";
+                    break;
+                case 3:
+                    result = "c";
+                    break;
+                case 4:
+                    result = "d";
+                    break;
+                case 5:
+                    result = "e";
+                    break;
+                case 6:
+                    result = "f";
+                    break;
+            }
+
             return result;
         }
         
@@ -307,8 +317,6 @@ namespace PresentationLayer.QuestionEditor
             answerCheckBox.Name = ConvertLabelQuestion(answerItem.orderAnswer);
             answerCheckBox.AutoSize = true;
             answerCheckBox.Location = point;
-            //answerCheckBox.Checked = answerItem.isTrue;
-            //answerCheckBox.Text = answerItem.ContentAnswer;
             answerChoiseContainer.Controls.Add(answerCheckBox);
         }
 

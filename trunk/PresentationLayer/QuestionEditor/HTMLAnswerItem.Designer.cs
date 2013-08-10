@@ -62,7 +62,7 @@
             // 
             this.orderAnswerLabel.AutoSize = true;
             this.orderAnswerLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.orderAnswerLabel.Location = new System.Drawing.Point(3, 3);
+            this.orderAnswerLabel.Location = new System.Drawing.Point(3, 18);
             this.orderAnswerLabel.Name = "orderAnswerLabel";
             this.orderAnswerLabel.Size = new System.Drawing.Size(15, 15);
             this.orderAnswerLabel.TabIndex = 7;
@@ -95,7 +95,7 @@
 
         private System.Windows.Forms.Button deleteButton;
         public System.Windows.Forms.CheckBox trueCheckBox;
-        private System.Windows.Forms.Label orderAnswerLabel;
+        public System.Windows.Forms.Label orderAnswerLabel;
         private System.Windows.Forms.Panel contentPanel;
     }
 }

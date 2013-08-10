@@ -52,6 +52,7 @@ namespace PresentationLayer.ThreadManager.DataThread
                     if (testBE != null)
                     {
                         Singleton<List<TestBE>>.Instance.Remove(testBE);
+                        Singleton<TestBE>.Instance = null;
                     }
                 }
                 else
