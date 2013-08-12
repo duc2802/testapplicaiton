@@ -145,6 +145,7 @@ namespace PresentationLayer.QuestionEditor.Data
                 var questionBE = testBe.ListQuestion[i];
                 var dataItem = new QuestionDataItem();
                 dataItem.ContentQuestion = questionBE.QuestionContent;
+                dataItem.ExplainContent = questionBE.Explain;
                 dataItem.IdQuestion = questionBE.QuestionID;
                 dataItem.OrderQuestion = i + 1;
                 dataItem.imageName = null;

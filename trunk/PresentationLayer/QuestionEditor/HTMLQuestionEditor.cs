@@ -290,7 +290,7 @@ namespace PresentationLayer.QuestionEditor
             else
             {
                 DataItem.ContentQuestion = _contentQuestionTextEditor.DocumentText;
-                DataItem.ExplainContent = _explainQuestionTextEditor.Text;
+                DataItem.ExplainContent = _explainQuestionTextEditor.DocumentText;
                 // Update Answer.
                 DataItem.AnswerData.AnswerData.Clear();
                 for (int idx = 0; idx < answerListTableLayoutPanel.Controls.Count; idx++)

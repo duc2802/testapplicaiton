@@ -42,23 +42,23 @@
             // contentQuestionPanel
             // 
             this.contentQuestionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.contentQuestionPanel.Location = new System.Drawing.Point(75, 12);
+            this.contentQuestionPanel.Location = new System.Drawing.Point(79, 12);
             this.contentQuestionPanel.Name = "contentQuestionPanel";
-            this.contentQuestionPanel.Size = new System.Drawing.Size(448, 245);
+            this.contentQuestionPanel.Size = new System.Drawing.Size(444, 245);
             this.contentQuestionPanel.TabIndex = 0;
             // 
             // explainQuestionPanel
             // 
             this.explainQuestionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.explainQuestionPanel.Location = new System.Drawing.Point(75, 263);
+            this.explainQuestionPanel.Location = new System.Drawing.Point(79, 263);
             this.explainQuestionPanel.Name = "explainQuestionPanel";
-            this.explainQuestionPanel.Size = new System.Drawing.Size(448, 258);
+            this.explainQuestionPanel.Size = new System.Drawing.Size(444, 258);
             this.explainQuestionPanel.TabIndex = 1;
             // 
             // answerListTableLayoutPanel
             // 
-            this.answerListTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.answerListTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.answerListTableLayoutPanel.AutoSize = true;
             this.answerListTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.answerListTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 528F));
@@ -82,11 +82,11 @@
             this.lbExplain.AutoSize = true;
             this.lbExplain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbExplain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExplain.Location = new System.Drawing.Point(12, 263);
+            this.lbExplain.Location = new System.Drawing.Point(-2, 260);
             this.lbExplain.Name = "lbExplain";
-            this.lbExplain.Size = new System.Drawing.Size(56, 13);
+            this.lbExplain.Size = new System.Drawing.Size(80, 13);
             this.lbExplain.TabIndex = 12;
-            this.lbExplain.Text = "Explain: ";
+            this.lbExplain.Text = "Explaination:";
             // 
             // btCancel
             // 
