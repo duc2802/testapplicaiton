@@ -64,6 +64,22 @@ namespace DataAccessLayer
             return testBE;
         }
 
+        public static bool DeleteTestExamFileClient(string testId)
+        {
+            try
+            {
+                string path = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + testId
+                              + ".exam";
+                var fileInfo = new FileInfo(path);
+                fileInfo.Delete();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public static TestBE LoadTestBEClient(string testId)
         {
             string path = Singleton<SettingManager>.Instance.GetClientDataFolder() + "\\" + testId

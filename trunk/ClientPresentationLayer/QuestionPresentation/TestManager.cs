@@ -69,6 +69,7 @@ namespace ClientPresentationLayer.QuestionPresentation
                 {
                     DeleteTest(testBe.TestID);
                     DataController.DataItems.RemoveAt(testlistView.FocusedItem.Index);
+                    TestDAL.DeleteTestExamFileClient(testBe.TestID);
                     RefreshGui();
                 }
                 else
