@@ -13,7 +13,7 @@ namespace PresentationLayer.QuestionEditor.Data
         private int _orderQuestion;
         public int Height { set; get; }
         public string IdQuestion { set; get; }
-        public string ExplainContent { set; get; }
+        public string _explainContent;
         public string imageName { set; get; }
 
         public int OrderQuestion
@@ -34,6 +34,16 @@ namespace PresentationLayer.QuestionEditor.Data
                 OnPropertyChanged("ContentQuestion");
             }
             get { return _contentQuestion; }
+        }
+
+        public string ExplainContent
+        {
+            set
+            {
+                _explainContent = value;
+                OnPropertyChanged("ExplainContent");
+            }
+            get { return _explainContent; }
         }
 
         public AnswerDataController AnswerData
